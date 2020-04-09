@@ -7,10 +7,10 @@ import {Injectable} from '@angular/core';
 })
 export class ApiService {
 
-  url: string = 'http://192.168.1.10:8000/';
-  // url: string = 'http://159.89.161.199:8000/api/';
-  imgUri: string = 'http://192.168.1.10:8000/storage/';
-  // imgUri: string = 'http://159.89.161.199:8000/storage/';
+  // url: string = 'http://192.168.1.10:8000/';
+  url: string = '52.66.230.13';
+  // imgUri: string = 'http://192.168.1.10:8000/storage/';
+  imgUri: string = '52.66.230.13/storage/';
   reqHeader: any;
 
   constructor(public http: HttpClient) {
