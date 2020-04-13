@@ -8,9 +8,9 @@ import {Injectable} from '@angular/core';
 export class ApiService {
 
   // url: string = 'http://192.168.1.10:8000/';
-  url: string = 'http://52.66.230.13/';
+  url: string = 'http://52.66.201.153/';
   // imgUri: string = 'http://192.168.1.10:8000/storage/';
-  imgUri: string = 'http://52.66.230.13/storage/';
+  imgUri: string = 'http://52.66.201.153/storage/';
   reqHeader: any;
 
   constructor(public http: HttpClient) {
