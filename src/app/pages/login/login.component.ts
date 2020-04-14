@@ -3,6 +3,7 @@ import {AuthService} from '../../services/auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {HttpHeaders} from '@angular/common/http';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-login',
@@ -45,6 +46,7 @@ export class LoginComponent implements OnInit {
     };
     const payload = {
       grant_type: 'password',
+      key_super_key: uuidv4(),
       ...this.loginForm.value
     };
 
