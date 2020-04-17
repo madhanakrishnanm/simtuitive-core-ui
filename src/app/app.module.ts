@@ -3,11 +3,14 @@ import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {LoginModule} from './pages/login/login.module';
+import {DashboardModule} from './pages/dashboard/dashboard.module';
+
 
 @NgModule({
   declarations: [
@@ -20,9 +23,12 @@ import {LoginModule} from './pages/login/login.module';
     NgbModule,
     HttpClientModule,
     RouterModule,
-    LoginModule
+    LoginModule,
+    DashboardModule
   ],
   providers: [],
+  exports: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

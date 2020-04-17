@@ -26,7 +26,7 @@ export class AuthService {
   }
 
   login(payload,headers){
-    return this.apiService.post('oauth/token',payload,headers);
+    return this.apiService.auth('oauth/token',payload,headers);
   }
 
 }

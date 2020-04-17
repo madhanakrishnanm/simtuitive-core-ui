@@ -1,0 +1,13 @@
+@import "src/assets/scss/variables";
+
+.left-sidebar {
+  width: 340px;
+  height: 100vh;
+  align-items: start;
+  background: $light;
+  box-shadow: 0 0 30px #0000000D;
+  padding-left: 80px;
+  padding-top: 30px;
+  padding-bottom: 50px;
+  padding-right: 0;
+}

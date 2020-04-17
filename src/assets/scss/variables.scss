@@ -1,22 +1,28 @@
-$primary: #004F9E;
-$dark: #4D525A;
-$light: #FFFFFF;
+$primary: #FF9000 !default;
+$secondary: #551D71;
 $success: #17C64D;
-$brand_bg: #FAFCFD;
-$brand_content_bg: #E2EBF5;
+$warning: #E20000;
+$dark: #15151B;
+$light: #FFFFFF;
+$bg_test: #15151B;
 $green: #35962C;
 $red: #E20000;
 $yellow: #F2C200;
-//badge colors
-$badge_success: $success;
-$badge_yellow: $green;
-$badge_white: $brand_content_bg;
-$badge_primary: $primary;
 $gray:#8E8E8E;
-$bg_light:#F4F6FB;
-
 $mercury:#E6E6E6;
-$gray:#8E8E8E;
 $salmon:#FF7777;
 $sunset_orange:#FF4B4B;
 $blue_ribbon: #005DFF;
+
+$dark_bg: #202029;
+$light_bg:#F4F6FB;
+
+//badge colors
+$badge_success: $success;
+$badge_yellow: $green;
+$badge_white: $light_bg;
+$badge_primary: $primary;
+
+
+
+
