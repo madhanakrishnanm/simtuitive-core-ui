@@ -23,6 +23,7 @@
     "@ng-bootstrap/ng-bootstrap": "^6.0.2",
     "bootstrap": "^4.4.1",
     "font-awesome": "^4.7.0",
+    "ng-select": "^1.0.2",
     "ng-sidebar": "^9.2.0",
     "numeral": "^2.0.6",
     "rxjs": "~6.5.4",

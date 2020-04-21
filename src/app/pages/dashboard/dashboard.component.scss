@@ -4,31 +4,3 @@
   background-color: var(--secondary);
   margin: 0 50px;
 }
-
-.product-users-table {
-
-  background-color: var(--bg-color-secondary) !important;
-  margin: 20px 15px;
-  padding-top: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 10px;
-
-  tbody th, td {
-    color: white;
-    padding: 20px;
-    border: 0 !important;
-  }
-
-  thead th {
-    color: var(--primary);
-    padding: 20px;
-    border: 0 !important;
-  }
-
-  tbody tr{
-    background-color: var(--bg-color-primary);
-    border-bottom: 20px solid var(--bg-color-secondary);
-  }
-
-}

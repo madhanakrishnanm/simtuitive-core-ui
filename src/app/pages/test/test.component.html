@@ -1,0 +1,74 @@
+<div class="site-content">
+
+  <div class="row">
+    <div class="col">
+      <div>
+        <div class="heading">Client Management</div>
+        <div class="sub-heading">Client Management</div>
+        <button type="button" class="btn btn-primary">Add</button>
+        <button type="button" class="btn btn-warning">Invite</button>
+      </div>
+    </div>
+    <div class="col-12 my-4 sim-input">
+      <form>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Email</label>
+          <div class="col-sm-6">
+            <input type="text"
+                   class="form-control"
+                   value="email@example.com">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Password</label>
+          <div class="col-sm-6">
+            <input type="password"
+                   class="form-control" placeholder="Password">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Password</label>
+          <div class="col-sm-6">
+            <textarea class="form-control" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Password</label>
+          <div class="col-sm-6">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">@</span>
+              </div>
+             <!-- <input id="typeahead-basic"
+                     type="text" class="form-control"
+                     [(ngModel)]="model" [ngbTypeahead]="search"/>-->
+              <input type="text"
+                     class="form-control"
+                     placeholder="Username"
+                     aria-label="Username">
+              <div class="input-group-append">
+                <span class="input-group-text">B</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Password</label>
+          <div class="col-sm-6">
+            <div class="input-group">
+              <ng-select
+                [noFilter]="200"
+                [ngClass]="isOpen ? 'active': 'inactive'"
+                (closed)="isOpen = false"
+                (opened)="isOpen = true"
+                [options]="myOptions">
+              </ng-select>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
+

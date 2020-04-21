@@ -8,14 +8,14 @@ import {UsersService} from '../../services/users.service';
 })
 export class SidebarComponent implements OnInit {
   sidebars = [];
-  selectedSidebar = 'Dashboard'
+  selectedSidebar = 'Dashboard';
 
   constructor(private userService: UsersService) { }
 
   ngOnInit(): void {
     this.getUser();
   }
-  getRouteByName(name){
+  getRouteByName(name) {
     switch (name) {
       case 'Dashboard':
         return '/dashboard';
@@ -29,7 +29,7 @@ export class SidebarComponent implements OnInit {
         return '/reports';
     }
   }
-  getNameByRoute(name){
+  getNameByRoute(name) {
     const url = window.location.pathname;
     console.log(url);
     if (url === '/' || url.includes('dashboard')) {

@@ -4,13 +4,14 @@
 @import "./src/assets/scss/common";
 @import "src/assets/scss/variables";
 @import "node_modules/bootstrap/scss/bootstrap";
+@import "assets/vendor/@fortawesome/fontawesome-free/css/all.min.css";
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500&display=swap');
 
 :root {
   --primary: #FF9000 !important;
   --secondary: #562e71 !important;
   --success: #17C64D !important;
-  --warning: #E20000 !important;
+  --warning: #FF7777 !important;
   --dark: #15151B !important;
   --light: #FFFFFF !important;
   --dark_bg: #202029 !important;

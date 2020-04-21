@@ -1,12 +1,214 @@
 @import "src/assets/scss/variables";
 
 
-.site-content{
+.site-content {
   margin-top: 70px;
   padding: 40px;
 }
 
 
-.border-red{
+.border-red {
   border: 1px solid $red;
+}
+
+
+/*Table Style*/
+
+.product-users-table {
+
+  background-color: var(--bg-color-secondary) !important;
+  margin: 20px 15px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+
+  tbody th, td {
+    color: white;
+    padding: 20px;
+    border: 0 !important;
+  }
+
+  thead th {
+    color: var(--primary);
+    padding: 20px;
+    border: 0 !important;
+  }
+
+  tbody tr {
+    background-color: var(--bg-color-primary);
+    border-bottom: 20px solid var(--bg-color-secondary);
+  }
+
+}
+
+/*Product Title*/
+
+.heading {
+  color: var(--primary);
+  font-weight: Bold;
+  font-size: 28px;
+  line-height: 33px;
+}
+
+.sub-heading {
+  color: var(--warning);
+  font-size: 22px;
+  line-height: 28px;
+}
+
+
+/*Button*/
+.btn {
+  box-shadow: none !important;
+
+  &.btn-primary {
+    color: var(--light);
+    border-color: var(--primary) !important;
+    background: var(--primary) !important;
+  }
+
+  &.btn-outline-primary {
+    color: var(--primary);
+    border-color: var(--primary);
+    font-size: 15px;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  &.btn-outline-primary:hover {
+    background: var(--primary);
+    color: var(--primary);
+  }
+
+  &.btn-warning {
+    color: var(--light);
+    border-color: var(--warning) !important;
+    background: var(--warning) !important;
+  }
+}
+
+
+/*Customizing Input Group*/
+.col-form-label {
+  font-family: 'Nunito', sans-serif;
+  line-height: 23px;
+  font-size: 17px;
+  color: $dark;
+}
+
+.sim-input {
+  .col-form-label {
+    color: var(--light);
+  }
+
+  .input-group, .form-group {
+    border-radius: 11px;
+    border: 0;
+    margin-bottom: 30px;
+
+    .form-control {
+      border: 0;
+      box-shadow: none !important;
+      border-radius: 11px;
+      background: var(--bg-color-secondary);
+      color: var(--light) !important;
+    }
+
+    .form-control:focus {
+      background: var(--bg-color-secondary);
+    }
+
+    .input-group-append {
+      border: 0;
+
+      .input-group-text {
+        border: 0;
+        background: var(--bg-color-secondary);
+        border-top-right-radius: 11px;
+        border-bottom-right-radius: 11px;
+
+        i {
+          color: $gray;
+        }
+      }
+    }
+
+    .input-group-prepend {
+      border: 0;
+
+      .input-group-text {
+        border: 0;
+        background: var(--bg-color-secondary);
+        border-top-left-radius: 11px;
+        border-bottom-left-radius: 11px;
+      }
+    }
+  }
+}
+
+
+ng-select.active > div {
+  border-top-left-radius: 11px !important;
+  border-top-right-radius: 11px !important;
+}
+
+ng-select.inactive > div {
+  border-radius: 11px !important;
+}
+
+ng-select > div {
+  border: 0 !important;
+  outline: none;
+  background: var(--bg-color-secondary);
+  color: var(--light);
+  //border: 1px solid red;
+  padding: 5px 7px;
+
+  &.open.below {
+    .toggle {
+      visibility: hidden;
+    }
+
+    .toggle:after {
+      visibility: visible;
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-family: "Font Awesome 5 Free" !important;
+      content: "\f077" !important;
+      color: var(--primary);
+    }
+  }
+
+  &.below {
+
+    .toggle {
+      visibility: hidden;
+      position: relative;
+    }
+
+    .toggle:after {
+      visibility: visible;
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-family: "Font Awesome 5 Free" !important;
+      content: "\f078" !important;
+      color: var(--primary);
+    }
+  }
+}
+
+select-dropdown > div {
+  background: var(--bg-color-secondary) !important;
+  color: var(--light);
+  border: 0 !important;
+}
+
+select-dropdown .highlighted, select-dropdown .selected.highlighted {
+  background-color: var(--warning) !important;
+}
+
+.select-dropdown .selected {
+  background: var(--bg-color-primary) !important;
 }

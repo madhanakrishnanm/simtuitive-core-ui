@@ -16,8 +16,8 @@ export class ToolbarComponent implements OnInit {
   }
 
   public toggleSidebar(event) {
-    let sidebarElement = document.getElementById('sidebar');
-    let pageContent = document.getElementById('page-content');
+    const sidebarElement = document.getElementById('sidebar');
+    const pageContent = document.getElementById('page-content');
     if (sidebarElement.classList.contains('active')) {
       sidebarElement.classList.remove('active');
       pageContent.classList.remove('active');
