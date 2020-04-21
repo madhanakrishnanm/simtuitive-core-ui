@@ -1,146 +1,96 @@
-<div class="wrapper">
-  <!-- Sidebar  -->
-  <nav id="sidebar" #sidebarEle>
-    <div class="sidebar-header">
-      <h3>Simtuitive</h3>
-    </div>
+<div class="site-content">
 
-    <ul class="list-unstyled components">
-      <li *ngFor="let  sidebar of sidebars;" [ngClass]="{'active':sidebar === selectedSidebar}">
-        <a href="#">
-          <i class="fa fa-pie-chart" aria-hidden="true" *ngIf="sidebar==='Dashboard'"></i>
-          <i class="fa fa-users" aria-hidden="true" *ngIf="sidebar==='Client Management'"></i>
-          <i class="fa fa-credit-card" aria-hidden="true" *ngIf="sidebar==='License Management'"></i>
-          <i class="fa fa-cube" aria-hidden="true" *ngIf="sidebar==='Product Management'"></i>
-          <i class="fa fa-folder-open" aria-hidden="true" *ngIf="sidebar==='Reports'"></i>
-          {{sidebar}}
-        </a>
-      </li>
-    </ul>
+  <div class="row">
 
-  </nav>
-
-  <!-- Page Content  -->
-  <div id="content" #sidebarContent>
-
-    <nav class="navbar navbar-expand-lg fixed-top " style="background-color: var(--bg-color-secondary)">
-      <div class="container-fluid">
-
-        <button type="button" (click)="toggleSidebar($event)" class="btn btn-outline-primary sidebar-toggle-btn">
-          <span><i class="fa fa-navicon"></i></span>
-        </button>
-        <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
-                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-          <i class="fas fa-align-justify"></i>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="nav navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Admin</a>
-            </li>
-          </ul>
+    <div class="col-4">
+      <div class="row  dashboard-card-cont">
+        <div class="col-12 p-3">
+          <p style="color: var(--primary);font-size: 20px;font-weight: bold">Retail Users</p>
         </div>
-      </div>
-    </nav>
-
-    <div class="main-content-area">
-
-      <div class="row">
-
-        <div class="col-4">
-          <div class="row  dashboard-card-cont">
-            <div class="col-12 p-3">
-              <p style="color: var(--primary);font-size: 20px;font-weight: bold">Retail Users</p>
+        <div class="col-12">
+          <div class="row">
+            <div class="col-6 p-3">
+              <p style="color: white;font-weight: bold">{{retailUsers.currentMonth}}</p>
+              <p style="font-size: 14px;font-weight: bold" [style.color]="retailUsers.typeOfValue === 0 ? 'var(--red)' : 'var(--green)'">
+                {{retailUsers.percentage}}%
+              </p>
             </div>
-            <div class="col-12">
-              <div class="row">
-                <div class="col-6 p-3">
-                  <p style="color: white;font-weight: bold">{{retailUsers.currentMonth}}</p>
-                  <p style="font-size: 14px;font-weight: bold" [style.color]="retailUsers.typeOfValue === 0 ? 'var(--red)' : 'var(--green)'">
-                    {{retailUsers.percentage}}%
-                  </p>
-                </div>
-                <div class="col-6 py-3">
-                  <img src="assets/img/dashboard/bar-chart-1.svg" style="float: right">
-                </div>
-              </div>
+            <div class="col-6 py-3">
+              <img src="assets/img/dashboard/bar-chart-1.svg" style="float: right">
             </div>
           </div>
-        </div>
-
-        <div class="col-4">
-          <div class="row  dashboard-card-cont">
-            <div class="col-12 p-3">
-              <p style="color: var(--primary);font-size: 20px;font-weight: bold">Enterprise Users</p>
-            </div>
-            <div class="col-12">
-              <div class="row">
-                <div class="col-6 p-3">
-                  <p style="color: white;font-weight: bold">{{enterpriseUsers.currentMonth}}</p>
-                  <p style="font-size: 14px;font-weight: bold" [style.color]="enterpriseUsers.typeOfValue === 0 ? 'var(--red)' : 'var(--green)'">
-                    {{enterpriseUsers.percentage}}%
-                  </p>
-                </div>
-                <div class="col-6 py-3">
-                  <img src="assets/img/dashboard/bar-chart-2.svg" style="float: right">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-4">
-          <div class="row  dashboard-card-cont">
-            <div class="col-12 p-3">
-              <p style="color: var(--primary);font-size: 20px;font-weight: bold">Users Online Now</p>
-            </div>
-            <div class="col-12">
-              <div class="row">
-                <div class="col-6 p-3">
-                  <p style="color: white;font-weight: bold">{{usersOnlineNow.today}}</p>
-                  <p style="font-size: 14px;font-weight: bold" [style.color]="usersOnlineNow.typeOfValue === 0 ? 'var(--red)' : 'var(--green)'">
-                    {{usersOnlineNow.percentage}}%
-                  </p>
-                </div>
-                <div class="col-6 py-3">
-                  <img src="assets/img/dashboard/bar-chart-3.svg" style="float: right">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="row">
-        <div class="col p-5">
-          <div class="product-users-table">
-            <table class="table">
-              <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Product</th>
-                <th scope="col">Unique Users</th>
-                <th scope="col">Users Online Now</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor="let productUser of productUsers; index as i">
-                <td scope="row">{{ i + 1 }}</td>
-                <td>{{ productUser.productName }}</td>
-                <td>{{ productUser.registerUsers }}</td>
-                <td>{{ productUser.usersOnlineNow }}</td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-
         </div>
       </div>
     </div>
 
+    <div class="col-4">
+      <div class="row  dashboard-card-cont">
+        <div class="col-12 p-3">
+          <p style="color: var(--primary);font-size: 20px;font-weight: bold">Enterprise Users</p>
+        </div>
+        <div class="col-12">
+          <div class="row">
+            <div class="col-6 p-3">
+              <p style="color: white;font-weight: bold">{{enterpriseUsers.currentMonth}}</p>
+              <p style="font-size: 14px;font-weight: bold" [style.color]="enterpriseUsers.typeOfValue === 0 ? 'var(--red)' : 'var(--green)'">
+                {{enterpriseUsers.percentage}}%
+              </p>
+            </div>
+            <div class="col-6 py-3">
+              <img src="assets/img/dashboard/bar-chart-2.svg" style="float: right">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="row  dashboard-card-cont">
+        <div class="col-12 p-3">
+          <p style="color: var(--primary);font-size: 20px;font-weight: bold">Users Online Now</p>
+        </div>
+        <div class="col-12">
+          <div class="row">
+            <div class="col-6 p-3">
+              <p style="color: white;font-weight: bold">{{usersOnlineNow.today}}</p>
+              <p style="font-size: 14px;font-weight: bold" [style.color]="usersOnlineNow.typeOfValue === 0 ? 'var(--red)' : 'var(--green)'">
+                {{usersOnlineNow.percentage}}%
+              </p>
+            </div>
+            <div class="col-6 py-3">
+              <img src="assets/img/dashboard/bar-chart-3.svg" style="float: right">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col p-5">
+      <div class="product-users-table">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Product</th>
+            <th scope="col">Unique Users</th>
+            <th scope="col">Users Online Now</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let productUser of productUsers; index as i">
+            <td scope="row">{{ i + 1 }}</td>
+            <td>{{ productUser.productName }}</td>
+            <td>{{ productUser.registerUsers }}</td>
+            <td>{{ productUser.usersOnlineNow }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
   </div>
 </div>
 

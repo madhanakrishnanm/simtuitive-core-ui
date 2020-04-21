@@ -11,21 +11,16 @@ export class DashboardComponent implements OnInit {
   role = localStorage.getItem('role') || 'Unknown';
   checked = true;
   public isOpen: boolean = false;
-  sidebars = [];
+
   retailUsers: any = {};
   enterpriseUsers: any = {};
   usersOnlineNow: any = {};
   productUsers = [];
-  selectedSidebar = 'Dashboard'
-
-  @ViewChild('sidebarEle') sidebarElement: ElementRef;
-  @ViewChild('sidebarContent') sidebarContent: ElementRef;
 
   constructor(private userService: UsersService) {
   }
 
   ngOnInit(): void {
-    this.getUser();
     this.getDashboard();
     this.getProductUsers();
   }
@@ -65,6 +60,7 @@ export class DashboardComponent implements OnInit {
       console.log(res);
     });
   }
+
   calculatePercentageFor(current,past){
     let percentage = 0;
     let typeOfValue = 0;
@@ -82,13 +78,6 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  getUser() {
-    this.userService.getUser().subscribe((res: any) => {
-      this.sidebars = res.data.permissions[0].tabs;
-      console.log(this.sidebars);
-    });
-  }
-
   toggleTheme() {
     if (this.checked) {
       document.documentElement.setAttribute('data-theme', 'dark');
@@ -98,18 +87,4 @@ export class DashboardComponent implements OnInit {
     this.checked = !this.checked;
   }
 
-  public toggleSidebar(event) {
-    let sidebarElement = this.sidebarElement.nativeElement;
-    let sidebarContent = this.sidebarContent.nativeElement;
-    let activeElement = event;
-    console.log(activeElement);
-
-    if (sidebarElement.classList.contains('active')) {
-      sidebarElement.classList.remove('active');
-      sidebarContent.classList.remove('active');
-    } else {
-      sidebarElement.classList.add('active');
-      sidebarContent.classList.add('active');
-    }
-  }
 }

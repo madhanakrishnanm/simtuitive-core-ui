@@ -1,13 +1,128 @@
 @import "src/assets/scss/variables";
 
-.left-sidebar {
-  width: 340px;
+
+#sidebar {
+  width: 300px;
+  position: fixed;
+  top: 0;
+  left: 0;
   height: 100vh;
-  align-items: start;
-  background: $light;
-  box-shadow: 0 0 30px #0000000D;
-  padding-left: 80px;
-  padding-top: 30px;
-  padding-bottom: 50px;
-  padding-right: 0;
+  z-index: 9999999999;
+  background: var(--bg-color-secondary);
+  color: #fff;
+  transition: all 0.3s;
+}
+
+#sidebar.active {
+  margin-left: -300px;
+}
+
+#sidebar .sidebar-header {
+  padding: 20px;
+  text-align: center;
+  background: var(--bg-color-secondary);
+
+  h3 {
+    color: var(--primary);
+  }
+}
+
+#sidebar ul.components {
+  padding-top: 100px;
+}
+
+#sidebar ul p {
+  color: #fff;
+  padding: 10px;
+}
+
+#sidebar ul li a {
+
+  font-size: 1.1em;
+  display: block;
+  padding-left: 30px;
+  padding-top: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  color: #8f9094;
+
+  i {
+    padding-right: 5px;
+    font-size: 20px;
+  }
+}
+
+#sidebar ul li a:hover {
+  color: white;
+  background: var(--bg-color-primary);
+  text-decoration: none;
+}
+
+#sidebar ul li.active > a,
+a[aria-expanded="true"] {
+  color: #fff;
+  background: var(--bg-color-primary);
+}
+
+a[data-toggle="collapse"] {
+  position: relative;
+}
+
+.dropdown-toggle::after {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+
+ul ul a {
+  font-size: 0.9em !important;
+  padding-left: 30px !important;
+  background: #6d7fcc;
+}
+
+ul.CTAs {
+  padding: 20px;
+}
+
+ul.CTAs a {
+  text-align: center;
+  font-size: 0.9em !important;
+  display: block;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+a.download {
+  background: #fff;
+  color: #7386D5;
+}
+
+a.article,
+a.article:hover {
+  background: var(--dark) !important;
+  color: #fff !important;
+}
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+  #sidebar {
+    margin-left: -250px;
+  }
+  #sidebar.active {
+    margin-left: 0;
+  }
+  #page-content {
+    width: 100%;
+  }
+  #page-content.active {
+    width: calc(100% - 250px);
+  }
+  #sidebarCollapse span {
+    display: none;
+  }
 }

@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
        localStorage.setItem('role', res.role);
        localStorage.setItem('tokenType', res.token_type);
        this.router.navigate(['/']).then(() => {
-         window.location.reload();
+         // window.location.reload();
        });
     });
 
