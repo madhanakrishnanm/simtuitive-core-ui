@@ -96,7 +96,7 @@
   color: var(--bg-color-primary);
 }
 
-.sim-input {
+.simtuitive-input {
   .col-form-label {
     color: var(--light);
   }
@@ -142,6 +142,10 @@
         border-top-left-radius: 11px;
         border-bottom-left-radius: 11px;
       }
+    }
+
+    .custom-control-label{
+      color: var(--light) !important;
     }
   }
 }

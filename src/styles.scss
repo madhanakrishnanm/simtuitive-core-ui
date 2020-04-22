@@ -68,3 +68,33 @@ a:focus {
   text-decoration: none;
   transition: all 0.3s;
 }
+h1{
+  color: var(--primary);
+  font-weight: Bold;
+  font-size: 28px;
+  line-height: 33px;
+}
+h2{
+  color: var(--primary);
+  font-weight: Bold;
+  font-size: 24px;
+  line-height: 33px;
+}
+h3{
+  color: var(--warning);
+  font-weight: Bold;
+  font-size: 20px;
+  line-height: 28px;
+}
+h4{
+  color: var(--warning);
+  font-weight: Bold;
+  font-size: 16px;
+  line-height: 28px;
+}
+h5{
+  color: var(--warning);
+  font-weight: Bold;
+  font-size: 12px;
+  line-height: 28px;
+}

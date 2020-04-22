@@ -11,7 +11,9 @@ import {AddClientComponent} from './pages/add-client/add-client.component';
 import {EditClientComponent} from './pages/edit-client/edit-client.component';
 import {ViewClientComponent} from './pages/view-client/view-client.component';
 import {InviteClientComponent} from './pages/invite-client/invite-client.component';
-import {OrganizationListComponent} from './pages/organization-list/organization-list.component';
+import {OrganizationsComponent} from './pages/organizations/organizations.component';
+import {AddOrganizationComponent} from './pages/add-organization/add-organization.component';
+import {EditOrganizationComponent} from './pages/edit-organization/edit-organization.component';
 import {TestComponent} from './pages/test/test.component';
 
 
@@ -22,7 +24,7 @@ const routes: Routes = [
     children: [
       { path: '', component: DashboardComponent, pathMatch: 'full'},
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'clients', component: OrganizationListComponent },
+      { path: 'clients', component: ClientsListComponent },
       { path: 'products', component: ProductsComponent },
       { path: 'license', component: LicenseComponent },
       { path: 'reports', component: ReportsComponent },
@@ -30,6 +32,9 @@ const routes: Routes = [
       { path: 'invite-client', component: InviteClientComponent },
       { path: 'edit-client', component: EditClientComponent },
       { path: 'view-client', component: ViewClientComponent },
+      { path: 'organizations', component: OrganizationsComponent },
+      { path: 'add-organization', component: AddOrganizationComponent },
+      { path: 'edit-organization', component: EditOrganizationComponent },
       { path: 'test', component: TestComponent },
     ]
   },
