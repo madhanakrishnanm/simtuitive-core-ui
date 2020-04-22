@@ -37,65 +37,9 @@ function getDateFromObject(dateObject) {
   return dateObject;
 }
 
-function mobileValidator(formControl, key) {
-  if (!formControl.parent) {
-    return null;
-  }
-  const mobile = formControl.parent.get(key).value &&
-    formControl.parent.get(key).value.toString();
-  if (mobile) {
-    if (mobile.length < 10 || mobile.length > 10) {
-      return {
-        maxLimit: {
-          [key]: formControl.parent.get(key).value
-        }
-      };
-    }
-  }
-  return null;
-}
-
-function telephoneValidator(formControl, key) {
-  if (!formControl.parent) {
-    return null;
-  }
-  const telephone = formControl.parent.get(key).value
-    && formControl.parent.get(key).value.toString();
-  if (telephone) {
-    if (telephone.length < 10 || telephone.length > 10) {
-      return {
-        maxLimit: {
-          [key]: formControl.parent.get(key).value
-        }
-      };
-    }
-  }
-  return null;
-}
-
-function emailValidator(formControl, key) {
-  if (!formControl.parent) {
-    return null;
-  }
-  const email = formControl.parent.get(key).value;
-  if (email) {
-    if (!email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
-      return {
-        email: {
-          [key]: formControl.parent.get(key).value
-        }
-      };
-    }
-  }
-  return null;
-}
-
 export {
   getDate,
   containsObject,
   reverseDate,
   getDateFromObject,
-  mobileValidator,
-  telephoneValidator,
-  emailValidator
 }

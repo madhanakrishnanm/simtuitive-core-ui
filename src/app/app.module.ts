@@ -10,7 +10,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {SelectModule} from 'ng-select';
 import {LoginModule} from './pages/login/login.module';
 import {DashboardModule} from './pages/dashboard/dashboard.module';
+import {OrganizationsModule} from './pages/organizations/organizations.module';
 import {AddOrganizationModule} from './pages/add-organization/add-organization.module';
+import {EditOrganizationModule} from './pages/edit-organization/edit-organization.module';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { SiteComponent } from './layouts/site/site.component';
 import { AuthComponent } from './layouts/auth/auth.component';
@@ -39,7 +41,9 @@ import { TestComponent } from './pages/test/test.component';
     LoginModule,
     DashboardModule,
     SelectModule,
-    AddOrganizationModule
+    OrganizationsModule,
+    AddOrganizationModule,
+    EditOrganizationModule
   ],
   providers: [],
   exports: [

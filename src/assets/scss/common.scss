@@ -216,3 +216,8 @@ select-dropdown .highlighted, select-dropdown .selected.highlighted {
 .select-dropdown .selected {
   background: var(--bg-color-primary) !important;
 }
+
+.input-error-report {
+  font-size: var(--warning);
+  color: $red;
+}
