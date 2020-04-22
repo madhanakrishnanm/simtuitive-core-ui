@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {OrganizationService} from '../../services/organization.service';
 
 @Component({
   selector: 'app-add-organization',
@@ -10,9 +11,12 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class AddOrganizationComponent implements OnInit {
 
   organizationForm: FormGroup;
+
   constructor(public router: Router,
-  private formBuilder: FormBuilder,
-  ) { }
+              private formBuilder: FormBuilder,
+              private organizationService: OrganizationService
+  ) {
+  }
 
   ngOnInit(): void {
     this.organizationForm = this.formBuilder.group({
@@ -35,9 +39,13 @@ export class AddOrganizationComponent implements OnInit {
   }
 
   onSubmit() {
-   /* if (this.organizationForm.invalid) {
+    if (this.organizationForm.invalid) {
       return;
-    }*/
+    }
     console.log(this.organizationForm.value);
+    let payload = this.organizationForm.value;
+    this.organizationService.addOrganization(payload).subscribe((res: any)=>{
+      console.log(payload);
+    })
   }
 }
