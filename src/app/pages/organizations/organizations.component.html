@@ -1,15 +1,59 @@
 <div class="site-content">
 
-  <div class="row">
+  <div class="row title-cont">
     <div class="col">
       <h1>Organization Management</h1>
     </div>
     <div class="col">
       <div class="text-right">
-        <button (click)="router.navigate(['add-organization'])" class="btn btn-primary">Add Organization</button>
+        <button (click)="router.navigate(['add-organization'])"
+                class="btn btn-primary">Add Organization
+        </button>
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col table-cont">
+      <div class="product-users-table">
+        <table class="table table-responsive">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Organisation Name</th>
+            <th scope="col">Location</th>
+            <th scope="col">Industry</th>
+            <th scope="col">Deal Owner</th>
+            <th scope="col">Deal Owner Email</th>
+            <th scope="col">Deal Owner Phone</th>
+            <th scope="col">Credit Limit</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td scope="row">1</td>
+            <td scope="row">Mark University</td>
+            <td>Thornton</td>
+            <td>Software</td>
+            <td>Maji</td>
+            <td>inst@haw.com</td>
+            <td>7566789906</td>
+            <td>456789</td>
+            <td>Active</td>
+            <td>
+              <div class="d-flex justify-content-between action-icon">
+                <i class="far fa-share-square" aria-hidden="true"></i>
+                <i class="fa fa-edit" aria-hidden="true"></i>
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
 
+    </div>
+  </div>
 </div>
 

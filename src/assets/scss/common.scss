@@ -33,6 +33,7 @@
     color: var(--primary);
     padding: 20px;
     border: 0 !important;
+    white-space: nowrap;
   }
 
   tbody tr {
@@ -40,6 +41,18 @@
     border-bottom: 20px solid var(--bg-color-secondary);
   }
 
+  .action-icon i{
+    cursor: pointer;
+  }
+
+}
+.table-cont{
+  margin-top: 70px;
+}
+
+.title-cont{
+  padding-left: 20px !important;
+  padding-right: 15px !important;
 }
 
 /*Product Title*/
@@ -144,7 +157,7 @@
       }
     }
 
-    .custom-control-label{
+    .custom-control-label {
       color: var(--light) !important;
     }
   }
