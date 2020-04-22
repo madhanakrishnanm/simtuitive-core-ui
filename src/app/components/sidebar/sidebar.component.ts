@@ -19,6 +19,8 @@ export class SidebarComponent implements OnInit {
     switch (name) {
       case 'Dashboard':
         return '/dashboard';
+      case 'Organization Management':
+        return '/organizations';
       case 'Client Management':
         return '/clients';
       case 'License Management':
@@ -31,9 +33,10 @@ export class SidebarComponent implements OnInit {
   }
   getNameByRoute(name) {
     const url = window.location.pathname;
-    console.log(url);
     if (url === '/' || url.includes('dashboard')) {
       return 'Dashboard';
+    }else if (url.includes('organization')) {
+      return 'Organization Management';
     } else if (url.includes('clients')) {
       return 'Client Management';
     } else if (url.includes('license')) {

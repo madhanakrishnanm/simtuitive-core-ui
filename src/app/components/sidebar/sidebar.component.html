@@ -8,6 +8,7 @@
     <li *ngFor="let  sidebar of sidebars;" [ngClass]="{'active':sidebar === getNameByRoute(sidebar)}">
       <a [routerLink]="getRouteByName(sidebar)">
         <i class="fa fa-pie-chart" aria-hidden="true" *ngIf="sidebar==='Dashboard'"></i>
+        <i class="fa fa-university" aria-hidden="true" *ngIf="sidebar==='Organization Management'"></i>
         <i class="fa fa-users" aria-hidden="true" *ngIf="sidebar==='Client Management'"></i>
         <i class="fa fa-credit-card" aria-hidden="true" *ngIf="sidebar==='License Management'"></i>
         <i class="fa fa-cube" aria-hidden="true" *ngIf="sidebar==='Product Management'"></i>
