@@ -99,7 +99,7 @@ export class AddOrganizationComponent implements OnInit {
     console.log(this.organizationForm.value);
     let payload = this.organizationForm.value;
     this.organizationService.addOrganization(payload).subscribe((res: any)=>{
-      console.log(payload);
+      console.log(res);
     })
   }
 }

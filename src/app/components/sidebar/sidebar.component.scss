@@ -111,16 +111,10 @@ a.article:hover {
 
 @media (max-width: 768px) {
   #sidebar {
-    margin-left: -250px;
+    margin-left: -300px;
   }
   #sidebar.active {
     margin-left: 0;
-  }
-  #page-content {
-    width: 100%;
-  }
-  #page-content.active {
-    width: calc(100% - 250px);
   }
   #sidebarCollapse span {
     display: none;

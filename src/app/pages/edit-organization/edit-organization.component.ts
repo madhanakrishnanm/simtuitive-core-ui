@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {OrganizationService} from '../../services/organization.service';
 
@@ -11,8 +11,11 @@ import {OrganizationService} from '../../services/organization.service';
 export class EditOrganizationComponent implements OnInit {
 
   organizationForm: FormGroup;
-
+  organizationId = null;
+  subscribe = null;
+  organization = {};
   constructor(public router: Router,
+              public route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private organizationService: OrganizationService
   ) {
@@ -29,12 +32,36 @@ export class EditOrganizationComponent implements OnInit {
       creditLimit: [0, [Validators.required]],
       status: ['inactive', [Validators.required]],
     });
-     let payload = {};
-    this.organizationService.getOrganizationById(payload).subscribe((res: any)=>{
-      console.log(res);
+
+    this.subscribe = this.route.params.subscribe(params => {
+      this.organizationId = params['id']; // (+) converts string 'id' to a number
+      // console.log(this.organizationId);
+      if (this.organizationId){
+        let payload = {
+          orgId: this.organizationId
+        };
+        this.organizationService.getOrganizationById(payload).subscribe((res: any) => {
+          // console.log(res);
+          let responseOrganization = res.data;
+          this.organization['name'] = responseOrganization['orgName']
+          this.organization['location'] = responseOrganization['location']
+          this.organization['industry'] = responseOrganization['industry']
+          this.organization['dealOwner'] = responseOrganization['clientDealOwnerName']
+          this.organization['dealOwnerEmail'] = responseOrganization['clientDealOwnerEmail']
+          this.organization['dealOwnerMobile'] = responseOrganization['clientDealOwnerMobile']
+          this.organization['creditLimit'] = responseOrganization['creditLimit']
+          this.organization['status'] = responseOrganization['status']
+          console.log(this.organization);
+          this.organizationForm.patchValue(this.organization);
+        });
+      }
+
     });
   }
 
+  ngOnDestroy() {
+    this.subscribe.unsubscribe();
+  }
 
   mobileValidator(formControl: AbstractControl) {
     if (!formControl.parent) {
@@ -82,7 +109,7 @@ export class EditOrganizationComponent implements OnInit {
     console.log(this.organizationForm.value);
     let payload = this.organizationForm.value;
     this.organizationService.editOrganization(payload).subscribe((res: any) => {
-      console.log(payload);
+      console.log(res);
     });
   }
 }

@@ -16,14 +16,18 @@ export class ToolbarComponent implements OnInit {
   }
 
   public toggleSidebar(event) {
+    console.log(event);
     const sidebarElement = document.getElementById('sidebar');
     const pageContent = document.getElementById('page-content');
+    const toggleSidebarBtn = document.getElementById('toggle-sidebar');
     if (sidebarElement.classList.contains('active')) {
       sidebarElement.classList.remove('active');
       pageContent.classList.remove('active');
+      toggleSidebarBtn.classList.remove('active');
     } else {
       sidebarElement.classList.add('active');
       pageContent.classList.add('active');
+      toggleSidebarBtn.classList.add('active');
     }
   }
 }

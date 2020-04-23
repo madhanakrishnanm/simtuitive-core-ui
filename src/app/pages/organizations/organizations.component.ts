@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {FormBuilder} from '@angular/forms';
+import {OrganizationService} from '../../services/organization.service';
 
 @Component({
   selector: 'app-organizations',
@@ -8,9 +10,17 @@ import {Router} from '@angular/router';
 })
 export class OrganizationsComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  organizations = [];
+  constructor(public router: Router,
+              private formBuilder: FormBuilder,
+              private organizationService: OrganizationService) { }
 
   ngOnInit(): void {
+    let payload = {};
+    this.organizationService.getAllOrganization(payload).subscribe((res: any)=>{
+      console.log(res);
+      this.organizations = res.data;
+    })
   }
 
 }

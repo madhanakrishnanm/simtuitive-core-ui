@@ -8,6 +8,7 @@ import {UsersService} from '../../services/users.service';
 })
 export class SidebarComponent implements OnInit {
   sidebars = [];
+  permissions = [];
   selectedSidebar = 'Dashboard';
 
   constructor(private userService: UsersService) { }
@@ -29,6 +30,12 @@ export class SidebarComponent implements OnInit {
         return '/products';
       case 'Reports':
         return '/reports';
+      case 'Admin Management':
+        return '/admins';
+      case 'Role Management':
+        return '/roles';
+      case 'Permission Management':
+        return '/permissions';
     }
   }
   getNameByRoute(name) {
@@ -45,11 +52,26 @@ export class SidebarComponent implements OnInit {
       return 'Product Management';
     } else if (url.includes('reports')) {
       return 'Reports';
+    }else if (url.includes('admin')) {
+      return 'Admin Management';
+    }else if (url.includes('role')) {
+      return 'Role Management';
+    }else if (url.includes('permission')) {
+      return 'Permission Management';
+    }else if (url.includes('whitelist-ip')) {
+      return 'Whitelist IPs Management';
     }
   }
   getUser() {
     this.userService.getUser().subscribe((res: any) => {
-      this.sidebars = res.data.permissions[0].tabs;
+      this.permissions = res.data.permissions;
+      if (this.permissions){
+        for(const permission of this.permissions){
+          if (permission.type === 'tab'){
+            this.sidebars.push(permission.name)
+          }
+        }
+      }
       console.log(this.sidebars);
     });
   }

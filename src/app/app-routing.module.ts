@@ -14,6 +14,16 @@ import {InviteClientComponent} from './pages/invite-client/invite-client.compone
 import {OrganizationsComponent} from './pages/organizations/organizations.component';
 import {AddOrganizationComponent} from './pages/add-organization/add-organization.component';
 import {EditOrganizationComponent} from './pages/edit-organization/edit-organization.component';
+import {AdminsComponent} from './pages/admins/admins.component';
+import {AddAdminComponent} from './pages/add-admin/add-admin.component';
+import {EditAdminComponent} from './pages/edit-admin/edit-admin.component';
+import {RolesComponent} from './pages/roles/roles.component';
+import {AddRoleComponent} from './pages/add-role/add-role.component';
+import {EditRoleComponent} from './pages/edit-role/edit-role.component';
+import {PermissionsComponent} from './pages/permissions/permissions.component';
+import {AddPermissionComponent} from './pages/add-permission/add-permission.component';
+import {EditPermissionComponent} from './pages/edit-permission/edit-permission.component';
+import {WhitelistIpsComponent} from './pages/whitelist-ips/whitelist-ips.component';
 import {TestComponent} from './pages/test/test.component';
 
 
@@ -34,7 +44,17 @@ const routes: Routes = [
       { path: 'view-client', component: ViewClientComponent },
       { path: 'organizations', component: OrganizationsComponent },
       { path: 'add-organization', component: AddOrganizationComponent },
-      { path: 'edit-organization', component: EditOrganizationComponent },
+      { path: 'edit-organization/:id', component: EditOrganizationComponent },
+      { path: 'admins', component: AdminsComponent },
+      { path: 'add-admin', component: AddAdminComponent },
+      { path: 'edit-admin/:id', component: EditAdminComponent },
+      { path: 'roles', component: RolesComponent },
+      { path: 'add-role', component: AddRoleComponent },
+      { path: 'edit-role/:id', component: EditRoleComponent },
+      { path: 'permissions', component: PermissionsComponent },
+      { path: 'add-permission', component: AddPermissionComponent },
+      { path: 'edit-permisssion/:id', component: EditPermissionComponent },
+      { path: 'whitelist-ips', component: WhitelistIpsComponent },
       { path: 'test', component: TestComponent },
     ]
   },

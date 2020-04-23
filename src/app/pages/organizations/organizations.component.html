@@ -14,8 +14,8 @@
   </div>
   <div class="row">
     <div class="col table-cont">
-      <div class="product-users-table">
-        <table class="table table-responsive">
+      <div class="product-users-table table-responsive">
+        <table class="table">
           <thead>
           <tr>
             <th scope="col">#</th>
@@ -31,20 +31,21 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td scope="row">1</td>
-            <td scope="row">Mark University</td>
-            <td>Thornton</td>
-            <td>Software</td>
-            <td>Maji</td>
-            <td>inst@haw.com</td>
-            <td>7566789906</td>
-            <td>456789</td>
-            <td>Active</td>
+
+          <tr *ngFor="let organization of organizations; index as i">
+            <td>{{i+1}}</td>
+            <td>{{organization.organizationName}}</td>
+            <td>{{organization.location}}</td>
+            <td>{{organization.industry}}</td>
+            <td>{{organization.clientDealOwnerName}}</td>
+            <td>{{organization.clientDealOwnerEmail}}</td>
+            <td>{{organization.clientDealOwnerMobile}}</td>
+            <td>{{organization.creditLimit}}</td>
+            <td>{{organization.status}}</td>
             <td>
               <div class="d-flex justify-content-between action-icon">
                 <i class="far fa-share-square" aria-hidden="true"></i>
-                <i class="fa fa-edit" aria-hidden="true"></i>
+                <i class="fa fa-edit" aria-hidden="true" (click)="router.navigate(['/edit-organization', organization.orgId])"></i>
                 <i class="fa fa-trash" aria-hidden="true"></i>
               </div>
             </td>
