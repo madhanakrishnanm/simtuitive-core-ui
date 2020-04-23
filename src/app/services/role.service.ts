@@ -8,16 +8,16 @@ export class RoleService {
 
   constructor(private apiService: ApiService) { }
 
-  addRole(payload){
-    return this.apiService.post('org/add-role',payload);
+  addRole(payload) {
+    return this.apiService.post('org/add-role', payload);
   }
-  editRole(payload){
-    return this.apiService.post('org/update-role',payload);
+  editRole(payload) {
+    return this.apiService.post('org/update-role', payload);
   }
-  getAllRole(payload){
-    return this.apiService.get('org/getall-role',payload);
+  getAllRole(payload) {
+    return this.apiService.get('org/getall-role', payload);
   }
-  getRoleById(payload){
-    return this.apiService.post('org/get-role',payload);
+  getRoleById(payload) {
+    return this.apiService.post('org/get-role', payload);
   }
 }

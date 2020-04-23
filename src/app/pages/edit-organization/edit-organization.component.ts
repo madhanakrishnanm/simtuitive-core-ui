@@ -13,7 +13,7 @@ export class EditOrganizationComponent implements OnInit {
   organizationForm: FormGroup;
   organizationId = null;
   subscribe = null;
-  organization = {};
+  organization: any = {};
   constructor(public router: Router,
               public route: ActivatedRoute,
               private formBuilder: FormBuilder,
@@ -34,23 +34,23 @@ export class EditOrganizationComponent implements OnInit {
     });
 
     this.subscribe = this.route.params.subscribe(params => {
-      this.organizationId = params['id']; // (+) converts string 'id' to a number
+      this.organizationId = params.id; // (+) converts string 'id' to a number
       // console.log(this.organizationId);
-      if (this.organizationId){
-        let payload = {
+      if (this.organizationId) {
+        const payload = {
           orgId: this.organizationId
         };
         this.organizationService.getOrganizationById(payload).subscribe((res: any) => {
           // console.log(res);
-          let responseOrganization = res.data;
-          this.organization['name'] = responseOrganization['orgName']
-          this.organization['location'] = responseOrganization['location']
-          this.organization['industry'] = responseOrganization['industry']
-          this.organization['dealOwner'] = responseOrganization['clientDealOwnerName']
-          this.organization['dealOwnerEmail'] = responseOrganization['clientDealOwnerEmail']
-          this.organization['dealOwnerMobile'] = responseOrganization['clientDealOwnerMobile']
-          this.organization['creditLimit'] = responseOrganization['creditLimit']
-          this.organization['status'] = responseOrganization['status']
+          const responseOrganization = res.data;
+          this.organization.name = responseOrganization.orgName;
+          this.organization.location = responseOrganization.location;
+          this.organization.industry = responseOrganization.industry;
+          this.organization.dealOwner = responseOrganization.clientDealOwnerName;
+          this.organization.dealOwnerEmail = responseOrganization.clientDealOwnerEmail;
+          this.organization.dealOwnerMobile = responseOrganization.clientDealOwnerMobile;
+          this.organization.creditLimit = responseOrganization.creditLimit;
+          this.organization.status = responseOrganization.status;
           console.log(this.organization);
           this.organizationForm.patchValue(this.organization);
         });
@@ -59,6 +59,7 @@ export class EditOrganizationComponent implements OnInit {
     });
   }
 
+  // tslint:disable-next-line:use-lifecycle-interface
   ngOnDestroy() {
     this.subscribe.unsubscribe();
   }
@@ -107,7 +108,7 @@ export class EditOrganizationComponent implements OnInit {
       return;
     }
     console.log(this.organizationForm.value);
-    let payload = this.organizationForm.value;
+    const payload = this.organizationForm.value;
     this.organizationService.editOrganization(payload).subscribe((res: any) => {
       console.log(res);
     });

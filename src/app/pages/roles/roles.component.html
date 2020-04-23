@@ -1,17 +1,60 @@
 <div class="site-content">
 
-  <div class="row">
+  <div class="row title-cont">
     <div class="col">
-      <div class="border-red">
-        <h1>Roles Management</h1>
-      </div>
+      <h1>Role Management</h1>
     </div>
     <div class="col">
-      <div class="text-right border-red">
-        <button class="btn btn-primary">Add Role</button>
+      <div class="text-right">
+        <button (click)="router.navigate(['add-role'])"
+                class="btn btn-primary">
+          Add
+        </button>
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col table-cont">
+      <div class="product-users-table table-responsive">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Role Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>1</td>
+            <td>Admin</td>
+            <td>Can Access all product management tabs</td>
+            <td>
+              <div class="d-flex justify-content-around action-icon">
+                <i class="fa fa-edit" aria-hidden="true"
+                   (click)="router.navigate(['/edit-role', ''])"></i>
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              </div>
+            </td>
+          </tr>
+          <tr *ngFor="let role of roles; index as i">
+            <td>{{i+1}}</td>
+            <td>{{role.organizationName}}</td>
+            <td>{{role.location}}</td>
+            <td>
+              <div class="d-flex justify-content-around action-icon">
+                <i class="fa fa-edit" aria-hidden="true"
+                   (click)="router.navigate(['/edit-role', role.orgId])"></i>
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
 
+    </div>
+  </div>
 </div>
 

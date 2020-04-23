@@ -16,11 +16,11 @@ export class OrganizationsComponent implements OnInit {
               private organizationService: OrganizationService) { }
 
   ngOnInit(): void {
-    let payload = {};
-    this.organizationService.getAllOrganization(payload).subscribe((res: any)=>{
+    const payload = {};
+    this.organizationService.getAllOrganization(payload).subscribe((res: any) => {
       console.log(res);
       this.organizations = res.data;
-    })
+    });
   }
 
 }
