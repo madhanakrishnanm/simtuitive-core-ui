@@ -12,12 +12,15 @@ export class PermissionService {
     return this.apiService.post('permissions/add-permission',payload);
   }
   editPermission(payload){
-    return this.apiService.post('permissions/update-permission',payload);
+    return this.apiService.put('permissions/update-permission',payload);
   }
   getAllPermission(payload){
     return this.apiService.get('permissions/get-permissions',payload);
   }
   getPermissionById(payload){
     return this.apiService.post('permissions/get-permission',payload);
+  }
+  getPermissionRoles(payload){
+    return this.apiService.post('permissions/get-permission-roles',payload);
   }
 }

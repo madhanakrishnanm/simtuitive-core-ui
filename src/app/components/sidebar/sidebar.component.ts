@@ -36,6 +36,9 @@ export class SidebarComponent implements OnInit {
         return '/roles';
       case 'Permission Management':
         return '/permissions';
+      case 'WhiteList IPs Management':
+        return '/whitelist-ips';
+
     }
   }
   getNameByRoute(name) {

@@ -66,11 +66,16 @@
         <div class="form-group row">
           <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Role</label>
           <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-            <input
-              type="text"
-              class="form-control"
+            <ng-select
+              [items]="roles"
+              [closeOnSelect]="true"
+              [searchable]="false"
+              [loading]="isLoading"
+              bindLabel="rolename"
+              placeholder="Select Role"
               formControlName="role"
-            />
+            >
+            </ng-select>
             <div *ngIf="f.role.invalid && (f.role.touched || f.role.value)"
                  class="input-error-report">
               <div *ngIf="f.role.errors.required">

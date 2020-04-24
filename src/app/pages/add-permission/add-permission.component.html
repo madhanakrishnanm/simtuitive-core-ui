@@ -47,28 +47,21 @@
         <div class="form-group row">
           <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Applicable To</label>
           <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-            <div class="input-group">
-              <ng-select
-                [noFilter]="200"
-                formControlName="applicableTo"
-                [ngClass]="isOpen ? 'active': 'inactive'"
-                (closed)="isOpen = false"
-                (opened)="isOpen = true"
-                [multiple]="true"
-                (selected)="selectPermission($event)"
-                [options]="applicableTo">
-                <ng-template
-                  #optionTemplate
-                  let-option="option">
-                  {{option?.value}}
-                </ng-template>
-              </ng-select>
-            </div>
-
-            <div *ngIf="f.applicableTo.invalid && (f.type.touched || f.type.value)"
+            <ng-select
+              [items]="roles"
+              [multiple]="true"
+              [closeOnSelect]="true"
+              [searchable]="false"
+              [loading]="isLoading"
+              bindLabel="rolename"
+              placeholder="Select people"
+              formControlName="roleids"
+            >
+            </ng-select>
+            <div *ngIf="f.roleids.invalid && (f.roleids.touched || f.roleids.value)"
                  class="input-error-report">
-              <div *ngIf="f.applicableTo.errors.required">
-                ApplicableTo is required.
+              <div *ngIf="f.roleids.errors.required">
+                Applicable To is required.
               </div>
             </div>
           </div>

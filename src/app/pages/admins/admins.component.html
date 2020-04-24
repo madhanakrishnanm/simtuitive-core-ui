@@ -27,26 +27,15 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>1</td>
-            <td>Admin</td>
-            <td>Can Access all product management tabs</td>
-            <td>
-              <div class="d-flex justify-content-around action-icon">
-                <i class="fa fa-edit" aria-hidden="true"
-                   (click)="router.navigate(['/edit-role', ''])"></i>
-                <i class="fa fa-trash" aria-hidden="true"></i>
-              </div>
-            </td>
-          </tr>
           <tr *ngFor="let admin of admins; index as i">
             <td>{{i+1}}</td>
-            <td>{{admin.organizationName}}</td>
-            <td>{{admin.location}}</td>
+            <td>{{admin.userName}}</td>
+            <td>{{admin.userEmail}}</td>
+            <td>{{admin.role}}</td>
             <td>
               <div class="d-flex justify-content-around action-icon">
                 <i class="fa fa-edit" aria-hidden="true"
-                   (click)="router.navigate(['/edit-role', admin.orgId])"></i>
+                   (click)="router.navigate(['/edit-admin', admin.userId])"></i>
                 <i class="fa fa-trash" aria-hidden="true"></i>
               </div>
             </td>

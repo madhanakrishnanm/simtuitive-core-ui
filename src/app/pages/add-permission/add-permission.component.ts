@@ -2,9 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {PermissionService} from '../../services/permission.service';
-import {IOption} from 'ng-select';
 import {NgxUiLoaderService} from 'ngx-ui-loader';
 import {RoleService} from '../../services/role.service';
+
 
 @Component({
   selector: 'app-add-permission',
@@ -16,6 +16,7 @@ export class AddPermissionComponent implements OnInit {
   isOpen = false;
   applicableTo: any = [{value: 'Admin', label: 'Admin'}, {value: 'Client', label: 'Client'}, {value: 'Learner', label: 'Learner'}];
   roles = [];
+  isLoading = false;
   constructor(public router: Router,
               private formBuilder: FormBuilder,
               private ngxUiLoaderService: NgxUiLoaderService,
@@ -24,15 +25,19 @@ export class AddPermissionComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.permissionForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       type: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      applicableTo: ['', [Validators.required]]
+      roleids: ['', [Validators.required]]
     });
     this.roleService.getAllRole({}).subscribe((res: any) => {
       console.log(res);
       this.roles = res.data;
+      this.isLoading = false;
+    }, error => {
+      this.isLoading = false;
     });
   }
 
@@ -49,12 +54,18 @@ export class AddPermissionComponent implements OnInit {
     if (this.permissionForm.invalid) {
       return;
     }
+    let roleIds = this.f.roleids.value;
+    let newRoles = [];
+    for (const role of roleIds) {
+      newRoles.push(role['roleid']);
+    }
+
     this.ngxUiLoaderService.start();
-    console.log(this.permissionForm.value);
-    const payload = this.permissionForm.value;
+    const payload = {...this.permissionForm.value, roleids:newRoles};
+    console.log(payload);
     this.permissionService.addPermission(payload).subscribe((res: any) => {
       this.ngxUiLoaderService.stop();
-      // this.router.navigate(['/admins'])
+      this.router.navigate(['/permissions']);
       console.log(res);
     }, error => {
       console.log(error);

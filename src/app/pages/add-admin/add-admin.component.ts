@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AdminService} from '../../services/admin.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import {RoleService} from '../../services/role.service';
 
 @Component({
   selector: 'app-add-admin',
@@ -12,11 +13,13 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 export class AddAdminComponent implements OnInit {
 
   adminForm: FormGroup;
-
+  roles = [];
+  isLoading = false;
   constructor(public router: Router,
               private formBuilder: FormBuilder,
               private adminService: AdminService,
-              private ngxUiLoaderService: NgxUiLoaderService
+              private ngxUiLoaderService: NgxUiLoaderService,
+              private roleService: RoleService
   ) {
   }
 
@@ -24,8 +27,18 @@ export class AddAdminComponent implements OnInit {
     this.adminForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, this.emailValidator]],
-      role: ['admin', [Validators.required]],
+      role: ['', [Validators.required]],
       password: ['', [Validators.required]],
+    });
+    this.roleService.getAllRole({}).subscribe((res: any) => {
+      console.log(res);
+      this.roles = res.data;
+      this.adminForm.patchValue({
+        role : this.roles.find(o => o.rolename === 'Admin')
+      })
+      this.isLoading =  false;
+    }, error => {
+      this.isLoading = false;
     });
   }
 
@@ -60,11 +73,13 @@ export class AddAdminComponent implements OnInit {
       return;
     }
     this.ngxUiLoaderService.start();
-    console.log(this.adminForm.value);
     let payload = this.adminForm.value;
+    payload['roleid'] = payload['role']['roleid'];
+    payload['role'] = payload['role']['rolename'];
+    console.log(payload);
     this.adminService.addAdmin(payload).subscribe((res: any)=>{
       this.ngxUiLoaderService.stop();
-      // this.router.navigate(['/admins'])
+      this.router.navigate(['/admins'])
       console.log(res);
     }, error => {
       console.log(error);
