@@ -5,6 +5,7 @@
   margin-top: 80px;
   padding: 20px;
 }
+
 @media (max-width: 768px) {
   .site-content {
     margin-top: 60px;
@@ -46,16 +47,17 @@
     border-bottom: 20px solid var(--bg-color-secondary);
   }
 
-  .action-icon i{
+  .action-icon i {
     cursor: pointer;
   }
 
 }
-.table-cont{
+
+.table-cont {
   margin-top: 70px;
 }
 
-.title-cont{
+.title-cont {
   padding-left: 20px !important;
   padding-right: 15px !important;
 }
@@ -233,6 +235,19 @@ select-dropdown .highlighted, select-dropdown .selected.highlighted {
 
 .select-dropdown .selected {
   background: var(--bg-color-primary) !important;
+}
+
+ng-select > div > div.multiple > div.option {
+  background: var(--primary) !important;
+  color: var(--light) !important;
+  border: 0 !important;
+}
+
+ng-select > div > div.multiple > div.option span.deselect-option {
+  color: var(--light) !important;
+  float: right !important;
+  margin-top: 2px;
+  margin-left: 4px;
 }
 
 .input-error-report {

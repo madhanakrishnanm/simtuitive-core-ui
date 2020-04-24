@@ -12,10 +12,7 @@ import {IOption} from 'ng-select';
 export class AddPermissionComponent implements OnInit {
   permissionForm: FormGroup;
   isOpen = false;
-  applicableTo: any  = [{value: 'Admin', label: 'Admin'},
-    {value: 'Client', label: 'Client'},
-    {value: 'Ree', label: 'Res'},
-    {value: 'Rese', label: 'Test'}];
+  applicableTo: any = [{value: 'Admin', label: 'Admin'}, {value: 'Client', label: 'Client'}, {value: 'Learner', label: 'Learner'}];
 
   constructor(public router: Router,
               private formBuilder: FormBuilder,
@@ -33,6 +30,11 @@ export class AddPermissionComponent implements OnInit {
 
   get f() {
     return this.permissionForm.controls;
+  }
+
+  selectPermission(option) {
+    console.log(option);
+    console.log(this.permissionForm.value);
   }
 
   onSubmit() {
