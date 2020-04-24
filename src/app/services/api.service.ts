@@ -52,7 +52,6 @@ export class ApiService {
       reqOpts = {
         headers: new HttpHeaders({...headers}),
       };
-      console.log(reqOpts);
     }else {
       reqOpts = {
         headers: new HttpHeaders({...this.reqHeader}),
@@ -75,7 +74,17 @@ export class ApiService {
     return this.http.post(this.authUri + endpoint, body, reqOpts);
   }
 
-  put(endpoint: string, body: any, reqOpts?: any) {
+  put(endpoint: string, body: any, headers?: any) {
+    let reqOpts;
+    if (headers) {
+      reqOpts = {
+        headers: new HttpHeaders({...headers}),
+      };
+    }else {
+      reqOpts = {
+        headers: new HttpHeaders({...this.reqHeader}),
+      };
+    }
     return this.http.put(this.url + endpoint, body, reqOpts);
   }
 

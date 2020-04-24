@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {RoleService} from '../../services/role.service';
+import {NgxUiLoaderService} from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-edit-role',
@@ -17,25 +18,26 @@ export class EditRoleComponent implements OnInit {
   constructor(public router: Router,
               public route: ActivatedRoute,
               private formBuilder: FormBuilder,
+              private ngxUiLoaderService: NgxUiLoaderService,
               private roleService: RoleService) {
   }
 
   ngOnInit(): void {
     this.roleForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
+      rolename: ['', [Validators.required]],
       description: ['', [Validators.required]]
     });
     this.subscribe = this.route.params.subscribe(params => {
       this.roleId = params.id; // (+) converts string 'id' to a number
-      // console.log(this.organizationId);
+      console.log(this.roleId);
       if (this.roleId) {
         const payload = {
-          roleId: this.roleId
+          roleid: this.roleId
         };
         this.roleService.getRoleById(payload).subscribe((res: any) => {
           // console.log(res);
           const responseRole = res.data;
-          this.role.name = responseRole.name;
+          this.role.rolename = responseRole.rolename;
           this.role.description = responseRole.description;
           this.roleForm.patchValue(this.role);
         });
@@ -57,10 +59,18 @@ export class EditRoleComponent implements OnInit {
     if (this.roleForm.invalid) {
       return;
     }
-    console.log(this.roleForm.value);
+    this.ngxUiLoaderService.start();
+
     const payload = this.roleForm.value;
+    payload['roleid'] = this.roleId;
+    // console.log(payload);
     this.roleService.editRole(payload).subscribe((res: any) => {
-      console.log(res);
+      this.ngxUiLoaderService.stop();
+      this.router.navigate(['/roles'])
+      // console.log(res);
+    }, error => {
+      console.log(error);
+      this.ngxUiLoaderService.stop();
     });
   }
 }

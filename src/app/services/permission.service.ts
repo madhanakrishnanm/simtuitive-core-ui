@@ -9,15 +9,15 @@ export class PermissionService {
   constructor(private apiService: ApiService) { }
 
   addPermission(payload){
-    return this.apiService.post('org/add-permission',payload);
+    return this.apiService.post('permissions/add-permission',payload);
   }
   editPermission(payload){
-    return this.apiService.post('org/update-permission',payload);
+    return this.apiService.post('permissions/update-permission',payload);
   }
   getAllPermission(payload){
-    return this.apiService.get('org/getall-permission',payload);
+    return this.apiService.get('permissions/get-permissions',payload);
   }
   getPermissionById(payload){
-    return this.apiService.post('org/get-permission',payload);
+    return this.apiService.post('permissions/get-permission',payload);
   }
 }

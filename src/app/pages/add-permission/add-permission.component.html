@@ -30,16 +30,18 @@
         <div class="form-group row">
           <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Permission Type</label>
           <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-            <textarea
-              formControlName="type"
+            <input
+              type="text"
               class="form-control"
-              rows="3"></textarea>
+              formControlName="type"
+            />
             <div *ngIf="f.type.invalid && (f.type.touched || f.type.value)"
                  class="input-error-report">
               <div *ngIf="f.type.errors.required">
                 Permission Type is required.
               </div>
             </div>
+
           </div>
         </div>
         <div class="form-group row">
@@ -54,7 +56,6 @@
                 (opened)="isOpen = true"
                 [multiple]="true"
                 (selected)="selectPermission($event)"
-                label="role"
                 [options]="applicableTo">
                 <ng-template
                   #optionTemplate

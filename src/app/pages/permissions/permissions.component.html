@@ -28,30 +28,16 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>1</td>
-            <td>Left Panel</td>
-            <td>Test</td>
-            <td>Client | Admin | Learner</td>
-            <td>This permission only </td>
-            <td>
-              <div class="d-flex justify-content-around action-icon">
-                <i class="fa fa-edit" aria-hidden="true"
-                   (click)="router.navigate(['/edit-permission', ''])"></i>
-                <i class="fa fa-trash" aria-hidden="true"></i>
-              </div>
-            </td>
-          </tr>
           <tr *ngFor="let permission of permissions; index as i">
             <td>{{i+1}}</td>
-            <td>{{permission.organizationName}}</td>
-            <td>{{permission.location}}</td>
-            <td>{{permission.location}}</td>
-            <td>{{permission.location}}</td>
+            <td>{{permission.name}}</td>
+            <td>{{permission.type}}</td>
+            <td>{{permission.roles}}</td>
+            <td>{{permission.description}}</td>
             <td>
               <div class="d-flex justify-content-around action-icon">
                 <i class="fa fa-edit" aria-hidden="true"
-                   (click)="router.navigate(['/edit-permission', permission.orgId])"></i>
+                   (click)="router.navigate(['/edit-permission', permission.permissionId])"></i>
                 <i class="fa fa-trash" aria-hidden="true"></i>
               </div>
             </td>
