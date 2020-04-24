@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {PermissionService} from '../../services/permission.service';
 
 @Component({
@@ -12,9 +12,14 @@ export class EditPermissionComponent implements OnInit {
   permissionForm: FormGroup;
   isOpen = false;
   applicableTo: any = [{value: 'Admin', label: 'Admin'}, {value: 'Client', label: 'Client'}, {value: 'Learner', label: 'Learner'}];
+  roleId = null;
+  subscribe = null;
+  permission: any = {};
   constructor(public router: Router,
+              public route: ActivatedRoute,
               private formBuilder: FormBuilder,
-              private permissionService: PermissionService) { }
+              private permissionService: PermissionService) {
+  }
 
   ngOnInit(): void {
     this.permissionForm = this.formBuilder.group({
@@ -22,6 +27,23 @@ export class EditPermissionComponent implements OnInit {
       type: ['', [Validators.required]],
       description: ['', [Validators.required]],
       applicableTo: ['', [Validators.required]]
+    });
+    this.subscribe = this.route.params.subscribe(params => {
+      this.roleId = params.id; // (+) converts string 'id' to a number
+      // console.log(this.organizationId);
+      if (this.roleId) {
+        const payload = {
+          roleId: this.roleId
+        };
+        this.permissionService.getPermissionById(payload).subscribe((res: any) => {
+          // console.log(res);
+          const responseRole = res.data;
+          this.permission.name = responseRole.name;
+          this.permission.description = responseRole.description;
+          this.permissionForm.patchValue({applicableTo: ['Client']});
+        });
+      }
+
     });
   }
 
@@ -32,6 +54,7 @@ export class EditPermissionComponent implements OnInit {
   selectPermission(option) {
     console.log(option);
     console.log(this.permissionForm.value);
+
   }
 
   onSubmit() {
@@ -40,7 +63,7 @@ export class EditPermissionComponent implements OnInit {
     }
     console.log(this.permissionForm.value);
     const payload = this.permissionForm.value;
-    this.permissionService.addPermission(payload).subscribe((res: any) => {
+    this.permissionService.editPermission(payload).subscribe((res: any) => {
       console.log(res);
     });
   }

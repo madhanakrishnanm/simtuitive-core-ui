@@ -53,7 +53,7 @@ const routes: Routes = [
       { path: 'edit-role/:id', component: EditRoleComponent },
       { path: 'permissions', component: PermissionsComponent },
       { path: 'add-permission', component: AddPermissionComponent },
-      { path: 'edit-permisssion/:id', component: EditPermissionComponent },
+      { path: 'edit-permission/:id', component: EditPermissionComponent },
       { path: 'whitelist-ips', component: WhitelistIpsComponent },
       { path: 'test', component: TestComponent },
     ]
