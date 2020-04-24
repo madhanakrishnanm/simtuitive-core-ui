@@ -2,7 +2,7 @@
 
   <div class="row">
     <div class="col">
-      <h1>Add Organization</h1>
+      <h1>Add Client</h1>
     </div>
   </div>
 
@@ -11,17 +11,19 @@
       <form class="simtuitive-input" [formGroup]="clientForm" (ngSubmit)="onSubmit()">
 
         <div class="form-group row">
-          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Organisation Name</label>
+          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Organization Name</label>
           <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-            <input
-              type="text"
-              class="form-control"
-              formControlName="name"
-            />
-            <div *ngIf="f.name.invalid && (f.name.touched || f.name.value)"
+            <ng-select
+              [items]="organizations"
+              [searchable]="false"
+              bindLabel="organizationName"
+              placeholder="Select Organization"
+            >
+            </ng-select>
+            <div *ngIf="f.organizationName.invalid && (f.organizationName.touched || f.organizationName.value)"
                  class="input-error-report">
-              <div *ngIf="f.name.errors.required">
-                Organisation Name is required.
+              <div *ngIf="f.organizationName.errors.required">
+                Organization Name is required.
               </div>
             </div>
           </div>
@@ -33,12 +35,12 @@
             <input
               type="text"
               class="form-control"
-              formControlName="location"
+              formControlName="name"
             />
-            <div *ngIf="f.location.invalid && (f.location.touched || f.location.value)"
+            <div *ngIf="f.name.invalid && (f.name.touched || f.name.value)"
                  class="input-error-report">
-              <div *ngIf="f.location.errors.required">
-                Location is required.
+              <div *ngIf="f.name.errors.required">
+                Client Name is required.
               </div>
             </div>
           </div>
@@ -50,67 +52,65 @@
             <input
               type="text"
               class="form-control"
-              formControlName="industry"
+              formControlName="email"
             />
-            <div *ngIf="f.industry.invalid && (f.industry.touched || f.industry.value)"
+            <div *ngIf="f.email.invalid && (f.email.touched || f.email.value)"
                  class="input-error-report">
-              <div *ngIf="f.industry.errors.required">
-                Industry is required.
+              <div *ngIf="f.email.errors.required">
+                Email is required.
               </div>
             </div>
           </div>
         </div>
 
         <div class="form-group row">
-          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Client Password</label>
+          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Client Password</label>
           <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
             <input
               type="text"
               class="form-control"
-              formControlName="dealOwner"
+              formControlName="password"
             />
-            <div *ngIf="f.dealOwner.invalid && (f.dealOwner.touched || f.dealOwner.value)"
+            <div *ngIf="f.password.invalid && (f.password.touched || f.password.value)"
                  class="input-error-report">
-              <div *ngIf="f.dealOwner.errors.required">
-                Deal Owner is required.
+              <div *ngIf="f.password.errors.required">
+                Password is required.
               </div>
             </div>
           </div>
         </div>
 
         <div class="form-group row">
-          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Client GST</label>
+          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Client GST</label>
           <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
             <input
-              type="email"
+              type="text"
               class="form-control"
-              formControlName="dealOwnerEmail"
+              formControlName="gst"
             />
-            <div *ngIf="f.dealOwnerEmail.invalid && (f.dealOwnerEmail.touched || f.dealOwnerEmail.value)"
+            <div *ngIf="f.gst.invalid && (f.gst.touched || f.gst.value)"
                  class="input-error-report">
-              <div *ngIf="f.dealOwnerEmail.errors.required">
-                Email is required.
+              <div *ngIf="f.gst.errors.required">
+                GST is required.
               </div>
-              <div *ngIf="f.dealOwnerEmail.errors.email">Please enter valid email address!</div>
             </div>
           </div>
 
         </div>
 
         <div class="form-group row">
-          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Client PAN</label>
+          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Client PAN</label>
           <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
             <input
               type="number"
               class="form-control"
-              formControlName="dealOwnerMobile"
+              formControlName="pan"
             />
-            <div *ngIf="f.dealOwnerMobile.invalid && (f.dealOwnerMobile.touched || f.dealOwnerMobile.value)"
+            <div *ngIf="f.pan.invalid && (f.pan.touched || f.pan.value)"
                  class="input-error-report">
-              <div *ngIf="f.dealOwnerMobile.errors.required">
-                Deal Owner Mobile is required.
+              <div *ngIf="f.pan.errors.required">
+                PAN is required.
               </div>
-              <div *ngIf="f.dealOwnerMobile.errors.maxLimit">Please enter valid mobile number!</div>
             </div>
           </div>
         </div>
@@ -118,15 +118,17 @@
         <div class="form-group row">
           <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Role</label>
           <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-            <input
-              type="number"
-              class="form-control"
-              formControlName="creditLimit"
-            />
-            <div *ngIf="f.creditLimit.invalid && (f.creditLimit.touched || f.creditLimit.value)"
+            <ng-select
+              [items]="roles"
+              [searchable]="false"
+              bindLabel="organizationName"
+              placeholder="Select Role"
+            >
+            </ng-select>
+            <div *ngIf="f.role.invalid && (f.role.touched || f.role.value)"
                  class="input-error-report">
-              <div *ngIf="f.creditLimit.errors.required">
-                Credit Limit is required.
+              <div *ngIf="f.role.errors.required">
+                Role is required.
               </div>
             </div>
           </div>

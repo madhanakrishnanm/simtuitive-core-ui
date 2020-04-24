@@ -12,6 +12,9 @@ import {DashboardModule} from './pages/dashboard/dashboard.module';
 import {OrganizationsModule} from './pages/organizations/organizations.module';
 import {AddOrganizationModule} from './pages/add-organization/add-organization.module';
 import {EditOrganizationModule} from './pages/edit-organization/edit-organization.module';
+import {ClientsListModule} from './pages/clients-list/clients-list.module';
+import {EditClientModule} from './pages/edit-client/edit-client.module';
+import {AddClientModule} from './pages/add-client/add-client.module';
 import {ToolbarComponent} from './components/toolbar/toolbar.component';
 import {SiteComponent} from './layouts/site/site.component';
 import {AuthComponent} from './layouts/auth/auth.component';
@@ -53,6 +56,9 @@ import {NgSelectModule} from '@ng-select/ng-select';
     OrganizationsModule,
     AddOrganizationModule,
     EditOrganizationModule,
+    ClientsListModule,
+    EditClientModule,
+    AddClientModule,
     AdminsModule,
     AddAdminModule,
     EditAdminModule,

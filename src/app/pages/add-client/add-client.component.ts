@@ -12,77 +12,23 @@ import {ClientService} from '../../services/client.service';
 export class AddClientComponent implements OnInit {
 
   clientForm: FormGroup;
-
+  organizations = [];
+  roles = [];
   constructor(public router: Router,
               private formBuilder: FormBuilder,
-              private clientService: ClientService
-  ) {
+              private clientService: ClientService) {
   }
 
   ngOnInit(): void {
     this.clientForm = this.formBuilder.group({
+      organizationName: ['', [Validators.required]],
       name: ['', [Validators.required]],
-      location: ['', [Validators.required]],
-      industry: ['', [Validators.required]],
-      dealOwner: ['', [Validators.required]],
-      dealOwnerEmail: ['', [Validators.required, this.emailValidator]],
-      dealOwnerMobile: ['', [Validators.required, this.mobileValidator]],
-      creditLimit: [0, [Validators.required]],
-      status: ['inactive', [Validators.required]],
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+      gst: ['', [Validators.required]],
+      pan: ['', [Validators.required]],
+      role: ['Client', [Validators.required]],
     });
-  }
-
-  mobileValidator(formControl: AbstractControl) {
-    if (!formControl.parent) {
-      return null;
-    }
-    const dealOwnerMobile = formControl.parent.get('dealOwnerMobile').value &&
-      formControl.parent.get('dealOwnerMobile').value.toString();
-    if (dealOwnerMobile) {
-      if (dealOwnerMobile.length < 10 || dealOwnerMobile.length > 10) {
-        return {
-          maxLimit: {
-            dealOwnerMobile: formControl.parent.get('dealOwnerMobile').value
-          }
-        };
-      }
-    }
-    return null;
-  }
-
-  telephoneValidator(formControl: AbstractControl) {
-    if (!formControl.parent) {
-      return null;
-    }
-    const customerTelephone = formControl.parent.get('customerTelephone').value
-      && formControl.parent.get('customerTelephone').value.toString();
-    if (customerTelephone) {
-      if (customerTelephone.length < 10 || customerTelephone.length > 10) {
-        return {
-          maxLimit: {
-            customerTelephone: formControl.parent.get('customerTelephone').value
-          }
-        };
-      }
-    }
-    return null;
-  }
-
-  emailValidator(formControl: AbstractControl) {
-    if (!formControl.parent) {
-      return null;
-    }
-    const dealOwnerEmail = formControl.parent.get('dealOwnerEmail').value;
-    if (dealOwnerEmail) {
-      if (!dealOwnerEmail.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
-        return {
-          email: {
-            dealOwnerEmail: formControl.parent.get('dealOwnerEmail').value
-          }
-        };
-      }
-    }
-    return null;
   }
 
   get f() {

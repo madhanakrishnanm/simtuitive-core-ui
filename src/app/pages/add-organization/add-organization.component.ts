@@ -11,7 +11,6 @@ import {OrganizationService} from '../../services/organization.service';
 export class AddOrganizationComponent implements OnInit {
 
   organizationForm: FormGroup;
-
   constructor(public router: Router,
               private formBuilder: FormBuilder,
               private organizationService: OrganizationService
