@@ -46,7 +46,7 @@
           <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Applicable To</label>
           <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
             <div class="input-group">
-              <ng-select
+             <!-- <ng-select
                 [noFilter]="200"
                 formControlName="applicableTo"
                 [ngClass]="isOpen ? 'active': 'inactive'"
@@ -61,7 +61,7 @@
                   let-option="option">
                   {{option?.value}}
                 </ng-template>
-              </ng-select>
+              </ng-select>-->
             </div>
 
             <div *ngIf="f.applicableTo.invalid && (f.type.touched || f.type.value)"

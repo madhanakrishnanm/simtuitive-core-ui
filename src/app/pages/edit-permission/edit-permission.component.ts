@@ -11,7 +11,7 @@ import {PermissionService} from '../../services/permission.service';
 export class EditPermissionComponent implements OnInit {
   permissionForm: FormGroup;
   isOpen = false;
-  applicableTo: any = [{value: 'Admin', label: 'Admin'}, {value: 'Client', label: 'Client'}, {value: 'Learner', label: 'Learner'}];
+  applicableTo: any = [{text: 'Admin', labelTo: 'Admin'}, {text: 'Client', labelTo: 'Client'}, {text: 'Learner', labelTo: 'Learner'}];
   roleId = null;
   subscribe = null;
   permission: any = {};

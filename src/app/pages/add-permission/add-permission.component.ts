@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {PermissionService} from '../../services/permission.service';
-import {IOption} from 'ng-select';
 
 @Component({
   selector: 'app-add-permission',

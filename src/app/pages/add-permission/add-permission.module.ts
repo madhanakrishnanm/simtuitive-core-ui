@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddPermissionComponent } from './add-permission.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {SelectModule} from 'ng-select';
 
 
 
@@ -10,8 +9,7 @@ import {SelectModule} from 'ng-select';
   declarations: [AddPermissionComponent],
   imports: [
     CommonModule,
-    ReactiveFormsModule,
-    SelectModule
+    ReactiveFormsModule
   ]
 })
 export class AddPermissionModule { }
