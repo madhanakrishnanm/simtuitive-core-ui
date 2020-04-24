@@ -19,7 +19,7 @@
           <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Organisation Name</th>
+            <th scope="col">Organization Name</th>
             <th scope="col">Client Name</th>
             <th scope="col">Client Email</th>
             <th scope="col">Client GST</th>
@@ -39,6 +39,7 @@
             <td>{{client.status}}</td>
             <td>
               <div class="d-flex justify-content-between action-icon">
+                <i class="far fa-share-square" aria-hidden="true"></i>
                 <i class="far fa-share-square" aria-hidden="true"></i>
                 <i class="fa fa-edit" aria-hidden="true"
                    (click)="router.navigate(['/edit-client', client.orgId])"></i>
