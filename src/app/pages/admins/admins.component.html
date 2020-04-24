@@ -1,17 +1,50 @@
 <div class="site-content">
 
-  <div class="row">
+  <div class="row title-cont">
     <div class="col">
       <h1>Admin Management</h1>
     </div>
     <div class="col">
       <div class="text-right">
         <button (click)="router.navigate(['add-admin'])"
-                class="btn btn-primary">Add Admin
+                class="btn btn-primary">
+          Add Admin
         </button>
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col table-cont">
+      <div class="product-users-table table-responsive">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <th scope="col">Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let admin of admins; index as i">
+            <td>{{i+1}}</td>
+            <td>{{admin.userName}}</td>
+            <td>{{admin.userEmail}}</td>
+            <td>{{admin.role}}</td>
+            <td>
+              <div class="d-flex justify-content-around action-icon">
+                <i class="fa fa-edit" aria-hidden="true"
+                   (click)="router.navigate(['/edit-admin', admin.userId])"></i>
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
 
+    </div>
+  </div>
 </div>
 

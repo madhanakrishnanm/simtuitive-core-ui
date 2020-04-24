@@ -9,15 +9,15 @@ export class RoleService {
   constructor(private apiService: ApiService) { }
 
   addRole(payload) {
-    return this.apiService.post('org/add-role', payload);
+    return this.apiService.post('roles/add-role', payload);
   }
   editRole(payload) {
-    return this.apiService.post('org/update-role', payload);
+    return this.apiService.put('roles/update-role', payload);
   }
   getAllRole(payload) {
-    return this.apiService.get('org/getall-role', payload);
+    return this.apiService.get('roles/get-all-role', payload);
   }
   getRoleById(payload) {
-    return this.apiService.post('org/get-role', payload);
+    return this.apiService.post('roles/get-role', payload);
   }
 }

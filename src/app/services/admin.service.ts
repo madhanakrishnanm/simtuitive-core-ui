@@ -12,13 +12,13 @@ export class AdminService {
     return this.apiService.post('users/add-user',payload);
   }
   editAdmin(payload){
-    return this.apiService.post('users/update-user',payload);
+    return this.apiService.put('users/update-user',payload);
   }
   getAllAdmin(payload){
-    return this.apiService.get('org/getall-admin',payload);
+    return this.apiService.get('users/getAllByType?userType=Admin',payload);
   }
   getAdminById(payload){
-    return this.apiService.post('org/get-admin',payload);
+    return this.apiService.post('users/get-user-id',payload);
   }
 
 }
