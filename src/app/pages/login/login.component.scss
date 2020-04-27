@@ -110,55 +110,57 @@
   font-family: 'Nunito', sans-serif;
 }
 
-.form-control::-webkit-input-placeholder {
-  color: $light !important;
-}
+.auth-input {
+  .form-control::-webkit-input-placeholder {
+    color: $light !important;
+  }
 
-.form-control:-moz-placeholder { /* Firefox 18- */
-  color: $light !important;
-}
+  .form-control:-moz-placeholder { /* Firefox 18- */
+    color: $light !important;
+  }
 
-.form-control::-moz-placeholder { /* Firefox 19+ */
-  color: $light !important;
-}
+  .form-control::-moz-placeholder { /* Firefox 19+ */
+    color: $light !important;
+  }
 
-.form-control:-ms-input-placeholder {
-  color: $light !important;
-}
+  .form-control:-ms-input-placeholder {
+    color: $light !important;
+  }
 
-.form-control {
-  background: #707070 !important;
-  color: $light;
-}
-
-.input-group-append {
-  .input-group-text {
+  .form-control {
     background: #707070 !important;
-    color: white;
+    color: $light;
+  }
 
-    img {
-      width: 25px;
-      height: 25px;
+  .input-group-append {
+    .input-group-text {
+      background: #707070 !important;
+      color: white;
+
+      img {
+        width: 25px;
+        height: 25px;
+      }
     }
   }
-}
 
-.input-group-prepend {
-  .input-group-text {
-    background: #707070 !important;
+  .input-group-prepend {
+    .input-group-text {
+      background: #707070 !important;
 
-    img {
-      width: 25px;
-      height: 25px;
+      img {
+        width: 25px;
+        height: 25px;
+      }
     }
   }
-}
 
-.custom-control-label, .forgot-password {
-  color: $light;
-  cursor: pointer;
-}
+  .custom-control-label, .forgot-password {
+    color: $light;
+    cursor: pointer;
+  }
 
-.forgot-password:hover {
-  color: $primary;
+  .forgot-password:hover {
+    color: $primary;
+  }
 }
