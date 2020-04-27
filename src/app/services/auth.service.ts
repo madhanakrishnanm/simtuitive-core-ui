@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Router} from '@angular/router';
 import {ApiService} from './api.service';
-
+import * as moment from 'moment';
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +18,13 @@ export class AuthService {
     return localStorage.getItem("token")
   }
   isLoggedIn() {
-    return this.getToken() !== null;
+    let isValidToken = false;
+    if (localStorage.getItem('token')) {
+      const targetTime = moment(localStorage.getItem('expiresAt'));
+      const currentTime = moment();
+      isValidToken = currentTime.valueOf() < targetTime.valueOf();
+    }
+    return isValidToken;
   }
   logout() {
     localStorage.removeItem("token");
