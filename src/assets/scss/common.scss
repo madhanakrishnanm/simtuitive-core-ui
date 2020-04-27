@@ -140,13 +140,18 @@
     }
 
     .input-group-append {
-      border: 0;
+      border: 0 !important;
 
       .input-group-text {
-        border: 0;
-        background: var(--bg-color-secondary);
-        border-top-right-radius: 11px;
-        border-bottom-right-radius: 11px;
+        border: 0 !important;
+        background: var(--bg-color-secondary) !important;
+        border-top-right-radius: 11px !important;
+        border-bottom-right-radius: 11px !important;
+
+        img {
+          width: 25px;
+          height: 25px;
+        }
 
         i {
           color: $gray;
@@ -155,13 +160,19 @@
     }
 
     .input-group-prepend {
-      border: 0;
+      background: transparent !important;
+      border: 0 !important;
 
       .input-group-text {
-        border: 0;
-        background: var(--bg-color-secondary);
-        border-top-left-radius: 11px;
-        border-bottom-left-radius: 11px;
+        border: 0 !important;
+        background: var(--bg-color-secondary) !important;
+        border-top-left-radius: 11px !important;
+        border-bottom-left-radius: 11px !important;
+
+        img {
+          width: 25px;
+          height: 25px;
+        }
       }
     }
 
@@ -195,4 +206,8 @@
 .input-error-report {
   font-size: var(--warning);
   color: $red;
+}
+
+.bg-poster {
+  background: url('src/assets/img/login/login.png') center no-repeat;
 }

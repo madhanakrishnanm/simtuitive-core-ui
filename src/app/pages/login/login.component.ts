@@ -3,7 +3,7 @@ import {AuthService} from '../../services/auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {HttpHeaders} from '@angular/common/http';
-import { v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4} from 'uuid';
 
 @Component({
   selector: 'app-login',
@@ -26,23 +26,28 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       username: ['surath@wisdomtoolz.com', [Validators.required]],
       password: ['superadmin', [Validators.required]],
+      remember: ['remember'],
     });
   }
 
   get f() {
     return this.loginForm.controls;
   }
-  convertWWW(obj){
-    var str = [];
-    for(var p in obj)
-      str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-    return str.join("&")
+
+  convertWWW(obj) {
+    const str = [];
+    // tslint:disable-next-line:forin
+    for (const p in obj) {
+      str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
+    }
+    return str.join('&');
   }
+
   requestLogin() {
-    let headers = {
+    const headers = {
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': 'Basic ' + btoa('simtuitive:secret')
+      Authorization: 'Basic ' + btoa('simtuitive:secret')
     };
     const payload = {
       grant_type: 'password',
@@ -52,16 +57,16 @@ export class LoginComponent implements OnInit {
     const data = this.convertWWW(payload);
     console.log(payload);
     console.log(data);
-    this.authService.login(data,headers).subscribe((res: any) => {
+    this.authService.login(data, headers).subscribe((res: any) => {
       console.log(res);
-       const token = res.token_type + ' ' + res.access_token;
-       localStorage.setItem('token', token);
-       localStorage.setItem('refreshToken', res.refresh_token);
-       localStorage.setItem('role', res.role);
-       localStorage.setItem('tokenType', res.token_type);
-       this.router.navigate(['/']).then(() => {
-         // window.location.reload();
-       });
+      const token = res.token_type + ' ' + res.access_token;
+      localStorage.setItem('token', token);
+      localStorage.setItem('refreshToken', res.refresh_token);
+      localStorage.setItem('role', res.role);
+      localStorage.setItem('tokenType', res.token_type);
+      this.router.navigate(['/']).then(() => {
+        // window.location.reload();
+      });
     });
 
   }

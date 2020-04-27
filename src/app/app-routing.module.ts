@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 import {SiteComponent} from './layouts/site/site.component';
 import {LoginComponent} from './pages/login/login.component';
 import {DashboardComponent} from './pages/dashboard/dashboard.component';
@@ -25,47 +25,58 @@ import {AddPermissionComponent} from './pages/add-permission/add-permission.comp
 import {EditPermissionComponent} from './pages/edit-permission/edit-permission.component';
 import {WhitelistIpsComponent} from './pages/whitelist-ips/whitelist-ips.component';
 import {TestComponent} from './pages/test/test.component';
+import {ForgotPasswordComponent} from './pages/forgot-password/forgot-password.component';
+import {UpdatePasswordComponent} from './pages/update-password/update-password.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    component : SiteComponent,
+    component: SiteComponent,
     children: [
-      { path: '', component: DashboardComponent, pathMatch: 'full'},
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'clients', component: ClientsListComponent },
-      { path: 'products', component: ProductsComponent },
-      { path: 'license', component: LicenseComponent },
-      { path: 'reports', component: ReportsComponent },
-      { path: 'add-client', component: AddClientComponent },
-      { path: 'invite-client', component: InviteClientComponent },
-      { path: 'edit-client', component: EditClientComponent },
-      { path: 'view-client', component: ViewClientComponent },
-      { path: 'organizations', component: OrganizationsComponent },
-      { path: 'add-organization', component: AddOrganizationComponent },
-      { path: 'edit-organization/:id', component: EditOrganizationComponent },
-      { path: 'admins', component: AdminsComponent },
-      { path: 'add-admin', component: AddAdminComponent },
-      { path: 'edit-admin/:id', component: EditAdminComponent },
-      { path: 'roles', component: RolesComponent },
-      { path: 'add-role', component: AddRoleComponent },
-      { path: 'edit-role/:id', component: EditRoleComponent },
-      { path: 'permissions', component: PermissionsComponent },
-      { path: 'add-permission', component: AddPermissionComponent },
-      { path: 'edit-permission/:id', component: EditPermissionComponent },
-      { path: 'whitelist-ips', component: WhitelistIpsComponent },
-      { path: 'test', component: TestComponent },
+      {path: '', component: DashboardComponent, pathMatch: 'full'},
+      {path: 'dashboard', component: DashboardComponent},
+      {path: 'clients', component: ClientsListComponent},
+      {path: 'products', component: ProductsComponent},
+      {path: 'license', component: LicenseComponent},
+      {path: 'reports', component: ReportsComponent},
+      {path: 'add-client', component: AddClientComponent},
+      {path: 'invite-client', component: InviteClientComponent},
+      {path: 'edit-client', component: EditClientComponent},
+      {path: 'view-client', component: ViewClientComponent},
+      {path: 'organizations', component: OrganizationsComponent},
+      {path: 'add-organization', component: AddOrganizationComponent},
+      {path: 'edit-organization/:id', component: EditOrganizationComponent},
+      {path: 'admins', component: AdminsComponent},
+      {path: 'add-admin', component: AddAdminComponent},
+      {path: 'edit-admin/:id', component: EditAdminComponent},
+      {path: 'roles', component: RolesComponent},
+      {path: 'add-role', component: AddRoleComponent},
+      {path: 'edit-role/:id', component: EditRoleComponent},
+      {path: 'permissions', component: PermissionsComponent},
+      {path: 'add-permission', component: AddPermissionComponent},
+      {path: 'edit-permission/:id', component: EditPermissionComponent},
+      {path: 'whitelist-ips', component: WhitelistIpsComponent},
+      {path: 'test', component: TestComponent},
     ]
   },
   {
     path: 'login',
-    component : LoginComponent
+    component: LoginComponent
   },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent
+  },
+  {
+    path: 'update-password',
+    component: UpdatePasswordComponent
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

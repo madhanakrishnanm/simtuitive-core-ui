@@ -31,6 +31,8 @@ import {PermissionsModule} from './pages/permissions/permissions.module';
 import {AddPermissionModule} from './pages/add-permission/add-permission.module';
 import {EditPermissionModule} from './pages/edit-permission/edit-permission.module';
 import {NgSelectModule} from '@ng-select/ng-select';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
 
 
 @NgModule({
@@ -41,6 +43,8 @@ import {NgSelectModule} from '@ng-select/ng-select';
     AuthComponent,
     SidebarComponent,
     TestComponent,
+    ForgotPasswordComponent,
+    UpdatePasswordComponent,
   ],
   imports: [
     BrowserModule,
