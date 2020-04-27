@@ -211,3 +211,10 @@
 .bg-poster {
   background: url('src/assets/img/login/login.png') center no-repeat;
 }
+
+@media (max-width: 768px) {
+  .bg-poster {
+    border: 10px solid red;
+    display: none;
+  }
+}
