@@ -26,6 +26,7 @@
     "font-awesome": "^4.7.0",
     "moment": "^2.24.0",
     "ng-sidebar": "^9.2.0",
+    "ngx-timeago": "^1.0.4",
     "ngx-toastr": "^12.0.1",
     "ngx-ui-loader": "^9.1.1",
     "numeral": "^2.0.6",
