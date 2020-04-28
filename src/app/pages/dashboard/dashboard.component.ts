@@ -21,53 +21,55 @@ export class DashboardComponent implements OnInit {
   noOfPermissions = 0;
   noOfAdmins = 0;
   response = {
-    "retailUsers": {
-      "currentMonth": 20244,
-      "pastMonth": 23455
-    },
-    "enterpriseUsers": {
-      "currentMonth": 23455,
-      "pastMonth": 20244
-    },
-    "usersOnlineNow": {
-      "yesterday": 23455,
-      "today": 20244
-    },
-    "noOfRoles": 10,
-    "noOfPermissions": 15,
-    "noOfAdmins": 5,
-    "admins": [
-      {
-        "name": "Admin",
-        "email": "admin@gmail.com",
-        "status": true,
-        "lastLogedIn": "now"
+    data:{
+      "retailUsers": {
+        "currentMonth": 20244,
+        "pastMonth": 23455
       },
-      {
-        "name": "Mani Maran",
-        "email": "manimaran205.mm@gmail.com",
-        "status": false,
-        "lastLogedIn": "2020-04-24T10:37:21.316+0000"
+      "enterpriseUsers": {
+        "currentMonth": 23455,
+        "pastMonth": 20244
       },
-      {
-        "name": "Veera Mani",
-        "email": "veera@gmail.com",
-        "status": true,
-        "lastLogedIn": "now"
+      "usersOnlineNow": {
+        "yesterday": 23455,
+        "today": 20244
       },
-      {
-        "name": "Mani",
-        "email": "mani@gmail.com",
-        "status": false,
-        "lastLogedIn": "2020-04-25T10:37:21.316+0000"
-      },
-      {
-        "name": "Test",
-        "email": "test@gmail.com",
-        "status": false,
-        "lastLogedIn": "2020-04-26T10:37:21.316+0000"
-      }
-    ]
+      "noOfRoles": 10,
+      "noOfPermissions": 15,
+      "noOfAdmins": 5,
+      "admins": [
+        {
+          "name": "Admin",
+          "email": "admin@gmail.com",
+          "status": true,
+          "lastLogedIn": "now"
+        },
+        {
+          "name": "Mani Maran",
+          "email": "manimaran205.mm@gmail.com",
+          "status": false,
+          "lastLogedIn": "2020-04-24T10:37:21.316+0000"
+        },
+        {
+          "name": "Veera Mani",
+          "email": "veera@gmail.com",
+          "status": true,
+          "lastLogedIn": "now"
+        },
+        {
+          "name": "Mani",
+          "email": "mani@gmail.com",
+          "status": false,
+          "lastLogedIn": "2020-04-25T10:37:21.316+0000"
+        },
+        {
+          "name": "Test",
+          "email": "test@gmail.com",
+          "status": false,
+          "lastLogedIn": "2020-04-26T10:37:21.316+0000"
+        }
+      ]
+    }
   };
   constructor(public userService: UsersService) {
   }
@@ -86,14 +88,17 @@ export class DashboardComponent implements OnInit {
 
   getDashboard() {
     this.userService.getDashboard().subscribe((res: any) => {
-      if (this.userService.user.role === 'admin'){
+      console.log(res);
+      console.log(this.userService.user);
+      if (this.userService.user.role === 'Admin'){
         this.setDashboardForAdmin(res);
-      }else if (this.userService.user.role === 'super admin'){
+      }else if (this.userService.user.role === 'Super Admin'){
         this.setDashboardForSuperAdmin(this.response);
       }
     });
   }
   setDashboardForAdmin(res){
+
     this.retailUsers = res.data.retailUsers;
     this.enterpriseUsers = res.data.enterpriseUsers;
     this.usersOnlineNow = res.data.usersOnlineNow;
@@ -118,6 +123,8 @@ export class DashboardComponent implements OnInit {
     console.log(res);
   }
   setDashboardForSuperAdmin(res){
+    console.log(res);
+    console.log(this.userService.user.role);
     this.retailUsers = res.data.retailUsers;
     this.enterpriseUsers = res.data.enterpriseUsers;
     this.usersOnlineNow = res.data.usersOnlineNow;

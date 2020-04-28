@@ -1,4 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {UsersService} from '../../services/users.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -9,7 +10,7 @@ export class ToolbarComponent implements OnInit {
 
   @ViewChild('sidebarContent') sidebarContent: ElementRef;
   title = 'Close Navigation'
-  constructor() {
+  constructor(public userService: UsersService) {
   }
 
   ngOnInit(): void {
