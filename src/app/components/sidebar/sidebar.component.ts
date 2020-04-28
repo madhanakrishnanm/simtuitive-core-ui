@@ -67,6 +67,7 @@ export class SidebarComponent implements OnInit {
   }
   getUser() {
     this.userService.getUser().subscribe((res: any) => {
+      this.userService.user = res.data;
       this.permissions = res.data.permissions;
       if (this.permissions){
         for(const permission of this.permissions){

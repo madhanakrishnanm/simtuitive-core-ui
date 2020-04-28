@@ -6,6 +6,7 @@ import {ApiService} from './api.service';
 })
 export class UsersService {
 
+  user:any = {};
   constructor(public apiService: ApiService) { }
 
   getUser(){

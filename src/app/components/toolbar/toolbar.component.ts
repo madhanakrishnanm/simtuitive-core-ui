@@ -8,7 +8,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 export class ToolbarComponent implements OnInit {
 
   @ViewChild('sidebarContent') sidebarContent: ElementRef;
-
+  title = 'Close Navigation'
   constructor() {
   }
 
@@ -21,10 +21,12 @@ export class ToolbarComponent implements OnInit {
     const pageContent = document.getElementById('page-content');
     const toggleSidebarBtn = document.getElementById('toggle-sidebar');
     if (sidebarElement.classList.contains('active')) {
+      this.title = 'Close Navigation';
       sidebarElement.classList.remove('active');
       pageContent.classList.remove('active');
       toggleSidebarBtn.classList.remove('active');
     } else {
+      this.title = 'Open Navigation';
       sidebarElement.classList.add('active');
       pageContent.classList.add('active');
       toggleSidebarBtn.classList.add('active');

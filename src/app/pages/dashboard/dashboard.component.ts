@@ -16,8 +16,60 @@ export class DashboardComponent implements OnInit {
   enterpriseUsers: any = {};
   usersOnlineNow: any = {};
   productUsers = [];
-
-  constructor(private userService: UsersService) {
+  admins = [];
+  noOfRoles = 0;
+  noOfPermissions = 0;
+  noOfAdmins = 0;
+  response = {
+    "retailUsers": {
+      "currentMonth": 20244,
+      "pastMonth": 23455
+    },
+    "enterpriseUsers": {
+      "currentMonth": 23455,
+      "pastMonth": 20244
+    },
+    "usersOnlineNow": {
+      "yesterday": 23455,
+      "today": 20244
+    },
+    "noOfRoles": 10,
+    "noOfPermissions": 15,
+    "noOfAdmins": 5,
+    "admins": [
+      {
+        "name": "Admin",
+        "email": "admin@gmail.com",
+        "status": true,
+        "lastLogedIn": "now"
+      },
+      {
+        "name": "Mani Maran",
+        "email": "manimaran205.mm@gmail.com",
+        "status": false,
+        "lastLogedIn": "2020-04-24T10:37:21.316+0000"
+      },
+      {
+        "name": "Veera Mani",
+        "email": "veera@gmail.com",
+        "status": true,
+        "lastLogedIn": "now"
+      },
+      {
+        "name": "Mani",
+        "email": "mani@gmail.com",
+        "status": false,
+        "lastLogedIn": "2020-04-25T10:37:21.316+0000"
+      },
+      {
+        "name": "Test",
+        "email": "test@gmail.com",
+        "status": false,
+        "lastLogedIn": "2020-04-26T10:37:21.316+0000"
+      }
+    ]
+  };
+  constructor(public userService: UsersService) {
   }
 
   ngOnInit(): void {
@@ -34,33 +86,65 @@ export class DashboardComponent implements OnInit {
 
   getDashboard() {
     this.userService.getDashboard().subscribe((res: any) => {
-      this.retailUsers = res.data.retailUsers;
-      this.enterpriseUsers = res.data.enterpriseUsers;
-      this.usersOnlineNow = res.data.usersOnlineNow;
-      if (this.retailUsers.currentMonth) {
-        let tempRetailUsers = this.calculatePercentageFor(this.retailUsers.currentMonth,this.retailUsers.pastMonth)
-        this.retailUsers.currentMonth = numeral(this.retailUsers.currentMonth).format('0a')
-        this.retailUsers = {...this.retailUsers, ...tempRetailUsers}
-        console.log(this.retailUsers);
+      if (this.userService.user.role === 'admin'){
+        this.setDashboardForAdmin(res);
+      }else if (this.userService.user.role === 'super admin'){
+        this.setDashboardForSuperAdmin(this.response);
       }
-      if (this.enterpriseUsers.currentMonth) {
-        let tempEnterpriseUsers = this.calculatePercentageFor(this.enterpriseUsers.currentMonth,this.enterpriseUsers.pastMonth)
-        this.enterpriseUsers.currentMonth = numeral(this.enterpriseUsers.currentMonth).format('0a')
-        this.enterpriseUsers = {...this.enterpriseUsers, ...tempEnterpriseUsers}
-        console.log(this.enterpriseUsers);
-      }
-      if (this.usersOnlineNow.today) {
-        let tempUsersOnline = this.calculatePercentageFor(this.usersOnlineNow.today,this.usersOnlineNow.yesterday)
-        this.usersOnlineNow.today = numeral(this.usersOnlineNow.today).format('0a')
-        this.usersOnlineNow = {...this.usersOnlineNow, ...tempUsersOnline}
-        console.log(this.usersOnlineNow);
-      }
-
-
-      console.log(res);
     });
   }
+  setDashboardForAdmin(res){
+    this.retailUsers = res.data.retailUsers;
+    this.enterpriseUsers = res.data.enterpriseUsers;
+    this.usersOnlineNow = res.data.usersOnlineNow;
+    if (this.retailUsers.currentMonth) {
+      let tempRetailUsers = this.calculatePercentageFor(this.retailUsers.currentMonth,this.retailUsers.pastMonth)
+      this.retailUsers.currentMonth = numeral(this.retailUsers.currentMonth).format('0a')
+      this.retailUsers = {...this.retailUsers, ...tempRetailUsers}
+      console.log(this.retailUsers);
+    }
+    if (this.enterpriseUsers.currentMonth) {
+      let tempEnterpriseUsers = this.calculatePercentageFor(this.enterpriseUsers.currentMonth,this.enterpriseUsers.pastMonth)
+      this.enterpriseUsers.currentMonth = numeral(this.enterpriseUsers.currentMonth).format('0a')
+      this.enterpriseUsers = {...this.enterpriseUsers, ...tempEnterpriseUsers}
+      console.log(this.enterpriseUsers);
+    }
+    if (this.usersOnlineNow.today) {
+      let tempUsersOnline = this.calculatePercentageFor(this.usersOnlineNow.today,this.usersOnlineNow.yesterday)
+      this.usersOnlineNow.today = numeral(this.usersOnlineNow.today).format('0a')
+      this.usersOnlineNow = {...this.usersOnlineNow, ...tempUsersOnline}
+      console.log(this.usersOnlineNow);
+    }
+    console.log(res);
+  }
+  setDashboardForSuperAdmin(res){
+    this.retailUsers = res.data.retailUsers;
+    this.enterpriseUsers = res.data.enterpriseUsers;
+    this.usersOnlineNow = res.data.usersOnlineNow;
+    if (this.retailUsers.currentMonth) {
+      let tempRetailUsers = this.calculatePercentageFor(this.retailUsers.currentMonth,this.retailUsers.pastMonth)
+      this.retailUsers.currentMonth = numeral(this.retailUsers.currentMonth).format('0a')
+      this.retailUsers = {...this.retailUsers, ...tempRetailUsers}
+      console.log(this.retailUsers);
+    }
+    if (this.enterpriseUsers.currentMonth) {
+      let tempEnterpriseUsers = this.calculatePercentageFor(this.enterpriseUsers.currentMonth,this.enterpriseUsers.pastMonth)
+      this.enterpriseUsers.currentMonth = numeral(this.enterpriseUsers.currentMonth).format('0a')
+      this.enterpriseUsers = {...this.enterpriseUsers, ...tempEnterpriseUsers}
+      console.log(this.enterpriseUsers);
+    }
+    if (this.usersOnlineNow.today) {
+      let tempUsersOnline = this.calculatePercentageFor(this.usersOnlineNow.today,this.usersOnlineNow.yesterday)
+      this.usersOnlineNow.today = numeral(this.usersOnlineNow.today).format('0a')
+      this.usersOnlineNow = {...this.usersOnlineNow, ...tempUsersOnline}
+      console.log(this.usersOnlineNow);
+    }
+    this.noOfAdmins = res.noOfAdmins;
+    this.noOfRoles = res.noOfRoles;
+    this.noOfPermissions = res.noOfPermissions;
+    this.admins = res.admins;
 
+  }
   calculatePercentageFor(current,past){
     let percentage = 0;
     let typeOfValue = 0;
