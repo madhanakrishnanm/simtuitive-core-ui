@@ -48,13 +48,9 @@ export class EditPermissionComponent implements OnInit {
           this.permission.name = permission.name;
           this.permission.type = permission.type;
           this.permission.description = permission.description;
-          this.permissionService.getPermissionRoles({permissionId: this.permissionId}).subscribe((res: any) => {
-            console.log(res);
-            this.permission.roleIds = res.data;
-            this.permissionForm.patchValue(this.permission);
-          }, error => {
-            this.ngxUiLoaderService.stop();
-          });
+          this.permission.roleIds = permission.roles;
+          this.permissionForm.patchValue(this.permission);
+          this.ngxUiLoaderService.stop();
         }, error => {
           this.ngxUiLoaderService.stop();
         });

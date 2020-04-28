@@ -86,9 +86,9 @@ export class DashboardComponent implements OnInit {
 
   getDashboard() {
     this.userService.getDashboard().subscribe((res: any) => {
-      if (this.userService.user.role === 'admin'){
+      if (this.userService.user.role === 'Admin'){
         this.setDashboardForAdmin(res);
-      }else if (this.userService.user.role === 'super admin'){
+      }else if (this.userService.user.role === 'Super Admin'){
         this.setDashboardForSuperAdmin(this.response);
       }
     });

@@ -8,7 +8,7 @@
       <div class="text-right">
         <button (click)="router.navigate(['add-permission'])"
                 class="btn btn-primary">
-          Add
+          Add Permission
         </button>
       </div>
     </div>
@@ -32,8 +32,8 @@
             <td>{{i+1}}</td>
             <td>{{permission.name}}</td>
             <td>{{permission.type}}</td>
-            <td>{{permission.roles.join(' | ')}}
-              <p ></p>
+            <td>
+              <span class="badge badge-primary mr-1" *ngFor="let role of permission.roles">{{role.roleName}}</span>
             </td>
             <td>{{permission.description}}</td>
             <td>
