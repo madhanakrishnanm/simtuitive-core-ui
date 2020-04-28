@@ -23,4 +23,7 @@ export class PermissionService {
   getPermissionRoles(payload){
     return this.apiService.post('permissions/get-permission-roles',payload);
   }
+  deletePermission(payload){
+    return this.apiService.delete('permissions/delete-permission',payload);
+  }
 }

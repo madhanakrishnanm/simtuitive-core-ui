@@ -42,7 +42,7 @@
               <div class="d-flex justify-content-around action-icon">
                 <i class="fa fa-edit" aria-hidden="true"
                    (click)="router.navigate(['/edit-permission', permission.permissionId])"></i>
-                <i class="fa fa-trash" aria-hidden="true"></i>
+                <i class="fa fa-trash" aria-hidden="true" (click)="delete(permission.permissionId)"></i>
               </div>
             </td>
           </tr>
