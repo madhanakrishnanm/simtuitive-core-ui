@@ -49,7 +49,7 @@ export class EditAdminComponent implements OnInit {
           this.roleService.getAllRole({}).subscribe((res: any) => {
             console.log(res);
             this.roles = res.data;
-            this.admin.role = this.roles.find(o => o.rolename === admin.role)
+            this.admin.role = this.roles.find(o => o.roleName === admin.role)
             this.adminForm.patchValue(this.admin);
             this.isLoading = false;
           }, error => {
@@ -92,7 +92,7 @@ export class EditAdminComponent implements OnInit {
     }
     // this.ngxUiLoaderService.start();
     let payload = this.adminForm.value;
-    payload['role'] = payload['role']['rolename'];
+    payload['role'] = payload['role']['roleName'];
     payload['userId'] = this.adminId;
     console.log(payload);
     this.adminService.editAdmin(payload).subscribe((res: any)=>{

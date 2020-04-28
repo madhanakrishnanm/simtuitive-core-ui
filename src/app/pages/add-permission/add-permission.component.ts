@@ -29,8 +29,9 @@ export class AddPermissionComponent implements OnInit {
     this.permissionForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       type: ['', [Validators.required]],
+      rank: [0, [Validators.required]],
       description: ['', [Validators.required]],
-      roleids: ['', [Validators.required]]
+      roleIds: ['', [Validators.required]]
     });
     this.roleService.getAllRole({}).subscribe((res: any) => {
       console.log(res);
@@ -54,14 +55,14 @@ export class AddPermissionComponent implements OnInit {
     if (this.permissionForm.invalid) {
       return;
     }
-    let roleIds = this.f.roleids.value;
+    let roleIds = this.f.roleIds.value;
     let newRoles = [];
     for (const role of roleIds) {
-      newRoles.push(role['roleid']);
+      newRoles.push(role['roleId']);
     }
 
     this.ngxUiLoaderService.start();
-    const payload = {...this.permissionForm.value, roleids:newRoles};
+    const payload = {...this.permissionForm.value, roleIds:newRoles};
     console.log(payload);
     this.permissionService.addPermission(payload).subscribe((res: any) => {
       this.ngxUiLoaderService.stop();

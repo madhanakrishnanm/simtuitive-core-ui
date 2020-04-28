@@ -20,4 +20,7 @@ export class RoleService {
   getRoleById(payload) {
     return this.apiService.post('roles/get-role', payload);
   }
+  deleteRole(payload){
+    return this.apiService.delete('roles/delete-role',payload);
+  }
 }

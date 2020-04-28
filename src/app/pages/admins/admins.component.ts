@@ -22,5 +22,15 @@ export class AdminsComponent implements OnInit {
       this.admins = res.data;
     });
   }
+  delete(userId){
+    let payload = {
+      userId
+    };
+    console.log(payload);
+    this.adminService.deleteAdmin(payload).subscribe((res: any)=>{
+      console.log(res);
+      window.location.reload();
+    })
+  }
 
 }

@@ -88,7 +88,25 @@ export class ApiService {
     return this.http.put(this.url + endpoint, body, reqOpts);
   }
 
-  delete(endpoint: string, reqOpts?: any) {
+  delete(endpoint: string, params, headers?: any) {
+    let reqOpts;
+    if (headers) {
+      reqOpts = {
+        body: params,
+        headers: {...this.reqHeader, ...headers}
+      };
+    } else {
+      reqOpts = {
+        body: params,
+        headers: this.reqHeader
+      };
+    }
+
+    /*if (params) {
+      for (let k in params) {
+        reqOpts.params = reqOpts.params.set(k, params[k]);
+      }
+    }*/
     return this.http.delete(this.url + endpoint, reqOpts);
   }
 

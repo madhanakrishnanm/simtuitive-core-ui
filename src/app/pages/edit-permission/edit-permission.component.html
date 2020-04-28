@@ -50,14 +50,14 @@
               [multiple]="true"
               [closeOnSelect]="true"
               [searchable]="false"
-              bindLabel="rolename"
+              bindLabel="roleName"
               placeholder="Select people"
-              formControlName="roleids"
+              formControlName="roleIds"
             >
             </ng-select>
-            <div *ngIf="f.roleids.invalid && (f.roleids.touched || f.roleids.value)"
+            <div *ngIf="f.roleIds.invalid && (f.roleIds.touched || f.roleIds.value)"
                  class="input-error-report">
-              <div *ngIf="f.roleids.errors.required">
+              <div *ngIf="f.roleIds.errors.required">
                 Applicable To is required.
               </div>
             </div>

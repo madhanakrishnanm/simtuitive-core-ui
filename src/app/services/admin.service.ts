@@ -15,10 +15,12 @@ export class AdminService {
     return this.apiService.put('users/update-user',payload);
   }
   getAllAdmin(payload){
-    return this.apiService.get('users/getAllByType?userType=Admin',payload);
+    return this.apiService.get('users/get-users-by-role?role=Admin',payload);
   }
   getAdminById(payload){
     return this.apiService.post('users/get-user-id',payload);
   }
-
+  deleteAdmin(payload){
+    return this.apiService.delete('users/delete-id',payload);
+  }
 }

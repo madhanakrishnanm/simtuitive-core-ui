@@ -45,6 +45,23 @@
           </div>
         </div>
         <div class="form-group row">
+          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Permission Rank</label>
+          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+            <input
+              type="number"
+              class="form-control"
+              formControlName="rank"
+            />
+            <div *ngIf="f.rank.invalid && (f.rank.touched || f.rank.value)"
+                 class="input-error-report">
+              <div *ngIf="f.rank.errors.required">
+                Permission Rank is required.
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="form-group row">
           <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Applicable To</label>
           <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
             <ng-select
@@ -53,14 +70,14 @@
               [closeOnSelect]="true"
               [searchable]="false"
               [loading]="isLoading"
-              bindLabel="rolename"
+              bindLabel="roleName"
               placeholder="Select people"
-              formControlName="roleids"
+              formControlName="roleIds"
             >
             </ng-select>
-            <div *ngIf="f.roleids.invalid && (f.roleids.touched || f.roleids.value)"
+            <div *ngIf="f.roleIds.invalid && (f.roleIds.touched || f.roleIds.value)"
                  class="input-error-report">
-              <div *ngIf="f.roleids.errors.required">
+              <div *ngIf="f.roleIds.errors.required">
                 Applicable To is required.
               </div>
             </div>

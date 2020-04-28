@@ -34,7 +34,7 @@ export class AddAdminComponent implements OnInit {
       console.log(res);
       this.roles = res.data;
       this.adminForm.patchValue({
-        role : this.roles.find(o => o.rolename === 'Admin')
+        role : this.roles.find(o => o.roleName === 'Admin')
       })
       this.isLoading =  false;
     }, error => {
@@ -74,8 +74,8 @@ export class AddAdminComponent implements OnInit {
     }
     this.ngxUiLoaderService.start();
     let payload = this.adminForm.value;
-    payload['roleid'] = payload['role']['roleid'];
-    payload['role'] = payload['role']['rolename'];
+    payload['roleId'] = payload['role']['roleId'];
+    payload['role'] = payload['role']['roleName'];
     console.log(payload);
     this.adminService.addAdmin(payload).subscribe((res: any)=>{
       this.ngxUiLoaderService.stop();

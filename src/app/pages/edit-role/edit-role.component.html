@@ -16,11 +16,11 @@
             <input
               type="text"
               class="form-control"
-              formControlName="rolename"
+              formControlName="roleName"
             />
-            <div *ngIf="f.rolename.invalid && (f.rolename.touched || f.rolename.value)"
+            <div *ngIf="f.roleName.invalid && (f.roleName.touched || f.roleName.value)"
                  class="input-error-report">
-              <div *ngIf="f.rolename.errors.required">
+              <div *ngIf="f.roleName.errors.required">
                 Role Name is required.
               </div>
             </div>

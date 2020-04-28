@@ -33,7 +33,7 @@ export class EditPermissionComponent implements OnInit {
       name: ['', [Validators.required]],
       type: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      roleids: ['', [Validators.required]]
+      roleIds: ['', [Validators.required]]
     });
     this.subscribe = this.route.params.subscribe(params => {
       this.permissionId = params.id; // (+) converts string 'id' to a number
@@ -50,7 +50,7 @@ export class EditPermissionComponent implements OnInit {
           this.permission.description = permission.description;
           this.permissionService.getPermissionRoles({permissionId: this.permissionId}).subscribe((res: any) => {
             console.log(res);
-            this.permission.roleids = res.data;
+            this.permission.roleIds = res.data;
             this.permissionForm.patchValue(this.permission);
           }, error => {
             this.ngxUiLoaderService.stop();
@@ -78,12 +78,12 @@ export class EditPermissionComponent implements OnInit {
       return;
     }
     this.ngxUiLoaderService.start();
-    let roleIds = this.f.roleids.value;
+    let roleIds = this.f.roleIds.value;
     let newRoles = [];
     for (const role of roleIds) {
-      newRoles.push(role['roleid']);
+      newRoles.push(role['roleId']);
     }
-    const payload = {...this.permissionForm.value, roleids: newRoles, permissionId: this.permissionId};
+    const payload = {...this.permissionForm.value, roleIds: newRoles, permissionId: this.permissionId};
     console.log(payload);
     this.permissionService.editPermission(payload).subscribe((res: any) => {
       this.ngxUiLoaderService.stop();

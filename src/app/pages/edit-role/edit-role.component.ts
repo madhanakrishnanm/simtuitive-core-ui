@@ -24,7 +24,7 @@ export class EditRoleComponent implements OnInit {
 
   ngOnInit(): void {
     this.roleForm = this.formBuilder.group({
-      rolename: ['', [Validators.required]],
+      roleName: ['', [Validators.required]],
       description: ['', [Validators.required]]
     });
     this.subscribe = this.route.params.subscribe(params => {
@@ -32,12 +32,12 @@ export class EditRoleComponent implements OnInit {
       console.log(this.roleId);
       if (this.roleId) {
         const payload = {
-          roleid: this.roleId
+          roleId: this.roleId
         };
         this.roleService.getRoleById(payload).subscribe((res: any) => {
           // console.log(res);
           const responseRole = res.data;
-          this.role.rolename = responseRole.rolename;
+          this.role.roleName = responseRole.roleName;
           this.role.description = responseRole.description;
           this.roleForm.patchValue(this.role);
         });
@@ -62,7 +62,7 @@ export class EditRoleComponent implements OnInit {
     this.ngxUiLoaderService.start();
 
     const payload = this.roleForm.value;
-    payload['roleid'] = this.roleId;
+    payload['roleId'] = this.roleId;
     // console.log(payload);
     this.roleService.editRole(payload).subscribe((res: any) => {
       this.ngxUiLoaderService.stop();

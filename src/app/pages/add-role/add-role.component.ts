@@ -19,8 +19,9 @@ export class AddRoleComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.roleForm = this.formBuilder.group({
-      rolename: ['', [Validators.required]],
+      roleName: ['', [Validators.required]],
       description: ['', [Validators.required]]
     });
   }
@@ -38,7 +39,7 @@ export class AddRoleComponent implements OnInit {
     const payload = this.roleForm.value;
     this.roleService.addRole(payload).subscribe((res: any) => {
       this.ngxUiLoaderService.stop();
-      this.router.navigate(['/admins'])
+      this.router.navigate(['/roles'])
       // console.log(res);
     }, error => {
       console.log(error);

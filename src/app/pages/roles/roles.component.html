@@ -28,14 +28,13 @@
           <tbody>
           <tr *ngFor="let role of roles; index as i">
             <td>{{i+1}}</td>
-            <td>{{role.rolename}}</td>
+            <td>{{role.roleName}}</td>
             <td>{{role.description}}</td>
-            <td>{{role.rolename}}</td>
             <td>
               <div class="d-flex justify-content-around action-icon">
                 <i class="fa fa-edit" aria-hidden="true"
-                   (click)="router.navigate(['/edit-role', role.roleid])"></i>
-                <i class="fa fa-trash" aria-hidden="true"></i>
+                   (click)="router.navigate(['/edit-role', role.roleId])"></i>
+                <i class="fa fa-trash" aria-hidden="true" (click)="delete(role.roleId)"></i>
               </div>
             </td>
           </tr>

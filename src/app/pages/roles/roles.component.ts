@@ -21,5 +21,14 @@ export class RolesComponent implements OnInit {
       this.roles = res.data;
     });
   }
-
+  delete(roleId){
+    let payload = {
+      roleId
+    };
+    console.log(payload);
+    this.roleService.deleteRole(payload).subscribe((res: any)=>{
+      console.log(res);
+      window.location.reload();
+    })
+  }
 }
