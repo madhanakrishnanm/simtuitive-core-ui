@@ -218,3 +218,102 @@
     display: none;
   }
 }
+
+.auth-input {
+  .col-form-label {
+    color: var(--light);
+  }
+
+  .input-group, .form-group {
+    border-radius: 11px;
+    border: 0;
+    margin-bottom: 30px;
+
+    .form-control {
+      border: 0;
+      box-shadow: none !important;
+      border-radius: 11px;
+      background: var(--bg-color-secondary);
+      color: var(--light) !important;
+    }
+
+    .form-control::-webkit-input-placeholder {
+      color: $light !important;
+    }
+
+    .form-control:-moz-placeholder { /* Firefox 18- */
+      color: $light !important;
+    }
+
+    .form-control::-moz-placeholder { /* Firefox 19+ */
+      color: $light !important;
+    }
+
+    .form-control:-ms-input-placeholder {
+      color: $light !important;
+    }
+
+    .form-control {
+      background: #707070 !important;
+      color: $light;
+    }
+
+    .form-control:focus {
+      background: var(--bg-color-secondary);
+    }
+
+    .input-group-append {
+      border: 0 !important;
+
+      .input-group-text {
+        border: 0 !important;
+        background: #707070 !important;
+        border-top-right-radius: 11px !important;
+        border-bottom-right-radius: 11px !important;
+
+        img {
+          width: 25px;
+          height: 25px;
+        }
+
+        i {
+          color: $gray;
+        }
+      }
+    }
+
+    .input-group-prepend {
+      background: transparent !important;
+      border: 0 !important;
+
+      .input-group-text {
+        border: 0 !important;
+        background: #707070 !important;
+        border-top-left-radius: 11px !important;
+        border-bottom-left-radius: 11px !important;
+
+        img {
+          width: 25px;
+          height: 25px;
+        }
+      }
+    }
+
+    .custom-control-label {
+      color: var(--light) !important;
+    }
+  }
+
+  .custom-control-label, .forgot-password {
+    color: var(--light);
+    cursor: pointer;
+  }
+
+  .forgot-password:hover {
+    color: var(--primary);
+  }
+}
+
+.forgot-message {
+  color: var(--light);
+}
