@@ -31,11 +31,11 @@ export class AddAdminComponent implements OnInit {
       password: ['', [Validators.required]],
     });
     this.roleService.getAllRole({}).subscribe((res: any) => {
-      console.log(res);
       this.roles = res.data;
       this.adminForm.patchValue({
         role : this.roles.find(o => o.roleName === 'Admin')
       })
+      console.log(this.adminForm.value);
       this.isLoading =  false;
     }, error => {
       this.isLoading = false;
@@ -73,7 +73,8 @@ export class AddAdminComponent implements OnInit {
       return;
     }
     this.ngxUiLoaderService.start();
-    let payload = this.adminForm.value;
+    let payload = {...this.adminForm.value};
+    console.log(payload)
     payload['roleId'] = payload['role']['roleId'];
     payload['role'] = payload['role']['roleName'];
     console.log(payload);

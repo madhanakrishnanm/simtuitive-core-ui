@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login.component';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import {NgxUiLoaderModule} from 'ngx-ui-loader';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import {RouterModule} from '@angular/router';
         FormsModule,
         ReactiveFormsModule,
         RouterModule,
+        NgxUiLoaderModule,
     ]
 })
 export class LoginModule { }

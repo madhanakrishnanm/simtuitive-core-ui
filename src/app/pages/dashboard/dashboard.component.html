@@ -2,7 +2,7 @@
 
   <div class="row">
 
-    <div class="col-4">
+    <div class="col-4" *ngIf="userService.user.role === 'Admin'">
       <div class="row  dashboard-card-cont">
         <div class="col-12 p-3">
           <p style="color: var(--primary);font-size: 20px;font-weight: bold">Retail Users</p>
@@ -23,7 +23,7 @@
       </div>
     </div>
 
-    <div class="col-4">
+    <div class="col-4" *ngIf="userService.user.role === 'Admin'">
       <div class="row  dashboard-card-cont">
         <div class="col-12 p-3">
           <p style="color: var(--primary);font-size: 20px;font-weight: bold">Enterprise Users</p>
@@ -44,7 +44,7 @@
       </div>
     </div>
 
-    <div class="col-4">
+    <div class="col-4" *ngIf="userService.user.role === 'Admin'">
       <div class="row  dashboard-card-cont">
         <div class="col-12 p-3">
           <p style="color: var(--primary);font-size: 20px;font-weight: bold">Users Online Now</p>
@@ -65,7 +65,7 @@
       </div>
     </div>
     <!--End of First row-->
-    <div class="col-4 mt-5">
+    <div class="col-4 mt-5" *ngIf="userService.user.role === 'Super Admin'">
       <div class="row  dashboard-card-cont">
         <div class="col-12 p-3">
           <p style="color: var(--primary);font-size: 20px;font-weight: bold;text-align:center">Roles</p>
@@ -80,7 +80,7 @@
         </div>
       </div>
     </div>
-    <div class="col-4 mt-5">
+    <div class="col-4 mt-5" *ngIf="userService.user.role === 'Super Admin'">
       <div class="row  dashboard-card-cont">
         <div class="col-12 p-3">
           <p style="color: var(--primary);font-size: 20px;font-weight: bold;text-align: center">Permissions</p>
@@ -95,7 +95,7 @@
         </div>
       </div>
     </div>
-   <div class="col-4 mt-5">
+   <div class="col-4 mt-5" *ngIf="userService.user.role === 'Super Admin'">
       <div class="row  dashboard-card-cont">
         <div class="col-12 p-3" >
           <p style="color: var(--primary);font-size: 20px;font-weight: bold;text-align: center">Admins</p>
@@ -113,7 +113,7 @@
 
   <div class="row">
     <div class="col p-5">
-      <!--<div class="product-users-table" *ngIf="userService.user.role === 'Admin'">
+      <div class="product-users-table" *ngIf="userService.user.role === 'Admin'">
         <table class="table">
           <thead>
           <tr>
@@ -132,7 +132,7 @@
           </tr>
           </tbody>
         </table>
-      </div>-->
+      </div>
       <div class="product-users-table" *ngIf="userService.user.role !== 'Admin'">
         <table class="table">
           <thead>

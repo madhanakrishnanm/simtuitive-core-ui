@@ -88,15 +88,21 @@ export class DashboardComponent implements OnInit {
 
   getDashboard() {
     this.userService.getDashboard().subscribe((res: any) => {
-      console.log(res);
-      console.log(this.userService.user);
-      /*if (this.userService.user.role === 'Admin'){
-        this.setDashboardForAdmin(res);
-      }else if (this.userService.user.role === 'Super Admin'){
-              this.setDashboardForSuperAdmin(this.response);
-      }*/
+      if (res.data){
+        this.userService.getUser().subscribe((userRes: any) => {
+          let user = userRes.data;
+          console.log(res);
+          console.log(user);
+          if (user.role === 'Admin'){
+            this.setDashboardForAdmin(res);
+          }else if (user.role === 'Super Admin'){
+            this.setDashboardForSuperAdmin(this.response);
+          }
+        });
+      }
+
     });
-    this.setDashboardForSuperAdmin(this.response);
+    // this.setDashboardForSuperAdmin(this.response);
   }
   setDashboardForAdmin(res){
 

@@ -82,8 +82,8 @@ export class EditPermissionComponent implements OnInit {
       newRoles.push(role['roleId']);
     }
 
-    const payload = {...this.permissionForm.value, roleids: newRoles, permissionId: this.permissionId};
-    delete payload['roleIds'];
+    const payload = {...this.permissionForm.value, roleIds: newRoles, permissionId: this.permissionId};
+    // delete payload['roleIds'];
     console.log(payload);
     this.permissionService.editPermission(payload).subscribe((res: any) => {
       this.ngxUiLoaderService.stop();

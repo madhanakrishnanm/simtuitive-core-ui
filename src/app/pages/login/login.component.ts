@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {HttpHeaders} from '@angular/common/http';
 import {v4 as uuidv4} from 'uuid';
+import {NgxUiLoaderService} from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private authService: AuthService,
               private formBuilder: FormBuilder,
+              private ngxUiLoaderService: NgxUiLoaderService,
               public router: Router,
   ) {
   }
@@ -44,6 +46,7 @@ export class LoginComponent implements OnInit {
   }
 
   requestLogin() {
+    this.ngxUiLoaderService.start();
     const headers = {
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -65,9 +68,12 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('role', res.role);
       localStorage.setItem('tokenType', res.token_type);
       this.authService.isLoggedIn();
+      this.ngxUiLoaderService.stop();
       this.router.navigate(['/']).then(() => {
-        // window.location.reload();
+        window.location.reload();
       });
+    }, error => {
+      this.ngxUiLoaderService.stop();
     });
 
   }
