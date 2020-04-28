@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
         "yesterday": 23455,
         "today": 20244
       },
-      "noOfRoles": 10,
+      "noOfRoles": 19,
       "noOfPermissions": 15,
       "noOfAdmins": 5,
       "admins": [
@@ -146,10 +146,10 @@ export class DashboardComponent implements OnInit {
       this.usersOnlineNow = {...this.usersOnlineNow, ...tempUsersOnline}
       console.log(this.usersOnlineNow);
     }
-    this.noOfAdmins = res.noOfAdmins;
-    this.noOfRoles = res.noOfRoles;
-    this.noOfPermissions = res.noOfPermissions;
-    this.admins = res.admins;
+    this.noOfAdmins = res.data.noOfAdmins;
+    this.noOfRoles = res.data.noOfRoles;
+    this.noOfPermissions = res.data.noOfPermissions;
+    this.admins = res.data.admins;
 
   }
   calculatePercentageFor(current,past){
