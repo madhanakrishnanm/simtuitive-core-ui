@@ -1,12 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
-
 @import "./src/assets/scss/common";
 @import "src/assets/scss/variables";
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "assets/vendor/@fortawesome/fontawesome-free/css/all.min.css";
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500&display=swap');
 @import '~ngx-toastr/toastr-bs4-alert';
+
 :root {
   --primary: #FF9000 !important;
   --secondary: #562e71 !important;
@@ -20,10 +20,10 @@
   --yellow: #F2C200 !important;
   --red: #f6495c !important;
   --gray: #8E8E8E !important;
-  --font-color: #FFFFFF  !important;
+  --font-color: #FFFFFF !important;
   --heading-color: #FF9000 !important;
-  --bg-color-primary:#15151B;
-  --bg-color-secondary:#202029 !important;
+  --bg-color-primary: #15151B;
+  --bg-color-secondary: #202029 !important;
 
 
 }
@@ -43,13 +43,14 @@
   --gray: $gray;
   --font-color: $light;
   --heading-color: $primary;
-  --bg-color-primary:$dark_bg;
-  --bg-color-secondary:$light_bg;
+  --bg-color-primary: $dark_bg;
+  --bg-color-secondary: $light_bg;
 }
 
-html{
+html {
   overflow-x: hidden;
 }
+
 body {
   font-family: 'Nunito', sans-serif !important;
   font-weight: 600;
@@ -72,40 +73,66 @@ a:focus {
   text-decoration: none;
   transition: all 0.3s;
 }
-h1{
+
+h1 {
   color: var(--primary);
   font-weight: Bold;
   font-size: 28px;
   line-height: 33px;
 }
-h2{
+
+h2 {
   color: var(--primary);
   font-weight: Bold;
   font-size: 24px;
   line-height: 33px;
 }
-h3{
+
+h3 {
   color: var(--warning);
   font-weight: Bold;
   font-size: 20px;
   line-height: 28px;
 }
-h4{
+
+h4 {
   color: var(--warning);
   font-weight: Bold;
   font-size: 16px;
   line-height: 28px;
 }
-h5{
+
+h5 {
   color: var(--warning);
   font-weight: Bold;
   font-size: 12px;
   line-height: 28px;
 }
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   margin: 0;
+}
+
+
+.simtuitive-modal {
+   .modal-header{
+     border: 0 !important;
+   }
+  .modal-content {
+    background-color: var(--bg-color-secondary) !important;
+    color: white !important;
+    border: 0 !important;
+  }
+
+  .close {
+    color: var(--light) !important;
+    outline: none !important;
+  }
+  .modal-footer{
+    border: 0 !important;
+  }
 }
