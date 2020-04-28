@@ -64,6 +64,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('refreshToken', res.refresh_token);
       localStorage.setItem('role', res.role);
       localStorage.setItem('tokenType', res.token_type);
+      this.authService.isLoggedIn();
       this.router.navigate(['/']).then(() => {
         // window.location.reload();
       });

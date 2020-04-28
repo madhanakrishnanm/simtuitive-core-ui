@@ -32,6 +32,7 @@ export class EditPermissionComponent implements OnInit {
     this.permissionForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       type: ['', [Validators.required]],
+      rank: [0, [Validators.required]],
       description: ['', [Validators.required]],
       roleIds: ['', [Validators.required]]
     });
@@ -47,6 +48,7 @@ export class EditPermissionComponent implements OnInit {
           const permission = res.data;
           this.permission.name = permission.name;
           this.permission.type = permission.type;
+          this.permission.rank = permission.rank;
           this.permission.description = permission.description;
           this.permission.roleIds = permission.roles;
           this.permissionForm.patchValue(this.permission);

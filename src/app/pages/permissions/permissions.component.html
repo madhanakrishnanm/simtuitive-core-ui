@@ -20,8 +20,9 @@
           <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Permission Name</th>
-            <th scope="col">Permission Type</th>
+            <th scope="col">Name</th>
+            <th scope="col">Type</th>
+            <th scope="col">Rank</th>
             <th scope="col">Applicable To</th>
             <th scope="col">Description</th>
             <th scope="col">Action</th>
@@ -32,6 +33,7 @@
             <td>{{i+1}}</td>
             <td>{{permission.name}}</td>
             <td>{{permission.type}}</td>
+            <td>{{permission.rank}}</td>
             <td>
               <span class="badge badge-primary mr-1" *ngFor="let role of permission.roles">{{role.roleName}}</span>
             </td>
