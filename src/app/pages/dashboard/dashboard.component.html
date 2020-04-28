@@ -121,7 +121,7 @@
 
   <div class="row">
     <div class="col p-5">
-      <div class="product-users-table" *ngIf="userService.user.role === 'Admin'">
+      <!--<div class="product-users-table" *ngIf="userService.user.role === 'Admin'">
         <table class="table">
           <thead>
           <tr>
@@ -137,6 +137,27 @@
             <td>{{ productUser.productName }}</td>
             <td>{{ productUser.registerUsers }}</td>
             <td>{{ productUser.usersOnlineNow }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>-->
+      <div class="product-users-table" *ngIf="userService.user.role !== 'Admin'">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">Admin Name</th>
+            <th scope="col">Admin Email</th>
+            <th scope="col">Admin Status</th>
+            <th scope="col">Last Logged In</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let admin of admins; index as i">
+            <td scope="row">{{  admin.name }}</td>
+            <td>{{admin.email}}</td>
+            <td *ngIf="admin.status==true"><img src="assets/img/dashboard/Ellipse 1.svg" class="mr-1">on</td>
+            <td *ngIf="admin.status==false"><img src="assets/img/dashboard/Ellipse 2.svg" class="mr-1">off</td>
+            <td>{{ admin.lastLogedIn}}</td>
           </tr>
           </tbody>
         </table>

@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
-
+import { TimeagoModule } from 'ngx-timeago';
 import {NgxUiLoaderModule} from 'ngx-ui-loader';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -73,6 +73,7 @@ import { UpdatePasswordComponent } from './pages/update-password/update-password
     AddPermissionModule,
     EditPermissionModule,
     NgSelectModule,
+    TimeagoModule
   ],
   providers: [],
   exports: [],

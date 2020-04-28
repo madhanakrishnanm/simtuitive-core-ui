@@ -90,12 +90,13 @@ export class DashboardComponent implements OnInit {
     this.userService.getDashboard().subscribe((res: any) => {
       console.log(res);
       console.log(this.userService.user);
-      if (this.userService.user.role === 'Admin'){
+      /*if (this.userService.user.role === 'Admin'){
         this.setDashboardForAdmin(res);
       }else if (this.userService.user.role === 'Super Admin'){
-        this.setDashboardForSuperAdmin(this.response);
-      }
+              this.setDashboardForSuperAdmin(this.response);
+      }*/
     });
+    this.setDashboardForSuperAdmin(this.response);
   }
   setDashboardForAdmin(res){
 
@@ -150,7 +151,7 @@ export class DashboardComponent implements OnInit {
     this.noOfRoles = res.data.noOfRoles;
     this.noOfPermissions = res.data.noOfPermissions;
     this.admins = res.data.admins;
-
+    console.log('Admins'+this.admins[0].name);
   }
   calculatePercentageFor(current,past){
     let percentage = 0;
