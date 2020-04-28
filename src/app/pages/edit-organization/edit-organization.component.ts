@@ -38,17 +38,17 @@ export class EditOrganizationComponent implements OnInit {
       // console.log(this.organizationId);
       if (this.organizationId) {
         const payload = {
-          orgId: this.organizationId
+          id: this.organizationId
         };
         this.organizationService.getOrganizationById(payload).subscribe((res: any) => {
           // console.log(res);
           const responseOrganization = res.data;
-          this.organization.name = responseOrganization.orgName;
+          this.organization.name = responseOrganization.organizationName;
           this.organization.location = responseOrganization.location;
           this.organization.industry = responseOrganization.industry;
-          this.organization.dealOwner = responseOrganization.clientDealOwnerName;
-          this.organization.dealOwnerEmail = responseOrganization.clientDealOwnerEmail;
-          this.organization.dealOwnerMobile = responseOrganization.clientDealOwnerMobile;
+          this.organization.dealOwner = responseOrganization.dealOwnerName;
+          this.organization.dealOwnerEmail = responseOrganization.dealOwnerEmail;
+          this.organization.dealOwnerMobile = responseOrganization.dealOwnerMobile;
           this.organization.creditLimit = responseOrganization.creditLimit;
           this.organization.status = responseOrganization.status;
           console.log(this.organization);
@@ -109,6 +109,7 @@ export class EditOrganizationComponent implements OnInit {
     }
     console.log(this.organizationForm.value);
     const payload = this.organizationForm.value;
+    payload['id'] = this.organizationId;
     this.organizationService.editOrganization(payload).subscribe((res: any) => {
       console.log(res);
     });

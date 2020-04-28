@@ -11,14 +11,15 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 export class AdminsComponent implements OnInit {
   closeResult = '';
   admins = [];
+  deleteUserId = null;
   constructor(public router: Router,
               private formBuilder: FormBuilder,
+              private ngModalService: NgbModal,
               private adminService: AdminService,private modalService: NgbModal) { }
-          
               open(content) {
                 this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
               }
-          
+
 
   ngOnInit(): void {
     const payload = {};
@@ -27,9 +28,14 @@ export class AdminsComponent implements OnInit {
       this.admins = res.data;
     });
   }
-  delete(userId){
+  requestDelete(userId, modalReference){
+    this.deleteUserId = userId;
+    this.modalService.open(modalReference)
+
+  }
+  delete(){
     let payload = {
-      userId
+      userId : this.deleteUserId
     };
     console.log(payload);
     this.adminService.deleteAdmin(payload).subscribe((res: any)=>{

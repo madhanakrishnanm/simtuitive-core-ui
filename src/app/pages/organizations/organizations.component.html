@@ -37,15 +37,15 @@
             <td>{{organization.organizationName}}</td>
             <td>{{organization.location}}</td>
             <td>{{organization.industry}}</td>
-            <td>{{organization.clientDealOwnerName}}</td>
-            <td>{{organization.clientDealOwnerEmail}}</td>
-            <td>{{organization.clientDealOwnerMobile}}</td>
+            <td>{{organization.dealOwnerName}}</td>
+            <td>{{organization.dealOwnerEmail}}</td>
+            <td>{{organization.dealOwnerMobile}}</td>
             <td>{{organization.creditLimit}}</td>
             <td>{{organization.status}}</td>
             <td>
               <div class="d-flex justify-content-between action-icon">
                 <i class="fa fa-edit" aria-hidden="true"
-                   (click)="router.navigate(['/edit-organization', organization.orgId])"></i>
+                   (click)="router.navigate(['/edit-organization', organization.organizationId])"></i>
                 <i class="fa fa-trash" aria-hidden="true"></i>
               </div>
             </td>

@@ -12,7 +12,7 @@ export class OrganizationService {
     return this.apiService.post('org/add-org', payload);
   }
   editOrganization(payload) {
-    return this.apiService.post('org/update-org', payload);
+    return this.apiService.put('org/update-org', payload);
   }
   getAllOrganization(payload) {
     return this.apiService.get('org/getall-org', payload);
