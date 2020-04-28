@@ -32,7 +32,9 @@
             <td>{{i+1}}</td>
             <td>{{permission.name}}</td>
             <td>{{permission.type}}</td>
-            <td>{{permission.roles}}</td>
+            <td>{{permission.roles.join(' | ')}}
+              <p ></p>
+            </td>
             <td>{{permission.description}}</td>
             <td>
               <div class="d-flex justify-content-around action-icon">

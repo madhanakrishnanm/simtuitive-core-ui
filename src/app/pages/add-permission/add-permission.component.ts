@@ -62,7 +62,7 @@ export class AddPermissionComponent implements OnInit {
     }
 
     this.ngxUiLoaderService.start();
-    const payload = {...this.permissionForm.value, roleIds:newRoles};
+    const payload = {...this.permissionForm.value, roleids:newRoles};
     console.log(payload);
     this.permissionService.addPermission(payload).subscribe((res: any) => {
       this.ngxUiLoaderService.stop();
