@@ -80,7 +80,7 @@ export class DashboardComponent implements OnInit {
   getProductUsers() {
     this.userService.getProductUsers().subscribe((res: any) => {
       this.productUsers = res.data;
-      console.log(this.productUsers);
+      //console.log(this.productUsers);
     });
   }
 
@@ -101,19 +101,19 @@ export class DashboardComponent implements OnInit {
       let tempRetailUsers = this.calculatePercentageFor(this.retailUsers.currentMonth,this.retailUsers.pastMonth)
       this.retailUsers.currentMonth = numeral(this.retailUsers.currentMonth).format('0a')
       this.retailUsers = {...this.retailUsers, ...tempRetailUsers}
-      console.log(this.retailUsers);
+      console.log('retail users'+this.retailUsers);
     }
     if (this.enterpriseUsers.currentMonth) {
       let tempEnterpriseUsers = this.calculatePercentageFor(this.enterpriseUsers.currentMonth,this.enterpriseUsers.pastMonth)
       this.enterpriseUsers.currentMonth = numeral(this.enterpriseUsers.currentMonth).format('0a')
       this.enterpriseUsers = {...this.enterpriseUsers, ...tempEnterpriseUsers}
-      console.log(this.enterpriseUsers);
+      console.log('retail users'+this.enterpriseUsers);
     }
     if (this.usersOnlineNow.today) {
       let tempUsersOnline = this.calculatePercentageFor(this.usersOnlineNow.today,this.usersOnlineNow.yesterday)
       this.usersOnlineNow.today = numeral(this.usersOnlineNow.today).format('0a')
       this.usersOnlineNow = {...this.usersOnlineNow, ...tempUsersOnline}
-      console.log(this.usersOnlineNow);
+      console.log('usersonline today'+this.usersOnlineNow);
     }
     console.log(res);
   }
@@ -125,7 +125,7 @@ export class DashboardComponent implements OnInit {
       let tempRetailUsers = this.calculatePercentageFor(this.retailUsers.currentMonth,this.retailUsers.pastMonth)
       this.retailUsers.currentMonth = numeral(this.retailUsers.currentMonth).format('0a')
       this.retailUsers = {...this.retailUsers, ...tempRetailUsers}
-      console.log(this.retailUsers);
+      console.log('retail users'+this.retailUsers);
     }
     if (this.enterpriseUsers.currentMonth) {
       let tempEnterpriseUsers = this.calculatePercentageFor(this.enterpriseUsers.currentMonth,this.enterpriseUsers.pastMonth)
