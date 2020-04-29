@@ -35,7 +35,7 @@
               <div class="d-flex justify-content-around action-icon">
                 <i class="fa fa-edit" aria-hidden="true"
                    (click)="router.navigate(['/edit-admin', admin.userId])"></i>
-                <i class="fa fa-trash" aria-hidden="true" (click)="open(content)"></i>
+                <i class="fa fa-trash" aria-hidden="true" (click)="requestDelete(admin.userId,content)"></i>
               </div>
             </td>
           </tr>
@@ -56,12 +56,16 @@
     </button>
   </div>
   <div class="modal-body">
-    <p>Do You Want to Delete</p>
+    <p><strong>Are you sure you want to delete ?</strong></p>
   </div>
   <div class="modal-footer">
-    <div class="btn-group">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
-      <button type="button" class="btn btn-outline-dark">Delete</button>
+    <div class="row text-center" style="width: 100%">
+      <div class="col">
+        <button type="button" class="btn btn-warning" (click)="modal.close('Save click')">Cancel</button>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-primary" (click)="delete()">Delete</button>
+      </div>
     </div>
   </div>
 </ng-template>
