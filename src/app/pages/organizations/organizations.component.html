@@ -44,9 +44,9 @@
             <td>{{organization.status}}</td>
             <td>
               <div class="d-flex justify-content-between action-icon">
-                <i class="fa fa-edit" aria-hidden="true"
+                <i title="Edit Organization" class="fa fa-edit" aria-hidden="true"
                    (click)="router.navigate(['/edit-organization', organization.organizationId])"></i>
-                <i class="fa fa-trash" aria-hidden="true" (click)="requestDelete(organization.organizationId, content)"></i>
+                <i title="Delete Organization" class="fa fa-trash" aria-hidden="true" (click)="requestDelete(organization.organizationId, content)"></i>
               </div>
             </td>
           </tr>
