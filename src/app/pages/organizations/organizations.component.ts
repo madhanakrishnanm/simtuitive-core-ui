@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {OrganizationService} from '../../services/organization.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-organizations',
@@ -11,8 +12,10 @@ import {OrganizationService} from '../../services/organization.service';
 export class OrganizationsComponent implements OnInit {
 
   organizations = [];
+  deleteOrganizationId = null;
   constructor(public router: Router,
               private formBuilder: FormBuilder,
+              private modalService: NgbModal,
               private organizationService: OrganizationService) { }
 
   ngOnInit(): void {
@@ -22,5 +25,19 @@ export class OrganizationsComponent implements OnInit {
       this.organizations = res.data;
     });
   }
+  requestDelete(organizationId, modalReference) {
+    this.deleteOrganizationId = organizationId;
+    this.modalService.open(modalReference, {centered: true, size: 'sm', windowClass: 'simtuitive-modal'});
+  }
 
+  delete() {
+    const payload = {
+      id: this.deleteOrganizationId
+    };
+    console.log(payload);
+    this.organizationService.deleteOrganization(payload).subscribe((res: any) => {
+      console.log(res);
+      window.location.reload();
+    });
+  }
 }

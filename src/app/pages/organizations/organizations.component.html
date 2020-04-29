@@ -46,7 +46,7 @@
               <div class="d-flex justify-content-between action-icon">
                 <i class="fa fa-edit" aria-hidden="true"
                    (click)="router.navigate(['/edit-organization', organization.organizationId])"></i>
-                <i class="fa fa-trash" aria-hidden="true"></i>
+                <i class="fa fa-trash" aria-hidden="true" (click)="requestDelete(organization.organizationId, content)"></i>
               </div>
             </td>
           </tr>
@@ -58,3 +58,25 @@
   </div>
 </div>
 
+<!--modal-->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p><strong>Are you sure you want to delete ?</strong></p>
+  </div>
+  <div class="modal-footer">
+    <div class="row text-center" style="width: 100%">
+      <div class="col">
+        <button type="button" class="btn btn-warning" (click)="modal.close('Save click')">Cancel</button>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-primary" (click)="delete()">Delete</button>
+      </div>
+    </div>
+  </div>
+</ng-template>

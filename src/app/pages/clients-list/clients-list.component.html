@@ -24,7 +24,6 @@
             <th scope="col">Client Email</th>
             <th scope="col">Client GST</th>
             <th scope="col">Client PAN</th>
-            <th scope="col">Role</th>
             <th scope="col">Action</th>
           </tr>
           </thead>
@@ -33,17 +32,16 @@
           <tr *ngFor="let client of clients; index as i">
             <td>{{i+1}}</td>
             <td>{{client.organizationName}}</td>
-            <td>{{client.location}}</td>
-            <td>{{client.industry}}</td>
-            <td>{{client.clientDealOwnerName}}</td>
-            <td>{{client.status}}</td>
+            <td>{{client.userName}}</td>
+            <td>{{client.userEmail}}</td>
+            <td>{{client.gst}}</td>
+            <td>{{client.pan}}</td>
             <td>
               <div class="d-flex justify-content-between action-icon">
                 <i class="far fa-share-square" aria-hidden="true"></i>
-                <i class="far fa-share-square" aria-hidden="true"></i>
                 <i class="fa fa-edit" aria-hidden="true"
-                   (click)="router.navigate(['/edit-client', client.orgId])"></i>
-                <i class="fa fa-trash" aria-hidden="true"></i>
+                   (click)="router.navigate(['/edit-client', client.userId])"></i>
+                <i class="fa fa-trash" aria-hidden="true" (click)="requestDelete(client.userId, content)"></i>
               </div>
             </td>
           </tr>
@@ -56,3 +54,25 @@
 </div>
 
 
+<!--modal-->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p><strong>Are you sure you want to delete ?</strong></p>
+  </div>
+  <div class="modal-footer">
+    <div class="row text-center" style="width: 100%">
+      <div class="col">
+        <button type="button" class="btn btn-warning" (click)="modal.close('Save click')">Cancel</button>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-primary" (click)="delete()">Delete</button>
+      </div>
+    </div>
+  </div>
+</ng-template>

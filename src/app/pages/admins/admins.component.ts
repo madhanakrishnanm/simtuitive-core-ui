@@ -16,8 +16,9 @@ export class AdminsComponent implements OnInit {
 
   constructor(public router: Router,
               private formBuilder: FormBuilder,
-              private ngModalService: NgbModal,
-              private adminService: AdminService, private modalService: NgbModal) {
+              private adminService: AdminService,
+              private modalService: NgbModal
+  ) {
   }
 
   open(content) {
