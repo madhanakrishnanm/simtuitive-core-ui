@@ -24,7 +24,6 @@
             <th scope="col">Client Email</th>
             <th scope="col">Client GST</th>
             <th scope="col">Client PAN</th>
-            <th scope="col">Role</th>
             <th scope="col">Action</th>
           </tr>
           </thead>
@@ -33,13 +32,12 @@
           <tr *ngFor="let client of clients; index as i">
             <td>{{i+1}}</td>
             <td>{{client.organizationName}}</td>
-            <td>{{client.location}}</td>
-            <td>{{client.industry}}</td>
-            <td>{{client.clientDealOwnerName}}</td>
-            <td>{{client.status}}</td>
+            <td>{{client.userName}}</td>
+            <td>{{client.userEmail}}</td>
+            <td>{{client.gst}}</td>
+            <td>{{client.pan}}</td>
             <td>
               <div class="d-flex justify-content-between action-icon">
-                <i class="far fa-share-square" aria-hidden="true"></i>
                 <i class="far fa-share-square" aria-hidden="true"></i>
                 <i class="fa fa-edit" aria-hidden="true"
                    (click)="router.navigate(['/edit-client', client.orgId])"></i>
@@ -76,5 +74,4 @@
     </div>
   </div>
 </ng-template>
-
 

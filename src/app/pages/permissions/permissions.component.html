@@ -30,7 +30,7 @@
           </thead>
           <tbody>
           <tr *ngFor="let permission of permissions; index as i">
-            <td>{{i+1}}</td>
+            <td>{{i + 1}}</td>
             <td>{{permission.name}}</td>
             <td>{{permission.type}}</td>
             <td>{{permission.rank}}</td>
@@ -40,9 +40,10 @@
             <td>{{permission.description}}</td>
             <td>
               <div class="d-flex justify-content-around action-icon">
-                <i class="fa fa-edit" aria-hidden="true"
+                <i title="Edit Permission" class="fa fa-edit" aria-hidden="true"
                    (click)="router.navigate(['/edit-permission', permission.permissionId])"></i>
-                <i class="fa fa-trash" aria-hidden="true" (click)="requestDelete(permission.permissionId,content)"></i>
+                <i title="Delete Permission" class="fa fa-trash" aria-hidden="true"
+                   (click)="requestDelete(permission.permissionId,content)"></i>
               </div>
             </td>
           </tr>

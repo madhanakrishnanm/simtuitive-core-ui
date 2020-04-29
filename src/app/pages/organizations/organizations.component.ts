@@ -12,10 +12,10 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 export class OrganizationsComponent implements OnInit {
    deleteId = null;
   organizations = [];
+  deleteOrganizationId = null;
   constructor(public router: Router,
               private formBuilder: FormBuilder,
               private organizationService: OrganizationService, private modalService: NgbModal) { }
-
   ngOnInit(): void {
     const payload = {};
     this.organizationService.getAllOrganization(payload).subscribe((res: any) => {
@@ -23,20 +23,19 @@ export class OrganizationsComponent implements OnInit {
       this.organizations = res.data;
     });
   }
-  requestDelete(userId, modalReference) {
-    this.deleteId = userId;
+  requestDelete(organizationId, modalReference) {
+    this.deleteOrganizationId = organizationId;
     this.modalService.open(modalReference, {centered: true, size: 'sm', windowClass: 'simtuitive-modal'});
-
   }
 
   delete() {
     const payload = {
-      userId: this.deleteId
+      id: this.deleteOrganizationId
     };
     console.log(payload);
-    /*this.organizationService.(payload).subscribe((res: any) => {
+    this.organizationService.deleteOrganization(payload).subscribe((res: any) => {
       console.log(res);
       window.location.reload();
-    });*/
+    });
   }
 }

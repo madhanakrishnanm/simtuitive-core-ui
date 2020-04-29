@@ -42,7 +42,7 @@ const routes: Routes = [
       {path: 'reports', component: ReportsComponent},
       {path: 'add-client', component: AddClientComponent},
       {path: 'invite-client', component: InviteClientComponent},
-      {path: 'edit-client', component: EditClientComponent},
+      {path: 'edit-client/:id', component: EditClientComponent},
       {path: 'view-client', component: ViewClientComponent},
       {path: 'organizations', component: OrganizationsComponent},
       {path: 'add-organization', component: AddOrganizationComponent},

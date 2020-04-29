@@ -8,16 +8,19 @@ export class ClientService {
 
   constructor(private apiService: ApiService) { }
 
-  addClient(payload) {
-    return this.apiService.post('org/add-client', payload);
+  addClient(payload){
+    return this.apiService.post('users/add-user',payload);
   }
-  editClient(payload) {
-    return this.apiService.post('org/update-client', payload);
+  editClient(payload){
+    return this.apiService.put('users/update-user',payload);
   }
-  getAllClient(payload) {
-    return this.apiService.get('org/getall-clients', payload);
+  getAllClient(payload){
+    return this.apiService.get('users/get-users-by-role?role=Client',payload);
   }
-  getClientById(payload) {
-    return this.apiService.post('org/get-client', payload);
+  getClientById(payload){
+    return this.apiService.post('users/get-user-id',payload);
+  }
+  deleteClient(payload){
+    return this.apiService.delete('users/delete-id',payload);
   }
 }

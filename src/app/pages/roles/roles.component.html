@@ -32,9 +32,9 @@
             <td>{{role.description}}</td>
             <td>
               <div class="d-flex justify-content-around action-icon">
-                <i class="fa fa-edit" aria-hidden="true"
+                <i title="Edit Role"  class="fa fa-edit" aria-hidden="true"
                    (click)="router.navigate(['/edit-role', role.roleId])"></i>
-                <i class="fa fa-trash" aria-hidden="true" (click)="requestDelete(role.roleId,content)"></i>
+                <i title="Delete Role"  class="fa fa-trash" aria-hidden="true" (click)="requestDelete(role.roleId,content)"></i>
               </div>
             </td>
           </tr>

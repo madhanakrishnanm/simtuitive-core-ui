@@ -10,9 +10,9 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class RolesComponent implements OnInit {
   roles = [];
-  deleteUserId = null;
+  deleteRoleId = null;
   constructor(public router: Router,
-              private roleService: RoleService,private modalService: NgbModal) {
+              private roleService: RoleService, private modalService: NgbModal) {
   }
 
   ngOnInit(): void {
@@ -22,14 +22,14 @@ export class RolesComponent implements OnInit {
       this.roles = res.data;
     });
   }
-  requestDelete(userId, modalReference) {
-    this.deleteUserId = userId;
+  requestDelete(roleId, modalReference) {
+    this.deleteRoleId = roleId;
     this.modalService.open(modalReference, {centered: true, size: 'sm', windowClass: 'simtuitive-modal'});
   }
 
   delete() {
     const payload = {
-      userId: this.deleteUserId
+      roleId: this.deleteRoleId
     };
     console.log(payload);
     this.roleService.deleteRole(payload).subscribe((res: any) => {

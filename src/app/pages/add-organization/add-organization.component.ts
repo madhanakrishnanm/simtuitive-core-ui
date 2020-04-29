@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {OrganizationService} from '../../services/organization.service';
+import {NgxUiLoaderService} from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-add-organization',
@@ -13,6 +14,7 @@ export class AddOrganizationComponent implements OnInit {
   organizationForm: FormGroup;
   constructor(public router: Router,
               private formBuilder: FormBuilder,
+              private ngxUiLoaderService: NgxUiLoaderService,
               private organizationService: OrganizationService
   ) {
   }
@@ -95,10 +97,15 @@ export class AddOrganizationComponent implements OnInit {
     if (this.organizationForm.invalid) {
       return;
     }
+    this.ngxUiLoaderService.start();
     console.log(this.organizationForm.value);
     const payload = this.organizationForm.value;
     this.organizationService.addOrganization(payload).subscribe((res: any) => {
       console.log(res);
+      this.ngxUiLoaderService.stop();
+      this.router.navigate(['/organizations'])
+    }, error => {
+      this.ngxUiLoaderService.stop();
     });
   }
 }

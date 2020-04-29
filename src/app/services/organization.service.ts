@@ -20,5 +20,7 @@ export class OrganizationService {
   getOrganizationById(payload) {
     return this.apiService.post('org/get-org', payload);
   }
-
+  deleteOrganization(payload) {
+    return this.apiService.post('org/delete-org', payload);
+  }
 }

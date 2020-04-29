@@ -10,7 +10,7 @@ import {AdminService} from '../../services/admin.service';
   styleUrls: ['./permissions.component.scss']
 })
 export class PermissionsComponent implements OnInit {
-  deleteUserId = null;
+  deletePermissionId = null;
   permissions = [];
 
   constructor(public router: Router,
@@ -29,14 +29,14 @@ export class PermissionsComponent implements OnInit {
       this.permissions = res.data;
     });
   }
-  requestDelete(userId, modalReference) {
-    this.deleteUserId = userId;
+  requestDelete(PermissionId, modalReference) {
+    this.deletePermissionId = PermissionId;
     this.modalService.open(modalReference, {centered: true, size: 'sm', windowClass: 'simtuitive-modal'});
   }
 
   delete() {
     const payload = {
-      userId: this.deleteUserId
+      PermissionId:this.deletePermissionId
     };
     console.log(payload);
     this.permissionService.deletePermission(payload).subscribe((res: any) => {
