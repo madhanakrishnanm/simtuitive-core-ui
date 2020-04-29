@@ -6,7 +6,7 @@
 
   <ul class="list-unstyled components">
     <li *ngFor="let  sidebar of sidebars;" [ngClass]="{'active':sidebar === getNameByRoute(sidebar)}">
-      <a [routerLink]="getRouteByName(sidebar)" [title]="sidebar">
+      <a [routerLink]="getRouteByName(sidebar)">
         <i class="fa fa-pie-chart" aria-hidden="true" *ngIf="sidebar==='Dashboard'"></i>
         <i class="fa fa-university" aria-hidden="true" *ngIf="sidebar==='Organization Management'"></i>
         <i class="fa fa-users" aria-hidden="true" *ngIf="sidebar==='Client Management'"></i>
