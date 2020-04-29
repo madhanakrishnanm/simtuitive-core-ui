@@ -36,8 +36,7 @@ export class AdminsComponent implements OnInit {
 
   requestDelete(userId, modalReference) {
     this.deleteUserId = userId;
-    this.modalService.open(modalReference, {centered: true, size: 'sm', windowClass: 'simtuitive-modal'});
-
+    this.modalService.open(modalReference, {centered: true, size: 'sm', windowClass: 'simtuitive-modal'})
   }
 
   delete() {
