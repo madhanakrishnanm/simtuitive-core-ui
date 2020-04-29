@@ -39,9 +39,9 @@
             <td>
               <div class="d-flex justify-content-between action-icon">
                 <i class="far fa-share-square" aria-hidden="true"></i>
-                <i class="fa fa-edit" aria-hidden="true"
+                <i title="Edit Client" class="fa fa-edit" aria-hidden="true"
                    (click)="router.navigate(['/edit-client', client.userId])"></i>
-                <i class="fa fa-trash" aria-hidden="true" (click)="requestDelete(client.userId, content)"></i>
+                <i title="Delete Client" class="fa fa-trash" aria-hidden="true" (click)="requestDelete(client.userId, content)"></i>
               </div>
             </td>
           </tr>
