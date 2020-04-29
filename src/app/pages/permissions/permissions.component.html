@@ -64,11 +64,15 @@
   <div class="modal-body">
     <p>Do You Want to Delete</p>
   </div>
-  <div class="modal-footer">
-    <div class="btn-group">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
-      <button type="button" class="btn btn-outline-dark" (click)="delete()">Delete</button>
+    <div class="modal-footer">
+      <div class="row text-center" style="width: 100%">
+        <div class="col">
+          <button type="button" class="btn btn-warning" (click)="modal.close('Save click')">Cancel</button>
+        </div>
+        <div class="col">
+          <button type="button" class="btn btn-primary" (click)="delete()">Delete</button>
+        </div>
+      </div>
     </div>
-  </div>
 </ng-template>
 
