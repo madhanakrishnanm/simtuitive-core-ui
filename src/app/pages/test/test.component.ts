@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {merge, Observable, Subject} from 'rxjs';
 import {debounceTime, distinctUntilChanged, filter, map} from 'rxjs/operators';
 import {NgbTypeahead} from '@ng-bootstrap/ng-bootstrap';
-
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado',
   'Connecticut', 'Delaware', 'District Of Columbia', 'Federated States Of Micronesia', 'Florida', 'Georgia',
   'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine',
@@ -20,8 +20,13 @@ const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'C
 export class TestComponent implements OnInit {
   peoples = [{name: 'Karyn Wright'}, {name: 'ram'}];
 
-  constructor() {
+  constructor(private modalService: NgbModal) {
   }
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+    console.log('modal opened');
+  }
+
 
   ngOnInit(): void {
   }

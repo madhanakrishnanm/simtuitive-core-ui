@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {RoleService} from '../../services/role.service';
 import {PermissionService} from '../../services/permission.service';
-
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-permissions',
   templateUrl: './permissions.component.html',
@@ -13,8 +13,13 @@ export class PermissionsComponent implements OnInit {
   permissions = [];
 
   constructor(public router: Router,
-              private permissionService: PermissionService) {
+              private permissionService: PermissionService,private modalService: NgbModal) {
   }
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+    console.log('modal opened');
+  }
+
 
   ngOnInit(): void {
     const payload = {};

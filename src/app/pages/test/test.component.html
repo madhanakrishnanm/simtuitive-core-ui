@@ -73,6 +73,7 @@
           </div>
         </div>-->
         <div class="form-group row">
+          <i class="fa fa-trash" aria-hidden="true" (click)="open(content)"></i>
           <label class="col-sm-2 col-form-label">Password</label>
           <div class="col-sm-6">
             <ng-select
@@ -89,6 +90,22 @@
       </form>
     </div>
   </div>
-
 </div>
-
+<!--modal-->
+<ng-template #content let-modal >
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Do You Want to Delete</p>
+  </div>
+  <div class="modal-footer">
+    <div class="btn-group">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+      <button type="button" class="btn btn-outline-dark">Delete</button>
+    </div>
+  </div>
+</ng-template>

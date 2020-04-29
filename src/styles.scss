@@ -24,9 +24,10 @@
   --heading-color: #FF9000 !important;
   --bg-color-primary:#15151B;
   --bg-color-secondary:#202029 !important;
-
+   
 
 }
+
 
 [data-theme="dark"] {
   --primary-color: $primary;
@@ -108,4 +109,23 @@ input[type=number]::-webkit-outer-spin-button {
   -moz-appearance: none;
   appearance: none;
   margin: 0;
+}
+//ng-select styles
+.ng-select .ng-select-container {
+  color: #333;
+  background-color: var(--dark_bg) !important;
+  border:none; 
+  min-height: 36px;
+  align-items: center;
+  border-radius: 11px;
+  padding: 10px;
+}
+
+.ng-select .ng-arrow-wrapper .ng-arrow {
+border-style:none;
+}
+.ng-select .ng-arrow-wrapper .ng-arrow:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f078";
+  color: #FF9000;
 }

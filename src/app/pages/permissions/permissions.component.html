@@ -42,7 +42,7 @@
               <div class="d-flex justify-content-around action-icon">
                 <i class="fa fa-edit" aria-hidden="true"
                    (click)="router.navigate(['/edit-permission', permission.permissionId])"></i>
-                <i class="fa fa-trash" aria-hidden="true" (click)="delete(permission.permissionId)"></i>
+                <i class="fa fa-trash" aria-hidden="true" (click)="open(content)"></i>
               </div>
             </td>
           </tr>
@@ -53,5 +53,22 @@
     </div>
   </div>
 </div>
-
+<!--modal-->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Do You Want to Delete</p>
+  </div>
+  <div class="modal-footer">
+    <div class="btn-group">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+      <button type="button" class="btn btn-outline-dark">Delete</button>
+    </div>
+  </div>
+</ng-template>
 
