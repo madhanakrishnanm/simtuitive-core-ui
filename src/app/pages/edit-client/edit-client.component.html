@@ -1,1 +1,148 @@
-<p>edit-client works!</p>
+<div class="site-content">
+
+  <div class="row">
+    <div class="col">
+      <h1>Edit Client</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xl-7 col-lg-7 col-md-9 col-sm-12 p-lg-5 p-md-3 p-sm-2">
+      <form class="simtuitive-input" [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group row">
+          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Organization</label>
+          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+            <ng-select
+              [items]="organizations"
+              [closeOnSelect]="true"
+              [searchable]="false"
+              bindLabel="organizationName"
+              placeholder="Select Organization"
+              formControlName="organization"
+            >
+            </ng-select>
+            <div *ngIf="f.organization.invalid && (f.organization.touched || f.organization.value)"
+                 class="input-error-report">
+              <div *ngIf="f.organization.errors.required">
+                organization is required.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Client Name</label>
+          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="name"
+            />
+            <div *ngIf="f.name.invalid && (f.name.touched || f.name.value)"
+                 class="input-error-report">
+              <div *ngIf="f.name.errors.required">
+                Client Name is required.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Client Email</label>
+          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="email"
+            />
+            <div *ngIf="f.email.invalid && (f.email.touched || f.email.value)"
+                 class="input-error-report">
+              <div *ngIf="f.email.errors.required">
+                Email is required.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Client GST</label>
+          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="gst"
+            />
+            <div *ngIf="f.gst.invalid && (f.gst.touched || f.gst.value)"
+                 class="input-error-report">
+              <div *ngIf="f.gst.errors.required">
+                GST is required.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form-group row">
+          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Client PAN</label>
+          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+            <input
+              type="number"
+              class="form-control"
+              formControlName="pan"
+            />
+            <div *ngIf="f.pan.invalid && (f.pan.touched || f.pan.value)"
+                 class="input-error-report">
+              <div *ngIf="f.pan.errors.required">
+                PAN is required.
+              </div>
+            </div>
+          </div>
+        </div>
+
+       <!-- <div class="form-group row">
+          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Role</label>
+          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+            <ng-select
+              [items]="roles"
+              [closeOnSelect]="true"
+              [searchable]="false"
+              bindLabel="roleName"
+              placeholder="Select Role"
+              formControlName="role"
+            >
+            </ng-select>
+            <div *ngIf="f.role.invalid && (f.role.touched || f.role.value)"
+                 class="input-error-report">
+              <div *ngIf="f.role.errors.required">
+                Role is required.
+              </div>
+            </div>
+          </div>
+        </div>
+-->
+
+
+        <div class="row justify-content-end pt-4">
+          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 text-center">
+            <!-- <button
+               type="submit"
+               class="btn btn-warning"
+             >
+               Reset
+             </button>-->
+            <button
+              type="submit"
+              class="btn btn-primary"
+            >
+              Update
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+

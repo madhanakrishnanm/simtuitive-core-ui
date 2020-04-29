@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {OrganizationService} from '../../services/organization.service';
+import {NgxUiLoaderService} from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-edit-organization',
@@ -17,6 +18,7 @@ export class EditOrganizationComponent implements OnInit {
   constructor(public router: Router,
               public route: ActivatedRoute,
               private formBuilder: FormBuilder,
+              private ngxUiLoaderService: NgxUiLoaderService,
               private organizationService: OrganizationService
   ) {
   }
@@ -107,11 +109,17 @@ export class EditOrganizationComponent implements OnInit {
     if (this.organizationForm.invalid) {
       return;
     }
+    this.ngxUiLoaderService.start();
     console.log(this.organizationForm.value);
     const payload = this.organizationForm.value;
     payload['id'] = this.organizationId;
     this.organizationService.editOrganization(payload).subscribe((res: any) => {
       console.log(res);
+      this.ngxUiLoaderService.stop();
+      this.router.navigate(['/organizations']);
+    }, error => {
+      console.log(error);
+      this.ngxUiLoaderService.stop();
     });
   }
 }
