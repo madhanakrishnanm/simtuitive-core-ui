@@ -42,7 +42,7 @@
               <div class="d-flex justify-content-around action-icon">
                 <i class="fa fa-edit" aria-hidden="true"
                    (click)="router.navigate(['/edit-permission', permission.permissionId])"></i>
-                <i class="fa fa-trash" aria-hidden="true" (click)="open(content)"></i>
+                <i class="fa fa-trash" aria-hidden="true" (click)="requestDelete(permission.permissionId,content)"></i>
               </div>
             </td>
           </tr>
@@ -67,7 +67,7 @@
   <div class="modal-footer">
     <div class="btn-group">
       <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
-      <button type="button" class="btn btn-outline-dark">Delete</button>
+      <button type="button" class="btn btn-outline-dark" (click)="delete()">Delete</button>
     </div>
   </div>
 </ng-template>
