@@ -10,12 +10,12 @@
     >
       <span><i class="fa fa-navicon"></i></span>
     </button>
-    <div ngbDropdown>
-    <a  class="user-name" style="color: var(--primary);" href="#" ngbDropdownToggle id="userMenus">{{userService.user.userName}}</a>
+    <div ngbDropdown class="mr-5 mt-1">
+    <a  class="user-name" style="color: var(--primary);"  ngbDropdownToggle id="userMenus">{{userService.user.userName}}</a>
       <div ngbDropdownMenu aria-labelledby="userMenus">
-        <a ngbDropdownItem>My Profile</a>
-        <a ngbDropdownItem>Settings</a>
-        <a ngbDropdownItem>Logout</a>
+        <button ngbDropdownItem>My  Profile</button>
+        <button ngbDropdownItem style="border-bottom: 2px solid white">Settings</button>
+        <button ngbDropdownItem style="color:red !important;">Logout</button>
       </div>
     </div>
   </div>
