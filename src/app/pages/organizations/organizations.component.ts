@@ -10,14 +10,12 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./organizations.component.scss']
 })
 export class OrganizationsComponent implements OnInit {
-
+   deleteId = null;
   organizations = [];
   deleteOrganizationId = null;
   constructor(public router: Router,
               private formBuilder: FormBuilder,
-              private modalService: NgbModal,
-              private organizationService: OrganizationService) { }
-
+              private organizationService: OrganizationService, private modalService: NgbModal) { }
   ngOnInit(): void {
     const payload = {};
     this.organizationService.getAllOrganization(payload).subscribe((res: any) => {
