@@ -1,5 +1,139 @@
-
 <div class="site-content">
-  <p>license works!</p>
+
+  <div class="row title-cont">
+    <div class="col">
+      <h1>License Management</h1>
+    </div>
+    <div class="col">
+      <div class="text-right">
+        <button (click)="router.navigate(['add-license'])"
+                class="btn btn-primary">
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col table-cont">
+      <div class="row ml-3">
+        <div class="col-3 search">
+          <div class="input-group">
+            <span class="input-group-prepend"><img src="assets/img/search.svg"></span>
+            <input type="text" class="mx-auto" placeholder="Search">
+          </div>
+        </div>
+        <!--<label class="col-xl-2 col-lg-2  col-md-12 col-sm-12  col-form-label" style="color:white">Roles</label>-->
+        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+          <ng-select
+            [items]="product"
+            [closeOnSelect]="true"
+            [searchable]="false"
+            bindLabel="Product"
+            placeholder="Product"
+          >
+          </ng-select>
+        </div>
+        <!--<label class="col-xl-2 col-lg-2  col-md-12 col-sm-12  col-form-label" style="color:white">Permission Type</label>-->
+        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+          <ng-select
+            [items]="organisation"
+            [closeOnSelect]="true"
+            [searchable]="false"
+            bindLabel="organizationName"
+            placeholder="Organisation"
+          >
+          </ng-select>
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+          <ng-select
+            [items]="organisation"
+            [closeOnSelect]="true"
+            [searchable]="false"
+            bindLabel="organizationName"
+            placeholder="Status"
+          >
+          </ng-select>
+        </div>
+        <div class="col-2 ml-auto">
+          <button class="btn apply-btn">Apply</button>
+        </div>
+      </div>
+      <div class="product-users-table table-responsive">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">License ID</th>
+            <th scope="col">Date of Credit</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Organisation Name</th>
+            <th scope="col"># of Licenses</th>
+            <th scope="col">Payment Status</th>
+            <th scope="col">Credit Limit</th>
+            <th scope="col">Narration</th>
+            <th scope="col">Selling Price</th>
+            <th scope="col">Deal Size</th>
+            <th scope="col">Action</th>
+          </tr>
+          </thead>
+         <!-- <tbody>
+          <tr *ngFor="let permission of permissions; index as i">
+            <td>{{i + 1}}</td>
+            <td>{{permission.name}}</td>
+            <td>{{permission.type}}</td>
+            <td>{{permission.rank}}</td>
+            <td>
+              <span class="badge badge-primary mr-1" *ngFor="let role of permission.roles">{{role.roleName}}</span>
+            </td>
+            <td>{{permission.description}}</td>
+            <td>
+              <div class="d-flex justify-content-around action-icon">
+                <i title="Edit Permission" class="fa fa-edit" aria-hidden="true"
+                   (click)="router.navigate(['/edit-permission', permission.permissionId])"></i>
+                <i title="Delete Permission" class="fa fa-trash" aria-hidden="true"
+                   (click)="requestDelete(permission.permissionId,content)"></i>
+              </div>
+            </td>
+          </tr>
+          </tbody>-->
+        </table>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-2 d-flex align-items-center pagination-btn">
+    <div   style="border-right: 1px solid #707070;">
+      <button class="arrow-btn"><i class="fas fa-angle-left"></i></button>
+    </div>
+    <div class="ml-auto">
+      <p>1 to 4</p>
+    </div>
+    <div class="ml-auto" style="border-left: 1px solid #707070;">
+      <button class="arrow-btn"><i class="fas fa-angle-right"></i></button>
+    </div>
+  </div>
 </div>
+<!--modal-->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Do You Want to Delete</p>
+  </div>
+  <div class="modal-footer">
+    <div class="row text-center" style="width: 100%">
+      <div class="col">
+        <button type="button" class="btn btn-warning" (click)="modal.close('Save click')">Cancel</button>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-primary" (click)="delete()">Delete</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
 
