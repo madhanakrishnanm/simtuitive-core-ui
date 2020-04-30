@@ -6,8 +6,13 @@
     </div>
     <div class="col">
       <div class="text-right">
-        <button (click)="router.navigate(['add-client'])"
-                class="btn btn-primary">Add Client
+        <button
+          (click)="router.navigate(['invite-client'])"
+          class="btn btn-secondary mr-3">Invite Client
+        </button>
+        <button
+          (click)="router.navigate(['add-client'])"
+          class="btn btn-primary">Add Client
         </button>
       </div>
     </div>
@@ -38,6 +43,7 @@
             <td>{{client.pan}}</td>
             <td>
               <div class="d-flex justify-content-between action-icon">
+                <i title="Invite Client" class="fa fa-share-square" aria-hidden="true"></i>
                 <i title="Edit Client" class="fa fa-edit" aria-hidden="true"
                    (click)="router.navigate(['/edit-client', client.userId])"></i>
                 <i title="Delete Client" class="fa fa-trash" aria-hidden="true"

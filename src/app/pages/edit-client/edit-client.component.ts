@@ -36,6 +36,7 @@ export class EditClientComponent implements OnInit {
       email: ['', [Validators.required, this.emailValidator]],
       gst: ['', [Validators.required]],
       pan: ['', [Validators.required]],
+      role: ['', [Validators.required]],
     });
 
     this.subscribe = this.route.params.subscribe(params => {
@@ -57,8 +58,14 @@ export class EditClientComponent implements OnInit {
           this.organizationService.getAllOrganization({}).subscribe((res: any) => {
             console.log(res);
             this.organizations = res.data;
-            this.client.organization = this.roles.find(o => o.roleName === 'Client')
-            this.clientForm.patchValue(this.client);
+            this.client.organization = this.organizations.find(o => o.organizationId === client['organisationId'])
+            this.roleService.getAllRole({}).subscribe((res: any) => {
+              this.roles = res.data;
+              this.client.role = this.roles.find(o => o.roleName === client.role)
+              console.log(this.client);
+              this.clientForm.patchValue(this.client);
+            });
+
           }, error => {
             this.ngxUiLoaderService.stop();
           });
@@ -102,13 +109,15 @@ export class EditClientComponent implements OnInit {
       return;
     }
     this.ngxUiLoaderService.start();
-    console.log(this.clientForm.value);
     const payload = this.clientForm.value;
-    payload['organizationId'] = payload['organization']['organizationId']
+    console.log(this.clientForm.value);
+    payload['userId'] = this.clientId;
+    payload['organisationId'] = payload['organization']['organizationId']
     delete payload['organization'];
     payload['roleId'] = payload['role']['roleId'];
     payload['role'] = payload['role']['roleName'];
-    this.clientService.addClient(payload).subscribe((res: any) => {
+    console.log(payload);
+    this.clientService.editClient(payload).subscribe((res: any) => {
       console.log(res);
       this.ngxUiLoaderService.stop();
       this.router.navigate(['/clients'])
