@@ -24,6 +24,7 @@
   --heading-color: #FF9000 !important;
   --bg-color-primary: #15151B;
   --bg-color-secondary: #202029 !important;
+  --pagination-border:#707070;
 
 }
 
@@ -176,5 +177,58 @@ input[type=number]::-webkit-outer-spin-button {
 
   .modal-footer {
     border: 0 !important;
+  }
+}
+
+input
+{
+  &:focus {
+    outline: none !important;
+  }
+}
+//styles for pagination & Searchbar
+.search
+{
+  background: var(--bg-color-secondary);
+  padding: 7px;
+  border-radius:10px;
+  img
+  {
+    width:22px;
+  }
+  input
+  {
+    background: transparent;
+    border:none;
+    color:white;
+    text-align: center;
+    &::placeholder
+    {
+      text-align: center;
+      font-size: 16px;
+    }
+    &:focus
+    {
+      border:0 !important;
+    }
+  }
+}
+.arrow-btn
+{
+  background-color:var(--bg-color-secondary);
+  border:0;
+  font-size:22px;
+  color:var(--primary);
+}
+.pagination-btn
+{
+  padding:1px;
+  background-color:var(--bg-color-secondary);
+  float: right;
+  border: 1px solid var(--pagination-border);
+  border-radius: 8px;
+  p
+  {
+    color:white;
   }
 }
