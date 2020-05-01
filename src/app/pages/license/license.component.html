@@ -19,7 +19,7 @@
         <div class="col-3 search">
           <div class="input-group">
             <span class="input-group-prepend"><img src="assets/img/search.svg"></span>
-            <input type="text" class="mx-auto" placeholder="Search">
+            <input type="text" placeholder="Search">
           </div>
         </div>
         <!--<label class="col-xl-2 col-lg-2  col-md-12 col-sm-12  col-form-label" style="color:white">Roles</label>-->
@@ -54,7 +54,7 @@
           >
           </ng-select>
         </div>
-        <div class="col-2 ml-auto">
+        <div class="col-2">
           <button class="btn apply-btn">Apply</button>
         </div>
       </div>
@@ -65,7 +65,7 @@
             <th scope="col">License ID</th>
             <th scope="col">Date of Credit</th>
             <th scope="col">Product Name</th>
-            <th scope="col">Organisation Name</th>
+            <th scope="col">Organization Name</th>
             <th scope="col"># of Licenses</th>
             <th scope="col">Payment Status</th>
             <th scope="col">Credit Limit</th>
@@ -75,42 +75,34 @@
             <th scope="col">Action</th>
           </tr>
           </thead>
-         <!-- <tbody>
-          <tr *ngFor="let permission of permissions; index as i">
-            <td>{{i + 1}}</td>
-            <td>{{permission.name}}</td>
-            <td>{{permission.type}}</td>
-            <td>{{permission.rank}}</td>
-            <td>
-              <span class="badge badge-primary mr-1" *ngFor="let role of permission.roles">{{role.roleName}}</span>
-            </td>
-            <td>{{permission.description}}</td>
+         <tbody>
+          <tr *ngFor="let data of datas; index as i">
+            <td>{{data.licenseId}}</td>
+            <td>{{data.dateOfCredit}}</td>
+            <td>{{data.ProductName}}</td>
+            <td>{{data.OrganizationName}}</td>
+            <td>{{data.Licenses}}</td>
+            <td>{{data.PaymentStatus}}</td>
+            <td>{{data.CreditLimit}}</td>
+            <td>{{data.Narration}}</td>
+            <td>{{data.SellingPrice}}</td>
+            <td>{{data.DealSize}}</td>
             <td>
               <div class="d-flex justify-content-around action-icon">
                 <i title="Edit Permission" class="fa fa-edit" aria-hidden="true"
-                   (click)="router.navigate(['/edit-permission', permission.permissionId])"></i>
+                   (click)="router.navigate(['/edit-permission',data.licenseId])"></i>
                 <i title="Delete Permission" class="fa fa-trash" aria-hidden="true"
-                   (click)="requestDelete(permission.permissionId,content)"></i>
+                   (click)="requestDelete(data.licenseId,content)"></i>
               </div>
             </td>
           </tr>
-          </tbody>-->
+          </tbody>
         </table>
       </div>
 
     </div>
   </div>
-  <div class="col-2 d-flex align-items-center pagination-btn">
-    <div   style="border-right: 1px solid #707070;">
-      <button class="arrow-btn"><i class="fas fa-angle-left"></i></button>
-    </div>
-    <div class="ml-auto">
-      <p>1 to 4</p>
-    </div>
-    <div class="ml-auto" style="border-left: 1px solid #707070;">
-      <button class="arrow-btn"><i class="fas fa-angle-right"></i></button>
-    </div>
-  </div>
+  <app-pagination></app-pagination>
 </div>
 <!--modal-->
 <ng-template #content let-modal>

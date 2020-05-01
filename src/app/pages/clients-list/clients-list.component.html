@@ -6,14 +6,39 @@
     </div>
     <div class="col">
       <div class="text-right">
+        <button (click)="openModal(invite_1)"
+                class="btn btn-primary options invite">Invite
+        </button>
         <button (click)="router.navigate(['add-client'])"
-                class="btn btn-primary">Add Client
+                class="btn btn-primary ml-2 options">Add Client
         </button>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col table-cont">
+      <div class="row ml-3">
+        <div class="col-3 search">
+          <div class="input-group">
+            <span class="input-group-prepend"><img src="assets/img/search.svg"></span>
+            <input type="text"  placeholder="Search">
+          </div>
+        </div>
+        <!--<label class="col-xl-2 col-lg-2  col-md-12 col-sm-12  col-form-label" style="color:white">Roles</label>-->
+        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 ml-2">
+          <ng-select
+            [items]="organization"
+            [closeOnSelect]="true"
+            [searchable]="false"
+            bindLabel="organizationName"
+            placeholder="Organization"
+          >
+          </ng-select>
+        </div>
+        <div class="col-2">
+          <button class="btn apply-btn">Apply</button>
+        </div>
+      </div>
       <div class="product-users-table table-responsive">
         <table class="table">
           <thead>
@@ -34,10 +59,12 @@
             <td>{{client.organizationName}}</td>
             <td>{{client.userName}}</td>
             <td>{{client.userEmail}}</td>
-            <td>{{client.gst}}</td>
-            <td>{{client.pan}}</td>
+            <td>{{client.GST}}</td>
+            <td>{{client.PAN}}</td>
             <td>
               <div class="d-flex justify-content-between action-icon">
+                <i title="Edit Client" class="fa fa-share" aria-hidden="true"
+                   (click)="requestInvitation(client.userId,client.userEmail, invite)"></i>
                 <i title="Edit Client" class="fa fa-edit" aria-hidden="true"
                    (click)="router.navigate(['/edit-client', client.userId])"></i>
                 <i title="Delete Client" class="fa fa-trash" aria-hidden="true"
@@ -51,8 +78,9 @@
 
     </div>
   </div>
+  <app-pagination></app-pagination>
 </div>
-<!--modal-->
+<!--modal for Delete-->
 <ng-template #content let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>
@@ -74,4 +102,68 @@
     </div>
   </div>
 </ng-template>
-
+<ng-template #invite let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Invite</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="text-align: center;">
+    <p><strong>Invitation send to {{inviteEmailId}}</strong></p>
+  </div>
+  <div class="modal-footer">
+    <div class="row text-center" style="width: 100%">
+      <div class="col">
+        <button type="button" class="btn btn-warning" (click)="modal.close('Save click')">Cancel</button>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-primary">Invite</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template #invite_1 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Invite</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="text-align: center;">
+    <div class="row">
+      <label class="col-xl-7 col-lg-7 col-md-12 col-sm-12  col-form-label" style="color:white;text-align: start">Organization Name</label>
+    <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 ml-2">
+      <ng-select
+        [items]="organization"
+        [closeOnSelect]="true"
+        [searchable]="false"
+        bindLabel="organizationName"
+        placeholder="Name"
+      >
+      </ng-select>
+    </div>
+      <label class="col-xl-7 col-lg-7  col-md-12 col-sm-12  col-form-label mt-3" style="color:white;text-align: start">Admin Email Address</label>
+      <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 ml-2 mt-3">
+        <ng-select
+          [items]="organization"
+          [closeOnSelect]="true"
+          [searchable]="false"
+          bindLabel="organizationName"
+          placeholder="Email"
+        >
+        </ng-select>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="row text-center" style="width: 100%">
+      <div class="col">
+        <button type="button" class="btn btn-warning" (click)="modal.close('Save click')">Cancel</button>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-primary">Invite</button>
+      </div>
+    </div>
+  </div>
+</ng-template>

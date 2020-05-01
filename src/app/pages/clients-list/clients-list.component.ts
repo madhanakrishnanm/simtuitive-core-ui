@@ -11,7 +11,17 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./clients-list.component.scss']
 })
 export class ClientsListComponent implements OnInit {
-  clients = [];
+  organization = [];
+  inviteEmailId = '';
+  clientId;
+  clients = [{
+    userId: 12,
+    organizationName: 'Mark University',
+    userName: 'Thornton',
+    userEmail: 'Otto@gmail.com',
+    GST: '767985',
+    PAN: '767985',
+  }];
   deleteClientId = null;
   constructor(public router: Router,
               private formBuilder: FormBuilder,
@@ -30,6 +40,14 @@ export class ClientsListComponent implements OnInit {
     this.deleteClientId = userId;
     this.modalService.open(modalReference, {centered: true, size: 'sm', windowClass: 'simtuitive-modal'});
 
+  }
+  requestInvitation(userId, userEmail, modalReference) {
+    this.clientId = userId;
+    this.inviteEmailId = userEmail;
+    this.modalService.open(modalReference, {centered: true, size: 'md', windowClass: 'simtuitive-modal'});
+  }
+  openModal(modalReference) {
+    this.modalService.open(modalReference, {centered: true, size: 'md', windowClass: 'simtuitive-modal'});
   }
 
   delete() {

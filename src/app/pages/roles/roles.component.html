@@ -19,10 +19,9 @@
         <div class="col-3 search">
           <div class="input-group">
             <span class="input-group-prepend"><img src="assets/img/search.svg"></span>
-            <input type="text" class="mx-auto" placeholder="Search">
+            <input type="text"  placeholder="Search">
           </div>
         </div>
-        <label class="col-xl-1 col-lg-1 col-md-12 col-sm-12  col-form-label" style="color:white">Roles</label>
         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
           <ng-select
             [items]="roles"
@@ -63,17 +62,7 @@
 
     </div>
   </div>
-  <div class="col-2 d-flex align-items-center pagination-btn">
-    <div   style="border-right: 1px solid #707070;">
-      <button class="arrow-btn"><i class="fas fa-angle-left"></i></button>
-    </div>
-    <div class="ml-auto">
-      <p>1 to 4</p>
-    </div>
-    <div class="ml-auto" style="border-left: 1px solid #707070;">
-      <button class="arrow-btn"><i class="fas fa-angle-right"></i></button>
-    </div>
-  </div>
+    <app-pagination></app-pagination>
 </div>
 <!--modal-->
 <ng-template #content let-modal>
