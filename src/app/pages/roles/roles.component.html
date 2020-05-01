@@ -16,24 +16,24 @@
   <div class="row">
     <div class="col table-cont">
       <div class="row ml-3">
-        <div class="col-4 search">
+        <div class="col-3 search">
           <div class="input-group">
             <span class="input-group-prepend"><img src="assets/img/search.svg"></span>
-            <input type="text" placeholder="Search">
+            <input type="text" class="mx-auto" placeholder="Search">
           </div>
         </div>
-        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Roles</label>
-        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+        <label class="col-xl-1 col-lg-1 col-md-12 col-sm-12  col-form-label" style="color:white">Roles</label>
+        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
           <ng-select
             [items]="roles"
             [closeOnSelect]="true"
             [searchable]="false"
             bindLabel="organizationName"
-            placeholder="Select Organization"
+            placeholder="Role"
           >
           </ng-select>
         </div>
-    </div>
+      </div>
       <div class="product-users-table table-responsive">
         <table class="table">
           <thead>
@@ -63,7 +63,7 @@
 
     </div>
   </div>
-  <div class="col-3 d-flex align-items-center pagination-btn">
+  <div class="col-2 d-flex align-items-center pagination-btn">
     <div   style="border-right: 1px solid #707070;">
       <button class="arrow-btn"><i class="fas fa-angle-left"></i></button>
     </div>

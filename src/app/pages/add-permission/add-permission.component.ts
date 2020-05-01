@@ -55,14 +55,14 @@ export class AddPermissionComponent implements OnInit {
     if (this.permissionForm.invalid) {
       return;
     }
-    let roleIds = this.f.roleIds.value;
-    let newRoles = [];
+    const roleIds = this.f.roleIds.value;
+    const newRoles = [];
     for (const role of roleIds) {
-      newRoles.push(role['roleId']);
+      newRoles.push(role.roleId);
     }
 
     this.ngxUiLoaderService.start();
-    const payload = {...this.permissionForm.value, roleIds:newRoles};
+    const payload = {...this.permissionForm.value, roleIds: newRoles};
     console.log(payload);
     this.permissionService.addPermission(payload).subscribe((res: any) => {
       this.ngxUiLoaderService.stop();

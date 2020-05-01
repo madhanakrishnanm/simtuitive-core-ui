@@ -12,7 +12,7 @@ import {AdminService} from '../../services/admin.service';
 export class PermissionsComponent implements OnInit {
   deletePermissionId = null;
   permissions = [];
-
+  permissionTypes = [];
   constructor(public router: Router,
               private permissionService: PermissionService, private modalService: NgbModal) {
   }
@@ -36,7 +36,7 @@ export class PermissionsComponent implements OnInit {
 
   delete() {
     const payload = {
-      PermissionId:this.deletePermissionId
+      PermissionId: this.deletePermissionId
     };
     console.log(payload);
     this.permissionService.deletePermission(payload).subscribe((res: any) => {

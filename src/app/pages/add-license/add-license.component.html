@@ -1,0 +1,145 @@
+<div class="site-content">
+  <div class="row">
+    <div class="col">
+      <h1>License Management</h1>
+    </div>
+  </div>
+  <div class="row">
+     <div class="col-xl-7 col-lg-7 col-md-9 col-sm-12 p-lg-5 p-md-3 p-sm-2">
+       <div class="form-group row">
+         <label class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-form-label sub-label">Create License</label>
+       </div>
+         <form [formGroup]="addLicenceForm" (ngSubmit)="onSubmit()">
+         <div class="form-group row">
+           <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Product</label>
+            <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
+              <ng-select
+                [items]="product"
+                [multiple]="true"
+                [closeOnSelect]="true"
+                [searchable]="false"
+                [loading]="isLoading"
+                bindLabel="roleName"
+                placeholder="Product"
+                formControlName="product"
+              >
+              </ng-select>
+              <div *ngIf="f.product.invalid && (f.product.touched || f.product.value)"
+                   class="input-error-report">
+                <div *ngIf="f.product.errors.required">
+                  Product is required.
+                </div>
+              </div>
+            </div>
+         </div>
+       <div class="form-group row">
+         <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Organisation</label>
+         <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
+           <ng-select
+             [items]="organisations"
+             [multiple]="true"
+             [closeOnSelect]="true"
+             [searchable]="false"
+             [loading]="isLoading"
+             bindLabel="roleName"
+             placeholder="Organisation"
+             formControlName="organisation"
+           >
+           </ng-select>
+           <div *ngIf="f.organisation.invalid && (f.organisation.touched || f.organisation.value)"
+                class="input-error-report">
+             <div *ngIf="f.organisation.errors.required">
+               Oraginsation is required.
+             </div>
+           </div>
+         </div>
+       </div>
+       <div class="form-group row">
+         <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Enter Number of Licence</label>
+         <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
+            <input type="text"   class="form-control" formControlName="numberOfLicence">
+           <div *ngIf="f.numberOfLicence.invalid && (f.numberOfLicence.touched || f.numberOfLicence.value)"
+                class="input-error-report">
+             <div *ngIf="f.numberOfLicence.errors.required">
+               number of licence is required.
+             </div>
+           </div>
+         </div>
+       </div>
+       <div class="form-group row">
+         <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Payment Status</label>
+         <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
+           <ng-select
+             [items]="paymentStatus"
+             [multiple]="true"
+             [closeOnSelect]="true"
+             [searchable]="false"
+             [loading]="isLoading"
+             bindLabel="roleName"
+             placeholder="Payment Status"
+             formControlName="paymentStatus"
+           >
+           </ng-select>
+           <div *ngIf="f.paymentStatus.invalid && (f.paymentStatus.touched || f.paymentStatus.value)"
+                class="input-error-report">
+             <div *ngIf="f.paymentStatus.errors.required">
+               payment status is required.
+             </div>
+           </div>
+         </div>
+       </div>
+       <div class="form-group row">
+         <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Credit Limit</label>
+         <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
+           <input type="text" class="form-control" formControlName="creditLimit">
+           <div *ngIf="f.creditLimit.invalid && (f.creditLimit.touched || f.creditLimit.value)"
+                class="input-error-report">
+             <div *ngIf="f.creditLimit.errors.required">
+               credit Limit is required.
+             </div>
+           </div>
+         </div>
+     </div>
+       <div class="form-group row">
+         <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Narration</label>
+         <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
+           <textarea row="3" class="form-control" formControlName="narration"></textarea>
+           <div *ngIf="f.narration.invalid && (f.narration.touched || f.narration.value)"
+                class="input-error-report">
+             <div *ngIf="f.narration.errors.required">
+               narraion is required.
+             </div>
+           </div>
+         </div>
+       </div>
+       <div class="form-group row">
+         <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Selling Price per License</label>
+         <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
+           <input type="text" class="form-control" formControlName="sellingPricePerLicense">
+           <div *ngIf="f.sellingPricePerLicense.invalid && (f.sellingPricePerLicense.touched || f.sellingPricePerLicense.value)"
+                class="input-error-report">
+             <div *ngIf="f.sellingPricePerLicense.errors.required">
+               selling price per Licence is required.
+             </div>
+           </div>
+         </div>
+       </div>
+       <div class="form-group row">
+         <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Deal Size</label>
+         <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
+           <input type="text" class="form-control" formControlName="dealSize">
+           <div *ngIf="f.dealSize.invalid && (f.dealSize.touched || f.dealSize.value)"
+                class="input-error-report">
+             <div *ngIf="f.dealSize.errors.required">
+               deal size is required
+             </div>
+           </div>
+         </div>
+       </div>
+       <div class="col-xl-11 col-lg-11 col-md-10 xol-sm-10 text-lg-right">
+         <button type="submit" class="btn credit-btn">Credit license</button>
+       </div>
+         </form>
+  </div>
+</div>
+</div>

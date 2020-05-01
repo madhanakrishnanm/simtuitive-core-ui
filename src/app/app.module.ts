@@ -33,6 +33,8 @@ import {EditPermissionModule} from './pages/edit-permission/edit-permission.modu
 import {NgSelectModule} from '@ng-select/ng-select';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
+import {LicenseModule} from './pages/license/license.module';
+import {AddLicenseModule} from './pages/add-license/add-license.module';
 
 
 @NgModule({
@@ -51,6 +53,7 @@ import { UpdatePasswordComponent } from './pages/update-password/update-password
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
+    LicenseModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
@@ -63,6 +66,7 @@ import { UpdatePasswordComponent } from './pages/update-password/update-password
     ClientsListModule,
     EditClientModule,
     AddClientModule,
+    AddLicenseModule,
     AdminsModule,
     AddAdminModule,
     EditAdminModule,
