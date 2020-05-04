@@ -7,7 +7,7 @@ import {v4 as uuidv4} from 'uuid';
 import {NgxUiLoaderService} from 'ngx-ui-loader';
 
 @Component({
-  selector:p-login',
+  selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })

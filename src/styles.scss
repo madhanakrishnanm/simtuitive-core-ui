@@ -195,17 +195,16 @@ input
   border-radius:10px;
   img
   {
-    width:22px;
+    width:20px;
   }
   input
   {
     background: transparent;
     border:none;
     color:white;
-    text-align: center;
+    padding-left: 8px;
     &::placeholder
     {
-      text-align: center;
       font-size: 16px;
     }
     &:focus
@@ -216,10 +215,10 @@ input
 }
 .arrow-btn
 {
-  background-color:var(--bg-color-secondary);
+  background-color:var(--primary);
   border:0;
   font-size:22px;
-  color:var(--primary);
+  color:#fff;
 }
 .pagination-btn
 {
@@ -232,4 +231,13 @@ input
   {
     color:white;
   }
+}
+//for Pagination
+.pagination-input
+{
+  text-align: center;
+  width: 30px;
+  background-color:#ffff;
+  color:#15151B;
+  border:0;
 }

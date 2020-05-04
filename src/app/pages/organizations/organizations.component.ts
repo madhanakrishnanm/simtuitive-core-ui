@@ -11,6 +11,8 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class OrganizationsComponent implements OnInit {
    deleteId = null;
+  location = [];
+  industry = [];
   organizations = [];
   deleteOrganizationId = null;
   constructor(public router: Router,

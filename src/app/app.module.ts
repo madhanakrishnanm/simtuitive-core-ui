@@ -36,7 +36,6 @@ import { UpdatePasswordComponent } from './pages/update-password/update-password
 import {LicenseModule} from './pages/license/license.module';
 import {AddLicenseModule} from './pages/add-license/add-license.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,7 +79,6 @@ import {AddLicenseModule} from './pages/add-license/add-license.module';
     TimeagoModule
   ],
   providers: [],
-  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -44,7 +44,7 @@
           >
           </ng-select>
         </div>
-        <div class="col-2 ml-auto">
+        <div class="col-2">
           <button class="btn apply-btn">Apply</button>
         </div>
       </div>
@@ -83,20 +83,9 @@
           </tbody>
         </table>
       </div>
-
     </div>
   </div>
-  <div class="col-2 d-flex align-items-center pagination-btn">
-    <div   style="border-right: 1px solid #707070;">
-      <button class="arrow-btn"><i class="fas fa-angle-left"></i></button>
-    </div>
-    <div class="ml-auto">
-      <p>1 to 4</p>
-    </div>
-    <div class="ml-auto" style="border-left: 1px solid #707070;">
-      <button class="arrow-btn"><i class="fas fa-angle-right"></i></button>
-    </div>
-  </div>
+<app-pagination></app-pagination>
 </div>
 <!--modal-->
 <ng-template #content let-modal>

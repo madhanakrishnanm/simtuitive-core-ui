@@ -9,6 +9,18 @@ import {PermissionService} from '../../services/permission.service';
 })
 export class LicenseComponent implements OnInit {
   product = [];
+  datas = [{
+    licenseId: '126754',
+    dateOfCredit: '15.8.20',
+    ProductName: 'Python',
+    OrganizationName: 'Mark University',
+    Licenses: '34567',
+    PaymentStatus: 'Pending',
+    CreditLimit: '90 Days',
+    Narration: 'PO Done',
+    SellingPrice: '$10000',
+    DealSize: '$10000'
+  }];
   organisation = [];
   status = [];
   licenseID;
