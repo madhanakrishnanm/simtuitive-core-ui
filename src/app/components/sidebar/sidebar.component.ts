@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UsersService} from '../../services/users.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,7 +12,9 @@ export class SidebarComponent implements OnInit {
   permissions = [];
   selectedSidebar = 'Dashboard';
 
-  constructor(private userService: UsersService) { }
+  constructor(private userService: UsersService,
+              private router: Router,
+  ) { }
 
   ngOnInit(): void {
     this.getUser();
@@ -78,6 +81,8 @@ export class SidebarComponent implements OnInit {
         }
       }
       console.log(this.sidebars);
+    },error => {
+      this.router.navigate(['/login'])
     });
   }
 }
