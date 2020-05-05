@@ -16,10 +16,10 @@
   <div class="row">
     <div class="col table-cont">
       <div class="row ml-3">
-        <div class="col-3 search">
-          <div class="input-group">
+        <div class="col-3">
+          <div class="input-group search align-content-center">
             <span class="input-group-prepend"><img src="assets/img/search.svg"></span>
-            <input type="text" class="mx-auto" placeholder="Search">
+            <input type="text" class="form-control" placeholder="Search">
           </div>
         </div>
         <!--<label class="col-xl-2 col-lg-2  col-md-12 col-sm-12  col-form-label" style="color:white">Roles</label>-->
@@ -29,7 +29,7 @@
             [closeOnSelect]="true"
             [searchable]="false"
             bindLabel="organizationName"
-            placeholder="Product"
+            placeholder="Type"
           >
           </ng-select>
         </div>
@@ -40,7 +40,7 @@
             [closeOnSelect]="true"
             [searchable]="false"
             bindLabel="organizationName"
-            placeholder="Organisation"
+            placeholder="Role"
           >
           </ng-select>
         </div>

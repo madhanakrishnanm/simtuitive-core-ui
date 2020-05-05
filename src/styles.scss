@@ -190,54 +190,26 @@ input
 .search
 {
   background: var(--bg-color-secondary);
-  padding: 7px;
+  padding:5px;
   height:36px;
   border-radius:10px;
   img
   {
     width:20px;
   }
-  input
+  .form-control
   {
     background: transparent;
-    border:none;
+    border:0 !important;
     color:white;
-    padding-left: 8px;
+    outline: none !important;
+    box-shadow: none !important;
     &::placeholder
     {
       font-size: 16px;
     }
-    &:focus
-    {
-      border:0 !important;
-    }
   }
 }
-.arrow-btn
-{
-  background-color:var(--primary);
-  border:0;
-  font-size:22px;
-  color:#fff;
-}
-.pagination-btn
-{
-  padding:1px;
-  background-color:var(--bg-color-secondary);
-  float: right;
-  border: 1px solid var(--pagination-border);
-  border-radius: 8px;
-  p
-  {
-    color:white;
-  }
-}
-//for Pagination
-.pagination-input
-{
-  text-align: center;
-  width: 30px;
-  background-color:#ffff;
-  color:#15151B;
-  border:0;
-}
+
+
+

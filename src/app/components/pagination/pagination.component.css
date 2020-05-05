@@ -1,9 +1,18 @@
 .pagination-input {
   text-align: center;
   width: 30px;
-  background-color: #ffff;
-  color: #15151B;
+  background-color: var(--bg-color-secondary);
+  color: var(--primary);
   border: 0;
+}
+
+.arrow-btn {
+  background-color: var(--primary);
+  border: 0;
+  font-size: 22px;
+  color: #fff;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 /*# sourceMappingURL=pagination.component.css.map */
