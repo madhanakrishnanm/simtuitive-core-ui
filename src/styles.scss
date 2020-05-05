@@ -47,6 +47,12 @@
   --bg-color-primary: $dark_bg;
   --bg-color-secondary: $light_bg;
 }
+//fonts
+@font-face
+{
+    font-family:'nucleo';
+    src:url('~assets/fonts/nucleo-icons.ttf');
+}
 
 html {
   overflow-x: hidden;
