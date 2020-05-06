@@ -11,6 +11,23 @@ export class AddEventComponent implements OnInit {
   clients: any = ['Microsoft', 'HP', 'IBM', 'InfoSys'];
   products: any = ['Java', 'Python', 'C#'];
   modules: any = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
+  tempModules:any = [{
+    moduleId:1,
+    isTollPassRequired:false,
+    when:null
+  },{
+    moduleId:2,
+    isTollPassRequired:false,
+    when:null
+  },{
+    moduleId:3,
+    isTollPassRequired:false,
+    when:null
+  },{
+    moduleId:4,
+    isTollPassRequired:false,
+    when:null
+  },];
   options: any = ['yes', 'no'];
   EventFormGroup: FormGroup;
   modulesDetails: any = [];
