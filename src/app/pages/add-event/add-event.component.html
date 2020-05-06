@@ -1,0 +1,131 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <h2>Add Event</h2>
+    </div>
+  </div>
+  <div class="row">
+    <form [formGroup]="EventFormGroup">
+    <div class="col-6 mt-5">
+      <div class="form-group row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Select-Client</label>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+          <ng-select
+            [closeOnSelect]="true"
+            [searchable]="false"
+            bindLabel="organizationName"
+            formControlName="client"
+          >
+          </ng-select>
+          <!--<div *ngIf="f.organization.invalid && (f.organization.touched || f.organization.value)"
+               class="input-error-report">
+            <div *ngIf="f.organization.errors.required">
+              organization is required.
+            </div>
+          </div>-->
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Select Product/Course</label>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+          <ng-select
+            [closeOnSelect]="true"
+            [searchable]="false"
+            bindLabel="organizationName"
+            formControlName="product"
+          >
+          </ng-select>
+          <!--<div *ngIf="f.organization.invalid && (f.organization.touched || f.organization.value)"
+               class="input-error-report">
+            <div *ngIf="f.organization.errors.required">
+              organization is required.
+            </div>
+          </div>-->
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Event Name</label>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+          <ng-select
+            [closeOnSelect]="true"
+            [searchable]="false"
+            bindLabel="organizationName"
+            formControlName="EventName"
+          >
+          </ng-select>
+          <!--<div *ngIf="f.organization.invalid && (f.organization.touched || f.organization.value)"
+               class="input-error-report">
+            <div *ngIf="f.organization.errors.required">
+              organization is required.
+            </div>
+          </div>-->
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Toll Gates</label>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input"   formControlName="tollgates" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+            <label class="form-check-label" for="inlineRadio1">Yes</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input"   formControlName="tollgates" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio2">No</label>
+          </div>
+          <!--<div *ngIf="f.organization.invalid && (f.organization.touched || f.organization.value)"
+               class="input-error-report">
+            <div *ngIf="f.organization.errors.required">
+              organization is required.
+            </div>
+          </div>-->
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Event Start Date</label>
+        <div class="col-xl-7 col-lg-7 ml-3 col-md-12 col-sm-12 d-flex custom-input align-content-center">
+          <input type="text" class="form-control">
+          <span class="input-group-append"><img src="assets/interface.svg"></span>
+          <!--<div *ngIf="f.organization.invalid && (f.organization.touched || f.organization.value)"
+               class="input-error-report">
+            <div *ngIf="f.organization.errors.required">
+              organization is required.
+            </div>
+          </div>-->
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Event End Date</label>
+        <div class="col-xl-7 col-lg-7 ml-3 col-md-12 col-sm-12 d-flex custom-input align-content-center">
+          <input type="text" class="form-control">
+          <span class="input-group-append"><img src="assets/interface.svg"></span>
+          <!--<div *ngIf="f.organization.invalid && (f.organization.touched || f.organization.value)"
+               class="input-error-report">
+            <div *ngIf="f.organization.errors.required">
+              organization is required.
+            </div>
+          </div>-->
+        </div>
+      </div>
+    </div>
+    <div class="col-6 mt-5">
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">#Module</th>
+          <th scope="col">Toll Pass Before Module</th>
+          <th scope="col">Toll Pass After Module</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>1</td>
+          <td>Y</td>
+          <td>N</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    </form>
+  </div>
+</div>
+

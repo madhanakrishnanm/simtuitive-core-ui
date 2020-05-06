@@ -28,6 +28,7 @@ import {TestComponent} from './pages/test/test.component';
 import {ForgotPasswordComponent} from './pages/forgot-password/forgot-password.component';
 import {UpdatePasswordComponent} from './pages/update-password/update-password.component';
 import {AddLicenseComponent} from './pages/add-license/add-license.component';
+import {AddEventComponent} from "./pages/add-event/add-event.component";
 
 
 const routes: Routes = [
@@ -60,6 +61,7 @@ const routes: Routes = [
       {path: 'whitelist-ips', component: WhitelistIpsComponent},
       {path: 'add-license', component: AddLicenseComponent},
       {path: 'test', component: TestComponent},
+      {path: 'events', component: AddEventComponent},
     ]
   },
   {

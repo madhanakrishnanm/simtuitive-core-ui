@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
   }
 
   requestLogin() {
-    this.ngxUiLoaderService.start();
+    /*this.ngxUiLoaderService.start();
     const headers = {
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -76,8 +76,8 @@ export class LoginComponent implements OnInit {
       });
     }, error => {
       this.ngxUiLoaderService.stop();
-    });
-
+    });*/
+    this.router.navigate(['admins']);
   }
 
 
