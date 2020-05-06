@@ -110,16 +110,14 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let module of modules">
+          <tr *ngFor="let module of modules;let i=index">
             <td>{{module}}</td>
             <td>
               <ng-select
                 [items]="options"
                 [searchable]="false"
-                bindLabel="roleName"
-                placeholder="Courses"
                 class="ng-select mx-auto"
-                formControlName="tollPassBefore"
+                (change)="tollPassBefore(module,$event,'tollPassBefore',i)"
               >
               </ng-select>
             </td>
@@ -127,10 +125,8 @@
               <ng-select
                 [items]="options"
                 [searchable]="false"
-                bindLabel="roleName"
-                placeholder="Courses"
                 class="ng-select mx-auto"
-                formControlName="tollPassAfter"
+                (change)="tollPassBefore(module,$event,'tollPassAfter',i)"
               >
               </ng-select>
             </td>

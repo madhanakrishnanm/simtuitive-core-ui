@@ -13,6 +13,7 @@ export class AddEventComponent implements OnInit {
   modules: any = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
   options: any = ['yes', 'no'];
   EventFormGroup: FormGroup;
+  modulesDeatils: any = [];
   constructor(private fb: FormBuilder) { }
   get f() {
     return this.EventFormGroup.controls;
@@ -26,12 +27,37 @@ export class AddEventComponent implements OnInit {
         tollGates: this.f.tollGates.value,
         eventStartDate: this.f.eventStartDate.value,
         eventEndDate: this.f.eventEndDate.value,
-        Modules: this.modules,
-        tollPassBefore: this.f.tollPassBefore.value,
-        tollPassAfter: this.f.tollPassAfter.value
+        tollPassDetails: this.modulesDeatils
       }
     ];
-    console.log(Payload);
+    console.log('Payload', Payload);
+  }
+  tollPassBefore(module, event, tollPass, index) {
+    const value: number =   this.checkModuleExists(module);
+    if (value === -1) {
+       if (tollPass === 'tollPassBefore') {
+         this.modulesDeatils.push(
+           {
+             module,
+             tollPassBefore: event
+           }
+         );
+       }
+     } else {
+       if (tollPass === 'tollPassAfter') {
+        this.modulesDeatils[index].tollPassAfter = event;
+      }
+    }
+  }
+  checkModuleExists(module) {
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < this.modulesDeatils.length; i++) {
+      if (this.modulesDeatils[i].module === module) {
+        console.log('ind',i);
+      } else {
+        console.log('ind',-1);
+      }
+    }
   }
   ngOnInit(): void {
     this.EventFormGroup = this.fb.group({
@@ -41,9 +67,6 @@ export class AddEventComponent implements OnInit {
       tollGates: ['', []],
       eventStartDate: ['', []],
       eventEndDate: ['', []],
-      tollPassBefore: ['', []],
-      tollPassAfter: ['', []],
     });
-  }
-
+    }
 }
