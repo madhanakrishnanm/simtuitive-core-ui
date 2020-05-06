@@ -13,7 +13,7 @@ export class AddEventComponent implements OnInit {
   modules: any = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
   options: any = ['yes', 'no'];
   EventFormGroup: FormGroup;
-  modulesDeatils: any = [];
+  modulesDetails: any = [];
   constructor(private fb: FormBuilder) { }
   get f() {
     return this.EventFormGroup.controls;
@@ -27,39 +27,36 @@ export class AddEventComponent implements OnInit {
         tollGates: this.f.tollGates.value,
         eventStartDate: this.f.eventStartDate.value,
         eventEndDate: this.f.eventEndDate.value,
-        tollPassDetails: this.modulesDeatils
+        tollPassDetails: this.modulesDetails
       }
     ];
     console.log('Payload', Payload);
   }
   tollPassBefore(module, event, tollPass, index) {
-    const value: number =   this.checkModuleExists(module);
-    if (value === -1) {
-       if (tollPass === 'tollPassBefore') {
-         this.modulesDeatils.push(
-           {
-             module,
-             tollPassBefore: event
-           }
-         );
-       }
-     } else {
-       if (tollPass === 'tollPassAfter') {
-        this.modulesDeatils[index].tollPassAfter = event;
+    // tslint:disable-next-line:prefer-const
+    if (tollPass === 'tollPassBefore') {
+      this.modulesDetails.push(
+        {
+          module,
+          tollPassBefore: event
+        }
+      );
+    }
+    let value;
+    console.log('len' +this.modulesDetails.length);
+    for (let i = 0; i < this.modulesDetails.length; i++) {
+      console.log('check' +this.modulesDetails[i].module === module)
+      if (this.modulesDetails[i].module === module) {
+        value =  i;
+      } else {
+        value = -1;
       }
     }
   }
   checkModuleExists(module) {
-    // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < this.modulesDeatils.length; i++) {
-      if (this.modulesDeatils[i].module === module) {
-        console.log('ind',i);
-      } else {
-        console.log('ind',-1);
-      }
+
     }
-  }
-  ngOnInit(): void {
+    ngOnInit() {
     this.EventFormGroup = this.fb.group({
       client: ['', []],
       product: ['', []],
