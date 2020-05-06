@@ -1,131 +1,145 @@
-<div class="container-fluid">
+<div class="site-content">
   <div class="row">
     <div class="col">
-      <h2>Add Event</h2>
+      <h1>Add Events</h1>
     </div>
   </div>
-  <div class="row">
-    <form [formGroup]="EventFormGroup">
+    <form class="simtuitive-input" [formGroup]="EventFormGroup" (ngSubmit)="save()">
+      <div class="row">
     <div class="col-6 mt-5">
-      <div class="form-group row">
-        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Select-Client</label>
-        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-          <ng-select
-            [closeOnSelect]="true"
-            [searchable]="false"
-            bindLabel="organizationName"
-            formControlName="client"
-          >
-          </ng-select>
-          <!--<div *ngIf="f.organization.invalid && (f.organization.touched || f.organization.value)"
-               class="input-error-report">
-            <div *ngIf="f.organization.errors.required">
-              organization is required.
-            </div>
-          </div>-->
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Select Product/Course</label>
-        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-          <ng-select
-            [closeOnSelect]="true"
-            [searchable]="false"
-            bindLabel="organizationName"
-            formControlName="product"
-          >
-          </ng-select>
-          <!--<div *ngIf="f.organization.invalid && (f.organization.touched || f.organization.value)"
-               class="input-error-report">
-            <div *ngIf="f.organization.errors.required">
-              organization is required.
-            </div>
-          </div>-->
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Event Name</label>
-        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-          <ng-select
-            [closeOnSelect]="true"
-            [searchable]="false"
-            bindLabel="organizationName"
-            formControlName="EventName"
-          >
-          </ng-select>
-          <!--<div *ngIf="f.organization.invalid && (f.organization.touched || f.organization.value)"
-               class="input-error-report">
-            <div *ngIf="f.organization.errors.required">
-              organization is required.
-            </div>
-          </div>-->
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Toll Gates</label>
-        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-          <div class="form-check form-check-inline">
-            <input class="form-check-input"   formControlName="tollgates" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-            <label class="form-check-label" for="inlineRadio1">Yes</label>
+        <div class="form-group row">
+          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Select Clients</label>
+          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+            <ng-select
+              [items]="clients"
+              [searchable]="false"
+              bindLabel="roleName"
+              placeholder="Clients"
+              class="ng-select"
+              formControlName="client"
+            >
+            </ng-select>
           </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input"   formControlName="tollgates" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-            <label class="form-check-label" for="inlineRadio2">No</label>
+        </div>
+        <div class="form-group row">
+          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Select Products/Course</label>
+          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+            <ng-select
+              [items]="products"
+              [searchable]="false"
+              bindLabel="roleName"
+              placeholder="Courses"
+              class="ng-select"
+              formControlName="product"
+            >
+            </ng-select>
           </div>
-          <!--<div *ngIf="f.organization.invalid && (f.organization.touched || f.organization.value)"
-               class="input-error-report">
-            <div *ngIf="f.organization.errors.required">
-              organization is required.
-            </div>
-          </div>-->
         </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Event Start Date</label>
-        <div class="col-xl-7 col-lg-7 ml-3 col-md-12 col-sm-12 d-flex custom-input align-content-center">
-          <input type="text" class="form-control">
-          <span class="input-group-append"><img src="assets/interface.svg"></span>
-          <!--<div *ngIf="f.organization.invalid && (f.organization.touched || f.organization.value)"
-               class="input-error-report">
-            <div *ngIf="f.organization.errors.required">
-              organization is required.
-            </div>
-          </div>-->
+        <div class="form-group row">
+          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Event Name</label>
+          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 custom-input">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="eventName"
+            />
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Event End Date</label>
-        <div class="col-xl-7 col-lg-7 ml-3 col-md-12 col-sm-12 d-flex custom-input align-content-center">
-          <input type="text" class="form-control">
-          <span class="input-group-append"><img src="assets/interface.svg"></span>
-          <!--<div *ngIf="f.organization.invalid && (f.organization.touched || f.organization.value)"
-               class="input-error-report">
-            <div *ngIf="f.organization.errors.required">
-              organization is required.
+        <div class="form-group row">
+          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Toll Gates</label>
+          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="customRadioInline1" formControlName="tollGates" [(ngModel)]="tollGate" name="tollGates" class="custom-control-input" value="yes">
+              <label class="custom-control-label" for="customRadioInline1">Yes</label>
             </div>
-          </div>-->
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="customRadioInline2" formControlName="tollGates" [(ngModel)]="tollGate" name="tollGates" class="custom-control-input" value="no">
+              <label class="custom-control-label" for="customRadioInline2">No</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Event Start Date</label>
+          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 d-flex custom-input">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="eventStartDate"
+              ngbDatepicker
+              #d="ngbDatepicker"
+            />
+            <span class="input-group-append" (click)="d.toggle()">
+              <img src="assets/img/interface.svg">
+            </span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Event End Date</label>
+          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 d-flex custom-input">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="eventEndDate"
+              ngbDatepicker
+              #d1="ngbDatepicker"
+            />
+            <span class="input-group-append" (click)="d1.toggle()">
+              <img src="assets/img/interface.svg">
+            </span>
+          </div>
+        </div>
+      <div class="row justify-content-end">
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 text-center">
+          <button
+            type="submit"
+            class="btn btn-primary"
+          >
+            Proceed To Generate Event
+          </button>
         </div>
       </div>
     </div>
-    <div class="col-6 mt-5">
-      <table class="table">
-        <thead>
-        <tr>
-          <th scope="col">#Module</th>
-          <th scope="col">Toll Pass Before Module</th>
-          <th scope="col">Toll Pass After Module</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td>1</td>
-          <td>Y</td>
-          <td>N</td>
-        </tr>
-        </tbody>
-      </table>
+    <div class="col-6">
+      <div class="product-users-table table-responsive" *ngIf="tollGate==='yes'">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">#Module</th>
+            <th scope="col">Toll Pass Before Module</th>
+            <th scope="col">Toll Pass After Module</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let module of modules">
+            <td>{{module}}</td>
+            <td>
+              <ng-select
+                [items]="options"
+                [searchable]="false"
+                bindLabel="roleName"
+                placeholder="Courses"
+                class="ng-select mx-auto"
+                formControlName="tollPassBefore"
+              >
+              </ng-select>
+            </td>
+            <td>
+              <ng-select
+                [items]="options"
+                [searchable]="false"
+                bindLabel="roleName"
+                placeholder="Courses"
+                class="ng-select mx-auto"
+                formControlName="tollPassAfter"
+              >
+              </ng-select>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
     </form>
-  </div>
 </div>
 

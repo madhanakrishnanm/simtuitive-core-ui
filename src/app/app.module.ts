@@ -78,7 +78,8 @@ import {AddEventModule} from "./pages/add-event/add-event.module";
     AddPermissionModule,
     EditPermissionModule,
     NgSelectModule,
-    TimeagoModule
+    TimeagoModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

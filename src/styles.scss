@@ -197,25 +197,51 @@ input
 {
   background: var(--bg-color-secondary);
   padding:5px;
-  height:36px;
-  border-radius:10px;
+  border-radius:11px;
   img
   {
     width:20px;
   }
-  .form-control
+
+}
+.form-control
+{
+  background: transparent;
+  border:0 !important;
+  color:white;
+  outline: none !important;
+  box-shadow: none !important;
+  &::placeholder
   {
-    background: transparent;
-    border:0 !important;
-    color:white;
-    outline: none !important;
-    box-shadow: none !important;
-    &::placeholder
-    {
-      font-size: 16px;
-    }
+    font-size: 16px;
   }
 }
+.custom-input
+{
+  background-color: var(--bg-color-secondary);
+  border-radius: 11px;
+  align-items: center;
+}
+ngb-datepicker
+{
+  margin-top:20em !important;
+}
+ngb-datepicker .ngb-dp-header,.ngb-dp-month:first-child .ngb-dp-week
+{
+  background: var(--bg-color-secondary) !important;
+  border: 0 !important;
+}
+[ngbDatepickerDayView] {
+  text-align: center;
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+  border-radius: .25rem;
+  background:var(--bg-color-secondary) !important;
+  color:var(--light) !important;
+  border: 0 !important;
+}
+
 
 
 
