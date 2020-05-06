@@ -110,14 +110,14 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let module of modules;let i=index">
-            <td>{{module}}</td>
+          <tr *ngFor="let module of tempModules;let i=index">
+            <td>{{module.moduleId}}</td>
             <td>
               <ng-select
                 [items]="options"
                 [searchable]="false"
                 class="ng-select mx-auto"
-                (change)="tollPassBefore(module,$event,'tollPassBefore',i)"
+                (change)="tollPass(module.moduleId,$event,'tollPassBefore')"
               >
               </ng-select>
             </td>
@@ -126,7 +126,7 @@
                 [items]="options"
                 [searchable]="false"
                 class="ng-select mx-auto"
-                (change)="tollPassBefore(module,$event,'tollPassAfter',i)"
+                (change)="tollPass(module.moduleId,$event,'tollPassAfter')"
               >
               </ng-select>
             </td>
