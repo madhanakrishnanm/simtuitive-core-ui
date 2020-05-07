@@ -1,10 +1,7 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {merge, Observable, Subject} from 'rxjs';
-import {debounceTime, distinctUntilChanged, filter, map} from 'rxjs/operators';
-import {NgbTypeahead} from '@ng-bootstrap/ng-bootstrap';
+import {Component, OnInit} from '@angular/core';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import axios from 'axios';
 
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado',
   'Connecticut', 'Delaware', 'District Of Columbia', 'Federated States Of Micronesia', 'Florida', 'Georgia',
   'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine',
@@ -23,14 +20,16 @@ export class TestComponent implements OnInit {
   peoples = [{name: 'Karyn Wright'}, {name: 'ram'}];
 
   constructor(private modalService: NgbModal) {
-    axios.get(
-      "http://35.154.201.76",
-      {headers: {
-          "Authorization" : " Bearer szdjOpZQVBA6EXLMAib6a+fw2RXFJo02QgdgmHsxNnYcBVN6mX4QLVSGXONBzTnc70XaT1o9ufr49rn2RvWkKkSttoRDdxJEZWalwMJ437k="
+    axios.post(
+      "http://35.154.201.76/login",
+      {},
+      {
+        headers: {
+          "Authorization": " Bearer szdjOpZQVBA6EXLMAib6a+fw2RXFJo02QgdgmHsxNnYcBVN6mX4QLVSGXONBzTnc70XaT1o9ufr49rn2RvWkKkSttoRDdxJEZWalwMJ437k="
         }
       }
     )
-      .then((response : any) => {
+      .then((response: any) => {
           console.log(response);
         },
         (error) => {
