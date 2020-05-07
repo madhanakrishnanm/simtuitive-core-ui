@@ -6,22 +6,22 @@
   </div>
     <form class="simtuitive-input" [formGroup]="EventFormGroup" (ngSubmit)="save()">
       <div class="row">
-    <div class="col-6 mt-5">
-        <div class="form-group row">
-          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Select Clients</label>
-          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-            <ng-select
-              [items]="clients"
-              [searchable]="false"
-              bindLabel="roleName"
-              placeholder="Clients"
-              class="ng-select"
-              formControlName="client"
-            >
+        <div class="col-6 mt-5">
+          <div class="form-group row">
+            <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Select Clients</label>
+            <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+              <ng-select
+                [items]="clients"
+                [searchable]="false"
+                bindLabel="roleName"
+                placeholder="Clients"
+                class="ng-select"
+                formControlName="client"
+              >
             </ng-select>
           </div>
         </div>
-        <div class="form-group row">
+          <div class="form-group row">
           <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Select Products/Course</label>
           <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
             <ng-select
@@ -35,7 +35,7 @@
             </ng-select>
           </div>
         </div>
-        <div class="form-group row">
+          <div class="form-group row">
           <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Event Name</label>
           <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 custom-input">
             <input
@@ -45,7 +45,7 @@
             />
           </div>
         </div>
-        <div class="form-group row">
+          <div class="form-group row">
           <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Toll Gates</label>
           <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
             <div class="custom-control custom-radio custom-control-inline">
@@ -58,7 +58,7 @@
             </div>
           </div>
         </div>
-        <div class="form-group row">
+          <div class="form-group row">
           <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Event Start Date</label>
           <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 d-flex custom-input">
             <input
@@ -73,7 +73,7 @@
             </span>
           </div>
         </div>
-        <div class="form-group row">
+          <div class="form-group row">
           <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Event End Date</label>
           <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 d-flex custom-input">
             <input
@@ -88,7 +88,7 @@
             </span>
           </div>
         </div>
-      <div class="row justify-content-end">
+          <div class="row justify-content-end">
         <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 text-center">
           <button
             type="submit"
@@ -98,26 +98,27 @@
           </button>
         </div>
       </div>
-    </div>
-    <div class="col-6">
+        </div>
+        <div class="col-6">
       <div class="product-users-table table-responsive" *ngIf="tollGate==='yes'">
         <table class="table">
           <thead>
           <tr>
-            <th scope="col">#Module</th>
-            <th scope="col">Toll Pass Before Module</th>
-            <th scope="col">Toll Pass After Module</th>
+            <th scope="col">Module Name</th>
+            <th scope="col">Before Module</th>
+            <th scope="col">After Module</th>
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let module of modules;let i=index">
-            <td>{{module}}</td>
+          <tr *ngFor="let module of tempModules;let i=index">
+            <td>{{module.moduleId}}</td>
             <td>
               <ng-select
                 [items]="options"
                 [searchable]="false"
                 class="ng-select mx-auto"
-                (change)="tollPassBefore(module,$event,'tollPassBefore',i)"
+                [(ngModel)]="tempModules[i]['moduleBefore']"
+                (change)="changeModuleTollPass(module.moduleId, $event, 'before')"
               >
               </ng-select>
             </td>
@@ -126,7 +127,8 @@
                 [items]="options"
                 [searchable]="false"
                 class="ng-select mx-auto"
-                (change)="tollPassBefore(module,$event,'tollPassAfter',i)"
+                [(ngModel)]="tempModules[i]['moduleAfter']"
+                (change)="changeModuleTollPass(module.moduleId,$event,'after')"
               >
               </ng-select>
             </td>
@@ -135,7 +137,7 @@
         </table>
       </div>
     </div>
-  </div>
+      </div>
     </form>
 </div>
 

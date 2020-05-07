@@ -16,7 +16,7 @@ export class ApiService {
 
   constructor(public http: HttpClient) {
     this.reqHeader = {
-      'Authorization': 'Bearer' +' '+ 'xD18LoCHY40seO/9slZ7itZAXLULURociOOfX6kHdnmOL2v42oraOFzHHvNtkDWFK+K1jdtbzGzOy/Nm+lourWdTsfqJ9JM1VacbD/aH6t4=',
+      'Authorization': 'Bearer' +' '+ 'szdjOpZQVBA6EXLMAib6a+fw2RXFJo02QgdgmHsxNnYcBVN6mX4QLVSGXONBzTnc70XaT1o9ufr49rn2RvWkKkSttoRDdxJEZWalwMJ437k=',
       'Content-Type': 'application/json'
     };
   }
