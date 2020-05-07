@@ -25,7 +25,7 @@
   --bg-color-primary: #15151B;
   --bg-color-secondary: #202029 !important;
   --pagination-border:#707070;
-
+  --date-font:#17a2b8 !important;
 }
 
 
@@ -222,14 +222,19 @@ input
   border-radius: 11px;
   align-items: center;
 }
-ngb-datepicker
-{
-  margin-top:20em !important;
-}
+//styles for Date Picker
 ngb-datepicker .ngb-dp-header,.ngb-dp-month:first-child .ngb-dp-week
 {
   background: var(--bg-color-secondary) !important;
   border: 0 !important;
+}
+.dropdown-menu
+{
+  background: var(--bg-color-secondary) !important;
+}
+ngb-datepicker-navigation-select>.custom-select {
+  color: var(--date-font);
+  background:var(--bg-color-secondary) !important;
 }
 [ngbDatepickerDayView] {
   text-align: center;

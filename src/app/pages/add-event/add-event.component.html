@@ -67,6 +67,7 @@
               formControlName="eventStartDate"
               ngbDatepicker
               #d="ngbDatepicker"
+              placement="bottom-right"
             />
             <span class="input-group-append" (click)="d.toggle()">
               <img src="assets/img/interface.svg">
@@ -82,6 +83,7 @@
               formControlName="eventEndDate"
               ngbDatepicker
               #d1="ngbDatepicker"
+              placement="bottom-right"
             />
             <span class="input-group-append" (click)="d1.toggle()">
               <img src="assets/img/interface.svg">
@@ -100,7 +102,7 @@
       </div>
         </div>
         <div class="col-6">
-      <div class="product-users-table table-responsive" *ngIf="tollGate==='yes'">
+      <div class="product-users-table table-responsive mt-2" *ngIf="tollGate==='yes'">
         <table class="table">
           <thead>
           <tr>
@@ -119,6 +121,7 @@
                 class="ng-select mx-auto"
                 [(ngModel)]="tempModules[i]['moduleBefore']"
                 (change)="changeModuleTollPass(module.moduleId, $event, 'before')"
+
               >
               </ng-select>
             </td>
