@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { AddEventComponent } from './add-event.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {NgSelectModule} from '@ng-select/ng-select';
-import {NgbDatepickerModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
+import {NgbDatepickerModule, NgbDateStruct, NgbModule, NgbCalendar, NgbDate, NgbDateParserFormatter, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {DateFormatterService} from '../../services/date-formatter.service';
 @NgModule({
   declarations: [AddEventComponent],
     imports: [
@@ -13,6 +13,7 @@ import {NgbDatepickerModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
         NgSelectModule,
         NgbDatepickerModule,
         NgbModule
-    ]
+    ],
+  providers: [{provide: NgbDateParserFormatter, useClass: DateFormatterService}]
 })
 export class AddEventModule { }
