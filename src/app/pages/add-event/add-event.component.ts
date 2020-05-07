@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {EventService} from '../../services/event.service';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-add-event',
   templateUrl: './add-event.component.html',
@@ -71,7 +72,7 @@ export class AddEventComponent implements OnInit {
     }, ];
   options: any = ['yes', 'no'];
   EventFormGroup: FormGroup;
-  constructor(private fb: FormBuilder, private eventService: EventService) { }
+  constructor(private fb: FormBuilder, private eventService: EventService, private router: Router) { }
   get f() {
     return this.EventFormGroup.controls;
   }
@@ -105,6 +106,7 @@ export class AddEventComponent implements OnInit {
     ];
     console.log('Payload', Payload);
     this.eventService.addEvent(Payload);
+    this.router.navigate(['event-summary']);
   }
     ngOnInit() {
     this.EventFormGroup = this.fb.group({
