@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import {Observable, of} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,7 +9,8 @@ export class EventService {
   addEvent(payload) {
     this.event = payload;
   }
-  getEventsDetails() {
-    return this.event;
+  // @ts-ignore
+  getEventsDetails(): Observable<any[]> {
+    return of(this.event);
   }
 }

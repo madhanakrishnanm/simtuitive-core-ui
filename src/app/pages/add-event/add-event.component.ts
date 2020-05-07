@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {EventService} from '../../services/event.service';
 import {Router} from '@angular/router';
@@ -12,86 +12,101 @@ export class AddEventComponent implements OnInit {
   clients: any = ['Microsoft', 'HP', 'IBM', 'InfoSys'];
   products: any = ['Java', 'Python', 'C#'];
   modules: any = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
-  tempModules: any = [{
+  tempModules: any = [ {
     moduleId: 1,
     isTollPassRequired: false,
-    when: null
-  }, {
-    moduleId: 2,
-    isTollPassRequired: false,
-    when: null
-  }, {
-    moduleId: 3,
-    isTollPassRequired: false,
-    when: null
+    beforeModule: 'no',
+    afterModule: 'no',
   },
+    {
+      moduleId: 2,
+      isTollPassRequired: false,
+      beforeModule: 'no',
+      afterModule: 'no',
+    },
+    {
+      moduleId: 3,
+      isTollPassRequired: false,
+      beforeModule: 'no',
+      afterModule: 'no',
+    },
     {
       moduleId: 4,
       isTollPassRequired: false,
-      when: null
+      beforeModule: 'no',
+      afterModule: 'no',
     },
     {
       moduleId: 5,
       isTollPassRequired: false,
-      when: null
+      beforeModule: 'no',
+      afterModule: 'no',
     },
     {
-    moduleId: 6,
-    isTollPassRequired: false,
-    when: null
-  },
+      moduleId: 6,
+      isTollPassRequired: false,
+      beforeModule: 'no',
+      afterModule: 'no',
+    },
     {
       moduleId: 7,
       isTollPassRequired: false,
-      when: null
+      beforeModule: 'no',
+      afterModule: 'no',
     },
     {
       moduleId: 8,
       isTollPassRequired: false,
-      when: null
+      beforeModule: 'no',
+      afterModule: 'no',
     },
     {
       moduleId: 9,
       isTollPassRequired: false,
-      when: null
+      beforeModule: 'no',
+      afterModule: 'no',
     },
     {
       moduleId: 10,
       isTollPassRequired: false,
-      when: null
+      beforeModule: 'no',
+      afterModule: 'no',
     },
     {
       moduleId: 11,
       isTollPassRequired: false,
-      when: null
+      beforeModule: 'no',
+      afterModule: 'no',
     },
     {
       moduleId: 12,
       isTollPassRequired: false,
-      when: null
-    }, ];
+      beforeModule: 'no',
+      afterModule: 'no',
+    }];
   options: any = ['yes', 'no'];
   EventFormGroup: FormGroup;
   constructor(private fb: FormBuilder, private eventService: EventService, private router: Router) { }
+
   get f() {
     return this.EventFormGroup.controls;
   }
 
-  tollPass(module, event, tollPass) {
-    // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < this.tempModules.length; i++) {
-      if (this.tempModules[i].moduleId === module) {
-           if (tollPass === 'tollPassBefore' && event === 'yes') {
-             this.tempModules[i].isTollPassRequired = event;
-             this.tempModules[i].when = 'Before';
-             // tslint:disable-next-line:triple-equals no-non-null-assertion
-           } else if (tollPass === 'tollPassAfter' && event === 'yes') {
-             this.tempModules[i].isTollPassRequired = event;
-             this.tempModules[i].when = 'After';
-           }
+  changeModuleTollPass(moduleId, isTollPassRequired, when) {
+    for (const [index, module] of this.tempModules.entries()) {
+      if (module.moduleId === moduleId) {
+        if (when === 'before') {
+          this.tempModules[index].beforeModule = isTollPassRequired;
+        } else  if (when === 'after') {
+          this.tempModules[index].afterModule = isTollPassRequired;
+        }
+      }
+      if (this.tempModules[index].beforeModule === 'yes' || this.tempModules[index].afterModule === 'yes') {
+        this.tempModules[index].isTollPassRequired = true;
       }
     }
   }
+
   save() {
     const Payload = [
       {
@@ -99,8 +114,10 @@ export class AddEventComponent implements OnInit {
         product: this.f.product.value,
         eventName: this.f.eventName.value,
         tollGates: this.f.tollGates.value,
-        eventStartDate: this.f.eventStartDate.value,
-        eventEndDate: this.f.eventEndDate.value,
+        eventStartDate: this.dateToString(this.f.eventStartDate.value.day,
+          this.f.eventStartDate.value.month,this.f.eventStartDate.value.year),
+        eventEndDate: this.dateToString(this.f.eventStartDate.value.day,
+          this.f.eventStartDate.value.month,this.f.eventStartDate.value.year),
         tollPassDetails: this.tempModules,
       }
     ];
@@ -108,7 +125,11 @@ export class AddEventComponent implements OnInit {
     this.eventService.addEvent(Payload);
     this.router.navigate(['event-summary']);
   }
-    ngOnInit() {
+  // function for change Date To String
+  dateToString(date, month, year) {
+    return date + '-' + month + '-' + year;
+  }
+  ngOnInit() {
     this.EventFormGroup = this.fb.group({
       client: ['', []],
       product: ['', []],
@@ -117,5 +138,5 @@ export class AddEventComponent implements OnInit {
       eventStartDate: ['', []],
       eventEndDate: ['', []],
     });
-    }
+  }
 }

@@ -11,7 +11,7 @@ export class EventSummaryTableComponent implements OnInit {
 
   ngOnInit(): void {
      this.eventService.getEventsDetails().subscribe((res) => {
-       console.log('from Add-event' + res);
+       this.eventDetails = res;
      });
   }
 

@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":[],"names":[],"mappings":"","file":"event-summary-table.component.css"}
+{"version":3,"sourceRoot":"","sources":["event-summary-table.component.scss"],"names":[],"mappings":"AAAA;EACE;EACA;EACA;;AAGE;EACE","file":"event-summary-table.component.css"}

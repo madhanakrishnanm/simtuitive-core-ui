@@ -1,12 +1,38 @@
-<div class="product-users-table table-responsive mt-2">
+<div class="product-users-table table-responsive mt-2 col">
   <table class="table">
-    <thead>
-    <tr>
-      <th scope="col">Event Details</th>
-      <th scope="col">Event Data</th>
-    </tr>
-    </thead>
     <tbody>
+    <tr>
+      <th scope="col">Client Name</th>
+      <td>{{eventDetails[0].clients}}</td>
+    </tr>
+     <tr>
+      <th scope="col">Product</th>
+      <td>{{eventDetails[0].product}}</td>
+     </tr>
+     <tr>
+      <th scope="col">Event Name</th>
+      <td>{{eventDetails[0].eventName}}</td>
+     </tr>
+     <tr>
+      <th scope="col">Toll Gate</th>
+      <td>{{eventDetails[0].tollGates}}</td>
+     </tr>
+    <tr>
+      <th scope="col">Event Start Date</th>
+      <td>{{eventDetails[0].eventStartDate}}</td>
+    </tr>
+     <tr>
+      <th scope="col">Event End Date</th>
+      <td>{{eventDetails[0].eventEndDate}}</td>
+     </tr>
+    <tr *ngFor="let eventDetail of eventDetails[0].tollPassDetails;let i=index">
+      <th scope="col">Module {{i+1}}</th>
+      <td class="d-flex">
+        <p *ngIf="eventDetail.beforeModule=='yes'">Before,</p>
+        <p *ngIf="eventDetail.afterModule=='yes'">After</p>
+        <p *ngIf="eventDetail.beforeModule=='no' && eventDetail.afterModule=='no'">-</p>
+      </td>
+    </tr>
     </tbody>
   </table>
 </div>

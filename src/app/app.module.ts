@@ -35,8 +35,8 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
 import {LicenseModule} from './pages/license/license.module';
 import {AddLicenseModule} from './pages/add-license/add-license.module';
-import {AddEventModule} from "./pages/add-event/add-event.module";
-
+import {AddEventModule} from './pages/add-event/add-event.module';
+import {EventSummaryModule} from './pages/event-summary/event-summary.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,6 +77,7 @@ import {AddEventModule} from "./pages/add-event/add-event.module";
     PermissionsModule,
     AddPermissionModule,
     EditPermissionModule,
+    EventSummaryModule,
     NgSelectModule,
     TimeagoModule,
     NgbModule

@@ -27,9 +27,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       // username: ['surath@wisdomtoolz.com', [Validators.required]],
-      username: ['myadmin@gmail.com', [Validators.required]],
+      // username: ['myadmin@gmail.com', [Validators.required]],
+      username: ['veeramaninenmeni@gmail.com', [Validators.required]],
       // password: ['superadmin', [Validators.required]],
-      password: ['myadmin', [Validators.required]],
+      // password: ['myadmin', [Validators.required]],
+      password: ['mani', [Validators.required]],
       remember: ['remember'],
     });
   }
@@ -48,11 +50,11 @@ export class LoginComponent implements OnInit {
   }
 
   requestLogin() {
-    /*this.ngxUiLoaderService.start();
+    this.ngxUiLoaderService.start();
     const headers = {
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/x-www-form-urlencoded',
-      Authorization: 'Basic ' + btoa('simtuitive:secret')
+      Authorization: 'Basic ' + btoa(unescape(encodeURIComponent('simtuitive:secret')))
     };
     const payload = {
       grant_type: 'password',
@@ -75,9 +77,9 @@ export class LoginComponent implements OnInit {
         window.location.reload();
       });
     }, error => {
+      console.log(error);
       this.ngxUiLoaderService.stop();
-    });*/
-    this.router.navigate(['admins']);
+    });
   }
 
 
