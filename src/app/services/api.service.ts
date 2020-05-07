@@ -8,15 +8,15 @@ import {Injectable} from '@angular/core';
 export class ApiService {
 
   // url: string = 'http://192.168.1.10:8000/';
-  url: string = 'http://52.66.201.153/api/v1/';
-  authUri: string = 'http://52.66.201.153/';
+  url: string = 'http://35.154.201.76/api/v1/';
+  authUri: string = 'http://35.154.201.76/';
   // imgUri: string = 'http://192.168.1.10:8000/storage/';
-  imgUri: string = 'http://52.66.201.153/storage/';
+  imgUri: string = 'http://35.154.201.76/storage/';
   reqHeader: any;
 
   constructor(public http: HttpClient) {
     this.reqHeader = {
-      'Authorization': localStorage.getItem('token'),
+      'Authorization': 'Bearer' +' '+ 'xD18LoCHY40seO/9slZ7itZAXLULURociOOfX6kHdnmOL2v42oraOFzHHvNtkDWFK+K1jdtbzGzOy/Nm+lourWdTsfqJ9JM1VacbD/aH6t4=',
       'Content-Type': 'application/json'
     };
   }

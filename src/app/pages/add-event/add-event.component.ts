@@ -50,7 +50,7 @@ export class AddEventComponent implements OnInit {
     console.log('Payload', Payload);
   }
   tollPassBefore(module, event, tollPass, index) {
-    const value: number =   this.checkModuleExists(module);
+    const value =   this.checkModuleExists(module);
     if (value === -1) {
        if (tollPass === 'tollPassBefore') {
          this.modulesDeatils.push(
@@ -71,8 +71,10 @@ export class AddEventComponent implements OnInit {
     for (let i = 0; i < this.modulesDeatils.length; i++) {
       if (this.modulesDeatils[i].module === module) {
         console.log('ind',i);
+        return i;
       } else {
         console.log('ind',-1);
+        return -1;
       }
     }
   }
