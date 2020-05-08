@@ -216,11 +216,26 @@ input
     font-size: 16px;
   }
 }
-.custom-input
-{
-  background-color: var(--bg-color-secondary);
-  border-radius: 11px;
-  align-items: center;
+//styles for auto-complete
+.ng-autocomplete {
+  width:250px !important;
+  height:36px;
+  .autocomplete-container .input-container input {
+    background-color: var(--bg-color-secondary) !important;
+    color:var(--light) !important;
+    border-radius: 11px;
+    align-items: center;
+    height: 32px;
+    .x {
+      i {
+        color: var(--light) !important;
+      }
+    }
+  }
+  .autocomplete-container
+  {
+    box-shadow: none !important;
+  }
 }
 //styles for Date Picker
 ngb-datepicker .ngb-dp-header,.ngb-dp-month:first-child .ngb-dp-week
@@ -246,7 +261,17 @@ ngb-datepicker-navigation-select>.custom-select {
   color:var(--light) !important;
   border: 0 !important;
 }
-
-
-
+.autocomplete-container .suggestions-container
+{
+  background: var(--bg-color-secondary) !important;
+  ul
+  {
+    li
+    {
+      a {
+        color: var(--light) !important;
+      }
+    }
+  }
+}
 

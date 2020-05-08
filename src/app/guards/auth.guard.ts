@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate {
               private router: Router) {
   }
 
-  canActivate(
+  /*canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
@@ -22,6 +22,6 @@ export class AuthGuard implements CanActivate {
       this.router.navigate(['events']);
       return false;
     }
-  }
+  }*/
 
 }

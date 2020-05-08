@@ -36,8 +36,12 @@ import { UpdatePasswordComponent } from './pages/update-password/update-password
 import {LicenseModule} from './pages/license/license.module';
 import {AddLicenseModule} from './pages/add-license/add-license.module';
 import {AddEventModule} from './pages/add-event/add-event.module';
+import {ViewEventsModule} from './pages/view-events/view-events.module';
 import {EventSummaryModule} from './pages/event-summary/event-summary.module';
 import { EditEventComponent } from './pages/edit-event/edit-event.component';
+import { FilterComponent } from './components/filter/filter.component';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,41 +53,44 @@ import { EditEventComponent } from './pages/edit-event/edit-event.component';
     ForgotPasswordComponent,
     UpdatePasswordComponent,
     EditEventComponent,
+    FilterComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule,
-    HttpClientModule,
-    LicenseModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule,
-    NgxUiLoaderModule,
-    LoginModule,
-    DashboardModule,
-    OrganizationsModule,
-    AddOrganizationModule,
-    EditOrganizationModule,
-    ClientsListModule,
-    EditClientModule,
-    AddClientModule,
-    AddLicenseModule,
-    AddEventModule,
-    AdminsModule,
-    AddAdminModule,
-    EditAdminModule,
-    RolesModule,
-    AddRoleModule,
-    EditRoleModule,
-    PermissionsModule,
-    AddPermissionModule,
-    EditPermissionModule,
-    EventSummaryModule,
-    NgSelectModule,
-    TimeagoModule,
-    NgbModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        NgbModule,
+        HttpClientModule,
+        LicenseModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule,
+        NgxUiLoaderModule,
+        LoginModule,
+        DashboardModule,
+        OrganizationsModule,
+         ViewEventsModule,
+        AddOrganizationModule,
+        EditOrganizationModule,
+        ClientsListModule,
+        EditClientModule,
+        AddClientModule,
+        AddLicenseModule,
+        AddEventModule,
+        AdminsModule,
+        AddAdminModule,
+        EditAdminModule,
+        RolesModule,
+        AddRoleModule,
+        EditRoleModule,
+        PermissionsModule,
+        AddPermissionModule,
+        EditPermissionModule,
+        EventSummaryModule,
+        NgSelectModule,
+        TimeagoModule,
+        NgbModule,
+        AutocompleteLibModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
