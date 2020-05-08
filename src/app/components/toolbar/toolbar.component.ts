@@ -1,5 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {UsersService} from '../../services/users.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-toolbar',
@@ -10,7 +11,9 @@ export class ToolbarComponent implements OnInit {
 
   @ViewChild('sidebarContent') sidebarContent: ElementRef;
   title = 'Close Navigation'
-  constructor(public userService: UsersService) {
+  constructor(public userService: UsersService,
+              public router: Router
+  ) {
   }
 
   ngOnInit(): void {
@@ -32,5 +35,10 @@ export class ToolbarComponent implements OnInit {
       pageContent.classList.add('active');
       toggleSidebarBtn.classList.add('active');
     }
+  }
+
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['/login']);
   }
 }

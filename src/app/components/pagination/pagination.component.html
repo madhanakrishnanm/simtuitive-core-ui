@@ -4,13 +4,13 @@
     <p>Page </p>
   </div>
   <div>
-    <p><input value="1" class="pagination-input ml-2"> of 10</p>
+    <p> <input [(ngModel)]="page" type="number"  class="pagination-input ml-2" (change)="onPageChange()"> of {{totalPages}}</p>
   </div>
   <div class="col-2">
-    <button class="arrow-btn"><i class="fas fa-angle-left"></i></button>
+    <button class="arrow-btn" (click)="previousPage()"><i class="fas fa-angle-left" ></i></button>
   </div>
   <div class="col-2">
-    <button class="arrow-btn"><i class="fas fa-angle-right"></i></button>
+    <button class="arrow-btn" (click)="nextPage()"><i class="fas fa-angle-right" ></i></button>
   </div>
 </div>
 </div>

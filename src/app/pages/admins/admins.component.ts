@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {AdminService} from '../../services/admin.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgxUiLoaderService} from "ngx-ui-loader";
 
 @Component({
   selector: 'app-admins',
@@ -12,11 +13,14 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 export class AdminsComponent implements OnInit {
   closeResult = '';
   admins = [];
+  page = 1;
+  totalPages = 0;
   deleteUserId = null;
 
   constructor(public router: Router,
               private formBuilder: FormBuilder,
               private adminService: AdminService,
+              private ngxUiLoaderService: NgxUiLoaderService,
               private modalService: NgbModal
   ) {
   }
@@ -27,12 +31,24 @@ export class AdminsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    const payload = {};
+    const payload = {
+      pageno: this.page - 1
+    };
+    this.getAdmins(payload);
+
+  }
+  getAdmins(payload){
+    this.ngxUiLoaderService.start();
     this.adminService.getAllAdmin(payload).subscribe((res: any) => {
       console.log(res);
       this.admins = res.data;
+      this.totalPages = res.pageable.pages;
+      this.ngxUiLoaderService.stop();
+    }, error => {
+      this.ngxUiLoaderService.stop();
     });
   }
+
 
   requestDelete(userId, modalReference) {
     this.deleteUserId = userId;

@@ -34,8 +34,7 @@ export class TestComponent implements OnInit {
         },
         (error) => {
           console.log(error)
-        }
-      );
+        });
   }
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});

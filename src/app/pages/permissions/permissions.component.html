@@ -85,7 +85,7 @@
       </div>
     </div>
   </div>
-<app-pagination></app-pagination>
+<app-pagination (onRequest)="getPermissions($event)" [page]="page" [totalPages]="totalPages"></app-pagination>
 </div>
 <!--modal-->
 <ng-template #content let-modal>

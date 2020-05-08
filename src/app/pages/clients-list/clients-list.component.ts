@@ -4,6 +4,7 @@ import {FormBuilder} from '@angular/forms';
 import {OrganizationService} from '../../services/organization.service';
 import {ClientService} from '../../services/client.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgxUiLoaderService} from "ngx-ui-loader";
 
 @Component({
   selector: 'app-clients-list',
@@ -14,6 +15,8 @@ export class ClientsListComponent implements OnInit {
   organization = [];
   inviteEmailId = '';
   clientId;
+  page = 1;
+  totalPages = 0;
   clients = [{
     userId: 12,
     organizationName: 'Mark University',
@@ -26,16 +29,26 @@ export class ClientsListComponent implements OnInit {
   constructor(public router: Router,
               private formBuilder: FormBuilder,
               private modalService: NgbModal,
+              private ngxUiLoaderService: NgxUiLoaderService,
               private clientService: ClientService) { }
 
   ngOnInit(): void {
-    const payload = {};
+    const payload = {
+      pageno: this.page - 1
+    };
+    this.getClients(payload);
+  }
+  getClients(payload){
+    this.ngxUiLoaderService.start();
     this.clientService.getAllClient(payload).subscribe((res: any) => {
       console.log(res);
       this.clients = res.data;
+      this.totalPages = res.pageable.pages;
+      this.ngxUiLoaderService.stop();
+    }, error => {
+      this.ngxUiLoaderService.stop();
     });
   }
-
   requestDelete(userId, modalReference) {
     this.deleteClientId = userId;
     this.modalService.open(modalReference, {centered: true, size: 'sm', windowClass: 'simtuitive-modal'});

@@ -4,9 +4,9 @@
       <h1>Add Events</h1>
     </div>
   </div>
-    <form class="simtuitive-input" [formGroup]="EventFormGroup" (ngSubmit)="save()">
       <div class="row">
         <div class="col-6 mt-5">
+          <form class="simtuitive-input" [formGroup]="EventFormGroup" (ngSubmit)="save()">
           <div class="form-group row">
             <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Select Clients</label>
             <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
@@ -100,6 +100,7 @@
           </button>
         </div>
       </div>
+        </form>
         </div>
         <div class="col-6">
       <div class="product-users-table table-responsive mt-2" *ngIf="tollGate==='yes'">
@@ -121,7 +122,6 @@
                 class="ng-select mx-auto"
                 [(ngModel)]="tempModules[i]['moduleBefore']"
                 (change)="changeModuleTollPass(module.moduleId, $event, 'before')"
-
               >
               </ng-select>
             </td>
@@ -141,6 +141,5 @@
       </div>
     </div>
       </div>
-    </form>
 </div>
 

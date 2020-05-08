@@ -78,7 +78,7 @@
 
     </div>
   </div>
-  <app-pagination></app-pagination>
+  <app-pagination (onRequest)="getClients($event)" [page]="page" [totalPages]="totalPages"></app-pagination>
 </div>
 <!--modal for Delete-->
 <ng-template #content let-modal>

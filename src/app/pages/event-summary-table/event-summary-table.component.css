@@ -1,0 +1,10 @@
+.table-responsive {
+  height: auto;
+  max-height: 60% !important;
+  overflow-y: scroll;
+}
+.table-responsive tbody th {
+  color: var(--primary);
+}
+
+/*# sourceMappingURL=event-summary-table.component.css.map */

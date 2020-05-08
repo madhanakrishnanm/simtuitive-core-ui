@@ -1,0 +1,17 @@
+<div class="row">
+<div class="col-12">
+<h3 class="mx-auto">Event Summary</h3>
+<p class="mt-3">Time Zone selection is important if your users are spread across the planet
+ be careful when making this selection</p>
+<ng-select
+  [searchable]="false"
+  class="ng-select mx-auto mt-3"
+  placeholder="Select Time Zone"
+>
+</ng-select>
+<div class="d-flex mt-3">
+  <button class="btn btn-danger" [routerLink]="'/events'">Go Back</button>
+  <button class="btn btn-success ml-4">Generate Event</button>
+</div>
+</div>
+</div>

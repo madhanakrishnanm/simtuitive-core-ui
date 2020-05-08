@@ -17,7 +17,7 @@ export class SidebarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    //this.getUser();
+    this.getUser();
   }
   getRouteByName(name) {
     switch (name) {
@@ -31,6 +31,8 @@ export class SidebarComponent implements OnInit {
         return '/license';
       case 'Product Management':
         return '/products';
+      case 'Event Management':
+        return '/events';
       case 'Reports':
         return '/reports';
       case 'Admin Management':
@@ -55,6 +57,8 @@ export class SidebarComponent implements OnInit {
       return 'License Management';
     } else if (url.includes('products')) {
       return 'Product Management';
+    } else if (url.includes('event')) {
+      return 'Event Management';
     } else if (url.includes('reports')) {
       return 'Reports';
     }else if (url.includes('admin')) {
