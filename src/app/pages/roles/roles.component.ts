@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {RoleService} from '../../services/role.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {NgxUiLoaderService} from "ngx-ui-loader";
+import {NgxUiLoaderService} from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-roles',
@@ -10,6 +10,7 @@ import {NgxUiLoaderService} from "ngx-ui-loader";
   styleUrls: ['./roles.component.scss']
 })
 export class RolesComponent implements OnInit {
+  roleNames = [];
   roles = [];
   deleteRoleId = null;
   page = 1;
@@ -27,11 +28,14 @@ export class RolesComponent implements OnInit {
     };
     this.getRoles(payload);
   }
-  getRoles(payload){
+  getRoles(payload) {
     this.ngxUiLoaderService.start();
     this.roleService.getAllRole(payload).subscribe((res: any) => {
       console.log(res);
       this.roles = res.data;
+      for (const[index, roles] of this.roles.entries()) {
+        this.roleNames.push(roles.roleName);
+      }
       this.totalPages = res.pageable.pages;
       this.ngxUiLoaderService.stop();
     }, error => {

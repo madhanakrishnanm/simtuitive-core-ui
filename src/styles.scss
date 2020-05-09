@@ -26,6 +26,7 @@
   --bg-color-secondary: #202029 !important;
   --pagination-border:#707070;
   --date-font:#17a2b8 !important;
+  --apply-btn:#B9595B !important;
 }
 
 
@@ -273,5 +274,16 @@ ngb-datepicker-navigation-select>.custom-select {
       }
     }
   }
+}
+.autocomplete-container .input-container .x i {
+  color: var(--light) !important;
+}
+//for apply Button all page filters
+.apply-btn
+{
+  background-color: var(--apply-btn);
+  border-radius: 50px;
+  width: 120px;
+  color: var(--light);
 }
 

@@ -39,7 +39,6 @@ import {AddEventModule} from './pages/add-event/add-event.module';
 import {ViewEventsModule} from './pages/view-events/view-events.module';
 import {EventSummaryModule} from './pages/event-summary/event-summary.module';
 import { EditEventComponent } from './pages/edit-event/edit-event.component';
-import { FilterComponent } from './components/filter/filter.component';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 
 @NgModule({
@@ -53,7 +52,6 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
     ForgotPasswordComponent,
     UpdatePasswordComponent,
     EditEventComponent,
-    FilterComponent,
   ],
     imports: [
         BrowserModule,

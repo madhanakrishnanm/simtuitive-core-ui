@@ -9,6 +9,7 @@ import {PermissionService} from '../../services/permission.service';
 })
 export class LicenseComponent implements OnInit {
   product = [];
+  licenseIds = [];
   datas = [{
     licenseId: '126754',
     dateOfCredit: '15.8.20',
@@ -30,6 +31,7 @@ export class LicenseComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.licenseIds.push(this.datas[0].licenseId);
   }
   requestDelete(PermissionId, modalReference) {
     this.licenseID = PermissionId;

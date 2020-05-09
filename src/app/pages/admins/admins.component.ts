@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {AdminService} from '../../services/admin.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {NgxUiLoaderService} from "ngx-ui-loader";
+import {NgxUiLoaderService} from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-admins',
@@ -12,6 +12,7 @@ import {NgxUiLoaderService} from "ngx-ui-loader";
 })
 export class AdminsComponent implements OnInit {
   closeResult = '';
+  adminNames = [];
   admins = [];
   page = 1;
   totalPages = 0;
@@ -37,11 +38,15 @@ export class AdminsComponent implements OnInit {
     this.getAdmins(payload);
 
   }
-  getAdmins(payload){
+  getAdmins(payload) {
     this.ngxUiLoaderService.start();
     this.adminService.getAllAdmin(payload).subscribe((res: any) => {
       console.log(res);
       this.admins = res.data;
+      // for  Import data For AutoComplete
+      for (const[index, admin] of this.admins.entries()) {
+        this.adminNames.push(admin.userName);
+      }
       this.totalPages = res.pageable.pages;
       this.ngxUiLoaderService.stop();
     }, error => {
@@ -52,7 +57,7 @@ export class AdminsComponent implements OnInit {
 
   requestDelete(userId, modalReference) {
     this.deleteUserId = userId;
-    this.modalService.open(modalReference, {centered: true, size: 'sm', windowClass: 'simtuitive-modal'})
+    this.modalService.open(modalReference, {centered: true, size: 'sm', windowClass: 'simtuitive-modal'});
   }
 
   delete() {

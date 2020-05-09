@@ -4,7 +4,7 @@ import {FormBuilder} from '@angular/forms';
 import {OrganizationService} from '../../services/organization.service';
 import {ClientService} from '../../services/client.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {NgxUiLoaderService} from "ngx-ui-loader";
+import {NgxUiLoaderService} from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-clients-list',
@@ -12,8 +12,10 @@ import {NgxUiLoaderService} from "ngx-ui-loader";
   styleUrls: ['./clients-list.component.scss']
 })
 export class ClientsListComponent implements OnInit {
+  keyword = 'clients';
   organization = [];
   inviteEmailId = '';
+  clientNames = [];
   clientId;
   page = 1;
   totalPages = 0;
@@ -38,11 +40,14 @@ export class ClientsListComponent implements OnInit {
     };
     this.getClients(payload);
   }
-  getClients(payload){
+  getClients(payload) {
     this.ngxUiLoaderService.start();
     this.clientService.getAllClient(payload).subscribe((res: any) => {
       console.log(res);
       this.clients = res.data;
+      for (const[index, client] of this.clients.entries()) {
+        this.clientNames.push(client.userName);
+      }
       this.totalPages = res.pageable.pages;
       this.ngxUiLoaderService.stop();
     }, error => {

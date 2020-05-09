@@ -38,8 +38,8 @@ export class PermissionsComponent implements OnInit {
   getPermissions(payload){
     this.ngxUiLoaderService.start();
     this.permissionService.getAllPermission(payload).subscribe((res: any) => {
-      console.log(res);
       this.permissions = res.data;
+      console.log(this.permissions);
       this.totalPages = res.pageable.pages;
       this.ngxUiLoaderService.stop();
     }, error => {

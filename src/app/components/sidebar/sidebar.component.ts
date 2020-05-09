@@ -17,7 +17,7 @@ export class SidebarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    //this.getUser();
+    this.getUser();
   }
   getRouteByName(name) {
     switch (name) {
@@ -49,7 +49,7 @@ export class SidebarComponent implements OnInit {
     const url = window.location.pathname;
     if (url === '/' || url.includes('dashboard')) {
       return 'Dashboard';
-    }else if (url.includes('organization')) {
+    } else if (url.includes('organization')) {
       return 'Organization Management';
     } else if (url.includes('clients')) {
       return 'Client Management';
@@ -61,13 +61,13 @@ export class SidebarComponent implements OnInit {
       return 'Event Management';
     } else if (url.includes('reports')) {
       return 'Reports';
-    }else if (url.includes('admin')) {
+    } else if (url.includes('admin')) {
       return 'Admin Management';
-    }else if (url.includes('role')) {
+    } else if (url.includes('role')) {
       return 'Role Management';
-    }else if (url.includes('permission')) {
+    } else if (url.includes('permission')) {
       return 'Permission Management';
-    }else if (url.includes('whitelist-ip')) {
+    } else if (url.includes('whitelist-ip')) {
       return 'Whitelist IPs Management';
     }
   }
@@ -76,16 +76,16 @@ export class SidebarComponent implements OnInit {
       this.userService.user = res.data;
       console.log(this.userService.user);
       this.permissions = res.data.permissions;
-      if (this.permissions){
-        for(const permission of this.permissions){
-          if (permission.type === 'tab'){
-            this.sidebars.push(permission.name)
+      if (this.permissions) {
+        for (const permission of this.permissions) {
+          if (permission.type === 'tab') {
+            this.sidebars.push(permission.name);
           }
         }
       }
       console.log(this.sidebars);
-    },error => {
-      this.router.navigate(['/login'])
+    }, error => {
+      this.router.navigate(['/login']);
     });
   }
 }

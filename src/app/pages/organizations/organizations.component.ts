@@ -13,8 +13,7 @@ import {NgxUiLoaderService} from 'ngx-ui-loader';
 export class OrganizationsComponent implements OnInit {
  // for Ng-autoComplete
   keyword = 'organizations';
-  Organizations = [
-    'Paytm', 'Microsoft', 'HP'];
+  organizationNames: any=[];
   //
    deleteId = null;
   location = [];
@@ -38,6 +37,10 @@ export class OrganizationsComponent implements OnInit {
     this.organizationService.getAllOrganization(payload).subscribe((res: any) => {
       console.log(res);
       this.organizations = res.data;
+      for (const[index, organization] of this.organizations.entries()) {
+          this.organizationNames.push(organization.organizationName);
+      }
+      console.log('names' + this.organizationNames);
       this.totalPages = res.pageable.pages;
       this.ngxUiLoaderService.stop();
     }, error => {
