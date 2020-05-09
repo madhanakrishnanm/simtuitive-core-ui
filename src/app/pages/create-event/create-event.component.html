@@ -1,0 +1,139 @@
+<div class="row">
+  <div class="col-6 mt-5">
+    <form class="simtuitive-input" [formGroup]="EventFormGroup" (ngSubmit)="save()">
+      <div class="form-group row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Select Clients</label>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+          <ng-select
+            [items]="clients"
+            [searchable]="false"
+            bindLabel="roleName"
+            placeholder="Clients"
+            class="ng-select"
+            formControlName="client"
+          >
+          </ng-select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Select Products/Course</label>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+          <ng-select
+            [items]="products"
+            [searchable]="false"
+            bindLabel="roleName"
+            placeholder="Courses"
+            class="ng-select"
+            formControlName="product"
+          >
+          </ng-select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Event Name</label>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 custom-input">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="eventName"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Toll Gates</label>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="customRadioInline1" formControlName="tollGates" [(ngModel)]="tollGate" name="tollGates" class="custom-control-input" value="yes">
+            <label class="custom-control-label" for="customRadioInline1">Yes</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="customRadioInline2" formControlName="tollGates" [(ngModel)]="tollGate" name="tollGates" class="custom-control-input" value="no">
+            <label class="custom-control-label" for="customRadioInline2">No</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Event Start Date</label>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 d-flex custom-input">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="eventStartDate"
+            ngbDatepicker
+            #d="ngbDatepicker"
+            placement="bottom-right"
+          />
+          <span class="input-group-append my-auto" (click)="d.toggle()">
+              <img src="assets/img/interface.svg">
+            </span>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Event End Date</label>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 d-flex custom-input">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="eventEndDate"
+            ngbDatepicker
+            #d1="ngbDatepicker"
+            placement="bottom-right"
+          />
+          <span class="input-group-append my-auto" (click)="d1.toggle()">
+              <img src="assets/img/interface.svg">
+            </span>
+        </div>
+      </div>
+      <div class="row justify-content-end">
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 text-center">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            nbStepperNext
+            [disabled]="next"
+          >
+            Proceed To Generate Event
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-6">
+    <div class="product-users-table table-responsive mt-2" *ngIf="tollGate==='yes'">
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">Module Name</th>
+          <th scope="col">Before Module</th>
+          <th scope="col">After Module</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let module of tempModules;let i=index">
+          <td>{{module.moduleId}}</td>
+          <td>
+            <ng-select
+              [items]="options"
+              [searchable]="false"
+              class="ng-select mx-auto"
+              [(ngModel)]="tempModules[i]['moduleBefore']"
+              (change)="changeModuleTollPass(module.moduleId, $event, 'before')"
+            >
+            </ng-select>
+          </td>
+          <td>
+            <ng-select
+              [items]="options"
+              [searchable]="false"
+              class="ng-select mx-auto"
+              [(ngModel)]="tempModules[i]['moduleAfter']"
+              (change)="changeModuleTollPass(module.moduleId,$event,'after')"
+            >
+            </ng-select>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

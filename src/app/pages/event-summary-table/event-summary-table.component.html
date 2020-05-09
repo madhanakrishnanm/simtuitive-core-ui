@@ -1,6 +1,6 @@
 <div class="product-users-table table-responsive mt-2 col">
   <table class="table">
-    <tbody>
+    <tbody *ngIf="eventDetails.length!=0">
     <tr>
       <th scope="col">Client Name</th>
       <td>{{eventDetails[0].clients}}</td>

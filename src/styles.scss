@@ -6,6 +6,7 @@
 @import "assets/vendor/@fortawesome/fontawesome-free/css/all.min.css";
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500&display=swap');
 @import '~ngx-toastr/toastr-bs4-alert';
+@import '~bs-stepper/dist/css/bs-stepper.min.css';
 
 :root {
   --primary: #FF9000 !important;
@@ -286,4 +287,40 @@ ngb-datepicker-navigation-select>.custom-select {
   width: 120px;
   color: var(--light);
 }
+//for Input with Icons
+.custom-input
+{
+  height: calc(1.5em + 0.75rem + 2px);
+  background: var(--bg-color-secondary);
+  border-radius: 11px;
+}
+//stepper
+.connector
+{
+  background-color: var(--light) !important;
+  margin-top: 2% !important;
+  width: 12% !important;
+}
+.step
+{
+  height: 27px;
+  width: 40px;
+  border-radius: 50%;
+  background-color:#8A8A8D !important;
+  color: var(--light);
+  .label
+  {
+    color:#8A8A8D !important;
+  }
+  nb-icon
+  {
+    height: 20px !important;
+  }
+}
+  .header
+  {
+    width:60% !important;
+    margin-left: 4%;
+    margin-bottom: 4% !important;
+  }
 

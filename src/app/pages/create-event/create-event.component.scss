@@ -1,0 +1,39 @@
+.input-group-append
+{
+  img
+  {
+    height: 20px;
+    width: 20px;
+  }
+}
+.box
+{
+  height: 20em;
+  border:1px solid green;
+}
+//for scrollbar
+::-webkit-scrollbar
+{
+  background: none;
+}
+::-webkit-scrollbar-thumb
+{
+  background: var(--secondary);
+  border-radius: 10px;
+  width:10px;
+}
+//for Table
+.table-responsive
+{
+  height: auto;
+  max-height:50% !important;
+  overflow-y: scroll;
+  .custom-input {
+    width:50%;
+    &:focus {
+      background: var(--bg-color-secondary);
+      color: var(--light);
+    }
+  }
+}
+

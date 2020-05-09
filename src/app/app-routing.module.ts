@@ -32,7 +32,7 @@ import {EventSummaryComponent} from './pages/event-summary/event-summary.compone
 import {EventsComponent} from './pages/events/events.component';
 import {AddEventComponent} from './pages/add-event/add-event.component';
 import {EditEventComponent} from './pages/edit-event/edit-event.component';
-import {ViewEventsComponent} from "./pages/view-events/view-events.component";
+import {ViewEventsComponent} from './pages/view-events/view-events.component';
 
 
 const routes: Routes = [

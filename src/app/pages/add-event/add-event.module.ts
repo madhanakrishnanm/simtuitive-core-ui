@@ -3,17 +3,21 @@ import {CommonModule} from '@angular/common';
 import {AddEventComponent} from './add-event.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgSelectModule} from '@ng-select/ng-select';
+// tslint:disable-next-line:max-line-length
 import {NgbDatepickerModule, NgbDateStruct, NgbModule, NgbCalendar, NgbDate, NgbDateParserFormatter, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {DateFormatterService} from '../../services/date-formatter.service';
+import {CreateEventComponent} from '../create-event/create-event.component';
+import {EventSummaryModule} from '../event-summary/event-summary.module';
 @NgModule({
-  declarations: [AddEventComponent],
+  declarations: [AddEventComponent, CreateEventComponent],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     NgSelectModule,
     NgbDatepickerModule,
-    NgbModule
+    NgbModule,
+    EventSummaryModule,
   ],
   providers: [{provide: NgbDateParserFormatter, useClass: DateFormatterService}]
 

@@ -11,7 +11,8 @@ import {NgSelectModule} from '@ng-select/ng-select';
 @NgModule({
     declarations: [EventSummaryComponent, EventSummaryTableComponent, EditEventSummaryComponent],
     exports: [
-        EventSummaryTableComponent
+        EventSummaryTableComponent,
+        EventSummaryComponent
     ],
     imports: [
         CommonModule,
