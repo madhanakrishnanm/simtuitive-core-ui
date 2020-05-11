@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import axios from 'axios';
+import Stepper from 'bs-stepper';
 
 const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado',
   'Connecticut', 'Delaware', 'District Of Columbia', 'Federated States Of Micronesia', 'Florida', 'Georgia',
@@ -18,6 +19,8 @@ const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'C
 })
 export class TestComponent implements OnInit {
   peoples = [{name: 'Karyn Wright'}, {name: 'ram'}];
+  public name = 'Angular';
+  private stepper: Stepper;
 
   constructor(private modalService: NgbModal) {
     axios.post(
@@ -41,7 +44,18 @@ export class TestComponent implements OnInit {
     console.log('modal opened');
   }
 
+  next() {
+    this.stepper.next();
+  }
 
-  ngOnInit(): void {
+  onSubmit() {
+    return false;
+  }
+
+  ngOnInit() {
+    this.stepper = new Stepper(document.querySelector('#stepper1'), {
+      linear: false,
+      animation: true
+    })
   }
 }

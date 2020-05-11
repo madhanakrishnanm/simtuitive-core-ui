@@ -1,111 +1,54 @@
 <div class="site-content">
 
-  <div class="row">
-    <div class="col">
-      <div>
-        <div class="heading">Client Management</div>
-        <div class="sub-heading">Client Management</div>
-        <button type="button" class="btn btn-primary">Add</button>
-        <button type="button" class="btn btn-warning">Invite</button>
+  <div class="container">
+    <h1>Hello {{name}} with bsStepper!</h1>`
+    <div id="stepper1" class="bs-stepper">
+      <div class="bs-stepper-header">
+        <div class="step" data-target="#test-l-1">
+          <button class="step-trigger">
+            <span class="bs-stepper-circle">1</span>
+            <span class="bs-stepper-label">Email</span>
+          </button>
+        </div>
+        <div class="line"></div>
+        <div class="step" data-target="#test-l-2">
+          <button class="step-trigger">
+            <span class="bs-stepper-circle">2</span>
+            <span class="bs-stepper-label">Password</span>
+          </button>
+        </div>
+        <div class="line"></div>
+        <div class="step" data-target="#test-l-3">
+          <button class="step-trigger">
+            <span class="bs-stepper-circle">3</span>
+            <span class="bs-stepper-label">Validate</span>
+          </button>
+        </div>
+      </div>
+      <div class="bs-stepper-content">
+        <form (ngSubmit)="onSubmit()">
+          <div id="test-l-1" class="content">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" />
+            </div>
+            <button (click)="next()" class="btn btn-primary">Next</button>
+          </div>
+          <div id="test-l-2" class="content">
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+            </div>
+            <button (click)="next()" class="btn btn-primary">Next</button>
+          </div>
+          <div id="test-l-3" class="content text-center">
+            <button type="submit" class="btn btn-primary mt-5">Submit</button>
+          </div>
+        </form>
       </div>
     </div>
-    <div class="col-12 my-4 simtuitive-input">
-      <form>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Email</label>
-          <div class="col-sm-6">
-            <input
-              type="text"
-              class="form-control"
-              value="email@example.com">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Password</label>
-          <div class="col-sm-6">
-            <input
-              type="password"
-              class="form-control" placeholder="Password">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Password</label>
-          <div class="col-sm-6">
-            <textarea class="form-control" rows="3"></textarea>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Password</label>
-          <div class="col-sm-6">
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">@</span>
-              </div>
-              <!-- <input id="typeahead-basic"
-                      type="text" class="form-control"
-                      [(ngModel)]="model" [ngbTypeahead]="search"/>-->
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Username"
-                aria-label="Username"/>
-              <div class="input-group-append">
-                <span class="input-group-text">B</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--<div class="form-group row">
-          <label class="col-sm-2 col-form-label">Password</label>
-          <div class="col-sm-6">
-            <div class="input-group">
-              <ng-select
-                [noFilter]="200"
-                [ngClass]="isOpen ? 'active': 'inactive'"
-                (closed)="isOpen = false"
-                (opened)="isOpen = true"
-                [options]="myOptions">
-              </ng-select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Password</label>
-          </div>
-        </div>-->
-        <div class="form-group row">
-          <i class="fa fa-trash" aria-hidden="true" (click)="open(content)"></i>
-          <label class="col-sm-2 col-form-label">Password</label>
-          <div class="col-sm-6">
-            <ng-select
-              [items]="peoples"
-              [multiple]="true"
-              [closeOnSelect]="false"
-              [searchable]="false"
-              bindLabel="name"
-              placeholder="Select people"
-              >
-            </ng-select>
-          </div>
-        </div>
-      </form>
-    </div>
   </div>
+
+
+
 </div>
-<!--modal-->
-<ng-template #content let-modal >
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <p>Do You Want to Delete</p>
-  </div>
-  <div class="modal-footer">
-    <div class="btn-group">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
-      <button type="button" class="btn btn-outline-dark">Delete</button>
-    </div>
-  </div>
-</ng-template>
