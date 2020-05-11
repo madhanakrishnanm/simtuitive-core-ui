@@ -131,7 +131,7 @@ input[type=number]::-webkit-outer-spin-button {
   color: var(--light);
   background-color: var(--dark_bg) !important;
   border: none;
-  height: 36px;
+  height: 50px !important;
   align-items: center;
   border-radius: 11px;
   padding: 10px;
@@ -199,8 +199,7 @@ input
 {
   background: var(--bg-color-secondary);
   padding:5px;
-  border-radius:11px;
-  font-family:nunito
+  font-family: nunito, serif;
   img
   {
     width:20px;
@@ -221,7 +220,6 @@ input
 }
 //styles for auto-complete
 .ng-autocomplete {
-  width:250px !important;
   height: auto;
   .autocomplete-container .input-container input {
     background-color: var(--bg-color-secondary) !important;
@@ -304,7 +302,8 @@ ngb-datepicker-navigation-select>.custom-select {
 {
   background-color: var(--apply-btn);
   border-radius: 50px;
-  width: 120px;
+  margin-top: 5px;
+  width: 150px;
   color: var(--light);
 }
 //for Input with Icons
@@ -330,3 +329,4 @@ ngb-datepicker-navigation-select>.custom-select {
     background-color: transparent !important;
   }
 }
+
