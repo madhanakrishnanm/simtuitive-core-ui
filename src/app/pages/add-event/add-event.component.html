@@ -4,6 +4,23 @@
       <h1>Add Events</h1>
     </div>
   </div>
-
+  <ngb-tabset type="pills">
+    <ngb-tab title="Create Event">
+      <ng-template ngbTabContent>
+        <app-create-event></app-create-event>
+      </ng-template>
+    </ngb-tab>
+     <div class="line"></div>
+    <ngb-tab title="Event Summary">
+      <ng-template ngbTabContent>
+        <app-event-summary></app-event-summary>
+      </ng-template>
+    </ngb-tab>
+    <div class="line"></div>
+    <ngb-tab title="Event Download">
+      <ng-template ngbTabContent>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
 </div>
 
