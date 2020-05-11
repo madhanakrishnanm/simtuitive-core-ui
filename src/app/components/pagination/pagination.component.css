@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap");
 .pagination-input {
   text-align: center;
   width: 30px;
@@ -15,8 +16,8 @@
   padding-right: 10px;
 }
 
-.pagination {
-  font-family: "nucleo";
+.pagination, input {
+  font-family: "Nunito", sans-serif;
 }
 
 /*# sourceMappingURL=pagination.component.css.map */

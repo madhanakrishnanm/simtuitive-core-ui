@@ -16,6 +16,8 @@ export class ClientsListComponent implements OnInit {
   organization = [];
   inviteEmailId = '';
   clientNames = [];
+  organizationNames = [];
+  emailAddress = [];
   clientId;
   page = 1;
   totalPages = 0;
@@ -47,6 +49,8 @@ export class ClientsListComponent implements OnInit {
       this.clients = res.data;
       for (const[index, client] of this.clients.entries()) {
         this.clientNames.push(client.userName);
+        this.organizationNames.push(client.organizationName);
+        this.emailAddress.push(client.userEmail);
       }
       this.totalPages = res.pageable.pages;
       this.ngxUiLoaderService.stop();

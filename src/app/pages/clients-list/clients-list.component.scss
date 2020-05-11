@@ -9,7 +9,12 @@
 {
   background-color:#B9595B !important;
 }
-ng-select
+//disable a delete button
+.disable
 {
-  border:1px solid;
+color: gray !important;
+  cursor: not-allowed !important;
+  pointer-events: none;
 }
+
+
