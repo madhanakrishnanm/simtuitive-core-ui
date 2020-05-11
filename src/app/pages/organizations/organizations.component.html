@@ -34,26 +34,42 @@
             </div>
             </div>
         <!--<label class="col-xl-2 col-lg-2  col-md-12 col-sm-12  col-form-label" style="color:white">Roles</label>-->
-        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 ml-2">
-          <ng-select
-            [items]="location"
-            [closeOnSelect]="true"
-            [searchable]="false"
-            bindLabel="organizationName"
-            placeholder="location"
-          >
-          </ng-select>
+        <div class="col-3">
+          <div class="ng-autocomplete align-content-center search d-inline-flex">
+            <span class="input-group-prepend"><img src="assets/img/search.svg"></span>
+            <ng-autocomplete
+              [data]="organizationNames"
+              searchKeyword="keyword"
+              [itemTemplate]="itemTemplate"
+              [notFoundTemplate]="notFoundTemplate"
+            >
+            </ng-autocomplete>
+            <ng-template #itemTemplate let-item>
+              <a [innerHTML]="item"></a>
+            </ng-template>
+            <ng-template #notFoundTemplate let-notFound>
+              <div [innerHTML]="notFound"></div>
+            </ng-template>
+          </div>
         </div>
         <!--<label class="col-xl-2 col-lg-2  col-md-12 col-sm-12  col-form-label" style="color:white">Permission Type</label>-->
-        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 ml-2">
-          <ng-select
-            [items]="industry"
-            [closeOnSelect]="true"
-            [searchable]="false"
-            bindLabel="organizationName"
-            placeholder="industry"
-          >
-          </ng-select>
+        <div class="col-3">
+          <div class="ng-autocomplete align-content-center search d-inline-flex">
+            <span class="input-group-prepend"><img src="assets/img/search.svg"></span>
+            <ng-autocomplete
+              [data]="organizationNames"
+              searchKeyword="keyword"
+              [itemTemplate]="itemTemplate"
+              [notFoundTemplate]="notFoundTemplate"
+            >
+            </ng-autocomplete>
+            <ng-template #itemTemplate let-item>
+              <a [innerHTML]="item"></a>
+            </ng-template>
+            <ng-template #notFoundTemplate let-notFound>
+              <div [innerHTML]="notFound"></div>
+            </ng-template>
+          </div>
         </div>
         <div class="col-2">
           <button class="btn apply-btn">Apply</button>

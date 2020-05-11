@@ -9,8 +9,10 @@
   background-color: #B9595B !important;
 }
 
-ng-select {
-  border: 1px solid;
+.disable {
+  color: gray !important;
+  cursor: not-allowed !important;
+  pointer-events: none;
 }
 
 /*# sourceMappingURL=clients-list.component.css.map */

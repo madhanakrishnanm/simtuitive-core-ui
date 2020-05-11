@@ -79,7 +79,7 @@
                    (click)="requestInvitation(client.userId,client.userEmail, invite)"></i>
                 <i title="Edit Client" class="fa fa-edit" aria-hidden="true"
                    (click)="router.navigate(['/edit-client', client.userId])"></i>
-                <i title="Delete Client" class="fa fa-trash" aria-hidden="true"
+                <i title="Delete Client" class="fa fa-trash disable"  aria-hidden="true"
                    (click)="requestDelete(client.userId, content)"></i>
               </div>
             </td>
@@ -143,28 +143,40 @@
     </button>
   </div>
   <div class="modal-body" style="text-align: center;">
-    <div class="row">
+    <div class="row justify-content-center">
       <label class="col-xl-7 col-lg-7 col-md-12 col-sm-12  col-form-label" style="color:white;text-align: start">Organization Name</label>
-    <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 ml-2">
-      <ng-select
-        [items]="organization"
-        [closeOnSelect]="true"
-        [searchable]="false"
-        bindLabel="organizationName"
-        placeholder="Name"
-      >
-      </ng-select>
-    </div>
-      <label class="col-xl-7 col-lg-7  col-md-12 col-sm-12  col-form-label mt-3" style="color:white;text-align: start">Admin Email Address</label>
-      <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 ml-2 mt-3">
-        <ng-select
-          [items]="organization"
-          [closeOnSelect]="true"
-          [searchable]="false"
-          bindLabel="organizationName"
-          placeholder="Email"
+      <div class="ng-autocomplete align-content-center search d-inline-flex">
+        <span class="input-group-prepend"><img src="assets/img/search.svg"></span>
+        <ng-autocomplete
+          [data]="organizationNames"
+          searchKeyword="keyword"
+          [itemTemplate]="itemTemplate"
+          [notFoundTemplate]="notFoundTemplate"
         >
-        </ng-select>
+        </ng-autocomplete>
+        <ng-template #itemTemplate let-item>
+          <a [innerHTML]="item" style="color:black;"></a>
+        </ng-template>
+        <ng-template #notFoundTemplate let-notFound>
+          <div [innerHTML]="notFound"></div>
+        </ng-template>
+      </div>
+      <label class="col-xl-7 col-lg-7  col-md-12 col-sm-12  col-form-label mt-3" style="color:white;text-align: start">Admin Email Address</label>
+      <div class="ng-autocomplete align-content-center search d-inline-flex">
+        <span class="input-group-prepend"><img src="assets/img/search.svg"></span>
+        <ng-autocomplete
+          [data]="emailAddress"
+          searchKeyword="keyword"
+          [itemTemplate]="itemTemplate"
+          [notFoundTemplate]="notFoundTemplate"
+        >
+        </ng-autocomplete>
+        <ng-template #itemTemplate let-item>
+          <a [innerHTML]="item" style="color:black;"></a>
+        </ng-template>
+        <ng-template #notFoundTemplate let-notFound>
+          <div [innerHTML]="notFound"></div>
+        </ng-template>
       </div>
     </div>
   </div>
