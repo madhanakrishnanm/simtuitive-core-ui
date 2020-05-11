@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {EventService} from '../../services/event.service';
 import {Router} from '@angular/router';
-
 @Component({
   selector: 'app-create-event',
   templateUrl: './create-event.component.html',
   styleUrls: ['./create-event.component.scss']
 })
 export class CreateEventComponent implements OnInit {
+
   next;
   tollGate = '';
   clients: any = ['Microsoft', 'HP', 'IBM', 'InfoSys'];

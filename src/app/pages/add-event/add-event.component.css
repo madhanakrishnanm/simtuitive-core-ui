@@ -1,3 +1,12 @@
+.line {
+  background-color: var(--light) !important;
+}
 
+.step-trigger[aria-selected=true] .bs-stepper-circle {
+  background-color: var(--primary);
+}
+.step-trigger[aria-selected=true] .bs-stepper-label {
+  color: var(--primary) !important;
+}
 
 /*# sourceMappingURL=add-event.component.css.map */
