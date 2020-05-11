@@ -7,8 +7,13 @@ import Stepper from 'bs-stepper';
   styleUrls: ['./add-event.component.scss']
 })
 export class AddEventComponent implements OnInit {
+  private stepper: Stepper;
    constructor() {
    }
   ngOnInit() {
+    this.stepper = new Stepper(document.querySelector('#stepper1'), {
+      linear: false,
+      animation: true
+    });
   }
 }

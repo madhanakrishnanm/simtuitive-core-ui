@@ -4,23 +4,39 @@
       <h1>Add Events</h1>
     </div>
   </div>
-  <ngb-tabset type="pills">
-    <ngb-tab title="Create Event">
-      <ng-template ngbTabContent>
-        <app-create-event></app-create-event>
-      </ng-template>
-    </ngb-tab>
-     <div class="line"></div>
-    <ngb-tab title="Event Summary">
-      <ng-template ngbTabContent>
+  <div id="stepper1" class="bs-stepper">
+    <div class="bs-stepper-header">
+      <div class="step" data-target="#create-event">
+        <button class="step-trigger">
+          <span class="bs-stepper-circle">1</span>
+          <span class="bs-stepper-label">Create Event</span>
+        </button>
+      </div>
+      <div class="line"></div>
+      <div class="step" data-target="#event-summary">
+        <button class="step-trigger">
+          <span class="bs-stepper-circle">2</span>
+          <span class="bs-stepper-label">Event Summary</span>
+        </button>
+      </div>
+      <div class="line"></div>
+      <div class="step" data-target="#event-download">
+        <button class="step-trigger">
+          <span class="bs-stepper-circle">3</span>
+          <span class="bs-stepper-label">Event Download</span>
+        </button>
+      </div>
+    </div>
+    <div class="bs-stepper-content">
+        <div id="create-event" class="content">
+          <app-create-event></app-create-event>
+        </div>
+      <div id="event-summary" class="content">
         <app-event-summary></app-event-summary>
-      </ng-template>
-    </ngb-tab>
-    <div class="line"></div>
-    <ngb-tab title="Event Download">
-      <ng-template ngbTabContent>
-      </ng-template>
-    </ngb-tab>
-  </ngb-tabset>
+      </div>
+      <div id="event-download" class="content">
+      </div>
+    </div>
+  </div>
 </div>
 

@@ -1,1 +1,16 @@
-
+//line between the circles
+.line
+{
+  background-color: var(--light) !important;
+}
+//circles styles while on active
+.step-trigger[aria-selected=true]
+{
+  .bs-stepper-circle {
+    background-color: var(--primary);
+  }
+  .bs-stepper-label
+  {
+    color:var(--primary) !important;
+  }
+}
