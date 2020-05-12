@@ -4,11 +4,15 @@ import {CreateMetaComponent} from './create-meta.component';
 import {MetaComponent} from '../meta/meta.component';
 import {NgSelectModule} from '@ng-select/ng-select';
 import {AssessmentDetailsComponent} from '../assessment-details/assessment-details.component';
+import { ModulesComponent } from './modules/modules.component';
+import { ConceptsComponent } from './concepts/concepts.component';
+import {AutocompleteLibModule} from "angular-ng-autocomplete";
 @NgModule({
-  declarations: [CreateMetaComponent, MetaComponent, AssessmentDetailsComponent],
+  declarations: [CreateMetaComponent, MetaComponent, AssessmentDetailsComponent, ModulesComponent, ConceptsComponent],
   imports: [
     CommonModule,
-    NgSelectModule
+    NgSelectModule,
+    AutocompleteLibModule
   ]
 })
 export class CreateMetaModule { }
