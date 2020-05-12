@@ -11,6 +11,7 @@ export class CreateEventComponent implements OnInit {
   // for next step functionality
   // tslint:disable-next-line:no-output-on-prefix
   @Output() onStepNext: EventEmitter<any> = new EventEmitter();
+  nextTitle = 'Event Summary';
   next;
   tollGate = '';
   clients: any = ['Microsoft', 'HP', 'IBM', 'InfoSys'];
@@ -126,11 +127,7 @@ export class CreateEventComponent implements OnInit {
       }
     ];
     this.eventService.addEvent(Payload);
-    this.eventService.getEventsDetails().subscribe((res) => {
-            if (res.length > 0) {
-              this.onStepNext.emit();
-            }
-  });
+    this.onStepNext.emit(this.nextTitle);
   }
   // function for change Date To String
   dateToString(date, month, year) {

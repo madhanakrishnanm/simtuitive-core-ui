@@ -17,7 +17,7 @@ export class SidebarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    //this.getUser();
+    this.getUser();
   }
   getRouteByName(name) {
     switch (name) {
