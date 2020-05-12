@@ -29,7 +29,7 @@
     </div>
     <div class="bs-stepper-content">
         <div id="create-event" class="content">
-          <app-create-event></app-create-event>
+          <app-create-event (onStepNext)="next()"></app-create-event>
         </div>
       <div id="event-summary" class="content">
         <app-event-summary></app-event-summary>

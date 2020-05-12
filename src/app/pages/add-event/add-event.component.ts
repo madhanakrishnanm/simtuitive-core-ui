@@ -10,6 +10,9 @@ export class AddEventComponent implements OnInit {
   private stepper: Stepper;
    constructor() {
    }
+   next() {
+     this.stepper.next();
+   }
   ngOnInit() {
     this.stepper = new Stepper(document.querySelector('#stepper1'), {
       linear: false,
