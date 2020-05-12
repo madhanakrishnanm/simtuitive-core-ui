@@ -5,7 +5,12 @@ textarea
 }
 .file-upload-container
 {
-  height: 150px;
   background-color: var(--bg-color-secondary);
   border-radius: 10px;
+  padding: 10px;
+}
+.actions
+{
+  width: 20% !important;
+  border-radius: 50px;
 }

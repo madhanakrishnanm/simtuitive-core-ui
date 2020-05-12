@@ -41,20 +41,104 @@
       </div>
       <div class="form-group row">
         <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Upload Product Trailor</label>
-        <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 file-upload-container">
-           <input type="file" style="display:none;"  #upload>
-           <button class="btn btn-success" (click)="upload.click()">Upload</button>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 file-upload-container">
+           <input type="file" style="display:none;"  #trailer>
+           <button class="btn btn-success" (click)="trailer.click()">Upload</button>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Upload Product Poster</label>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 file-upload-container">
+          <input type="file" style="display:none;"  #poster>
+          <button class="btn btn-success" (click)="poster.click()">Upload</button>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">About Simulation</label>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+          <textarea row="3" class="form-control"></textarea>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Business Challenges</label>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+          <textarea row="3" class="form-control"></textarea>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Content Producer</label>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+          <textarea row="3" class="form-control"></textarea>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Enrollment Options</label>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="customRadioInline1"  name="tollGates" class="custom-control-input" value="yes">
+            <label class="custom-control-label" for="customRadioInline1">Self Placed</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="customRadioInline2" name="tollGates" class="custom-control-input" value="no">
+            <label class="custom-control-label" for="customRadioInline2">Available with Remote Guidance</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="customRadioInline3" name="tollGates" class="custom-control-input" value="no">
+            <label class="custom-control-label" for="customRadioInline3">Available as Instructor Led Onsite simulation</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Related Products</label>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <img src="assets/img/search.svg">
+              </span>
+            </div>
+
+            <div class="ng-autocomplete form-control align-content-center search d-inline-flex">
+              <ng-autocomplete
+                placeHolder="search"
+                searchKeyword="keyword"
+                [itemTemplate]="itemTemplate"
+                [notFoundTemplate]="notFoundTemplate"
+              >
+              </ng-autocomplete>
+              <ng-template #itemTemplate let-item>
+                <a [innerHTML]="item" style="color:black;"></a>
+              </ng-template>
+              <ng-template #notFoundTemplate let-notFound>
+                <div [innerHTML]="notFound"></div>
+              </ng-template>
+            </div>
+          </div>
         </div>
       </div>
       <div class="row justify-content-end pt-4">
-        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 text-center">
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 btn-group">
           <button
             type="submit"
-            class="btn btn-primary">
-            Upload
+            class="btn btn-warning actions">
+            Clear Meta
+          </button>
+          <button
+            type="submit"
+            class="btn btn-primary ml-2 actions">
+            Add Meta
           </button>
         </div>
       </div>
     </form>
+    <div class="row justify-content-end pt-4">
+      <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 btn-group">
+        <button
+          type="button"
+          class="btn btn-warning actions" (click)="save()">
+          Assessment>>
+        </button>
+      </div>
+    </div>
   </div>
 </div>
