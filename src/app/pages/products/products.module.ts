@@ -2,15 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductsComponent } from './products.component';
 import {RouterModule} from '@angular/router';
-import {CreateMetaComponent} from '../create-meta/create-meta.component';
-
-
-
+import {CreateMetaModule} from '../create-meta/create-meta.module';
+import {NgSelectModule} from '@ng-select/ng-select';
 @NgModule({
-  declarations: [ProductsComponent, CreateMetaComponent],
+  declarations: [ProductsComponent],
     imports: [
         CommonModule,
-        RouterModule
+        RouterModule,
+        CreateMetaModule,
+        NgSelectModule
     ]
 })
 export class ProductsModule { }

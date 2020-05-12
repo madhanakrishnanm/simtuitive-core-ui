@@ -42,7 +42,7 @@ import { EditEventComponent } from './pages/edit-event/edit-event.component';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {CreateMetaModule} from './pages/create-meta/create-meta.module';
+import {ProductsModule} from './pages/products/products.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +53,7 @@ import {CreateMetaModule} from './pages/create-meta/create-meta.module';
     TestComponent,
     ForgotPasswordComponent,
     UpdatePasswordComponent,
-    EditEventComponent,
+    EditEventComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +71,6 @@ import {CreateMetaModule} from './pages/create-meta/create-meta.module';
     ViewEventsModule,
     AddOrganizationModule,
     EditOrganizationModule,
-    CreateMetaModule,
     ClientsListModule,
     EditClientModule,
     AddClientModule,
@@ -83,6 +82,7 @@ import {CreateMetaModule} from './pages/create-meta/create-meta.module';
     RolesModule,
     AddRoleModule,
     EditRoleModule,
+    ProductsModule,
     PermissionsModule,
     AddPermissionModule,
     EditPermissionModule,
