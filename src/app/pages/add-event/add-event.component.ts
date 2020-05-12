@@ -8,10 +8,12 @@ import Stepper from 'bs-stepper';
 })
 export class AddEventComponent implements OnInit {
   private stepper: Stepper;
+   title = 'Add Events';
    constructor() {
    }
-   next() {
+   next(title) {
      this.stepper.next();
+     this.title = title;
    }
   ngOnInit() {
     this.stepper = new Stepper(document.querySelector('#stepper1'), {

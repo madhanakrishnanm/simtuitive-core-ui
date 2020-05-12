@@ -1,7 +1,7 @@
 <div class="site-content">
   <div class="row">
     <div class="col">
-      <h1>Add Events</h1>
+      <h1>{{title}}</h1>
     </div>
   </div>
   <div id="stepper1" class="bs-stepper">
@@ -29,10 +29,10 @@
     </div>
     <div class="bs-stepper-content">
         <div id="create-event" class="content">
-          <app-create-event (onStepNext)="next()"></app-create-event>
+          <app-create-event (onStepNext)="next($event)"></app-create-event>
         </div>
       <div id="event-summary" class="content">
-        <app-event-summary (onStepNext)="next()"></app-event-summary>
+        <app-event-summary (onStepNext)="next($event)"></app-event-summary>
       </div>
       <div id="event-download" class="content">
         <app-event-download></app-event-download>
