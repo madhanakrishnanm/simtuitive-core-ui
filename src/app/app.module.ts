@@ -42,8 +42,7 @@ import { EditEventComponent } from './pages/edit-event/edit-event.component';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
+import { MetaComponent } from './pages/meta/meta.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +54,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ForgotPasswordComponent,
     UpdatePasswordComponent,
     EditEventComponent,
+    MetaComponent,
   ],
   imports: [
     BrowserModule,
