@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {EventService} from '../../services/event.service';
 import {Router} from '@angular/router';
@@ -8,7 +8,9 @@ import {Router} from '@angular/router';
   styleUrls: ['./create-event.component.scss']
 })
 export class CreateEventComponent implements OnInit {
-
+  // for next step functionality
+  // tslint:disable-next-line:no-output-on-prefix
+  @Output() onStepNext: EventEmitter<any> = new EventEmitter();
   next;
   tollGate = '';
   clients: any = ['Microsoft', 'HP', 'IBM', 'InfoSys'];
@@ -124,6 +126,11 @@ export class CreateEventComponent implements OnInit {
       }
     ];
     this.eventService.addEvent(Payload);
+    this.eventService.getEventsDetails().subscribe((res) => {
+            if (res.length > 0) {
+              this.onStepNext.emit();
+            }
+  });
   }
   // function for change Date To String
   dateToString(date, month, year) {
