@@ -7,12 +7,14 @@ import {AssessmentDetailsComponent} from '../assessment-details/assessment-detai
 import { ModulesComponent } from './modules/modules.component';
 import { ConceptsComponent } from './concepts/concepts.component';
 import {AutocompleteLibModule} from "angular-ng-autocomplete";
+import {NgbButtonsModule} from "@ng-bootstrap/ng-bootstrap";
 @NgModule({
   declarations: [CreateMetaComponent, MetaComponent, AssessmentDetailsComponent, ModulesComponent, ConceptsComponent],
   imports: [
     CommonModule,
     NgSelectModule,
-    AutocompleteLibModule
+    AutocompleteLibModule,
+    NgbButtonsModule
   ]
 })
 export class CreateMetaModule { }

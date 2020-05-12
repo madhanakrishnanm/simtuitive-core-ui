@@ -36,16 +36,16 @@
   </div>
   <div class="bs-stepper-content">
     <div id="meta" class="content">
-       <app-meta></app-meta>
+       <app-meta (onStepNext)="next()" (onStepPrev)="previous()"></app-meta>
     </div>
     <div id="assessment" class="content">
-      <app-assessment-details></app-assessment-details>
+      <app-assessment-details  (onStepNext)="next()" (onStepPrev)="previous()"></app-assessment-details>
     </div>
     <div id="modules" class="content">
-      <app-modules></app-modules>
+      <app-modules  (onStepNext)="next()" (onStepPrev)="previous()"></app-modules>
     </div>
     <div id="concepts" class="content">
-      <app-concepts></app-concepts>
+      <app-concepts  (onStepNext)="next()" (onStepPrev)="previous()"></app-concepts>
     </div>
   </div>
 </div>

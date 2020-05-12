@@ -75,14 +75,22 @@
       <div class="row pt-4">
         <div class="offset-xl-4 offset-lg-4 col-xl-8 col-lg-8 col-md-12 col-sm-12">
           <button
-            type="submit"
+            type="button"
             class="btn btn-secondary">
             Clear Concept
           </button>
           <button
-            type="submit"
+            type="button"
             class="btn btn-primary float-right">
             Add Concept
+          </button>
+        </div>
+        <div class="col-12" style="margin-top: 60px;">
+          <button
+            type="button"
+            (click)="previous()"
+            class="btn btn-warning">
+            << Modules
           </button>
         </div>
       </div>

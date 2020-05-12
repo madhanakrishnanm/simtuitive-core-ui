@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-concepts',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./concepts.component.scss']
 })
 export class ConceptsComponent implements OnInit {
+
+  @Output() onStepNext: EventEmitter<any> = new EventEmitter();
+  @Output() onStepPrev: EventEmitter<any> = new EventEmitter()
 
   modules = [
     "Resource Management",
@@ -17,6 +20,16 @@ export class ConceptsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  save() {
+    this.onStepNext.emit();
+  }
+  next(){
+    this.onStepNext.emit();
+  }
+  previous(){
+    this.onStepPrev.emit();
   }
 
 }

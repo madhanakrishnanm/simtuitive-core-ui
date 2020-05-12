@@ -9,7 +9,14 @@ import Stepper from 'bs-stepper';
 export class CreateMetaComponent implements OnInit {
   private stepper: Stepper;
   constructor() { }
-
+  next()
+  {
+    this.stepper.next();
+  }
+  previous()
+  {
+    this.stepper.previous();
+  }
   ngOnInit(): void {
     this.stepper = new Stepper(document.querySelector('#stepper1'), {
       linear: false,
