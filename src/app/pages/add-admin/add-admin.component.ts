@@ -40,6 +40,7 @@ export class AddAdminComponent implements OnInit {
       console.log(this.adminForm.value);
       this.isLoading =  false;
     }, error => {
+
       this.isLoading = false;
     });
   }
@@ -86,6 +87,11 @@ export class AddAdminComponent implements OnInit {
       console.log(res);
     }, error => {
       console.log(error);
+      if (error.error.userMessage){
+        this.toastrService.warning(error.error.userMessage);
+      }else {
+        this.toastrService.warning('Something went to be wrong!');
+      }
       this.ngxUiLoaderService.stop();
     })
   }
