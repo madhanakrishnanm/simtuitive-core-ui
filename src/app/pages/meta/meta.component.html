@@ -1,0 +1,68 @@
+<div class="site-content">
+  <div class="row">
+    <div class="col">
+      <h1>Meta</h1>
+    </div>
+  </div>
+<div class="row">
+  <div class="col-xl-7 col-lg-7 col-md-9 col-sm-12 p-lg-5 p-md-3 p-sm-2">
+    <form class="simtuitive-input">
+      <div class="form-group row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Product Name</label>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+          <input
+            type="text"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Product Category</label>
+          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+            <ng-select
+              [searchable]="false"
+              bindLabel="roleName"
+              placeholder="Clients"
+              class="ng-select"
+            >
+            </ng-select>
+          </div>
+        </div>
+      <div class="form-group row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Product Sub-Category</label>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+          <ng-select
+            [searchable]="false"
+            bindLabel="roleName"
+            placeholder="Clients"
+            class="ng-select"
+          >
+          </ng-select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Product Write-up</label>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+          <textarea row="3" class="form-control"></textarea>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Upload Product Trailor</label>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 file-upload-container">
+           <input type="file" style="display:none;"  #upload>
+           <button class="btn btn-success" (click)="upload.click()">Upload</button>
+        </div>
+      </div>
+      <div class="row justify-content-end pt-4">
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 text-center">
+          <button
+            type="submit"
+            class="btn btn-primary">
+            Upload
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</div>

@@ -33,8 +33,7 @@ import {EventsComponent} from './pages/events/events.component';
 import {AddEventComponent} from './pages/add-event/add-event.component';
 import {EditEventComponent} from './pages/edit-event/edit-event.component';
 import {ViewEventsComponent} from './pages/view-events/view-events.component';
-
-
+import {CreateMetaComponent} from './pages/create-meta/create-meta.component';
 const routes: Routes = [
   {
     path: '',
@@ -69,7 +68,8 @@ const routes: Routes = [
       {path: 'add-event', component: AddEventComponent},
       {path: 'edit-event/:id', component: EditEventComponent},
       {path: 'event-summary', component: EventSummaryComponent},
-      {path: 'view-event', component: ViewEventsComponent}
+      {path: 'view-event', component: ViewEventsComponent},
+      {path: 'create-meta', component: CreateMetaComponent}
     ]
   },
   {

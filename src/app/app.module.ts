@@ -42,8 +42,7 @@ import { EditEventComponent } from './pages/edit-event/edit-event.component';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
+import {CreateMetaModule} from './pages/create-meta/create-meta.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,6 +71,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ViewEventsModule,
     AddOrganizationModule,
     EditOrganizationModule,
+    CreateMetaModule,
     ClientsListModule,
     EditClientModule,
     AddClientModule,
