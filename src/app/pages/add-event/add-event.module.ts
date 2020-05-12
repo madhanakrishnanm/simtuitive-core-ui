@@ -8,8 +8,9 @@ import {NgbDatepickerModule, NgbDateStruct, NgbModule, NgbCalendar, NgbDate, Ngb
 import {DateFormatterService} from '../../services/date-formatter.service';
 import {CreateEventComponent} from '../create-event/create-event.component';
 import {EventSummaryModule} from '../event-summary/event-summary.module';
+import {EventDownloadComponent} from '../event-download/event-download.component';
 @NgModule({
-  declarations: [AddEventComponent, CreateEventComponent],
+  declarations: [AddEventComponent, CreateEventComponent, EventDownloadComponent],
   imports: [
     CommonModule,
     FormsModule,

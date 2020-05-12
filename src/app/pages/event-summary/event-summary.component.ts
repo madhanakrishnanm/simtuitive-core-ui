@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-event-summary',
@@ -6,9 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./event-summary.component.scss']
 })
 export class EventSummaryComponent implements OnInit {
-
+  @Output() onStepNext: EventEmitter<any> = new EventEmitter();
   constructor() { }
-
+  // for trigger next stepper
+  triggerNext() {
+    this.onStepNext.emit();
+  }
   ngOnInit(): void {
   }
 

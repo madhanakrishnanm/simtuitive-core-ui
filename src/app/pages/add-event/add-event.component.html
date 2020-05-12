@@ -32,9 +32,10 @@
           <app-create-event (onStepNext)="next()"></app-create-event>
         </div>
       <div id="event-summary" class="content">
-        <app-event-summary></app-event-summary>
+        <app-event-summary (onStepNext)="next()"></app-event-summary>
       </div>
       <div id="event-download" class="content">
+        <app-event-download></app-event-download>
       </div>
     </div>
   </div>

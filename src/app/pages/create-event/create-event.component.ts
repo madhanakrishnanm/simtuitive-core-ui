@@ -126,11 +126,7 @@ export class CreateEventComponent implements OnInit {
       }
     ];
     this.eventService.addEvent(Payload);
-    this.eventService.getEventsDetails().subscribe((res) => {
-            if (res.length > 0) {
-              this.onStepNext.emit();
-            }
-  });
+    this.onStepNext.emit();
   }
   // function for change Date To String
   dateToString(date, month, year) {
