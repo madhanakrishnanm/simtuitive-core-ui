@@ -50,7 +50,9 @@ export class AdminsComponent implements OnInit {
       this.totalPages = res.pageable.pages;
       this.ngxUiLoaderService.stop();
     }, error => {
+
       this.ngxUiLoaderService.stop();
+
     });
   }
 

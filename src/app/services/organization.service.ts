@@ -21,6 +21,6 @@ export class OrganizationService {
     return this.apiService.post('org/get-org', payload);
   }
   deleteOrganization(payload) {
-    return this.apiService.post('org/delete-org', payload);
+    return this.apiService.delete('org/delete-org', payload);
   }
 }

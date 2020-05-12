@@ -53,7 +53,7 @@ export class PermissionsComponent implements OnInit {
 
   delete() {
     const payload = {
-      PermissionId: this.deletePermissionId
+      permissionId: this.deletePermissionId
     };
     console.log(payload);
     this.permissionService.deletePermission(payload).subscribe((res: any) => {

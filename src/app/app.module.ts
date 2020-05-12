@@ -40,6 +40,10 @@ import {ViewEventsModule} from './pages/view-events/view-events.module';
 import {EventSummaryModule} from './pages/event-summary/event-summary.module';
 import { EditEventComponent } from './pages/edit-event/edit-event.component';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -87,6 +91,8 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
     TimeagoModule,
     NgbModule,
     AutocompleteLibModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot() // ToastrModule added
   ],
   providers: [],
   exports: [

@@ -39,8 +39,8 @@ export class AddRoleComponent implements OnInit {
     const payload = this.roleForm.value;
     this.roleService.addRole(payload).subscribe((res: any) => {
       this.ngxUiLoaderService.stop();
-      this.router.navigate(['/roles'])
-      // console.log(res);
+      // this.router.navigate(['/roles'])
+      console.log(res);
     }, error => {
       console.log(error);
       this.ngxUiLoaderService.stop();

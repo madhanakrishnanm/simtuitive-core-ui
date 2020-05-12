@@ -4,6 +4,7 @@ import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/form
 import {AdminService} from '../../services/admin.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import {RoleService} from '../../services/role.service';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-add-admin',
@@ -19,6 +20,7 @@ export class AddAdminComponent implements OnInit {
               private formBuilder: FormBuilder,
               private adminService: AdminService,
               private ngxUiLoaderService: NgxUiLoaderService,
+              private toastrService: ToastrService,
               private roleService: RoleService
   ) {
   }
