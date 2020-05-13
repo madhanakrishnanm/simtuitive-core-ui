@@ -4,7 +4,7 @@ import { ProductsComponent } from './products.component';
 import {RouterModule} from '@angular/router';
 import {AddProductModule} from '../add-product/add-product.module';
 import {NgSelectModule} from '@ng-select/ng-select';
-import {AutocompleteLibModule} from "angular-ng-autocomplete";
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import {RolesModule} from '../roles/roles.module';
 @NgModule({
   declarations: [ProductsComponent],
