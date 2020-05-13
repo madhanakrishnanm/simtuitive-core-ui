@@ -13,6 +13,10 @@ export class CreateMetaComponent implements OnInit {
   {
     this.stepper.next();
   }
+  previous()
+  {
+    this.stepper.previous();
+  }
   ngOnInit(): void {
     this.stepper = new Stepper(document.querySelector('#stepper1'), {
       linear: false,

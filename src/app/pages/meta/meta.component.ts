@@ -8,6 +8,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 export class MetaComponent implements OnInit {
   // tslint:disable-next-line:no-output-on-prefix
   @Output() onStepNext: EventEmitter<any> = new EventEmitter();
+  @Output() onStepPrev: EventEmitter<any> = new EventEmitter();
   constructor() { }
   save() {
    this.onStepNext.emit();

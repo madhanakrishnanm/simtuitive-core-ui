@@ -36,53 +36,57 @@
       <div class="form-group row">
         <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Product Write-up</label>
         <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-          <textarea row="3" class="form-control"></textarea>
+          <textarea rows="4" class="form-control"></textarea>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Upload Product Trailor</label>
-        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 file-upload-container">
-           <input type="file" style="display:none;"  #trailer>
-           <button class="btn btn-success" (click)="trailer.click()">Upload</button>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+          <div class="custom-file mb-3">
+            <input type="file" class="custom-file-input" name="filename">
+            <label class="custom-file-label">Choose file</label>
+          </div>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Upload Product Poster</label>
-        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 file-upload-container">
-          <input type="file" style="display:none;"  #poster>
-          <button class="btn btn-success" (click)="poster.click()">Upload</button>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+          <div class="custom-file mb-3">
+            <input type="file" class="custom-file-input" name="filename">
+            <label class="custom-file-label">Choose file</label>
+          </div>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">About Simulation</label>
         <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-          <textarea row="3" class="form-control"></textarea>
+          <textarea rows="4" class="form-control"></textarea>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Business Challenges</label>
         <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-          <textarea row="3" class="form-control"></textarea>
+          <textarea rows="4" class="form-control"></textarea>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Content Producer</label>
         <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-          <textarea row="3" class="form-control"></textarea>
+          <textarea rows="4" class="form-control"></textarea>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Enrollment Options</label>
         <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-          <div class="custom-control custom-radio custom-control-inline">
+          <div class="custom-control custom-radio">
             <input type="radio" id="customRadioInline1"  name="tollGates" class="custom-control-input" value="yes">
             <label class="custom-control-label" for="customRadioInline1">Self Placed</label>
           </div>
-          <div class="custom-control custom-radio custom-control-inline">
+          <div class="custom-control custom-radio">
             <input type="radio" id="customRadioInline2" name="tollGates" class="custom-control-input" value="no">
             <label class="custom-control-label" for="customRadioInline2">Available with Remote Guidance</label>
           </div>
-          <div class="custom-control custom-radio custom-control-inline">
+          <div class="custom-control custom-radio">
             <input type="radio" id="customRadioInline3" name="tollGates" class="custom-control-input" value="no">
             <label class="custom-control-label" for="customRadioInline3">Available as Instructor Led Onsite simulation</label>
           </div>
@@ -100,7 +104,7 @@
 
             <div class="ng-autocomplete form-control align-content-center search d-inline-flex">
               <ng-autocomplete
-                placeHolder="search"
+                placeHolder="search for product"
                 searchKeyword="keyword"
                 [itemTemplate]="itemTemplate"
                 [notFoundTemplate]="notFoundTemplate"
@@ -125,18 +129,18 @@
           </button>
           <button
             type="submit"
-            class="btn btn-primary ml-2 actions">
+            class="btn btn-primary ml-2 actions float-right">
             Add Meta
           </button>
         </div>
       </div>
     </form>
-    <div class="row justify-content-end pt-4">
-      <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 btn-group">
+    <div class="row text-center pt-5">
+      <div class="offset-4 col-xl-8 col-lg-8 col-md-12 col-sm-12">
         <button
           type="button"
           class="btn btn-warning actions" (click)="save()">
-          Assessment>>
+          Assessment >>
         </button>
       </div>
     </div>

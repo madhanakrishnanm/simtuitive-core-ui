@@ -225,11 +225,11 @@ input
 //styles for auto-complete
 .ng-autocomplete {
   height: auto;
+  width: auto !important;
   .autocomplete-container .input-container input {
     background-color: var(--bg-color-secondary) !important;
     color:var(--light) !important;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-radius: 10px;
     align-items: center;
     height: auto;
     .x {

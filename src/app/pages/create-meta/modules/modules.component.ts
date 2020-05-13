@@ -1,15 +1,25 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
-  selector: 'app-assessment-details',
-  templateUrl: './assessment-details.component.html',
-  styleUrls: ['./assessment-details.component.scss']
+  selector: 'app-modules',
+  templateUrl: './modules.component.html',
+  styleUrls: ['./modules.component.scss']
 })
-export class AssessmentDetailsComponent implements OnInit {
+export class ModulesComponent implements OnInit {
 
   @Output() onStepNext: EventEmitter<any> = new EventEmitter();
   @Output() onStepPrev: EventEmitter<any> = new EventEmitter()
+
+  competencies = [
+    "Stakeholder Management",
+    "Process Management",
+    "People Management",
+    "Performance Management",
+  ]
   constructor() { }
+
+  ngOnInit(): void {
+  }
 
   save() {
     this.onStepNext.emit();
@@ -19,8 +29,6 @@ export class AssessmentDetailsComponent implements OnInit {
   }
   previous(){
     this.onStepPrev.emit();
-  }
-  ngOnInit(): void {
   }
 
 }
