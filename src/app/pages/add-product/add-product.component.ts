@@ -3,10 +3,10 @@ import Stepper from 'bs-stepper';
 
 @Component({
   selector: 'app-create-meta',
-  templateUrl: './create-meta.component.html',
-  styleUrls: ['./create-meta.component.scss']
+  templateUrl: './add-product.component.html',
+  styleUrls: ['./add-product.component.scss']
 })
-export class CreateMetaComponent implements OnInit {
+export class AddProductComponent implements OnInit {
   private stepper: Stepper;
   constructor() { }
   next()

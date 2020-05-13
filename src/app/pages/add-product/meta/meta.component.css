@@ -1,12 +1,11 @@
-
-.file-upload-container
-{
+.file-upload-container {
   background-color: var(--bg-color-secondary);
   border-radius: 10px;
   padding: 10px;
 }
-.actions
-{
-  width: 30% !important;
+
+.actions {
   border-radius: 50px;
 }
+
+/*# sourceMappingURL=meta.component.css.map */
