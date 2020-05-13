@@ -53,7 +53,7 @@ import {ProductsModule} from './pages/products/products.module';
     TestComponent,
     ForgotPasswordComponent,
     UpdatePasswordComponent,
-    EditEventComponent
+    EditEventComponent,
   ],
   imports: [
     BrowserModule,
