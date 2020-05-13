@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import { TimeagoModule } from 'ngx-timeago';
-import {NgxUiLoaderModule} from 'ngx-ui-loader';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -43,6 +42,19 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ProductsModule} from './pages/products/products.module';
+import {NgxUiLoaderConfig, NgxUiLoaderModule, NgxUiLoaderService, PB_DIRECTION, POSITION, SPINNER} from 'ngx-ui-loader';
+
+const ngxUiLoaderConfig: NgxUiLoaderConfig = {
+  bgsColor: '#FF9000',
+  fgsColor: '#FF9000',
+  bgsPosition: POSITION.bottomCenter,
+  bgsSize: 40,
+  pbColor: '#FF9000',
+  bgsType: SPINNER.circle, // background spinner type
+  fgsType: SPINNER.circle, // foreground spinner type
+  overlayColor: 'rgba(21,21,27,.9)'
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +76,7 @@ import {ProductsModule} from './pages/products/products.module';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    NgxUiLoaderModule,
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     LoginModule,
     DashboardModule,
     OrganizationsModule,

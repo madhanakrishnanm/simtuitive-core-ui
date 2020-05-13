@@ -77,16 +77,13 @@ export class AddAdminComponent implements OnInit {
     }
     this.ngxUiLoaderService.start();
     let payload = {...this.adminForm.value};
-    console.log(payload)
     payload['roleId'] = payload['role']['roleId'];
     payload['role'] = payload['role']['roleName'];
-    console.log(payload);
     this.adminService.addAdmin(payload).subscribe((res: any)=>{
       this.ngxUiLoaderService.stop();
       this.router.navigate(['/admins'])
       console.log(res);
     }, error => {
-      console.log(error);
       if (error.error.userMessage){
         this.toastrService.warning(error.error.userMessage);
       }else {

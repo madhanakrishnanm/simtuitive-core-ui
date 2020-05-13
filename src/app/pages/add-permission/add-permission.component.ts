@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {PermissionService} from '../../services/permission.service';
 import {NgxUiLoaderService} from 'ngx-ui-loader';
 import {RoleService} from '../../services/role.service';
+import {ToastrService} from "ngx-toastr";
 
 
 @Component({
@@ -21,6 +22,7 @@ export class AddPermissionComponent implements OnInit {
               private formBuilder: FormBuilder,
               private ngxUiLoaderService: NgxUiLoaderService,
               private roleService: RoleService,
+              private toastrService: ToastrService,
               private permissionService: PermissionService) {
   }
 
@@ -67,9 +69,13 @@ export class AddPermissionComponent implements OnInit {
     this.permissionService.addPermission(payload).subscribe((res: any) => {
       this.ngxUiLoaderService.stop();
       this.router.navigate(['/permissions']);
-      console.log(res);
+      // console.log(res);
     }, error => {
-      console.log(error);
+      if (error.error.userMessage){
+        this.toastrService.warning(error.error.userMessage);
+      }else {
+        this.toastrService.warning('Something went to be wrong!');
+      }
       this.ngxUiLoaderService.stop();
     });
   }

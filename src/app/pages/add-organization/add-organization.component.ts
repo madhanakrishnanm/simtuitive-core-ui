@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {OrganizationService} from '../../services/organization.service';
 import {NgxUiLoaderService} from 'ngx-ui-loader';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-add-organization',
@@ -15,6 +16,7 @@ export class AddOrganizationComponent implements OnInit {
   constructor(public router: Router,
               private formBuilder: FormBuilder,
               private ngxUiLoaderService: NgxUiLoaderService,
+              private toastrService: ToastrService,
               private organizationService: OrganizationService
   ) {
   }
@@ -105,6 +107,11 @@ export class AddOrganizationComponent implements OnInit {
       this.ngxUiLoaderService.stop();
       this.router.navigate(['/organizations'])
     }, error => {
+      if (error.error.userMessage){
+        this.toastrService.warning(error.error.userMessage);
+      }else {
+        this.toastrService.warning('Something went to be wrong!');
+      }
       this.ngxUiLoaderService.stop();
     });
   }

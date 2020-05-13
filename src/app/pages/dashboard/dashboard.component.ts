@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {UsersService} from '../../services/users.service';
 import numeral from 'numeral'
+import {NgxUiLoaderService} from "ngx-ui-loader";
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -71,10 +72,13 @@ export class DashboardComponent implements OnInit {
       ]
     }
   };
-  constructor(public userService: UsersService) {
+  constructor(public userService: UsersService,
+              private ngxUiLoaderService: NgxUiLoaderService,
+  ) {
   }
 
   ngOnInit(): void {
+    this.ngxUiLoaderService.start();
     this.getDashboard();
     this.getProductUsers();
   }
@@ -82,7 +86,10 @@ export class DashboardComponent implements OnInit {
   getProductUsers() {
     this.userService.getProductUsers().subscribe((res: any) => {
       this.productUsers = res.data;
+      this.ngxUiLoaderService.stop();
       //console.log(this.productUsers);
+    },error => {
+      this.ngxUiLoaderService.stop();
     });
   }
 

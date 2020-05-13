@@ -23,7 +23,7 @@
   --gray: #8E8E8E !important;
   --font-color: #FFFFFF !important;
   --heading-color: #FF9000 !important;
-  --bg-color-primary: #15151B;
+  --bg-color-primary: #15151b;
   --bg-color-secondary: #202029 !important;
   --pagination-border:#707070;
   --date-font:#17a2b8 !important;
@@ -131,7 +131,6 @@ input[type=number]::-webkit-outer-spin-button {
   color: var(--light);
   background-color: var(--dark_bg) !important;
   border: none;
-  height: 50px !important;
   align-items: center;
   border-radius: 11px;
   box-shadow: none;
@@ -224,7 +223,7 @@ input
 }
 //styles for auto-complete
 .ng-autocomplete {
-  height: auto;
+  height: 40px !important;
   width: auto !important;
   .autocomplete-container .input-container input {
     background-color: var(--bg-color-secondary) !important;

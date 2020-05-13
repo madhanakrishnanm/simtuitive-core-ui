@@ -5,6 +5,7 @@ import {OrganizationService} from '../../services/organization.service';
 import {ClientService} from '../../services/client.service';
 import {RoleService} from '../../services/role.service';
 import {NgxUiLoaderService} from 'ngx-ui-loader';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-add-client',
@@ -20,6 +21,7 @@ export class AddClientComponent implements OnInit {
               private formBuilder: FormBuilder,
               private organizationService: OrganizationService,
               private ngxUiLoaderService: NgxUiLoaderService,
+              private toastrService: ToastrService,
               private roleService: RoleService,
               private clientService: ClientService) {
   }
@@ -88,6 +90,11 @@ export class AddClientComponent implements OnInit {
       this.ngxUiLoaderService.stop();
       this.router.navigate(['/clients'])
     }, error => {
+      if (error.error.userMessage){
+        this.toastrService.warning(error.error.userMessage);
+      }else {
+        this.toastrService.warning('Something went to be wrong!');
+      }
       this.ngxUiLoaderService.stop();
     });
   }

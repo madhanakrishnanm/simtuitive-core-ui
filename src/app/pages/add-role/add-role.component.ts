@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {RoleService} from '../../services/role.service';
 import {Router} from '@angular/router';
 import {NgxUiLoaderService} from 'ngx-ui-loader';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-add-role',
@@ -14,6 +15,7 @@ export class AddRoleComponent implements OnInit {
 
   constructor(public router: Router,
               private formBuilder: FormBuilder,
+              private toastrService: ToastrService,
               private ngxUiLoaderService: NgxUiLoaderService,
               private roleService: RoleService) {
   }
@@ -39,10 +41,15 @@ export class AddRoleComponent implements OnInit {
     const payload = this.roleForm.value;
     this.roleService.addRole(payload).subscribe((res: any) => {
       this.ngxUiLoaderService.stop();
-      // this.router.navigate(['/roles'])
-      console.log(res);
+      this.router.navigate(['/roles'])
+      // console.log(res);
     }, error => {
-      console.log(error);
+      // console.log(error);
+      if (error.error.userMessage){
+        this.toastrService.warning(error.error.userMessage);
+      }else {
+        this.toastrService.warning('Something went to be wrong!');
+      }
       this.ngxUiLoaderService.stop();
     });
   }

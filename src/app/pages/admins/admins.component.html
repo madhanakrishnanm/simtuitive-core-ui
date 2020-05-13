@@ -15,22 +15,18 @@
   <div class="row">
     <div class="col table-cont">
       <div class="row ml-3">
-        <div class="col-3">
-          <div class="ng-autocomplete align-content-center search d-inline-flex">
-            <span class="input-group-prepend"><img src="assets/img/search.svg"></span>
-            <ng-autocomplete
-              [data]="adminNames"
-              searchKeyword="keyword"
-              [itemTemplate]="itemTemplate"
-              [notFoundTemplate]="notFoundTemplate"
-            >
-            </ng-autocomplete>
-            <ng-template #itemTemplate let-item>
-              <a [innerHTML]="item"></a>
-            </ng-template>
-            <ng-template #notFoundTemplate let-notFound>
-              <div [innerHTML]="notFound"></div>
-            </ng-template>
+        <div class="col-3 simtuitive-input">
+          <div class="input-group">
+            <input
+              type="text"
+              placeholder="Search for admin"
+              class="form-control"
+            />
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <img src="assets/img/search.svg">
+              </span>
+            </div>
           </div>
         </div>
       </div>
