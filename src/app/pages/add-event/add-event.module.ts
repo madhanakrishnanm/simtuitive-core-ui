@@ -9,17 +9,19 @@ import {DateFormatterService} from '../../services/date-formatter.service';
 import {CreateEventComponent} from '../create-event/create-event.component';
 import {EventSummaryModule} from '../event-summary/event-summary.module';
 import {EventDownloadComponent} from '../event-download/event-download.component';
+import {RouterModule} from "@angular/router";
 @NgModule({
   declarations: [AddEventComponent, CreateEventComponent, EventDownloadComponent],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NgSelectModule,
-    NgbDatepickerModule,
-    NgbModule,
-    EventSummaryModule,
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgSelectModule,
+        NgbDatepickerModule,
+        NgbModule,
+        EventSummaryModule,
+        RouterModule,
+    ],
   providers: [{provide: NgbDateParserFormatter, useClass: DateFormatterService}]
 
 })

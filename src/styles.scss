@@ -28,6 +28,7 @@
   --pagination-border:#707070;
   --date-font:#17a2b8 !important;
   --apply-btn:#B9595B !important;
+  --submenu-font:#8A8A8D !important;
 }
 
 
@@ -335,5 +336,15 @@ ngb-datepicker-navigation-select>.custom-select {
 .ng-select .ng-arrow-wrapper
 {
   margin-right: 10px !important;
+}
+//styles for breadcrumbs in all pages
+.breadcrumb
+{
+  background-color: var(--bg-color-secondary) !important;
+  color:var(--submenu-font) !important;
+  .active
+  {
+    color: var(--primary) !important;
+  }
 }
 
