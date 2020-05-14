@@ -2,6 +2,20 @@
   <div class="col-6 mt-5">
     <form class="simtuitive-input" [formGroup]="EventFormGroup" (ngSubmit)="save()">
       <div class="form-group row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Select Organisation</label>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+          <ng-select
+            [items]="clients"
+            [searchable]="false"
+            bindLabel="roleName"
+            placeholder="Clients"
+            class="ng-select"
+            formControlName="organisation"
+          >
+          </ng-select>
+        </div>
+      </div>
+      <div class="form-group row">
         <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Select Clients</label>
         <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
           <ng-select
@@ -36,6 +50,16 @@
             type="text"
             class="form-control"
             formControlName="eventName"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label"># Of Participants</label>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 custom-input">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="noParticipants"
           />
         </div>
       </div>
@@ -82,6 +106,12 @@
           <span class="input-group-append my-auto" (click)="d1.toggle()">
               <img src="assets/img/interface.svg">
             </span>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Notes</label>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+          <textarea rows="4" class="form-control" formControlName="notes"></textarea>
         </div>
       </div>
       <div class="row justify-content-end">

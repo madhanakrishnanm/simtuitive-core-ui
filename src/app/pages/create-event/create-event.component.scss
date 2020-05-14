@@ -20,7 +20,7 @@
 {
   background: var(--secondary);
   border-radius: 10px;
-  width:10px;
+  width:2px;
 }
 //for Table
 .table-responsive
@@ -35,5 +35,11 @@
       color: var(--light);
     }
   }
+}
+.btn-primary
+{
+  border-radius: 50px;
+  background-color: var(--apply-btn) !important;
+  border: 0;
 }
 

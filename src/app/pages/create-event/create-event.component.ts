@@ -135,12 +135,15 @@ export class CreateEventComponent implements OnInit {
   }
   ngOnInit() {
     this.EventFormGroup = this.fb.group({
+      organisation:['',[]],
       client: ['', []],
       product: ['', []],
       eventName: ['', []],
       tollGates: ['', []],
+      noParticipants:['',[]],
       eventStartDate: ['', []],
       eventEndDate: ['', []],
+      notes:['',[]]
     });
   }
 }
