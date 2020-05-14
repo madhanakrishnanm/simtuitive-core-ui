@@ -13,5 +13,130 @@
       </div>
     </div>
   </div>
+  <!--search & table-->
+  <div class="row">
+    <div class="col table-cont">
+      <div class="row ml-2">
+        <div class="col-3 simtuitive-input">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <img src="assets/img/search.svg">
+              </span>
+            </div>
 
+            <div class="ng-autocomplete form-control align-content-center search d-inline-flex">
+              <ng-autocomplete
+                placeHolder="Search for Events"
+                searchKeyword="keyword"
+                [itemTemplate]="itemTemplate"
+                [notFoundTemplate]="notFoundTemplate"
+              >
+              </ng-autocomplete>
+              <ng-template #itemTemplate let-item>
+                <a [innerHTML]="item" style="color:black;"></a>
+              </ng-template>
+              <ng-template #notFoundTemplate let-notFound>
+                <div [innerHTML]="notFound"></div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+        <div class="col-3 simtuitive-input">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <img src="assets/img/search.svg">
+              </span>
+            </div>
+
+            <div class="ng-autocomplete form-control align-content-center search d-inline-flex">
+              <ng-autocomplete
+                placeHolder="Status"
+                searchKeyword="keyword"
+                [itemTemplate]="itemTemplate"
+                [notFoundTemplate]="notFoundTemplate"
+              >
+              </ng-autocomplete>
+              <ng-template #itemTemplate let-item>
+                <a [innerHTML]="item" style="color:black;"></a>
+              </ng-template>
+              <ng-template #notFoundTemplate let-notFound>
+                <div [innerHTML]="notFound"></div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+        <div class="col-2 custom-input input-group">
+          <input
+            type="text"
+            class="form-control"
+            ngbDatepicker
+            #d="ngbDatepicker"
+            placement="bottom-right"
+            placeholder="event start date"
+          />
+          <span class="input-group-append my-auto" (click)="d.toggle()">
+              <img src="assets/img/interface.svg">
+            </span>
+        </div>
+        <div class="col-2 custom-input input-group ml-3">
+          <input
+            type="text"
+            class="form-control"
+            ngbDatepicker
+            #d1="ngbDatepicker"
+            placement="bottom-right"
+            placeholder="event end date"
+          />
+          <span class="input-group-append my-auto" (click)="d1.toggle()">
+              <img src="assets/img/interface.svg">
+            </span>
+        </div>
+      </div>
+      <div class="product-users-table table-responsive">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">Booking date</th>
+            <th scope="col">Client Name</th>
+            <th scope="col">Event Start Date</th>
+            <th scope="col">Event End Date</th>
+            <th scope="col"># of Delegates</th>
+            <th scope="col">Course</th>
+            <th scope="col">Notes</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <!--<td>{{i + 1}}</td>
+            <td>{{permission.name}}</td>
+            <td>{{permission.type}}</td>
+            <td>{{permission.rank}}</td>
+            <td>
+              <span class="badge badge-primary mr-1" *ngFor="let role of permission.roles">{{role.roleName}}</span>
+            </td>
+            <td>{{permission.description}}</td>-->
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <div class="d-flex justify-content-around action-icon">
+                <i title="Edit Permission" class="fa fa-share" aria-hidden="true"
+                ></i>
+                <i title="Edit Permission" class="fa fa-edit" aria-hidden="true"
+                ></i>
+                <i title="Delete Permission" class="fa fa-trash" aria-hidden="true"
+                ></i>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>

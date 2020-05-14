@@ -1,3 +1,11 @@
+.input-group-append img {
+  height: 20px;
+  width: 20px;
+}
 
+.custom-input {
+  height: 50px;
+  align-items: center;
+}
 
 /*# sourceMappingURL=events.component.css.map */
