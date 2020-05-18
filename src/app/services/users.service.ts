@@ -18,4 +18,7 @@ export class UsersService {
   getProductUsers(){
     return this.apiService.get('users/product-users')
   }
+  logout(){
+    return this.apiService.post('users/logout')
+  }
 }

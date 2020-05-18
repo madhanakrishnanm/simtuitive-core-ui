@@ -26,7 +26,7 @@ export class PaginationComponent implements OnInit {
     if (this.page > 1) {
       this.page -= 1;
       let payload = {
-        pageno : this.page - 1
+        pageNo : this.page - 1
       }
       this.onRequest.emit(payload)
     }
@@ -37,7 +37,7 @@ export class PaginationComponent implements OnInit {
     if (this.page < this.totalPages) {
       this.page += 1;
       let payload = {
-        pageno : this.page - 1
+        pageNo : this.page - 1
       }
       this.onRequest.emit(payload)
     }

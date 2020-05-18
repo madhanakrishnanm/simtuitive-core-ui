@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {UsersService} from '../../services/users.service';
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-toolbar',
@@ -12,6 +13,7 @@ export class ToolbarComponent implements OnInit {
   @ViewChild('sidebarContent') sidebarContent: ElementRef;
   title = 'Close Navigation'
   constructor(public userService: UsersService,
+              private toastrService: ToastrService,
               public router: Router
   ) {
   }
@@ -38,7 +40,15 @@ export class ToolbarComponent implements OnInit {
   }
 
   logout(){
-    localStorage.clear();
-    this.router.navigate(['/login']);
+
+    this.userService.logout().subscribe((res)=>{
+      console.log(res);
+      localStorage.clear();
+      this.router.navigate(['/login']);
+    }, error => {
+      console.log(error);
+      this.toastrService.warning('Something went to be wrong!');
+    })
+
   }
 }

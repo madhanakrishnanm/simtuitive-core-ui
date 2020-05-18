@@ -20,12 +20,13 @@
           <div class="input-group">
             <input
               type="text"
+              (input)="searchRole($event)"
               placeholder="Search for role"
               class="form-control"
             />
             <div class="input-group-append">
               <span class="input-group-text">
-                <img src="assets/img/search.svg">
+                <i class="fa fa-search"></i>
               </span>
             </div>
           </div>

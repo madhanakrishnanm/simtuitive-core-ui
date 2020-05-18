@@ -55,7 +55,13 @@ export class AdminsComponent implements OnInit {
 
     });
   }
-
+  searchAdmin(event){
+    const payload = {
+      pageno: this.page - 1,
+      query: event.target.value
+    };
+    this.getAdmins(payload);
+  }
 
   requestDelete(userId, modalReference) {
     this.deleteUserId = userId;

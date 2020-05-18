@@ -118,6 +118,7 @@
 }
 
 .simtuitive-input {
+
   .col-form-label {
     color: var(--light);
   }
@@ -178,6 +179,10 @@
 
     .custom-control-label {
       color: var(--light) !important;
+    }
+
+    i{
+      font-size: 23px;
     }
   }
 }

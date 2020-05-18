@@ -23,4 +23,13 @@ export class OrganizationService {
   deleteOrganization(payload) {
     return this.apiService.delete('org/delete-org', payload);
   }
+  findOrganizationLocation(payload) {
+    return this.apiService.get('org/getall-org-location', payload);
+  }
+  findOrganizationIndustry(payload) {
+    return this.apiService.get('org/getall-org-industry', payload);
+  }
+  findOrganizationName(payload) {
+    return this.apiService.get('org/getall-orgname', payload);
+  }
 }

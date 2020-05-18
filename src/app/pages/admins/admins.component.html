@@ -20,11 +20,12 @@
             <input
               type="text"
               placeholder="Search for admin"
+              (input)="searchAdmin($event)"
               class="form-control"
             />
             <div class="input-group-append">
               <span class="input-group-text">
-                <img src="assets/img/search.svg">
+               <i class="fa fa-search"></i>
               </span>
             </div>
           </div>

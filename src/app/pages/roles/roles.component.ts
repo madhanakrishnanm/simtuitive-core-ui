@@ -42,6 +42,13 @@ export class RolesComponent implements OnInit {
       this.ngxUiLoaderService.stop();
     });
   }
+  searchRole(event){
+    const payload = {
+      pageno: this.page - 1,
+      query: event.target.value
+    };
+    this.getRoles(payload);
+  }
   requestDelete(roleId, modalReference) {
     this.deleteRoleId = roleId;
     this.modalService.open(modalReference, {centered: true, size: 'sm', windowClass: 'simtuitive-modal'});

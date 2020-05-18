@@ -12,7 +12,7 @@
         </button>
       </div>
     </div>
-  </div>
+  </div>searchPermission
   <div class="row">
     <div class="col table-cont">
       <div class="row ml-3 simtuitive-input">
@@ -21,12 +21,13 @@
           <div class="input-group">
             <input
               type="text"
-              placeholder="Search for admin"
+              placeholder="Search for Permission"
+              (input)="searchPermission($event)"
               class="form-control"
             />
             <div class="input-group-append">
               <span class="input-group-text">
-                <img src="assets/img/search.svg">
+                <i class="fa fa-search"></i>
               </span>
             </div>
           </div>
@@ -34,9 +35,10 @@
         <!--<label class="col-xl-2 col-lg-2  col-md-12 col-sm-12  col-form-label" style="color:white">Roles</label>-->
         <div class="col-3">
           <div class="input-group">
-            <div class="ng-autocomplete form-control align-content-center search d-inline-flex">
+            <div class="ng-autocomplete form-control search">
               <ng-autocomplete
                 [data]="permissionTypes"
+                (selected)="onTypeChange($event)"
                 placeHolder="Filter by Type"
                 searchKeyword="keyword"
                 [itemTemplate]="itemTemplate"
@@ -53,7 +55,7 @@
 
             <div class="input-group-append">
               <span class="input-group-text">
-                <img src="assets/img/search.svg">
+                <i class="fa fa-filter"></i>
               </span>
             </div>
           </div>
@@ -61,34 +63,35 @@
         <!--<label class="col-xl-2 col-lg-2  col-md-12 col-sm-12  col-form-label" style="color:white">Permission Type</label>-->
         <div class="col-3">
           <div class="input-group">
-            <div class="ng-autocomplete form-control align-content-center search d-inline-flex">
+            <div class="ng-autocomplete form-control search ">
               <ng-autocomplete
                 [data]="permissionRoles"
                 placeHolder="Filter by Role"
-                searchKeyword="keyword"
-                [itemTemplate]="itemTemplate"
-                [notFoundTemplate]="notFoundTemplate"
+                searchKeyword="roleName"
+                [itemTemplate]="itemTemplate1"
+                [notFoundTemplate]="notFoundTemplate1"
+                (selected)="onRoleChange($event)"
               >
               </ng-autocomplete>
-              <ng-template #itemTemplate let-item>
-                <a [innerHTML]="item.role" style="color:black;"></a>
+              <ng-template #itemTemplate1 let-item>
+                <a  [innerHTML]="item.roleName" style="color:black;"></a>
               </ng-template>
-              <ng-template #notFoundTemplate let-notFound>
+              <ng-template #notFoundTemplate1 let-notFound>
                 <div [innerHTML]="notFound"></div>
               </ng-template>
             </div>
 
             <div class="input-group-append">
               <span class="input-group-text">
-                <img src="assets/img/search.svg">
+                <i class="fa fa-filter"></i>
               </span>
             </div>
           </div>
         </div>
 
-        <div class="col-3">
-          <button class="btn apply-btn">Apply</button>
-        </div>
+       <!-- <div class="col-3">
+          <button class="btn apply-btn" (click)="applyFilter()">Apply</button>
+        </div>-->
       </div>
       <div class="product-users-table table-responsive">
         <table class="table">

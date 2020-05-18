@@ -26,4 +26,7 @@ export class PermissionService {
   deletePermission(payload){
     return this.apiService.delete('permissions/delete-permission',payload);
   }
+  findPermissionType(payload){
+    return this.apiService.get('permissions/find-permission-type',payload);
+  }
 }

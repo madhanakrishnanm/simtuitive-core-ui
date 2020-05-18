@@ -16,9 +16,12 @@ export class OrganizationsComponent implements OnInit {
   organizationNames: any=[];
   //
    deleteId = null;
-  location = [];
-  industry = [];
+  locations = [];
+  industries = [];
   organizations = [];
+  searchQuery = null;
+  selectedLocation = null;
+  selectedIndustry = null;
   page = 1;
   totalPages = 0;
   deleteOrganizationId = null;
@@ -28,24 +31,78 @@ export class OrganizationsComponent implements OnInit {
               private organizationService: OrganizationService, private modalService: NgbModal) { }
   ngOnInit(): void {
     const payload = {
-      pageno: this.page - 1
+      pageNo: this.page - 1,
+    };
+    this.getOrganizations(payload);
+    this.findOrganizationIndustry({});
+    this.findOrganizationLocation({});
+  }
+  findOrganizationLocation(payload){
+    this.organizationService.findOrganizationLocation(payload).subscribe((res: any) => {
+      console.log(res);
+      this.locations = res.data;
+    })
+  }
+  findOrganizationIndustry(payload){
+    this.organizationService.findOrganizationIndustry(payload).subscribe((res: any) => {
+      console.log(res);
+      this.industries = res.data;
+    })
+  }
+  onLocationChange(event){
+    this.selectedLocation = event;
+    const payload = {
+      pageNo: this.page - 1,
+      query: this.searchQuery,
+      location: this.selectedLocation,
+      industry: this.selectedIndustry
     };
     this.getOrganizations(payload);
   }
+  onIndustryChange(event){
+    this.selectedIndustry = event;
+    const payload = {
+      pageNo: this.page - 1,
+      query: this.searchQuery,
+      location: this.selectedLocation,
+      industry: this.selectedIndustry
+    };
+    this.getOrganizations(payload);
+  }
+  applyFilter(){
+    const payload = {
+      pageNo: this.page - 1,
+      query: this.searchQuery,
+      location: this.selectedLocation,
+      industry: this.selectedIndustry
+    };
+    console.log(payload);
+    this.getOrganizations(payload);
+  }
   getOrganizations(payload) {
+
+    payload['query'] = this.searchQuery;
+    payload['location'] = this.selectedLocation;
+    payload['industry'] = this.selectedIndustry;
+
     this.ngxUiLoaderService.start();
     this.organizationService.getAllOrganization(payload).subscribe((res: any) => {
       console.log(res);
       this.organizations = res.data;
-      for (const[index, organization] of this.organizations.entries()) {
-          this.organizationNames.push(organization.organizationName);
-      }
-      console.log('names' + this.organizationNames);
       this.totalPages = res.pageable.pages;
       this.ngxUiLoaderService.stop();
     }, error => {
       this.ngxUiLoaderService.stop();
     });
+  }
+  searchOrganization(event){
+    console.log(event);
+    this.searchQuery = event.target.value;
+    const payload = {
+      pageno: this.page - 1,
+      query: this.searchQuery,
+    };
+    this.getOrganizations(payload);
   }
   requestDelete(organizationId, modalReference) {
     this.deleteOrganizationId = organizationId;

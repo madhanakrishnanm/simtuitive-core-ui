@@ -17,7 +17,9 @@ export class ClientsListComponent implements OnInit {
   inviteEmailId = '';
   clientNames = [];
   organizationNames = [];
+  selectedOrganization = null;
   emailAddress = [];
+  searchQuery = null;
   clientId;
   page = 1;
   totalPages = 0;
@@ -33,16 +35,44 @@ export class ClientsListComponent implements OnInit {
   constructor(public router: Router,
               private formBuilder: FormBuilder,
               private modalService: NgbModal,
+              private organizationService: OrganizationService,
               private ngxUiLoaderService: NgxUiLoaderService,
               private clientService: ClientService) { }
 
   ngOnInit(): void {
     const payload = {
-      pageno: this.page - 1
+      pageNo: this.page - 1,
+    };
+    this.getClients(payload);
+    this.findOrganizationName({});
+  }
+  findOrganizationName(payload){
+    this.organizationService.findOrganizationName(payload).subscribe((res: any) => {
+      console.log(res);
+      this.organizationNames = res.data;
+    })
+  }
+  onOrganizationChange(event){
+    this.selectedOrganization = event;
+    const payload = {
+      pageNo: this.page - 1,
+      query: this.searchQuery,
+      orgName: this.selectedOrganization,
     };
     this.getClients(payload);
   }
+  applyFilter(){
+    const payload = {
+      pageNo: this.page - 1,
+      query: this.searchQuery,
+      orgName: this.selectedOrganization,
+    };
+    console.log(payload);
+    this.getClients(payload);
+  }
   getClients(payload) {
+    payload['query'] = this.searchQuery;
+    payload['orgName'] = this.selectedOrganization;
     this.ngxUiLoaderService.start();
     this.clientService.getAllClient(payload).subscribe((res: any) => {
       console.log(res);
@@ -57,6 +87,14 @@ export class ClientsListComponent implements OnInit {
     }, error => {
       this.ngxUiLoaderService.stop();
     });
+  }
+  searchClient(event){
+    this.searchQuery = event.target.value;
+    const payload = {
+      pageno: this.page - 1,
+      query: event.target.value
+    };
+    this.getClients(payload);
   }
   requestDelete(userId, modalReference) {
     this.deleteClientId = userId;
