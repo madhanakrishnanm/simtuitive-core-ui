@@ -42,6 +42,7 @@
               <ng-autocomplete
                 [data]="organizationNames"
                 (selected)="onOrganizationChange($event)"
+                (inputCleared)="onOrganizationChange(null)"
                 placeHolder="Filter by Organization"
                 searchKeyword="keyword"
                 [itemTemplate]="itemTemplate"

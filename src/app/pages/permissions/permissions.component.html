@@ -39,6 +39,7 @@
               <ng-autocomplete
                 [data]="permissionTypes"
                 (selected)="onTypeChange($event)"
+                (inputCleared)="onTypeChange(null)"
                 placeHolder="Filter by Type"
                 searchKeyword="keyword"
                 [itemTemplate]="itemTemplate"
@@ -71,6 +72,7 @@
                 [itemTemplate]="itemTemplate1"
                 [notFoundTemplate]="notFoundTemplate1"
                 (selected)="onRoleChange($event)"
+                (inputCleared)="onRoleChange(null)"
               >
               </ng-autocomplete>
               <ng-template #itemTemplate1 let-item>

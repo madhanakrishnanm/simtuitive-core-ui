@@ -38,6 +38,7 @@
               <ng-autocomplete
                 [data]="locations"
                 (selected)="onLocationChange($event)"
+                (inputCleared)="onLocationChange(null)"
                 placeHolder="Filter by Location"
                 searchKeyword="keyword"
                 [itemTemplate]="itemTemplate"
@@ -68,6 +69,7 @@
               <ng-autocomplete
                 [data]="industries"
                 (selected)="onIndustryChange($event)"
+                (inputCleared)="onIndustryChange(null)"
                 placeHolder="Filter by Industry"
                 searchKeyword="keyword"
                 [itemTemplate]="itemTemplate"
