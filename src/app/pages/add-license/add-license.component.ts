@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {NgxUiLoaderService} from 'ngx-ui-loader';
+import {OrganizationService} from "../../services/organization.service";
 @Component({
   selector: 'app-add-license',
   templateUrl: './add-license.component.html',
@@ -9,31 +10,56 @@ import {NgxUiLoaderService} from 'ngx-ui-loader';
 })
 export class AddLicenseComponent implements OnInit {
   isLoading = false;
-  product = [];
-  organisations = [];
-  paymentStatus = [];
-  addLicenceForm: FormGroup;
+  products = [
+    {
+      name: 'Advance Excel',
+      id:1
+    },
+    {
+      name: 'Operational Excellence',
+      id:2
+    },
+  ];
+  organizations = [];
+  paymentStatuses = ['Paid', 'Pending', 'Incomplete'];
+  licenseForm: FormGroup;
   constructor(public router: Router,
               private formBuilder: FormBuilder,
               private ngxUiLoaderService: NgxUiLoaderService,
+              private organizationService: OrganizationService,
             ) { }
     get f() {
-      return this.addLicenceForm.controls;
+      return this.licenseForm.controls;
     }
   ngOnInit(): void {
-    this.addLicenceForm = this.formBuilder.group({
+
+    this.licenseForm = this.formBuilder.group({
       product: ['',[Validators.required]],
-      organisation: ['',[Validators.required]],
+      organization: ['',[Validators.required]],
       numberOfLicence: ['',[Validators.required]],
-      paymentStatus: ['',[Validators.required]],
+      paymentStatus: [null,[Validators.required]],
       creditLimit: ['',[Validators.required]],
       narration: ['',[Validators.required]],
-      sellingPricePerLicense: ['',[Validators.required]],
+      sellingPrice: ['',[Validators.required]],
       dealSize: ['',[Validators.required]]
     });
   }
+
+  searchOrganization(keyword){
+    let payload = {
+      query : keyword
+    };
+    console.log(payload);
+    this.findOrganizationName(payload);
+  }
+  findOrganizationName(payload){
+    this.organizationService.findOrganizationName(payload).subscribe((res: any) => {
+      console.log(res);
+      this.organizations = res.data;
+    })
+  }
   onSubmit() {
-    const payload = {...this.addLicenceForm};
+    const payload = {...this.licenseForm};
     console.log(payload);
   }
 }

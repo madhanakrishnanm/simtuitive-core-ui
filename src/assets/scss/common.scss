@@ -123,6 +123,15 @@
     color: var(--light);
   }
 
+  .custom-file-label {
+    background-color: var(--bg-color-secondary) !important;
+    color: white;
+    border: none;
+  }
+  .custom-file-label::after{
+    background-color: var(--primary);
+    color: var(--light);
+  }
   .input-group, .form-group {
     border-radius: 11px;
     border: 0;
