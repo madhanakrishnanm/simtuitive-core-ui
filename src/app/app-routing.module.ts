@@ -34,6 +34,7 @@ import {AddEventComponent} from './pages/add-event/add-event.component';
 import {EditEventComponent} from './pages/edit-event/edit-event.component';
 import {ViewEventsComponent} from './pages/view-events/view-events.component';
 import {AddProductComponent} from './pages/add-product/add-product.component';
+import {ViewLicenseComponent} from './pages/view-license/view-license.component';
 const routes: Routes = [
   {
     path: '',
@@ -63,6 +64,7 @@ const routes: Routes = [
       {path: 'edit-permission/:id', component: EditPermissionComponent},
       {path: 'whitelist-ips', component: WhitelistIpsComponent},
       {path: 'add-license', component: AddLicenseComponent},
+      {path: 'view-license/:id', component: ViewLicenseComponent},
       {path: 'test', component: TestComponent},
       {path: 'events', component: EventsComponent},
       {path: 'add-event', component: AddEventComponent},

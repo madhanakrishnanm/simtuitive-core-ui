@@ -101,9 +101,11 @@
             <td>{{data.DealSize}}</td>
             <td>
               <div class="d-flex justify-content-around action-icon">
-                <i title="Edit Permission" class="fa fa-edit" aria-hidden="true"
+                <i title="View License" class="fa fa-eye" aria-hidden="true"
+                   (click)="router.navigate(['/view-license',data.licenseId])"></i>
+                <i title="Edit License" class="fa fa-edit" aria-hidden="true"
                    (click)="router.navigate(['/edit-permission',data.licenseId])"></i>
-                <i title="Delete Permission" class="fa fa-trash" aria-hidden="true"
+                <i title="Delete License" class="fa fa-trash" aria-hidden="true"
                    (click)="requestDelete(data.licenseId,content)"></i>
               </div>
             </td>

@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Router} from '@angular/router';
 import {PermissionService} from '../../services/permission.service';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {NgxUiLoaderService} from "ngx-ui-loader";
-import {ToastrService} from "ngx-toastr";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {NgxUiLoaderService} from 'ngx-ui-loader';
+import {ToastrService} from 'ngx-toastr';
 @Component({
   selector: 'app-license',
   templateUrl: './license.component.html',
@@ -33,8 +33,7 @@ export class LicenseComponent implements OnInit {
                private ngxUiLoaderService: NgxUiLoaderService,
                private toastrService: ToastrService,
                public router: Router,
-               private modalService: NgbModal)
-  { }
+               private modalService: NgbModal) { }
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
   }

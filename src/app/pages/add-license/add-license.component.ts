@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {NgxUiLoaderService} from 'ngx-ui-loader';
-import {OrganizationService} from "../../services/organization.service";
+import {OrganizationService} from '../../services/organization.service';
 @Component({
   selector: 'app-add-license',
   templateUrl: './add-license.component.html',
@@ -13,11 +13,11 @@ export class AddLicenseComponent implements OnInit {
   products = [
     {
       name: 'Advance Excel',
-      id:1
+      id: 1
     },
     {
       name: 'Operational Excellence',
-      id:2
+      id: 2
     },
   ];
   organizations = [];
@@ -34,29 +34,29 @@ export class AddLicenseComponent implements OnInit {
   ngOnInit(): void {
 
     this.licenseForm = this.formBuilder.group({
-      product: ['',[Validators.required]],
-      organization: ['',[Validators.required]],
-      numberOfLicence: ['',[Validators.required]],
-      paymentStatus: [null,[Validators.required]],
-      creditLimit: ['',[Validators.required]],
-      narration: ['',[Validators.required]],
-      sellingPrice: ['',[Validators.required]],
-      dealSize: ['',[Validators.required]]
+      product: ['', [Validators.required]],
+      organization: ['', [Validators.required]],
+      numberOfLicence: ['', [Validators.required]],
+      paymentStatus: [null, [Validators.required]],
+      creditLimit: ['', [Validators.required]],
+      narration: ['', [Validators.required]],
+      sellingPrice: ['', [Validators.required]],
+      dealSize: ['', [Validators.required]]
     });
   }
 
-  searchOrganization(keyword){
-    let payload = {
+  searchOrganization(keyword) {
+    const payload = {
       query : keyword
     };
     console.log(payload);
     this.findOrganizationName(payload);
   }
-  findOrganizationName(payload){
+  findOrganizationName(payload) {
     this.organizationService.findOrganizationName(payload).subscribe((res: any) => {
       console.log(res);
       this.organizations = res.data;
-    })
+    });
   }
   onSubmit() {
     const payload = {...this.licenseForm};

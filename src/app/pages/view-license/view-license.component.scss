@@ -1,0 +1,98 @@
+@import "./src/assets/scss/variables";
+
+.license-cont {
+  margin-bottom: 20px;
+}
+
+.license-product {
+  background: var(--bg-color-secondary);
+  width: 400px;
+  height: 60px;
+  padding: 10px;
+
+  img {
+    width: 54px;
+    height: 40px;
+    object-fit: contain;
+  }
+
+  .product-name {
+    color: var(--light);
+    font-size: 20px;
+    line-height: 28px;
+    font-family: "Nunito", sans-serif;
+    margin-left: 20px;
+  }
+}
+
+.license-count-card {
+  background: #49285E;
+  height: 156px;
+  padding-left: 30px;
+  padding-right: 30px;
+
+  .purchased-count {
+    height: 40px;
+    font-size: 28px;
+    line-height: 40px;
+    font-family: "Nunito", sans-serif;
+    color: var(--light);
+    margin-bottom: 14px;
+    margin-top: 28px;
+  }
+
+  .purchased {
+    text-align: center;
+    font-size: 20px;
+    line-height: 28px;
+    font-family: "Nunito", sans-serif;
+    color: #FF9000;
+    span{
+      color: white;
+    }
+  }
+  .purchased-cont{
+    margin-top: 28px;
+    text-align: left;
+    .purchase-label{
+      text-align: center;
+      font-size: 20px;
+      line-height: 28px;
+      font-family: "Nunito", sans-serif;
+      color: #FF9000;
+      span{
+        color: white;
+        margin-left: 25px;
+      }
+    }
+  }
+
+  .license-issued {
+    font-size: 20px;
+    line-height: 28px;
+    font-family: "Nunito", sans-serif;
+    letter-spacing: 0;
+    color: #FF9000;
+  }
+}
+
+.payment {
+  background: #202029;
+  width: 227px;
+  height: 60px;
+  padding: 10px;
+
+  img {
+    width: 40px;
+    height: 35px;
+    object-fit: contain;
+  }
+
+  .status {
+    color: #FFFFFF;
+    font-size: 20px;
+    line-height: 28px;
+    font-family: "Nunito", sans-serif;
+    margin-left: 20px;
+  }
+}

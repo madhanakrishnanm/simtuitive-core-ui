@@ -2,7 +2,7 @@
   <nav aria-label="breadcrumb" class="breadcrumb-nav">
     <ol class="breadcrumb">
       <li class="breadcrumb-item active" aria-current="page">Licenses</li>
-      <li class="breadcrumb-item" ><a>Add License</a></li>
+      <li class="breadcrumb-item"><a>Add License</a></li>
     </ol>
   </nav>
   <div class="row">
@@ -11,175 +11,175 @@
     </div>
   </div>
   <div class="row">
-     <div class="col-xl-7 col-lg-7 col-md-9 col-sm-12 p-lg-5 p-md-3 p-sm-2">
-       <div class="form-group row">
-         <label class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-form-label sub-label">Create License</label>
-       </div>
-         <form [formGroup]="licenseForm" (ngSubmit)="onSubmit()">
-         <div class="form-group row">
-           <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Product</label>
-            <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
-              <div class="ng-autocomplete form-control search">
-                <ng-autocomplete
-                  [data]="products"
-                  placeHolder="Select a Product"
-                  searchKeyword="name"
-                  [itemTemplate]="productTemplate"
-                  [notFoundTemplate]="productNotFoundTemplate"
-                >
-                </ng-autocomplete>
-                <ng-template #productTemplate let-item>
-                  <a [innerHTML]="item.name" style="color:black;"></a>
-                </ng-template>
-                <ng-template #productNotFoundTemplate let-notFound>
-                  <div [innerHTML]="notFound"></div>
-                </ng-template>
-              </div>
-              <div *ngIf="f.product.invalid && (f.product.touched || f.product.value)"
-                   class="input-error-report">
-                <div *ngIf="f.product.errors.required">
-                  Product is required.
-                </div>
+    <div class="col-xl-7 col-lg-7 col-md-9 col-sm-12 p-lg-5 p-md-3 p-sm-2">
+      <div class="form-group row">
+        <label class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-form-label sub-label">Create License</label>
+      </div>
+      <form [formGroup]="licenseForm" (ngSubmit)="onSubmit()">
+        <div class="form-group row">
+          <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Product</label>
+          <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
+            <div class="ng-autocomplete form-control search">
+              <ng-autocomplete
+                [data]="products"
+                placeHolder="Select a Product"
+                searchKeyword="name"
+                [itemTemplate]="productTemplate"
+                [notFoundTemplate]="productNotFoundTemplate"
+              >
+              </ng-autocomplete>
+              <ng-template #productTemplate let-item>
+                <a [innerHTML]="item.name" style="color:black;"></a>
+              </ng-template>
+              <ng-template #productNotFoundTemplate let-notFound>
+                <div [innerHTML]="notFound"></div>
+              </ng-template>
+            </div>
+            <div *ngIf="f.product.invalid && (f.product.touched || f.product.value)"
+                 class="input-error-report">
+              <div *ngIf="f.product.errors.required">
+                Product is required.
               </div>
             </div>
-         </div>
-           <div class="form-group row">
-             <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Organization</label>
-             <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
-               <div class="ng-autocomplete form-control search">
-                 <ng-autocomplete
-                   [data]="organizations"
-                   (inputChanged)="searchOrganization($event)"
-                   placeHolder="Select a Organization"
-                   searchKeyword="name"
-                   [itemTemplate]="organizationTemplate"
-                   [notFoundTemplate]="organizationNotFoundTemplate"
-                 >
-                 </ng-autocomplete>
-                 <ng-template #organizationTemplate let-item>
-                   <a [innerHTML]="item" style="color:black;"></a>
-                 </ng-template>
-                 <ng-template #organizationNotFoundTemplate let-notFound>
-                   <div [innerHTML]="notFound"></div>
-                 </ng-template>
-               </div>
-               <div *ngIf="f.organization.invalid && (f.organization.touched || f.organization.value)"
-                    class="input-error-report">
-                 <div *ngIf="f.organization.errors.required">
-                   Organization is required.
-                 </div>
-               </div>
-             </div>
-           </div>
-           <div class="form-group row">
-             <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Number of Licence</label>
-             <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
-               <input
-                 type="text"
-                 class="form-control"
-                 formControlName="numberOfLicence"
-                 placeholder="Enter No of Licence"
-               >
-               <div *ngIf="f.numberOfLicence.invalid && (f.numberOfLicence.touched || f.numberOfLicence.value)"
-                    class="input-error-report">
-                 <div *ngIf="f.numberOfLicence.errors.required">
-                   Number Of Licence is required.
-                 </div>
-               </div>
-         </div>
-       </div>
-       <div class="form-group row">
-         <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Payment Status</label>
-         <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
-           <ng-select
-             [items]="paymentStatuses"
-             [closeOnSelect]="true"
-             [clearable]="true"
-             [searchable]="true"
-             placeholder="Select Payment Status"
-             formControlName="paymentStatus"
-           >
-           </ng-select>
-           <div *ngIf="f.paymentStatus.invalid && (f.paymentStatus.touched || f.paymentStatus.value)"
-                class="input-error-report">
-             <div *ngIf="f.paymentStatus.errors.required">
-               Payment Status is required.
-             </div>
-           </div>
-         </div>
-       </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Organization</label>
+          <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
+            <div class="ng-autocomplete form-control search">
+              <ng-autocomplete
+                [data]="organizations"
+                (inputChanged)="searchOrganization($event)"
+                placeHolder="Select a Organization"
+                searchKeyword="name"
+                [itemTemplate]="organizationTemplate"
+                [notFoundTemplate]="organizationNotFoundTemplate"
+              >
+              </ng-autocomplete>
+              <ng-template #organizationTemplate let-item>
+                <a [innerHTML]="item" style="color:black;"></a>
+              </ng-template>
+              <ng-template #organizationNotFoundTemplate let-notFound>
+                <div [innerHTML]="notFound"></div>
+              </ng-template>
+            </div>
+            <div *ngIf="f.organization.invalid && (f.organization.touched || f.organization.value)"
+                 class="input-error-report">
+              <div *ngIf="f.organization.errors.required">
+                Organization is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Number of Licence</label>
+          <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="numberOfLicence"
+              placeholder="Enter No of Licence"
+            >
+            <div *ngIf="f.numberOfLicence.invalid && (f.numberOfLicence.touched || f.numberOfLicence.value)"
+                 class="input-error-report">
+              <div *ngIf="f.numberOfLicence.errors.required">
+                Number Of Licence is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Payment Status</label>
+          <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
+            <ng-select
+              [items]="paymentStatuses"
+              [closeOnSelect]="true"
+              [clearable]="true"
+              [searchable]="true"
+              placeholder="Select Payment Status"
+              formControlName="paymentStatus"
+            >
+            </ng-select>
+            <div *ngIf="f.paymentStatus.invalid && (f.paymentStatus.touched || f.paymentStatus.value)"
+                 class="input-error-report">
+              <div *ngIf="f.paymentStatus.errors.required">
+                Payment Status is required.
+              </div>
+            </div>
+          </div>
+        </div>
 
-       <div class="form-group row">
-         <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Credit Limit</label>
-         <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
-           <input
-             type="text"
-             placeholder="Enter Credit Limit"
-             class="form-control"
-             formControlName="creditLimit"
-           >
-           <div *ngIf="f.creditLimit.invalid && (f.creditLimit.touched || f.creditLimit.value)"
-                class="input-error-report">
-             <div *ngIf="f.creditLimit.errors.required">
-               Credit Limit is required.
-             </div>
-           </div>
-         </div>
-     </div>
-       <div class="form-group row">
-         <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Narration</label>
-         <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
+        <div class="form-group row">
+          <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Credit Limit</label>
+          <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
+            <input
+              type="text"
+              placeholder="Enter Credit Limit"
+              class="form-control"
+              formControlName="creditLimit"
+            >
+            <div *ngIf="f.creditLimit.invalid && (f.creditLimit.touched || f.creditLimit.value)"
+                 class="input-error-report">
+              <div *ngIf="f.creditLimit.errors.required">
+                Credit Limit is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Narration</label>
+          <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
            <textarea
              rows="4"
              class="form-control"
              placeholder="Type Narration"
              formControlName="narration">
            </textarea>
-           <div *ngIf="f.narration.invalid && (f.narration.touched || f.narration.value)"
-                class="input-error-report">
-             <div *ngIf="f.narration.errors.required">
-               Narraion is required.
-             </div>
-           </div>
-         </div>
-       </div>
-       <div class="form-group row">
-         <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Selling Price</label>
-         <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
-           <input
-             type="text"
-             placeholder="Selling Price Per Licence"
-             class="form-control"
-             formControlName="sellingPricePerLicense">
-           <div *ngIf="f.sellingPrice.invalid && (f.sellingPrice.touched || f.sellingPrice.value)"
-                class="input-error-report">
-             <div *ngIf="f.sellingPrice.errors.required">
-               Selling Price Per Licence is required.
-             </div>
-           </div>
-         </div>
-       </div>
-       <div class="form-group row">
-         <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Deal Size</label>
-         <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
-           <input
-             placeholder="Enter Deal Sizesh"
-             type="text"
-             class="form-control"
-             formControlName="dealSize"
-           >
-           <div *ngIf="f.dealSize.invalid && (f.dealSize.touched || f.dealSize.value)"
-                class="input-error-report">
-             <div *ngIf="f.dealSize.errors.required">
-               Deal Size is required
-             </div>
-           </div>
-         </div>
-       </div>
-       <div class="col-xl-11 col-lg-11 col-md-10 xol-sm-10 text-lg-right">
-         <button type="submit" class="btn credit-btn">Credit license</button>
-       </div>
-         </form>
+            <div *ngIf="f.narration.invalid && (f.narration.touched || f.narration.value)"
+                 class="input-error-report">
+              <div *ngIf="f.narration.errors.required">
+                Narraion is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Selling Price</label>
+          <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
+            <input
+              type="text"
+              placeholder="Selling Price Per Licence"
+              class="form-control"
+              formControlName="sellingPricePerLicense">
+            <div *ngIf="f.sellingPrice.invalid && (f.sellingPrice.touched || f.sellingPrice.value)"
+                 class="input-error-report">
+              <div *ngIf="f.sellingPrice.errors.required">
+                Selling Price Per Licence is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Deal Size</label>
+          <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
+            <input
+              placeholder="Enter Deal Sizesh"
+              type="text"
+              class="form-control"
+              formControlName="dealSize"
+            >
+            <div *ngIf="f.dealSize.invalid && (f.dealSize.touched || f.dealSize.value)"
+                 class="input-error-report">
+              <div *ngIf="f.dealSize.errors.required">
+                Deal Size is required
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-11 col-lg-11 col-md-10 xol-sm-10 text-lg-right">
+          <button type="submit" class="btn credit-btn">Credit license</button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
 </div>
