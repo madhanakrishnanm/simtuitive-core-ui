@@ -8,7 +8,7 @@
             [items]="clients"
             [searchable]="false"
             bindLabel="roleName"
-            placeholder="Clients"
+            placeholder="Organizations"
             class="ng-select"
             formControlName="organisation"
           >
@@ -44,8 +44,8 @@
         </div>
       </div>
       <div class="form-group row">
-        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Event Name</label>
-        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 custom-input">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Organisation Name</label>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
           <input
             type="text"
             class="form-control"
@@ -55,7 +55,7 @@
       </div>
       <div class="form-group row">
         <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label"># Of Participants</label>
-        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 custom-input">
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
           <input
             type="text"
             class="form-control"
@@ -67,45 +67,57 @@
         <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Toll Gates</label>
         <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
           <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="customRadioInline1" formControlName="tollGates" [(ngModel)]="tollGate" name="tollGates" class="custom-control-input" value="yes">
+            <input type="radio" id="customRadioInline1"
+                   formControlName="tollGates"
+                   [(ngModel)]="tollGate" name="tollGates" class="custom-control-input" value="yes">
             <label class="custom-control-label" for="customRadioInline1">Yes</label>
           </div>
           <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="customRadioInline2" formControlName="tollGates" [(ngModel)]="tollGate" name="tollGates" class="custom-control-input" value="no">
+            <input type="radio" id="customRadioInline2"
+                   formControlName="tollGates"
+                   [(ngModel)]="tollGate" name="tollGates" class="custom-control-input" value="no">
             <label class="custom-control-label" for="customRadioInline2">No</label>
           </div>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Event Start Date</label>
-        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 d-flex custom-input">
-          <input
-            type="text"
-            class="form-control"
-            formControlName="eventStartDate"
-            ngbDatepicker
-            #d="ngbDatepicker"
-            placement="bottom-right"
-          />
-          <span class="input-group-append my-auto" (click)="d.toggle()">
-              <img src="assets/img/interface.svg">
-            </span>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+           <div class="d-flex  custom-input">
+             <input
+               type="text"
+               class="form-control"
+               formControlName="eventStartDate"
+               ngbDatepicker
+               #d="ngbDatepicker"
+               placement="bottom-right"
+             />
+             <div class="input-group-append my-auto" (click)="d.toggle()">
+              <span class="input-group-text">
+                <img src="assets/img/interface.svg">
+              </span>
+            </div>
+           </div>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Event End Date</label>
-        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 d-flex custom-input">
-          <input
-            type="text"
-            class="form-control"
-            formControlName="eventEndDate"
-            ngbDatepicker
-            #d1="ngbDatepicker"
-            placement="bottom-right"
-          />
-          <span class="input-group-append my-auto" (click)="d1.toggle()">
-              <img src="assets/img/interface.svg">
-            </span>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+          <div class="d-flex  custom-input">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="eventEndDate"
+              ngbDatepicker
+              #d1="ngbDatepicker"
+              placement="bottom-right"
+            />
+            <div class="input-group-append my-auto" (click)="d1.toggle()">
+              <span class="input-group-text">
+                <img src="assets/img/interface.svg">
+              </span>
+            </div>
+          </div>
         </div>
       </div>
       <div class="form-group row">
@@ -145,8 +157,10 @@
             <ng-select
               [items]="options"
               [searchable]="false"
+              [clearable]="false"
               class="ng-select mx-auto"
-              [(ngModel)]="tempModules[i]['moduleBefore']"
+              bindLabel="moduleBefore"
+              [(ngModel)]="tempModules[i]['beforeModule']"
               (change)="changeModuleTollPass(module.moduleId, $event, 'before')"
             >
             </ng-select>
@@ -155,8 +169,10 @@
             <ng-select
               [items]="options"
               [searchable]="false"
+              [clearable]="false"
+              bindLabel="moduleAfter"
               class="ng-select mx-auto"
-              [(ngModel)]="tempModules[i]['moduleAfter']"
+              [(ngModel)]="tempModules[i]['afterModule']"
               (change)="changeModuleTollPass(module.moduleId,$event,'after')"
             >
             </ng-select>

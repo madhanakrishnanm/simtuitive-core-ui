@@ -25,10 +25,10 @@
   --heading-color: #FF9000 !important;
   --bg-color-primary: #15151b;
   --bg-color-secondary: #202029 !important;
-  --pagination-border:#707070;
-  --date-font:#17a2b8 !important;
-  --apply-btn:#B9595B !important;
-  --submenu-font:#8A8A8D !important;
+  --pagination-border: #707070;
+  --date-font: #17a2b8 !important;
+  --apply-btn: #B9595B !important;
+  --submenu-font: #8A8A8D !important;
   --brand-secondary: #00ebc7 !important;
 }
 
@@ -51,11 +51,11 @@
   --bg-color-primary: $dark_bg;
   --bg-color-secondary: $light_bg;
 }
+
 //fonts
-@font-face
-{
-    font-family:'nucleo';
-    src:url('~assets/fonts/nucleo-icons.ttf');
+@font-face {
+  font-family: 'nucleo';
+  src: url('~assets/fonts/nucleo-icons.ttf');
 }
 
 html {
@@ -155,7 +155,7 @@ input[type=number]::-webkit-outer-spin-button {
   display: inline-block;
 }
 
-.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value{
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value {
   background-color: var(--primary);
 }
 
@@ -169,7 +169,6 @@ input[type=number]::-webkit-outer-spin-button {
   background: var(--bg-color-secondary) !important;
   color: var(--light) !important;
 }
-
 
 
 .simtuitive-modal {
@@ -193,158 +192,171 @@ input[type=number]::-webkit-outer-spin-button {
   }
 }
 
-input
-{
+input {
   &:focus {
     outline: none !important;
   }
 }
+
 //styles for pagination & Searchbar
-.search
-{
+.search {
   background: var(--bg-color-secondary);
-  padding:0 !important;
+  padding: 0 !important;
   font-family: nunito, serif;
-  img
-  {
-    width:20px;
+
+  img {
+    width: 20px;
   }
 
 }
-.form-control
-{
-  background: transparent;
-  border:0 !important;
-  color:white;
+
+.form-control {
+  background: var(--bg-color-secondary);
+  border: 0 !important;
+  color: white;
   outline: none !important;
   box-shadow: none !important;
-  &::placeholder
-  {
+
+  &::placeholder {
     font-size: 16px;
   }
+
+  &:focus {
+    background: var(--bg-color-secondary);
+    color: white;
+  }
 }
+
 //styles for auto-complete
 .ng-autocomplete {
   height: 40px !important;
   width: auto !important;
+
   .autocomplete-container .input-container input {
     background-color: var(--bg-color-secondary) !important;
-    color:var(--light) !important;
+    color: var(--light) !important;
     border-radius: 10px;
     align-items: center;
     height: auto;
+
     .x {
       i {
         color: var(--light) !important;
       }
     }
   }
-  .autocomplete-container
-  {
+
+  .autocomplete-container {
     box-shadow: none !important;
   }
 }
+
 //styles for Date Picker
-ngb-datepicker .ngb-dp-header,.ngb-dp-month:first-child .ngb-dp-week
-{
+ngb-datepicker .ngb-dp-header, .ngb-dp-month:first-child .ngb-dp-week {
   background: var(--bg-color-secondary) !important;
   border: 0 !important;
 }
-.dropdown-menu
-{
+
+.dropdown-menu {
   background: var(--bg-color-secondary) !important;
 }
-ngb-datepicker-navigation-select>.custom-select {
+
+ngb-datepicker-navigation-select > .custom-select {
   color: var(--date-font);
-  background:var(--bg-color-secondary) !important;
+  background: var(--bg-color-secondary) !important;
 }
+
 [ngbDatepickerDayView] {
   text-align: center;
   width: 2rem;
   height: 2rem;
   line-height: 2rem;
   border-radius: .25rem;
-  background:var(--bg-color-secondary) !important;
-  color:var(--light) !important;
+  background: var(--bg-color-secondary) !important;
+  color: var(--light) !important;
   border: 0 !important;
 }
+
 .suggestions-container ::-webkit-scrollbar {
   background: none;
-  width:6px;
+  width: 6px;
 }
-.suggestions-container ::-webkit-scrollbar-thumb{
+
+.suggestions-container ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: var(--primary);
 }
-.autocomplete-container .suggestions-container,.not-found
-{
+
+.autocomplete-container .suggestions-container, .not-found {
   background: var(--bg-color-secondary) !important;
   color: var(--light) !important;
-  border:0!important;
-  div
-  {
-   border-bottom: 0 !important;
+  border: 0 !important;
+
+  div {
+    border-bottom: 0 !important;
   }
-  ul
-  {
-    li
-    {
+
+  ul {
+    li {
       a {
         color: var(--light) !important;
       }
     }
   }
 }
-.ng-autocomplete
-{
+
+.ng-autocomplete {
   align-items: center;
 }
+
 .autocomplete-container .input-container .x i {
   color: var(--light) !important;
 }
+
 //for apply Button all page filters
-.apply-btn
-{
+.apply-btn {
   background-color: var(--apply-btn);
   border-radius: 50px;
   margin-top: 5px;
   width: 150px;
   color: var(--light);
 }
+
 //for Input with Icons
-.custom-input
-{
+.custom-input {
   height: calc(1.5em + 0.75rem + 2px);
   background: var(--bg-color-secondary);
   border-radius: 11px;
+  width: auto;
 }
 
-  .header
-  {
-    width:60% !important;
-    margin-left: 4%;
-    margin-bottom: 4% !important;
-  }
+.header {
+  width: 60% !important;
+  margin-left: 4%;
+  margin-bottom: 4% !important;
+}
+
 //for autocomplete in modal
 .modal-body {
-  .search{
+  .search {
     background-color: var(--bg-color-primary) !important;
   }
+
   .ng-autocomplete .autocomplete-container .input-container input {
     background-color: transparent !important;
   }
 }
-.ng-select .ng-arrow-wrapper
-{
+
+.ng-select .ng-arrow-wrapper {
   margin-right: 10px !important;
 }
+
 //styles for breadcrumbs in all pages
-.breadcrumb
-{
+.breadcrumb {
   background-color: var(--bg-color-secondary) !important;
-  color:var(--submenu-font) !important;
-  .active
-  {
+  color: var(--submenu-font) !important;
+
+  .active {
     color: var(--primary) !important;
   }
 }

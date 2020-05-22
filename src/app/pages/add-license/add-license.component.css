@@ -2,11 +2,6 @@ label {
   color: #FFFFFF;
 }
 
-.form-control {
-  background-color: var(--bg-color-secondary);
-  border: 0;
-  border-radius: 11px;
-}
 
 .sub-label {
   color: #FF7777;

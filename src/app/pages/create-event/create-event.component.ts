@@ -91,6 +91,8 @@ export class CreateEventComponent implements OnInit {
     }];
   options: any = ['yes', 'no'];
   EventFormGroup: FormGroup;
+  selectedBeforeModule = 'yes';
+  selectedAfterModule = 'no';
   constructor(private fb: FormBuilder, private eventService: EventService, private router: Router) { }
 
   get f() {
@@ -110,6 +112,7 @@ export class CreateEventComponent implements OnInit {
         this.tempModules[index].isTollPassRequired = true;
       }
     }
+    console.log(this.tempModules);
   }
 
   save() {
@@ -126,6 +129,7 @@ export class CreateEventComponent implements OnInit {
         tollPassDetails: this.tempModules,
       }
     ];
+    console.log(Payload);
     this.eventService.addEvent(Payload);
     this.onStepNext.emit(this.nextTitle);
   }
@@ -135,15 +139,15 @@ export class CreateEventComponent implements OnInit {
   }
   ngOnInit() {
     this.EventFormGroup = this.fb.group({
-      organisation:['',[]],
-      client: ['', []],
-      product: ['', []],
-      eventName: ['', []],
+      organisation: [null, []],
+      client: [null, []],
+      product: [null, []],
+      eventName: [null, []],
       tollGates: ['', []],
-      noParticipants:['',[]],
+      noParticipants: ['', []],
       eventStartDate: ['', []],
       eventEndDate: ['', []],
-      notes:['',[]]
+      notes: ['', []]
     });
   }
 }
