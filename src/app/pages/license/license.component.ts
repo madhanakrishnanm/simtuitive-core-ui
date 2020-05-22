@@ -18,11 +18,11 @@ export class LicenseComponent implements OnInit {
   products = [
     {
       name: 'Advance Excel',
-      id: 1
+      id: "1"
     },
     {
       name: 'Operational Excellence',
-      id: 2
+      id: "2"
     },
   ];
   licenseIds = [];
@@ -80,7 +80,33 @@ export class LicenseComponent implements OnInit {
       this.organisations = res.data;
     })
   }
+  onOrganizationChange(event){
+    if (!event) return
+    this.selectedOrganization = event;
+    const payload = {
+      pageNo: this.page - 1,
+      query: this.searchQuery,
+      orgName: this.selectedOrganization,
+      product: this.selectedProduct,
+      status: this.selectedPaymentStatus,
+    };
+    this.getLicenses(payload);
+  }
+  onProductChange(event){
 
+  }
+  onPaymentStatusChange(event){
+    if (!event) return
+    this.selectedPaymentStatus = event;
+    const payload = {
+      pageNo: this.page - 1,
+      query: this.searchQuery,
+      orgName: this.selectedOrganization,
+      product: this.selectedProduct,
+      status: this.selectedPaymentStatus,
+    };
+    this.getLicenses(payload);
+  }
   getLicenses(payload) {
 
     payload['query'] = this.searchQuery;
@@ -102,8 +128,11 @@ export class LicenseComponent implements OnInit {
     console.log(event);
     this.searchQuery = event.target.value;
     const payload = {
-      pageno: this.page - 1,
+      pageNo: this.page - 1,
       query: this.searchQuery,
+      orgName: this.selectedOrganization,
+      product: this.selectedProduct,
+      status: this.selectedPaymentStatus,
     };
     this.getLicenses(payload);
   }

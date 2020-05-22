@@ -16,11 +16,11 @@ export class AddLicenseComponent implements OnInit {
   products = [
     {
       name: 'Advance Excel',
-      id: 1
+      id: "1"
     },
     {
       name: 'Operational Excellence',
-      id: 2
+      id: "2"
     },
   ];
   organizations = [];
@@ -41,7 +41,7 @@ export class AddLicenseComponent implements OnInit {
     this.licenseForm = this.formBuilder.group({
       productName: ['',[Validators.required]],
       organization: ['',[Validators.required]],
-      numberOfLicence: ['',[Validators.required]],
+      numberOfLicense: ['',[Validators.required]],
       paymentStatus: [null,[Validators.required]],
       creditLimit: ['',[Validators.required]],
       narration: ['',[Validators.required]],

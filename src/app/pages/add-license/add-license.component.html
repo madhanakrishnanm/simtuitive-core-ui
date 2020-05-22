@@ -77,15 +77,15 @@
              <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Number of Licence</label>
              <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
                <input
-                 type="text"
+                 type="number"
                  class="form-control"
-                 formControlName="numberOfLicence"
+                 formControlName="numberOfLicense"
                  placeholder="Enter No of Licence"
                >
-               <div *ngIf="f.numberOfLicence.invalid && (f.numberOfLicence.touched || f.numberOfLicence.value)"
+               <div *ngIf="f.numberOfLicense.invalid && (f.numberOfLicense.touched || f.numberOfLicense.value)"
                     class="input-error-report">
-                 <div *ngIf="f.numberOfLicence.errors.required">
-                   Number Of Licence is required.
+                 <div *ngIf="f.numberOfLicense.errors.required">
+                   Number Of License is required.
                  </div>
                </div>
          </div>
@@ -115,7 +115,7 @@
              <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Credit Limit</label>
              <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
                <input
-                 type="text"
+                 type="number"
                  placeholder="Enter Credit Limit"
                  class="form-control"
                  formControlName="creditLimit"
@@ -149,7 +149,7 @@
          <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Selling Price</label>
          <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
            <input
-             type="text"
+             type="number"
              placeholder="Selling Price Per Licence"
              class="form-control"
              formControlName="sellingPrice">
@@ -165,8 +165,8 @@
          <label class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-form-label">Deal Size</label>
          <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
            <input
-             placeholder="Enter Deal Sizesh"
-             type="text"
+             placeholder="Enter Deal Size"
+             type="number"
              class="form-control"
              formControlName="dealSize"
            >

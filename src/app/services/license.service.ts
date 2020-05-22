@@ -18,7 +18,7 @@ export class LicenseService {
     return this.apiService.get('license/get-all-license', payload);
   }
   getLicenseById(payload) {
-    return this.apiService.post('license/get-licenses', payload);
+    return this.apiService.post('license/get-license', payload);
   }
   deleteLicense(payload) {
     return this.apiService.delete('license/delete-license', payload);

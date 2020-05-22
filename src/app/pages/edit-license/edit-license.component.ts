@@ -56,7 +56,7 @@ export class EditLicenseComponent implements OnInit {
 
     this.subscribe = this.route.params.subscribe(params => {
 
-      this.licenseId = params.id; // (+) converts string 'id' to a number
+      this.licenseId = parseInt(params.id); // (+) converts string 'id' to a number
       // console.log(this.organizationId);
       if (this.licenseId) {
         const payload = {
@@ -66,7 +66,7 @@ export class EditLicenseComponent implements OnInit {
 
           const license = res.data;
           console.log(license);
-          // this.license.numberOfLicence = license.numberOfLicence;
+          this.license.numberOfLicence = license.numberOfLicence;
           this.license.paymentStatus = license.paymentStatus;
           this.license.creditLimit = license.creditLimit;
           this.license.narration = license.narration;
