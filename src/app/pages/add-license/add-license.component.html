@@ -22,6 +22,7 @@
               <div class="ng-autocomplete form-control search">
                 <ng-autocomplete
                   [data]="products"
+                  formControlName="productName"
                   placeHolder="Select a Product"
                   searchKeyword="name"
                   [itemTemplate]="productTemplate"
@@ -35,9 +36,9 @@
                   <div [innerHTML]="notFound"></div>
                 </ng-template>
               </div>
-              <div *ngIf="f.product.invalid && (f.product.touched || f.product.value)"
+              <div *ngIf="f.productName.invalid && (f.productName.touched || f.productName.value)"
                    class="input-error-report">
-                <div *ngIf="f.product.errors.required">
+                <div *ngIf="f.productName.errors.required">
                   Product is required.
                 </div>
               </div>
@@ -49,6 +50,7 @@
                <div class="ng-autocomplete form-control search">
                  <ng-autocomplete
                    [data]="organizations"
+                   formControlName="organization"
                    (inputChanged)="searchOrganization($event)"
                    placeHolder="Select a Organization"
                    searchKeyword="name"
@@ -150,7 +152,7 @@
              type="text"
              placeholder="Selling Price Per Licence"
              class="form-control"
-             formControlName="sellingPricePerLicense">
+             formControlName="sellingPrice">
            <div *ngIf="f.sellingPrice.invalid && (f.sellingPrice.touched || f.sellingPrice.value)"
                 class="input-error-report">
              <div *ngIf="f.sellingPrice.errors.required">

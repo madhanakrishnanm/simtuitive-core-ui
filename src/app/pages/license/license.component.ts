@@ -5,6 +5,7 @@ import {PermissionService} from '../../services/permission.service';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {NgxUiLoaderService} from "ngx-ui-loader";
 import {ToastrService} from "ngx-toastr";
+import {LicenseService} from "../../services/license.service";
 @Component({
   selector: 'app-license',
   templateUrl: './license.component.html',
@@ -33,11 +34,9 @@ export class LicenseComponent implements OnInit {
                private ngxUiLoaderService: NgxUiLoaderService,
                private toastrService: ToastrService,
                public router: Router,
+               public licenseService: LicenseService,
                private modalService: NgbModal)
   { }
-  open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
-  }
 
   ngOnInit(): void {
     this.licenseForm = this.formBuilder.group({
@@ -47,7 +46,17 @@ export class LicenseComponent implements OnInit {
       remember: ['remember'],
     });
     this.licenseIds.push(this.datas[0].licenseId);
+
+    this.licenseService.getAllLicense({}).subscribe((res: any) => {
+      console.log(res);
+    });
   }
+
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+  }
+
+
   requestDelete(PermissionId, modalReference) {
     this.licenseID = PermissionId;
     this.modalService.open(modalReference, {centered: true, size: 'sm', windowClass: 'simtuitive-modal'});

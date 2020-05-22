@@ -6,6 +6,7 @@ import {DashboardComponent} from './pages/dashboard/dashboard.component';
 import {ClientsListComponent} from './pages/clients-list/clients-list.component';
 import {ProductsComponent} from './pages/products/products.component';
 import {LicenseComponent} from './pages/license/license.component';
+import {AddLicenseComponent} from './pages/add-license/add-license.component';
 import {ReportsComponent} from './pages/reports/reports.component';
 import {AddClientComponent} from './pages/add-client/add-client.component';
 import {EditClientComponent} from './pages/edit-client/edit-client.component';
@@ -13,6 +14,7 @@ import {ViewClientComponent} from './pages/view-client/view-client.component';
 import {InviteClientComponent} from './pages/invite-client/invite-client.component';
 import {OrganizationsComponent} from './pages/organizations/organizations.component';
 import {AddOrganizationComponent} from './pages/add-organization/add-organization.component';
+import {EditLicenseComponent} from './pages/edit-license/edit-license.component';
 import {EditOrganizationComponent} from './pages/edit-organization/edit-organization.component';
 import {AdminsComponent} from './pages/admins/admins.component';
 import {AddAdminComponent} from './pages/add-admin/add-admin.component';
@@ -27,7 +29,7 @@ import {WhitelistIpsComponent} from './pages/whitelist-ips/whitelist-ips.compone
 import {TestComponent} from './pages/test/test.component';
 import {ForgotPasswordComponent} from './pages/forgot-password/forgot-password.component';
 import {UpdatePasswordComponent} from './pages/update-password/update-password.component';
-import {AddLicenseComponent} from './pages/add-license/add-license.component';
+
 import {EventSummaryComponent} from './pages/event-summary/event-summary.component';
 import {EventsComponent} from './pages/events/events.component';
 import {AddEventComponent} from './pages/add-event/add-event.component';
@@ -44,6 +46,7 @@ const routes: Routes = [
       {path: 'clients', component: ClientsListComponent},
       {path: 'products', component: ProductsComponent},
       {path: 'license', component: LicenseComponent},
+      {path: 'edit-license/:id', component: EditLicenseComponent},
       {path: 'reports', component: ReportsComponent},
       {path: 'add-client', component: AddClientComponent},
       {path: 'invite-client', component: InviteClientComponent},

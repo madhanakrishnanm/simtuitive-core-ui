@@ -23,14 +23,7 @@ export class ClientsListComponent implements OnInit {
   clientId;
   page = 1;
   totalPages = 0;
-  clients = [{
-    userId: 12,
-    organizationName: 'Mark University',
-    userName: 'Thornton',
-    userEmail: 'Otto@gmail.com',
-    GST: '767985',
-    PAN: '767985',
-  }];
+  clients = [];
   deleteClientId = null;
   constructor(public router: Router,
               private formBuilder: FormBuilder,
