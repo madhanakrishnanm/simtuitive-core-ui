@@ -18,7 +18,6 @@
       <div class="row ml-3">
         <div class="col-3">
           <div class="ng-autocomplete search">
-            <span class="input-group-prepend"><img src="assets/img/search.svg"></span>
             <ng-autocomplete
               [data]="licenseIds"
               searchKeyword="keyword"
@@ -75,13 +74,9 @@
           <thead>
           <tr>
             <th scope="col">License ID</th>
-            <th scope="col">Date of Credit</th>
             <th scope="col">Product Name</th>
             <th scope="col">Organization Name</th>
             <th scope="col"># of Licenses</th>
-            <th scope="col">Payment Status</th>
-            <th scope="col">Credit Limit</th>
-            <th scope="col">Narration</th>
             <th scope="col">Selling Price</th>
             <th scope="col">Deal Size</th>
             <th scope="col">Action</th>
@@ -90,13 +85,9 @@
          <tbody>
           <tr *ngFor="let data of datas; index as i">
             <td>{{data.licenseId}}</td>
-            <td>{{data.dateOfCredit}}</td>
             <td>{{data.ProductName}}</td>
             <td>{{data.OrganizationName}}</td>
             <td>{{data.Licenses}}</td>
-            <td>{{data.PaymentStatus}}</td>
-            <td>{{data.CreditLimit}}</td>
-            <td>{{data.Narration}}</td>
             <td>{{data.SellingPrice}}</td>
             <td>{{data.DealSize}}</td>
             <td>

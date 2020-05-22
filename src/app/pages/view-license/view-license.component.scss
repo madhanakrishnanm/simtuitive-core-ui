@@ -30,6 +30,7 @@
   height: 156px;
   padding-left: 30px;
   padding-right: 30px;
+  border: 1px solid transparent;
 
   .purchased-count {
     height: 40px;
@@ -46,22 +47,26 @@
     font-size: 20px;
     line-height: 28px;
     font-family: "Nunito", sans-serif;
-    color: #FF9000;
-    span{
+    color: var(--primary);
+
+    span {
       color: white;
     }
   }
-  .purchased-cont{
+
+  .purchased-cont {
     margin-top: 28px;
     text-align: left;
-    .purchase-label{
+
+    .purchase-label {
       text-align: center;
       font-size: 20px;
       line-height: 28px;
       font-family: "Nunito", sans-serif;
-      color: #FF9000;
-      span{
-        color: white;
+      color: var(--primary);
+
+      span {
+        color: var(--light);
         margin-left: 25px;
       }
     }
@@ -72,12 +77,12 @@
     line-height: 28px;
     font-family: "Nunito", sans-serif;
     letter-spacing: 0;
-    color: #FF9000;
+    color: var(--primary);
   }
 }
 
 .payment {
-  background: #202029;
+  background: var(--bg-color-secondary);
   width: 227px;
   height: 60px;
   padding: 10px;
@@ -89,10 +94,41 @@
   }
 
   .status {
-    color: #FFFFFF;
+    color: var(--light);
     font-size: 20px;
     line-height: 28px;
     font-family: "Nunito", sans-serif;
     margin-left: 20px;
+  }
+}
+
+
+.license-title {
+  font-size: 20px;
+  line-height: 28px;
+  font-family: "Nunito", sans-serif;
+  color: var(--primary);
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.license-details-cont {
+  height: 136px;
+  background: var(--bg-color-secondary);
+
+  .license-sub-title {
+    color: var(--brand-secondary);
+    font-size: 20px;
+    line-height: 28px;
+    font-family: "Nunito", sans-serif;
+    text-align: center;
+  }
+
+  .license-content {
+    font-size: 20px;
+    line-height: 28px;
+    font-family: "Nunito", sans-serif;
+    color: #A6A6A6;
+    text-align: center;
   }
 }
