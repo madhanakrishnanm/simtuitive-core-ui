@@ -6,6 +6,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {NgxUiLoaderService} from "ngx-ui-loader";
 import {ToastrService} from "ngx-toastr";
 import {LicenseService} from "../../services/license.service";
+import {OrganizationService} from "../../services/organization.service";
 
 @Component({
   selector: 'app-license',
@@ -14,48 +15,98 @@ import {LicenseService} from "../../services/license.service";
 })
 export class LicenseComponent implements OnInit {
   licenseForm: FormGroup;
-  product = [];
+  products = [
+    {
+      name: 'Advance Excel',
+      id: 1
+    },
+    {
+      name: 'Operational Excellence',
+      id: 2
+    },
+  ];
   licenseIds = [];
-  datas = [{
-    licenseId: '126754',
-    dateOfCredit: '15.8.20',
-    ProductName: 'Python',
-    OrganizationName: 'Mark University',
-    Licenses: '34567',
-    PaymentStatus: 'Pending',
-    CreditLimit: '90 Days',
-    Narration: 'PO Done',
-    SellingPrice: '$10000',
-    DealSize: '$10000'
+  licenses = [];
+  selectedProduct = null;
+  selectedOrganization = null;
+  selectedPaymentStatus = null;
+  page = 1;
+  totalPages = 0;
+  searchQuery = null;
+  datas = [ {
+    "licenseId": "100000",
+    "organization": "Admin5674",
+    "orgId": "5ea04f13683ba84bccce5fdef",
+    "productName": "Admin123",
+    "productId": "5ea04f13683ba84bccce5fdef",
+    "paymentStatus": "Approved",
+    "creditLimit": 139,
+    "narration": "welcome here license welcome",
+    "sellingPrice": 4000,
+    "dealSize": 2000,
+    "numberOfLicense": 48,
+    "createdAt": "2020-05-20T15:19:19.268+0000",
+    "modifiedAt": "2020-05-20T15:20:11.767+0000",
+    "createdBy": "Admin4@gmail.com",
+    "modifiedBy": "Admin4@gmail.com",
+    "status": "active"
   }];
-  organisation = [];
-  status = [];
+  organisations = [];
+  paymentStatuses = ['Paid', 'Pending', 'Incomplete'];
   licenseID;
   constructor( private formBuilder: FormBuilder,
                private ngxUiLoaderService: NgxUiLoaderService,
                private toastrService: ToastrService,
                public router: Router,
                public licenseService: LicenseService,
+               public organizationService: OrganizationService,
                private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.licenseForm = this.formBuilder.group({
-      productId: ['', [Validators.required]],
-      password: ['myadmin', [Validators.required]],
-      // password: ['maran', [Validators.required]],
-      remember: ['remember'],
-    });
-    this.licenseIds.push(this.datas[0].licenseId);
 
-    this.licenseService.getAllLicense({}).subscribe((res: any) => {
-      console.log(res);
-    });
+    const payload = {
+      pageNo: this.page - 1,
+    };
+    this.getLicenses(payload);
   }
 
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
   }
 
+  findOrganizationName(payload){
+    this.organizationService.findOrganizationName(payload).subscribe((res: any) => {
+      console.log(res);
+      this.organisations = res.data;
+    })
+  }
+
+  getLicenses(payload) {
+
+    payload['query'] = this.searchQuery;
+    payload['product'] = this.selectedProduct;
+    payload['organization'] = this.selectedOrganization;
+    payload['paymetStatus'] = this.selectedPaymentStatus;
+
+    this.ngxUiLoaderService.start();
+    this.licenseService.getAllLicense(payload).subscribe((res: any) => {
+      console.log(res);
+      this.licenses = res.data;
+      this.totalPages = res.pageable.pages;
+      this.ngxUiLoaderService.stop();
+    }, error => {
+      this.ngxUiLoaderService.stop();
+    });
+  }
+  searchLicense(event){
+    console.log(event);
+    this.searchQuery = event.target.value;
+    const payload = {
+      pageno: this.page - 1,
+      query: this.searchQuery,
+    };
+    this.getLicenses(payload);
+  }
 
   requestDelete(PermissionId, modalReference) {
     this.licenseID = PermissionId;

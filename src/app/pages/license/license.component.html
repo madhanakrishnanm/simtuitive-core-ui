@@ -14,59 +14,53 @@
     </div>
   </div>
   <div class="row">
-    <div class="col table-cont">
+    <div class="col table-cont simtuitive-input">
       <div class="row ml-3">
         <div class="col-3">
-          <div class="ng-autocomplete search">
-            <ng-autocomplete
-              [data]="licenseIds"
-              searchKeyword="keyword"
-              [itemTemplate]="itemTemplate"
-              [notFoundTemplate]="notFoundTemplate"
-            >
-            </ng-autocomplete>
-            <ng-template #itemTemplate let-item>
-              <a [innerHTML]="item"></a>
-            </ng-template>
-            <ng-template #notFoundTemplate let-notFound>
-              <div [innerHTML]="notFound"></div>
-            </ng-template>
+          <div class="input-group">
+            <input
+              type="text"
+              (input)="searchLicense($event)"
+              placeholder="Search for License"
+              class="form-control"
+            />
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <img src="assets/img/search.svg">
+              </span>
+            </div>
           </div>
         </div>
         <!--<label class="col-xl-2 col-lg-2  col-md-12 col-sm-12  col-form-label" style="color:white">Roles</label>-->
         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
           <ng-select
-            [items]="product"
+            [items]="products"
             [closeOnSelect]="true"
             [searchable]="false"
             bindLabel="Product"
-            placeholder="Product"
+            placeholder="Filter by Product"
           >
           </ng-select>
         </div>
         <!--<label class="col-xl-2 col-lg-2  col-md-12 col-sm-12  col-form-label" style="color:white">Permission Type</label>-->
         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
           <ng-select
-            [items]="organisation"
+            [items]="organisations"
             [closeOnSelect]="true"
             [searchable]="false"
             bindLabel="organizationName"
-            placeholder="Organisation"
+            placeholder="Filter by Organisation"
           >
           </ng-select>
         </div>
         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
           <ng-select
-            [items]="organisation"
+            [items]="paymentStatuses"
             [closeOnSelect]="true"
             [searchable]="false"
-            bindLabel="organizationName"
-            placeholder="Status"
+            placeholder="Filter by Payment Status"
           >
           </ng-select>
-        </div>
-        <div class="col-2">
-          <button class="btn apply-btn">Apply</button>
         </div>
       </div>
       <div class="product-users-table table-responsive">
@@ -83,21 +77,21 @@
           </tr>
           </thead>
          <tbody>
-          <tr *ngFor="let data of datas; index as i">
-            <td>{{data.licenseId}}</td>
-            <td>{{data.ProductName}}</td>
-            <td>{{data.OrganizationName}}</td>
-            <td>{{data.Licenses}}</td>
-            <td>{{data.SellingPrice}}</td>
-            <td>{{data.DealSize}}</td>
+          <tr *ngFor="let license of licenses; index as i">
+            <td>{{license.licenseId}}</td>
+            <td>{{license.productName}}</td>
+            <td>{{license.organization}}</td>
+            <td>{{license.numberOfLicense}}</td>
+            <td>{{license.creditLimit}} Days</td>
+            <td>{{license.dealSize}}</td>
             <td>
               <div class="d-flex justify-content-around action-icon">
                 <i title="View License" class="fa fa-eye" aria-hidden="true"
-                   (click)="router.navigate(['/view-license',data.licenseId])"></i>
+                   (click)="router.navigate(['/view-license',license.licenseId])"></i>
                 <i title="Edit License" class="fa fa-edit" aria-hidden="true"
-                   (click)="router.navigate(['/edit-permission',data.licenseId])"></i>
+                   (click)="router.navigate(['/edit-license',license.licenseId])"></i>
                 <i title="Delete License" class="fa fa-trash" aria-hidden="true"
-                   (click)="requestDelete(data.licenseId,content)"></i>
+                   (click)="requestDelete(license.licenseId,content)"></i>
               </div>
             </td>
           </tr>
