@@ -17,6 +17,7 @@ export class EditLicenseComponent implements OnInit {
   subscribe = null;
   licenseId = null;
   license: any = {};
+  initialProduct = '';
   products = [
     {
       name: 'Advance Excel',
@@ -46,7 +47,7 @@ export class EditLicenseComponent implements OnInit {
     this.licenseForm = this.formBuilder.group({
       productName: ['',[Validators.required]],
       organization: ['',[Validators.required]],
-      numberOfLicence: ['',[Validators.required]],
+      numberOfLicense: ['',[Validators.required]],
       paymentStatus: [null,[Validators.required]],
       creditLimit: ['',[Validators.required]],
       narration: ['',[Validators.required]],
@@ -56,17 +57,17 @@ export class EditLicenseComponent implements OnInit {
 
     this.subscribe = this.route.params.subscribe(params => {
 
-      this.licenseId = parseInt(params.id); // (+) converts string 'id' to a number
+      this.licenseId = params.id; // (+) converts string 'id' to a number
       // console.log(this.organizationId);
       if (this.licenseId) {
         const payload = {
-          licenseId: this.licenseId
+          id: this.licenseId
         };
         this.licenseService.getLicenseById(payload).subscribe((res: any) => {
 
           const license = res.data;
           console.log(license);
-          this.license.numberOfLicence = license.numberOfLicence;
+          this.license.numberOfLicense = license.numberOfLicense;
           this.license.paymentStatus = license.paymentStatus;
           this.license.creditLimit = license.creditLimit;
           this.license.narration = license.narration;
@@ -77,8 +78,10 @@ export class EditLicenseComponent implements OnInit {
           this.organizationService.findOrganizationName({}).subscribe((res: any) => {
             console.log(res);
             this.organizations = res.data;
-            this.license.organization = this.organizations.find(o => o === license.organization)
+            this.license.organization = license.organization
             this.licenseForm.patchValue(this.license);
+            console.log(this.licenseForm.value);
+            console.log("license");
             console.log(this.license);
             this.isLoading = false;
           }, error => {
@@ -113,9 +116,11 @@ export class EditLicenseComponent implements OnInit {
 
     this.ngxUiLoaderService.start();
     const payload = {...this.licenseForm.value};
-    payload['licenseId'] = this.licenseId
-    payload['productId'] = payload['productName']['id']
-    payload['productName'] = payload['productName']['name']
+    payload['licenseId'] = this.licenseId;
+    if (typeof payload['productName'] === 'object'){
+      payload['productId'] = payload['productName']['id']
+      payload['productName'] = payload['productName']['name']
+    }
     payload['orgId'] = "5ea04f13683ba84bccce5fde";
     console.log(payload);
     this.licenseService.editLicense(payload).subscribe((res: any) => {

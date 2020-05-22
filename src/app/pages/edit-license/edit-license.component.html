@@ -21,6 +21,7 @@
           <div class="col-xl-7 col-lg-7 col-md-12 xol-sm-12">
             <div class="ng-autocomplete form-control search">
               <ng-autocomplete
+                [initialValue]="initialProduct"
                 [data]="products"
                 formControlName="productName"
                 placeHolder="Select a Product"
@@ -79,13 +80,13 @@
             <input
               type="text"
               class="form-control"
-              formControlName="numberOfLicence"
-              placeholder="Enter No of Licence"
+              formControlName="numberOfLicense"
+              placeholder="Enter No of License"
             >
-            <div *ngIf="f.numberOfLicence.invalid && (f.numberOfLicence.touched || f.numberOfLicence.value)"
+            <div *ngIf="f.numberOfLicense.invalid && (f.numberOfLicense.touched || f.numberOfLicense.value)"
                  class="input-error-report">
-              <div *ngIf="f.numberOfLicence.errors.required">
-                Number Of Licence is required.
+              <div *ngIf="f.numberOfLicense.errors.required">
+                Number Of License is required.
               </div>
             </div>
           </div>
