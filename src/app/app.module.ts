@@ -45,6 +45,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ProductsModule} from './pages/products/products.module';
 import {EventsModule} from "./pages/events/events.module";
 import {NgxUiLoaderConfig, NgxUiLoaderModule, NgxUiLoaderService, PB_DIRECTION, POSITION, SPINNER} from 'ngx-ui-loader';
+import { ViewLicenseComponent } from './pages/view-license/view-license.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: '#FF9000',
@@ -68,6 +69,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     ForgotPasswordComponent,
     UpdatePasswordComponent,
     EditEventComponent,
+    ViewLicenseComponent,
   ],
   imports: [
     BrowserModule,

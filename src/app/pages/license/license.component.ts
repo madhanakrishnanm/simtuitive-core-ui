@@ -6,6 +6,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {NgxUiLoaderService} from "ngx-ui-loader";
 import {ToastrService} from "ngx-toastr";
 import {LicenseService} from "../../services/license.service";
+
 @Component({
   selector: 'app-license',
   templateUrl: './license.component.html',
@@ -35,8 +36,7 @@ export class LicenseComponent implements OnInit {
                private toastrService: ToastrService,
                public router: Router,
                public licenseService: LicenseService,
-               private modalService: NgbModal)
-  { }
+               private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.licenseForm = this.formBuilder.group({

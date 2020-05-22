@@ -5,6 +5,7 @@ import {NgxUiLoaderService} from 'ngx-ui-loader';
 import {OrganizationService} from "../../services/organization.service";
 import {LicenseService} from "../../services/license.service";
 import {ToastrService} from "ngx-toastr";
+
 @Component({
   selector: 'app-add-license',
   templateUrl: './add-license.component.html',
@@ -15,11 +16,11 @@ export class AddLicenseComponent implements OnInit {
   products = [
     {
       name: 'Advance Excel',
-      id:1
+      id: 1
     },
     {
       name: 'Operational Excellence',
-      id:2
+      id: 2
     },
   ];
   organizations = [];
@@ -50,18 +51,18 @@ export class AddLicenseComponent implements OnInit {
 
   }
 
-  searchOrganization(keyword){
-    let payload = {
+  searchOrganization(keyword) {
+    const payload = {
       query : keyword
     };
     console.log(payload);
     this.findOrganizationName(payload);
   }
-  findOrganizationName(payload){
+  findOrganizationName(payload) {
     this.organizationService.findOrganizationName(payload).subscribe((res: any) => {
       console.log(res);
       this.organizations = res.data;
-    })
+    });
   }
   onSubmit() {
 
