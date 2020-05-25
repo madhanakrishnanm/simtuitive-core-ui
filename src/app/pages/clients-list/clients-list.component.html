@@ -78,8 +78,8 @@
             <th scope="col">Organization Name</th>
             <th scope="col">Client Name</th>
             <th scope="col">Client Email</th>
-            <th scope="col">Client GST</th>
-            <th scope="col">Client PAN</th>
+          <!--  <th scope="col">Client GST</th>
+            <th scope="col">Client PAN</th>-->
             <th scope="col">Action</th>
           </tr>
           </thead>
@@ -90,8 +90,8 @@
             <td>{{client.organizationName}}</td>
             <td>{{client.userName}}</td>
             <td>{{client.userEmail}}</td>
-            <td>{{client.gst}}</td>
-            <td>{{client.pan}}</td>
+          <!--  <td>{{client.gst}}</td>
+            <td>{{client.pan}}</td>-->
             <td>
               <div class="d-flex justify-content-between action-icon">
                 <i title="Edit Client" class="fa fa-share" aria-hidden="true"
@@ -141,7 +141,7 @@
     </button>
   </div>
   <div class="modal-body" style="text-align: center;">
-    <p><strong>Invitation send to {{inviteEmailId}}</strong></p>
+    <p><strong>Are you sure to send invite to {{inviteEmailId}}</strong></p>
   </div>
   <div class="modal-footer">
     <div class="row text-center" style="width: 100%">
@@ -149,7 +149,7 @@
         <button type="button" class="btn btn-warning" (click)="modal.close('Save click')">Cancel</button>
       </div>
       <div class="col">
-        <button type="button" class="btn btn-primary">Invite</button>
+        <button type="button" class="btn btn-primary">Confirm</button>
       </div>
     </div>
   </div>
@@ -157,15 +157,18 @@
 <ng-template #invite_1 let-modal>
   <div class="modal-header">
     <h4 class="modal-title">Invite</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <button type="button"
+            class="close"
+            aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body" style="text-align: center;">
-    <div class="row justify-content-center">
-      <label class="col-xl-7 col-lg-7 col-md-12 col-sm-12  col-form-label" style="color:white;text-align: start">Organization Name</label>
-      <div class="ng-autocomplete align-content-center search d-inline-flex">
-        <span class="input-group-prepend"><img src="assets/img/search.svg"></span>
+  <div class="modal-body">
+    <div class="form-group row">
+      <label class="col-xl-6 col-lg-6 col-md-12 col-sm-12 text-white
+        col-form-label">Organization Name</label>
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
         <ng-autocomplete
           [data]="organizationNames"
           searchKeyword="keyword"
@@ -180,9 +183,11 @@
           <div [innerHTML]="notFound"></div>
         </ng-template>
       </div>
-      <label class="col-xl-7 col-lg-7  col-md-12 col-sm-12  col-form-label mt-3" style="color:white;text-align: start">Admin Email Address</label>
-      <div class="ng-autocomplete align-content-center search d-inline-flex">
-        <span class="input-group-prepend"><img src="assets/img/search.svg"></span>
+    </div>
+    <div class="form-group row">
+      <label class="col-xl-6 col-lg-6 col-md-12 col-sm-12
+      text-white col-form-label">Client Email Address</label>
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
         <ng-autocomplete
           [data]="emailAddress"
           searchKeyword="keyword"
@@ -202,10 +207,11 @@
   <div class="modal-footer">
     <div class="row text-center" style="width: 100%">
       <div class="col">
-        <button type="button" class="btn btn-warning" (click)="modal.close('Save click')">Cancel</button>
+        <button type="button" class="btn btn-warning"
+                  (click)="modal.close('Save click')">Cancel</button>
       </div>
       <div class="col">
-        <button type="button" class="btn btn-primary">Invite</button>
+        <button type="button" class="btn btn-primary">Confirm</button>
       </div>
     </div>
   </div>

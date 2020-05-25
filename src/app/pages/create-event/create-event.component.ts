@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {EventService} from '../../services/event.service';
 import {Router} from '@angular/router';
+import {getDateFromObject} from '../../lib';
 @Component({
   selector: 'app-create-event',
   templateUrl: './create-event.component.html',
@@ -17,7 +18,7 @@ export class CreateEventComponent implements OnInit {
   clients: any = ['Microsoft', 'HP', 'IBM', 'InfoSys'];
   products: any = ['Java', 'Python', 'C#'];
   modules: any = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
-  tempModules: any = [ {
+  tempModules: any = [{
     moduleId: 1,
     isTollPassRequired: false,
     beforeModule: 'no',
@@ -90,13 +91,15 @@ export class CreateEventComponent implements OnInit {
       afterModule: 'no',
     }];
   options: any = ['yes', 'no'];
-  EventFormGroup: FormGroup;
+  eventForm: FormGroup;
   selectedBeforeModule = 'yes';
   selectedAfterModule = 'no';
-  constructor(private fb: FormBuilder, private eventService: EventService, private router: Router) { }
+
+  constructor(private fb: FormBuilder, private eventService: EventService, private router: Router) {
+  }
 
   get f() {
-    return this.EventFormGroup.controls;
+    return this.eventForm.controls;
   }
 
   changeModuleTollPass(moduleId, isTollPassRequired, when) {
@@ -104,7 +107,7 @@ export class CreateEventComponent implements OnInit {
       if (module.moduleId === moduleId) {
         if (when === 'before') {
           this.tempModules[index].beforeModule = isTollPassRequired;
-        } else  if (when === 'after') {
+        } else if (when === 'after') {
           this.tempModules[index].afterModule = isTollPassRequired;
         }
       }
@@ -116,29 +119,18 @@ export class CreateEventComponent implements OnInit {
   }
 
   save() {
-    const Payload = [
-      {
-        clients: this.f.client.value,
-        product: this.f.product.value,
-        eventName: this.f.eventName.value,
-        tollGates: this.f.tollGates.value,
-        eventStartDate: this.dateToString(this.f.eventStartDate.value.day,
-          this.f.eventStartDate.value.month, this.f.eventStartDate.value.year),
-        eventEndDate: this.dateToString(this.f.eventStartDate.value.day,
-          this.f.eventStartDate.value.month, this.f.eventStartDate.value.year),
-        tollPassDetails: this.tempModules,
-      }
-    ];
-    console.log(Payload);
-    this.eventService.addEvent(Payload);
+    const eventInfo = this.eventForm.value;
+    eventInfo.modules = this.tempModules;
+    eventInfo.tollGates = eventInfo.tollGates.toString();
+    eventInfo.eventStartDate = getDateFromObject(eventInfo.eventStartDate);
+    eventInfo.eventEndDate = getDateFromObject(eventInfo.eventEndDate);
+    console.log(JSON.stringify(eventInfo));
+    this.eventService.addEvent(eventInfo);
     this.onStepNext.emit(this.nextTitle);
   }
-  // function for change Date To String
-  dateToString(date, month, year) {
-    return date + '-' + month + '-' + year;
-  }
+
   ngOnInit() {
-    this.EventFormGroup = this.fb.group({
+    this.eventForm = this.fb.group({
       organisation: [null, []],
       client: [null, []],
       product: [null, []],

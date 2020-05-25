@@ -39,13 +39,13 @@ export class ClientsListComponent implements OnInit {
     this.getClients(payload);
     this.findOrganizationName({});
   }
-  findOrganizationName(payload){
+  findOrganizationName(payload) {
     this.organizationService.findOrganizationName(payload).subscribe((res: any) => {
       console.log(res);
       this.organizationNames = res.data;
-    })
+    });
   }
-  onOrganizationChange(event){
+  onOrganizationChange(event) {
     this.selectedOrganization = event;
     const payload = {
       pageNo: this.page - 1,
@@ -54,7 +54,7 @@ export class ClientsListComponent implements OnInit {
     };
     this.getClients(payload);
   }
-  applyFilter(){
+  applyFilter() {
     const payload = {
       pageNo: this.page - 1,
       query: this.searchQuery,
@@ -64,8 +64,8 @@ export class ClientsListComponent implements OnInit {
     this.getClients(payload);
   }
   getClients(payload) {
-    payload['query'] = this.searchQuery;
-    payload['orgName'] = this.selectedOrganization;
+    payload.query = this.searchQuery;
+    payload.orgName = this.selectedOrganization;
     this.ngxUiLoaderService.start();
     this.clientService.getAllClient(payload).subscribe((res: any) => {
       console.log(res);
@@ -80,7 +80,7 @@ export class ClientsListComponent implements OnInit {
       this.ngxUiLoaderService.stop();
     });
   }
-  searchClient(event){
+  searchClient(event) {
     this.searchQuery = event.target.value;
     const payload = {
       pageno: this.page - 1,

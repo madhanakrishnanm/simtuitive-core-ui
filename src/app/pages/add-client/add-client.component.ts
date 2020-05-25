@@ -5,7 +5,7 @@ import {OrganizationService} from '../../services/organization.service';
 import {ClientService} from '../../services/client.service';
 import {RoleService} from '../../services/role.service';
 import {NgxUiLoaderService} from 'ngx-ui-loader';
-import {ToastrService} from "ngx-toastr";
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-client',
@@ -32,20 +32,21 @@ export class AddClientComponent implements OnInit {
       name: ['', [Validators.required]],
       email: ['', [Validators.required, this.emailValidator]],
       password: ['', [Validators.required]],
-      gst: ['', [Validators.required]],
-      pan: ['', [Validators.required]],
+    /*  gst: ['', [Validators.required]],
+      pan: ['', [Validators.required]],*/
       role: ['Client', [Validators.required]],
     });
 
     this.organizationService.getAllOrganization({}).subscribe((res: any) => {
       console.log(res);
       this.organizations = res.data;
+      // tslint:disable-next-line:no-shadowed-variable
       this.roleService.getAllRole({}).subscribe((res: any) => {
         console.log(res);
         this.roles = res.data;
         this.clientForm.patchValue({
           role : this.roles.find(o => o.roleName === 'Client')
-        })
+        });
       });
     });
   }
@@ -81,18 +82,18 @@ export class AddClientComponent implements OnInit {
     this.ngxUiLoaderService.start();
     console.log(this.clientForm.value);
     const payload = this.clientForm.value;
-    payload['organisationId'] = payload['organization']['organizationId']
-    delete payload['organization'];
-    payload['roleId'] = payload['role']['roleId'];
-    payload['role'] = payload['role']['roleName'];
+    payload.organisationId = payload.organization.organizationId;
+    delete payload.organization;
+    payload.roleId = payload.role.roleId;
+    payload.role = payload.role.roleName;
     this.clientService.addClient(payload).subscribe((res: any) => {
       console.log(res);
       this.ngxUiLoaderService.stop();
-      this.router.navigate(['/clients'])
+      this.router.navigate(['/clients']);
     }, error => {
-      if (error.error.userMessage){
+      if (error.error.userMessage) {
         this.toastrService.warning(error.error.userMessage);
-      }else {
+      } else {
         this.toastrService.warning('Something went to be wrong!');
       }
       this.ngxUiLoaderService.stop();

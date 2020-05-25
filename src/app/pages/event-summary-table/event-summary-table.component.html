@@ -3,29 +3,29 @@
     <tbody *ngIf="eventDetails.length!=0">
     <tr>
       <th scope="col">Client Name</th>
-      <td>{{eventDetails[0].clients}}</td>
+      <td>{{eventDetails.client}}</td>
     </tr>
      <tr>
       <th scope="col">Product</th>
-      <td>{{eventDetails[0].product}}</td>
+      <td>{{eventDetails.product}}</td>
      </tr>
      <tr>
       <th scope="col">Event Name</th>
-      <td>{{eventDetails[0].eventName}}</td>
+      <td>{{eventDetails.eventName}}</td>
      </tr>
      <tr>
       <th scope="col">Toll Gate</th>
-      <td>{{eventDetails[0].tollGates}}</td>
+      <td>{{eventDetails.tollGates}}</td>
      </tr>
     <tr>
       <th scope="col">Event Start Date</th>
-      <td>{{eventDetails[0].eventStartDate}}</td>
+      <td>{{eventDetails.eventStartDate}}</td>
     </tr>
      <tr>
       <th scope="col">Event End Date</th>
-      <td>{{eventDetails[0].eventEndDate}}</td>
+      <td>{{eventDetails.eventEndDate}}</td>
      </tr>
-    <tr *ngFor="let eventDetail of eventDetails[0].tollPassDetails;let i=index">
+    <tr *ngFor="let eventDetail of eventDetails.modules;let i=index">
       <th scope="col">Module {{i+1}}</th>
       <td class="d-flex">
         <p *ngIf="eventDetail.beforeModule=='yes'">Before,</p>

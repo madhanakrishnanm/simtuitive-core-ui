@@ -32,7 +32,7 @@ function reverseDate(date) {
 
 function getDateFromObject(dateObject) {
   if (dateObject) {
-    return `${dateObject.year}-${dateObject.month}-${dateObject.day}`;
+    return moment().date(dateObject.day).month(dateObject.month - 1).year(dateObject.year).format('YYYY-MM-DD');
   }
   return dateObject;
 }

@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {OrganizationService} from '../../services/organization.service';
 import {NgxUiLoaderService} from 'ngx-ui-loader';
-import {ToastrService} from "ngx-toastr";
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-organization',
@@ -27,6 +27,8 @@ export class AddOrganizationComponent implements OnInit {
       location: ['', [Validators.required]],
       industry: ['', [Validators.required]],
       dealOwner: ['', [Validators.required]],
+      gst: ['', [Validators.required]],
+      pan: ['', [Validators.required]],
       dealOwnerEmail: ['', [Validators.required, this.emailValidator]],
       dealOwnerMobile: ['', [Validators.required, this.mobileValidator]],
       creditLimit: [0, [Validators.required]],
@@ -105,11 +107,11 @@ export class AddOrganizationComponent implements OnInit {
     this.organizationService.addOrganization(payload).subscribe((res: any) => {
       console.log(res);
       this.ngxUiLoaderService.stop();
-      this.router.navigate(['/organizations'])
+      this.router.navigate(['/organizations']);
     }, error => {
-      if (error.error.userMessage){
+      if (error.error.userMessage) {
         this.toastrService.warning(error.error.userMessage);
-      }else {
+      } else {
         this.toastrService.warning('Something went to be wrong!');
       }
       this.ngxUiLoaderService.stop();

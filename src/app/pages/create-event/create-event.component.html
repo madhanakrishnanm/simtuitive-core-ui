@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-6 mt-5">
-    <form class="simtuitive-input" [formGroup]="EventFormGroup" (ngSubmit)="save()">
+    <form class="simtuitive-input" [formGroup]="eventForm" (ngSubmit)="save()">
       <div class="form-group row">
         <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Select Organisation</label>
         <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
@@ -44,7 +44,7 @@
         </div>
       </div>
       <div class="form-group row">
-        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Organisation Name</label>
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Event Name</label>
         <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
           <input
             type="text"
