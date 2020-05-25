@@ -1,18 +1,17 @@
-.options
-{
-  height:40px;
-  width:140px;
-  border-radius:50px;
+.options {
+  height: 40px;
+  width: 140px;
+  border-radius: 50px;
   border: 0;
 }
-.invite
-{
-  background-color:#B9595B !important;
+
+.invite {
+  background-color: #B9595B !important;
 }
+
 //disable a delete button
-.disable
-{
-color: gray !important;
+.disable {
+  color: gray !important;
   cursor: not-allowed !important;
   pointer-events: none;
 }

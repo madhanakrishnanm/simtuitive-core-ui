@@ -172,12 +172,13 @@ input[type=number]::-webkit-outer-spin-button {
 
 
 .simtuitive-modal {
+  z-index: 10000;
   .modal-header {
     border: 0 !important;
   }
 
   .modal-content {
-    background-color: var(--bg-color-secondary) !important;
+    background-color: var(--bg-color-primary) !important;
     color: white !important;
     border: 0 !important;
   }
@@ -347,9 +348,6 @@ ngb-datepicker-navigation-select > .custom-select {
     background-color: var(--bg-color-primary) !important;
   }
 
-  .ng-autocomplete .autocomplete-container .input-container input {
-    background-color: transparent !important;
-  }
 }
 
 .ng-select .ng-arrow-wrapper {
