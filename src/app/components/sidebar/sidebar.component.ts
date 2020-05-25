@@ -28,7 +28,7 @@ export class SidebarComponent implements OnInit {
       case 'Client Management':
         return '/clients';
       case 'License Management':
-        return '/license';
+        return '/licenses';
       case 'Product Management':
         return '/products';
       case 'Event Management':

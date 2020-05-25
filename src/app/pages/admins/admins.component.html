@@ -5,7 +5,7 @@
     </div>
     <div class="col">
       <div class="text-right">
-        <button (click)="router.navigate(['add-admin'])"
+        <button (click)="router.navigate(['admins/add-admin'])"
                 class="btn btn-primary">
           Add Admin
         </button>
@@ -51,7 +51,7 @@
             <td>
               <div class="d-flex justify-content-around action-icon">
                 <i title="Edit Admin" class="fa fa-edit" aria-hidden="true"
-                   (click)="router.navigate(['/edit-admin', admin.userId])"></i>
+                   (click)="router.navigate(['admins/edit-admin', admin.userId])"></i>
                 <i title="Delete Admin" class="fa fa-trash" aria-hidden="true" (click)="requestDelete(admin.userId,content)"></i>
               </div>
             </td>

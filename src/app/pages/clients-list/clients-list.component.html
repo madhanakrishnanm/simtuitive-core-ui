@@ -9,7 +9,7 @@
         <button (click)="openModal(invite_1)"
                 class="btn btn-primary options invite">Invite
         </button>
-        <button (click)="router.navigate(['add-client'])"
+        <button (click)="router.navigate(['clients/add-client'])"
                 class="btn btn-primary ml-2 options">Add Client
         </button>
       </div>
@@ -97,7 +97,7 @@
                 <i title="Edit Client" class="fa fa-share" aria-hidden="true"
                    (click)="requestInvitation(client.userId,client.userEmail, invite)"></i>
                 <i title="Edit Client" class="fa fa-edit" aria-hidden="true"
-                   (click)="router.navigate(['/edit-client', client.userId])"></i>
+                   (click)="router.navigate(['clients/edit-client', client.userId])"></i>
                 <i title="Delete Client" class="fa fa-trash disable"  aria-hidden="true"
                    (click)="requestDelete(client.userId, content)"></i>
               </div>

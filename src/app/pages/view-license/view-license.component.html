@@ -12,14 +12,14 @@
         <div class="col-md-6">
           <div class="license-product">
             <img src="assets/img/product/product.png"/>
-            <span class="product-name">Product Management</span>
+            <span class="product-name">{{license.productName}}</span>
           </div>
         </div>
         <div class="col-md-6">
           <div class="row justify-content-end">
             <div class="payment">
               <img src="assets/img/payment.svg"/>
-              <span class="status">( Pending )</span>
+              <span class="status">( {{license.paymentStatus}} )</span>
             </div>
           </div>
         </div>
@@ -27,7 +27,7 @@
       <div class="row justify-content-around">
         <div class="col-md-3">
           <div class="license-count-card text-center">
-            <div class="purchased-count">250</div>
+            <div class="purchased-count">{{license.numberOfLicense}}</div>
             <div class="purchased">Licenses Purchased</div>
           </div>
         </div>
@@ -69,15 +69,15 @@
             <div class="row justify-content-between align-items-center" style="height: 100%">
               <div class="col-md-4">
                 <div class="license-sub-title">Licenses ID</div>
-                <div class="license-content">#121345</div>
+                <div class="license-content">#{{license.licenseId}}</div>
               </div>
               <div class="col-md-4">
                 <div class="license-sub-title">Organization</div>
-                <div class="license-content">Hp</div>
+                <div class="license-content">{{license.organization}}</div>
               </div>
               <div class="col-md-4">
                 <div class="license-sub-title">No of Licenses</div>
-                <div class="license-content">400</div>
+                <div class="license-content">{{license.numberOfLicense}}</div>
               </div>
             </div>
           </div>
@@ -92,19 +92,19 @@
             <div class="row justify-content-between align-items-center" style="height: 100%">
               <div class="col-md-3">
                 <div class="license-sub-title">Credit Limit</div>
-                <div class="license-content">360 days</div>
+                <div class="license-content">{{license.creditLimit}} days</div>
               </div>
               <div class="col-md-3">
                 <div class="license-sub-title">Selling price</div>
-                <div class="license-content">$10000</div>
+                <div class="license-content">{{license.sellingPrice}} INR</div>
               </div>
               <div class="col-md-3">
                 <div class="license-sub-title">Deal Size</div>
-                <div class="license-content">$10765</div>
+                <div class="license-content">{{license.dealSize}} INR</div>
               </div>
               <div class="col-md-3">
                 <div class="license-sub-title">Narration</div>
-                <div class="license-content">PO Done</div>
+                <div class="license-content">{{license.narration}}</div>
               </div>
             </div>
           </div>
@@ -119,7 +119,7 @@
             <div class="row justify-content-between align-items-center" style="height: 100%">
               <div class="col-md-4">
                 <div class="license-sub-title">Creation Date</div>
-                <div class="license-content">15/08/2020</div>
+                <div class="license-content">{{formatDate(license.createdAt)}}</div>
               </div>
               <div class="col-md-4">
                 <div class="license-sub-title">Expiration Date</div>
@@ -127,7 +127,7 @@
               </div>
               <div class="col-md-4">
                 <div class="license-sub-title">Expired In</div>
-                <div class="license-content">71 Days</div>
+                <div class="license-content">{{license.creditLimit}} Days</div>
               </div>
             </div>
           </div>

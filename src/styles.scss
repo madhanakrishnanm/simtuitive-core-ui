@@ -245,6 +245,11 @@ input {
       }
     }
   }
+  .autocomplete-container .input-container input::placeholder{
+    font-family: Nunito, serif;
+    font-size: 16px;
+    color: #6b6f70 !important;
+  }
 
   .autocomplete-container {
     box-shadow: none !important;

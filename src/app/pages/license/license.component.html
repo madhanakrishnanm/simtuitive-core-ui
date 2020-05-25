@@ -6,7 +6,7 @@
     </div>
     <div class="col">
       <div class="text-right">
-        <button (click)="router.navigate(['add-license'])"
+        <button (click)="router.navigate(['licenses/add-license'])"
                 class="btn btn-primary">
           Add
         </button>
@@ -99,6 +99,8 @@
             [items]="paymentStatuses"
             [closeOnSelect]="true"
             [searchable]="false"
+            (change)="onPaymentStatusChange($event)"
+            (clear)="onPaymentStatusChange(null)"
             placeholder="Filter by Payment Status"
           >
           </ng-select>
@@ -128,9 +130,9 @@
             <td>
               <div class="d-flex justify-content-around action-icon">
                 <i title="View License" class="fa fa-eye" aria-hidden="true"
-                   (click)="router.navigate(['/view-license',license.licenseId])"></i>
+                   (click)="redirectNewTab('licenses/view-license/'+license.licenseId, router)"></i>
                 <i title="Edit License" class="fa fa-edit" aria-hidden="true"
-                   (click)="router.navigate(['/edit-license',license.licenseId])"></i>
+                   (click)="router.navigate(['licenses/edit-license',license.licenseId])"></i>
                 <i title="Delete License" class="fa fa-trash" aria-hidden="true"
                    (click)="requestDelete(license.licenseId,content)"></i>
               </div>

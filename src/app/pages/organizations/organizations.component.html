@@ -6,7 +6,7 @@
     </div>
     <div class="col">
       <div class="text-right">
-        <button (click)="router.navigate(['add-organization'])"
+        <button (click)="router.navigate(['organizations/add-organization'])"
                 class="btn btn-primary">Add Organization
         </button>
       </div>
@@ -127,7 +127,7 @@
             <td>
               <div class="d-flex justify-content-between action-icon">
                 <i title="Edit Organization" class="fa fa-edit" aria-hidden="true"
-                   (click)="router.navigate(['/edit-organization', organization.organizationId])"></i>
+                   (click)="router.navigate(['organizations/edit-organization', organization.organizationId])"></i>
                 <i title="Delete Organization" class="fa fa-trash" aria-hidden="true" (click)="requestDelete(organization.organizationId, content)"></i>
               </div>
             </td>

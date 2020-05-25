@@ -6,7 +6,7 @@
     </div>
     <div class="col">
       <div class="text-right">
-        <button (click)="router.navigate(['add-permission'])"
+        <button (click)="router.navigate(['permissions/add-permission'])"
                 class="btn btn-primary">
           Add Permission
         </button>
@@ -121,7 +121,7 @@
             <td>
               <div class="d-flex justify-content-around action-icon">
                 <i title="Edit Permission" class="fa fa-edit" aria-hidden="true"
-                   (click)="router.navigate(['/edit-permission', permission.permissionId])"></i>
+                   (click)="router.navigate(['permissions/edit-permission', permission.permissionId])"></i>
                 <i title="Delete Permission" class="fa fa-trash" aria-hidden="true"
                    (click)="requestDelete(permission.permissionId,content)"></i>
               </div>
