@@ -73,7 +73,11 @@ export class LicenseComponent implements OnInit {
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
   }
-
+  redirectNewTab(url, router){
+    router.navigate([]).then(()=>{
+      window.open(url, '_blank')
+    })
+  }
   findOrganizationName(payload){
     this.organizationService.findOrganizationName(payload).subscribe((res: any) => {
       console.log(res);

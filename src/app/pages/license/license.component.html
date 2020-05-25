@@ -99,6 +99,8 @@
             [items]="paymentStatuses"
             [closeOnSelect]="true"
             [searchable]="false"
+            (change)="onPaymentStatusChange($event)"
+            (clear)="onPaymentStatusChange(null)"
             placeholder="Filter by Payment Status"
           >
           </ng-select>
@@ -128,7 +130,7 @@
             <td>
               <div class="d-flex justify-content-around action-icon">
                 <i title="View License" class="fa fa-eye" aria-hidden="true"
-                   (click)="router.navigate(['/view-license',license.licenseId])"></i>
+                   (click)="redirectNewTab('/view-license/'+license.licenseId, router)"></i>
                 <i title="Edit License" class="fa fa-edit" aria-hidden="true"
                    (click)="router.navigate(['/edit-license',license.licenseId])"></i>
                 <i title="Delete License" class="fa fa-trash" aria-hidden="true"

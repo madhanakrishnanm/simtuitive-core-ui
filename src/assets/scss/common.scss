@@ -3,7 +3,7 @@
 
 
 .site-content {
-  margin-top: 80px;
+  margin-top: 120px;
   padding: 20px;
 }
 
@@ -200,20 +200,14 @@
   padding-bottom: 0 !important;
   background: var(--bg-color-primary) !important;
 }
-
+.ng-select .ng-select-container .ng-value-container .ng-placeholder{
+  color: #6b6f70 !important;
+  font-size: 16px !important;
+}
 .ng-select.customize ::ng-deep .ng-select-container {
-  border-radius: 0;
-  border: 0;
-  box-shadow: none;
-  font-size: 15px;
-  color: #4D525A;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  border-bottom: 2px solid var(---primary) !important;
-  min-width: 100% !important;
-
-  input {
-    line-height: 30px;
+  .ng-placeholder{
+    color: #212529 !important;
+    font-size: 12px !important;
   }
 }
 

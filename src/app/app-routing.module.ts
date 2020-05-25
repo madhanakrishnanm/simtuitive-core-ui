@@ -45,14 +45,15 @@ const routes: Routes = [
       {path: '', component: DashboardComponent, pathMatch: 'full'},
       {path: 'dashboard', component: DashboardComponent},
       {path: 'clients', component: ClientsListComponent},
+      {path: 'add-client', component: AddClientComponent},
+      {path: 'edit-client/:id', component: EditClientComponent},
+      {path: 'invite-client', component: InviteClientComponent},
+      {path: 'view-client', component: ViewClientComponent},
       {path: 'products', component: ProductsComponent},
+      {path: 'add-product', component: AddProductComponent},
       {path: 'license', component: LicenseComponent},
       {path: 'edit-license/:id', component: EditLicenseComponent},
       {path: 'reports', component: ReportsComponent},
-      {path: 'add-client', component: AddClientComponent},
-      {path: 'invite-client', component: InviteClientComponent},
-      {path: 'edit-client/:id', component: EditClientComponent},
-      {path: 'view-client', component: ViewClientComponent},
       {path: 'organizations', component: OrganizationsComponent},
       {path: 'add-organization', component: AddOrganizationComponent},
       {path: 'edit-organization/:id', component: EditOrganizationComponent},
@@ -74,7 +75,7 @@ const routes: Routes = [
       {path: 'edit-event/:id', component: EditEventComponent},
       {path: 'event-summary', component: EventSummaryComponent},
       {path: 'view-event', component: ViewEventsComponent},
-      {path: 'add-product', component: AddProductComponent}
+
     ]
   },
   {
