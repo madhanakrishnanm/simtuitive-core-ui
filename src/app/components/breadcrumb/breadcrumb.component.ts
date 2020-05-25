@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BreadcrumbComponent implements OnInit {
 
+  navigations = [];
   constructor() { }
 
   ngOnInit(): void {
+    let paths = window.location.href.split('/');
+    console.log(paths);
   }
 
 }

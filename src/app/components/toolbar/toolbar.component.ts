@@ -26,16 +26,19 @@ export class ToolbarComponent implements OnInit {
     const sidebarElement = document.getElementById('sidebar');
     const pageContent = document.getElementById('page-content');
     const toggleSidebarBtn = document.getElementById('toggle-sidebar');
+    const breadcrumb = document.getElementById('breadcrumb');
     if (sidebarElement.classList.contains('active')) {
       this.title = 'Close Navigation';
       sidebarElement.classList.remove('active');
       pageContent.classList.remove('active');
       toggleSidebarBtn.classList.remove('active');
+      breadcrumb.classList.remove('active');
     } else {
       this.title = 'Open Navigation';
       sidebarElement.classList.add('active');
       pageContent.classList.add('active');
       toggleSidebarBtn.classList.add('active');
+      breadcrumb.classList.add('active');
     }
   }
 

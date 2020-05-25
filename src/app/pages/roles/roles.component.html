@@ -6,7 +6,7 @@
     </div>
     <div class="col">
       <div class="text-right">
-        <button (click)="router.navigate(['add-role'])"
+        <button (click)="router.navigate(['roles/add-role'])"
                 class="btn btn-primary">
           Add Role
         </button>
@@ -50,7 +50,7 @@
             <td>
               <div class="d-flex justify-content-around action-icon">
                 <i title="Edit Role"  class="fa fa-edit" aria-hidden="true"
-                   (click)="router.navigate(['/edit-role', role.roleId])"></i>
+                   (click)="router.navigate(['/roles/edit-role', role.roleId])"></i>
                 <i title="Delete Role"  class="fa fa-trash" aria-hidden="true" (click)="requestDelete(role.roleId,content)"></i>
               </div>
             </td>
