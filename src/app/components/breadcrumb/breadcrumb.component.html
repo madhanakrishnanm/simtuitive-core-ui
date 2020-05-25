@@ -1,6 +1,13 @@
 <nav aria-label="breadcrumb" class="breadcrumb-nav fixed-top custom-breadcrumb" id="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item active" aria-current="page">Licenses</li>
-    <li class="breadcrumb-item"><a>Add License</a></li>
+    <li *ngFor="let navigation of navigations; index as i"
+        class="breadcrumb-item"
+        [class.active]="[navigation['path'] === router.url]"
+        aria-current="page"
+        (click)="router.navigate([navigation['path']])"
+        style="cursor: pointer"
+    >
+      {{navigation['name']}}
+    </li>
   </ol>
 </nav>

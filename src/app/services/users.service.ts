@@ -15,6 +15,9 @@ export class UsersService {
   getDashboard(){
     return this.apiService.get('users/dashboard')
   }
+  getSuperDashboard(){
+    return this.apiService.get('users/get-super-dashboard')
+  }
   getProductUsers(){
     return this.apiService.get('users/product-users')
   }

@@ -81,8 +81,13 @@ export class DashboardComponent implements OnInit {
     this.ngxUiLoaderService.start();
     this.getDashboard();
     this.getProductUsers();
+    this.getSuperDashboard();
   }
-
+  getSuperDashboard(){
+    this.userService.getSuperDashboard().subscribe((res: any)=>{
+      console.log(res);
+    });
+  }
   getProductUsers() {
     this.userService.getProductUsers().subscribe((res: any) => {
       this.productUsers = res.data;
