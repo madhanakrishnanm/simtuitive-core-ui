@@ -66,6 +66,7 @@ export class ApiInterceptor implements HttpInterceptor {
 
     // Invalid token error
     else if (error.status === 401) {
+      console.log('Session expired or token expired');
       return this.refreshToken().pipe(
         switchMap(() => {
           request = this.addAuthHeader(request);
