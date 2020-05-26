@@ -16,7 +16,7 @@ export class ApiService {
 
   constructor(public http: HttpClient) {
     this.reqHeader = {
-      'Authorization': localStorage.getItem('token'),
+      // 'Authorization': localStorage.getItem('token'),
       'Content-Type': 'application/json'
     };
   }

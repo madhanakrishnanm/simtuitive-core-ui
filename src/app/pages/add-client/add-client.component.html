@@ -6,21 +6,28 @@
   </div>
 
   <div class="row">
-    <div class="col-xl-7 col-lg-7 col-md-9 col-sm-12 p-lg-5 p-md-3 p-sm-2">
+    <div class="col-xl-7 col-lg-7 col-md-9 col-sm-12 pt-4">
       <form class="simtuitive-input" [formGroup]="clientForm" (ngSubmit)="onSubmit()">
 
         <div class="form-group row">
           <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Organization</label>
           <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-            <ng-select
-              [items]="organizations"
-              [closeOnSelect]="true"
-              [searchable]="false"
-              bindLabel="organizationName"
-              placeholder="Select Organization"
-              formControlName="organization"
-            >
-            </ng-select>
+            <div class="ng-autocomplete form-control search">
+              <ng-autocomplete
+                [data]="organizations"
+                (inputChanged)="findOrganization({query: $event})"
+                placeHolder="Select a Organization"
+                formControlName="organization"
+                searchKeyword="organizationName"
+                [itemTemplate]="itemTemplate"
+                notFoundText=""
+              >
+              </ng-autocomplete>
+              <ng-template #itemTemplate let-item>
+                <a [innerHTML]="item.organizationName" style="color:black;"></a>
+              </ng-template>
+            </div>
+
             <div *ngIf="f.organization.invalid && (f.organization.touched || f.organization.value)"
                  class="input-error-report">
               <div *ngIf="f.organization.errors.required">
@@ -31,17 +38,35 @@
         </div>
 
         <div class="form-group row">
-          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Client Name</label>
+          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">First Name</label>
           <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
             <input
               type="text"
               class="form-control"
-              formControlName="name"
+              placeholder="Enter Client First Name"
+              formControlName="firstName"
             />
-            <div *ngIf="f.name.invalid && (f.name.touched || f.name.value)"
+            <div *ngIf="f.firstName.invalid && (f.firstName.touched || f.firstName.value)"
                  class="input-error-report">
-              <div *ngIf="f.name.errors.required">
-                Client Name is required.
+              <div *ngIf="f.firstName.errors.required">
+                Client First Name is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Last Name</label>
+          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter Client Last Name"
+              formControlName="lastName"
+            />
+            <div *ngIf="f.lastName.invalid && (f.lastName.touched || f.lastName.value)"
+                 class="input-error-report">
+              <div *ngIf="f.lastName.errors.required">
+                Client Last Name is required.
               </div>
             </div>
           </div>
@@ -54,6 +79,7 @@
               type="text"
               class="form-control"
               formControlName="email"
+              placeholder="Enter Client Emaill"
             />
             <div *ngIf="f.email.invalid && (f.email.touched || f.email.value)"
                  class="input-error-report">
@@ -65,56 +91,23 @@
         </div>
 
         <div class="form-group row">
-          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Client Password</label>
+          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Billing Address</label>
           <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-            <input
-              type="text"
+            <textarea
+              rows="4"
               class="form-control"
-              formControlName="password"
-            />
-            <div *ngIf="f.password.invalid && (f.password.touched || f.password.value)"
+              formControlName="billingAddress"
+              placeholder="Enter Client Billing Address"
+            >
+            </textarea>
+            <div *ngIf="f.billingAddress.invalid && (f.billingAddress.touched || f.billingAddress.value)"
                  class="input-error-report">
-              <div *ngIf="f.password.errors.required">
-                Password is required.
+              <div *ngIf="f.billingAddress.errors.required">
+                Billing Address is required.
               </div>
             </div>
           </div>
         </div>
-
-       <!-- <div class="form-group row">
-          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Client GST</label>
-          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-            <input
-              type="text"
-              class="form-control"
-              formControlName="gst"
-            />
-            <div *ngIf="f.gst.invalid && (f.gst.touched || f.gst.value)"
-                 class="input-error-report">
-              <div *ngIf="f.gst.errors.required">
-                GST is required.
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="form-group row">
-          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Client PAN</label>
-          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-            <input
-              type="number"
-              class="form-control"
-              formControlName="pan"
-            />
-            <div *ngIf="f.pan.invalid && (f.pan.touched || f.pan.value)"
-                 class="input-error-report">
-              <div *ngIf="f.pan.errors.required">
-                PAN is required.
-              </div>
-            </div>
-          </div>
-        </div>-->
 
         <div class="form-group row">
           <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Role</label>

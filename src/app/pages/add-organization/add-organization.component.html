@@ -6,7 +6,7 @@
   </div>
 
   <div class="row">
-    <div class="col-xl-7 col-lg-7 col-md-9 col-sm-12 p-lg-5 p-md-3 p-sm-2">
+    <div class="col-xl-7 col-lg-7 col-md-9 col-sm-12 pt-4">
       <form class="simtuitive-input" [formGroup]="organizationForm" (ngSubmit)="onSubmit()">
 
         <div class="form-group row">
@@ -16,6 +16,7 @@
               type="text"
               class="form-control"
               formControlName="name"
+              placeholder="Enter Organisation Name"
             />
             <div *ngIf="f.name.invalid && (f.name.touched || f.name.value)"
                  class="input-error-report">
@@ -27,12 +28,13 @@
         </div>
 
         <div class="form-group row">
-          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Location</label>
+          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Organisation Location</label>
           <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
             <input
               type="text"
               class="form-control"
               formControlName="location"
+              placeholder="Enter Organisation Location"
             />
             <div *ngIf="f.location.invalid && (f.location.touched || f.location.value)"
                  class="input-error-report">
@@ -44,12 +46,13 @@
         </div>
 
         <div class="form-group row">
-          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Industry</label>
+          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Organisation Industry</label>
           <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
             <input
               type="text"
               class="form-control"
               formControlName="industry"
+              placeholder="Enter Organisation Industry"
             />
             <div *ngIf="f.industry.invalid && (f.industry.touched || f.industry.value)"
                  class="input-error-report">
@@ -67,6 +70,7 @@
               type="text"
               class="form-control"
               formControlName="dealOwner"
+              placeholder="Enter Deal Owner Name"
             />
             <div *ngIf="f.dealOwner.invalid && (f.dealOwner.touched || f.dealOwner.value)"
                  class="input-error-report">
@@ -84,6 +88,7 @@
               type="email"
               class="form-control"
               formControlName="dealOwnerEmail"
+              placeholder="Enter Deal Owner Email"
             />
             <div *ngIf="f.dealOwnerEmail.invalid && (f.dealOwnerEmail.touched || f.dealOwnerEmail.value)"
                  class="input-error-report">
@@ -103,6 +108,7 @@
               type="number"
               class="form-control"
               formControlName="dealOwnerMobile"
+              placeholder="Enter Deal Owner Mobile"
             />
             <div *ngIf="f.dealOwnerMobile.invalid && (f.dealOwnerMobile.touched || f.dealOwnerMobile.value)"
                  class="input-error-report">
@@ -120,6 +126,7 @@
               type="text"
               class="form-control"
               formControlName="gst"
+              placeholder="Enter GST ID"
             />
             <div *ngIf="f.gst.invalid && (f.gst.touched || f.gst.value)"
                  class="input-error-report">
@@ -138,6 +145,7 @@
               type="number"
               class="form-control"
               formControlName="pan"
+              placeholder="Enter PAN ID"
             />
             <div *ngIf="f.pan.invalid && (f.pan.touched || f.pan.value)"
                  class="input-error-report">
@@ -154,6 +162,7 @@
               type="number"
               class="form-control"
               formControlName="creditLimit"
+              placeholder="Enter Credit Limit"
             />
             <div *ngIf="f.creditLimit.invalid && (f.creditLimit.touched || f.creditLimit.value)"
                  class="input-error-report">

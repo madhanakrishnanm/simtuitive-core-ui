@@ -31,7 +31,7 @@ export class AddOrganizationComponent implements OnInit {
       pan: ['', [Validators.required]],
       dealOwnerEmail: ['', [Validators.required, this.emailValidator]],
       dealOwnerMobile: ['', [Validators.required, this.mobileValidator]],
-      creditLimit: [0, [Validators.required]],
+      creditLimit: [null, [Validators.required]],
       status: ['inactive', [Validators.required]],
     });
   }

@@ -48,11 +48,11 @@ export class BreadcrumbComponent implements OnInit {
     let route = {};
     switch (url) {
       case '':
-        route['name'] = 'Home';
+        route['name'] = 'Dashboard';
         route['path'] = '/';
         break;
       case '/':
-        route['name'] = 'Home';
+        route['name'] = 'Dashboard';
         route['path'] = '/';
         break;
       case 'organizations':

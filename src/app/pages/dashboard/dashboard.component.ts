@@ -144,7 +144,11 @@ export class DashboardComponent implements OnInit {
     this.noOfAdmins = res.data.Admin;
     this.noOfRoles = res.data.Role;
     this.noOfPermissions = res.data.Permission;
-    // this.admins = res.data.admins;
+    this.userService.getAdminUsers().subscribe((res: any) => {
+      console.log(res);
+      this.admins = res.data;
+    });
+    //
     // console.log('Admins'+this.admins[0].name);
   }
   calculatePercentageFor(current,past){

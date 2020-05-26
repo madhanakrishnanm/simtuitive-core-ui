@@ -29,25 +29,27 @@ export class AddClientComponent implements OnInit {
   ngOnInit(): void {
     this.clientForm = this.formBuilder.group({
       organization: ['', [Validators.required]],
-      name: ['', [Validators.required]],
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
       email: ['', [Validators.required, this.emailValidator]],
-      password: ['', [Validators.required]],
-    /*  gst: ['', [Validators.required]],
-      pan: ['', [Validators.required]],*/
-      role: ['Client', [Validators.required]],
+      billingAddress: ['', [Validators.required]],
+      role: [null, [Validators.required]],
+    });
+    this.roleService.getAllRole({}).subscribe((res: any) => {
+      console.log(res);
+      this.roles = res.data;
+      this.clientForm.patchValue({
+        role : this.roles.find(o => o.roleName === 'Client')
+      });
+      console.log(this.clientForm.value);
     });
 
-    this.organizationService.getAllOrganization({}).subscribe((res: any) => {
+  }
+  findOrganization(payload){
+    console.log(payload);
+    this.organizationService.getAllOrganization(payload).subscribe((res: any) => {
       console.log(res);
       this.organizations = res.data;
-      // tslint:disable-next-line:no-shadowed-variable
-      this.roleService.getAllRole({}).subscribe((res: any) => {
-        console.log(res);
-        this.roles = res.data;
-        this.clientForm.patchValue({
-          role : this.roles.find(o => o.roleName === 'Client')
-        });
-      });
     });
   }
   emailValidator(formControl: AbstractControl) {

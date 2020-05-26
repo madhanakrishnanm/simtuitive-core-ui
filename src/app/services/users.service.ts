@@ -21,7 +21,13 @@ export class UsersService {
   getProductUsers(){
     return this.apiService.get('users/product-users')
   }
+  getAdminUsers(){
+    return this.apiService.get('users/get-admin-users')
+  }
   logout(){
     return this.apiService.post('users/logout')
+  }
+  refreshToken(){
+    return this.apiService.post('oauth/refresh-token')
   }
 }

@@ -3,8 +3,7 @@
 
 
 .site-content {
-  margin-top: 120px;
-  padding: 20px;
+  padding: 50px;
 }
 
 @media (max-width: 768px) {
@@ -24,11 +23,12 @@
 .product-users-table {
 
   background-color: var(--bg-color-secondary) !important;
-  margin: 20px 15px;
-  padding-top: 20px;
+
   padding-left: 20px;
   padding-right: 20px;
-  padding-bottom: 10px;
+
+  margin-bottom: 30px;
+  margin-top: 10px;
 
   tbody th, td {
     color: white;
@@ -54,14 +54,22 @@
 
 }
 
-.table-cont {
-  margin-top: 70px;
+.custom-scrollbar::-webkit-scrollbar {
+  background: none;
+  width: 6px;
+  height: 10px;
 }
 
-.title-cont {
-  padding-left: 20px !important;
-  padding-right: 15px !important;
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: var(--primary) !important;
 }
+
+.table-cont {
+  margin-top: 30px;
+}
+
+
 
 /*Product Title*/
 

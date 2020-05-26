@@ -1,6 +1,8 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ApiInterceptor } from './guards/api.interceptor';
 import {RouterModule} from '@angular/router';
 import { TimeagoModule } from 'ngx-timeago';
 import {AppRoutingModule} from './app-routing.module';
@@ -114,7 +116,13 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     BrowserAnimationsModule,
     ToastrModule.forRoot() // ToastrModule added
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiInterceptor,
+      multi: true
+    }
+  ],
   exports: [
   ],
   bootstrap: [AppComponent]

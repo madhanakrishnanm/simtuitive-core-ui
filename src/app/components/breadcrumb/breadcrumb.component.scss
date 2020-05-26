@@ -1,7 +1,9 @@
 .custom-breadcrumb{
-  margin-left: 300px;
   margin-top: 65px;
   transition: all 0.3s ease;
+  ol{
+    margin-bottom: 0 !important;
+  }
 }
 
 .custom-breadcrumb.active{
