@@ -58,7 +58,7 @@
   text-decoration: none;
 }
 
-#sidebar ul li.active > a,
+#sidebar ul li > a.active,
 a[aria-expanded="true"] {
   color: #fff;
   background: var(--bg-color-primary);
@@ -86,7 +86,7 @@ a[data-toggle="collapse"] {
 #sidebar ul ul li{
   margin-left: 50px;
 }
-#sidebar ul ul li.active > a {
+#sidebar ul ul li > a.active {
   color: var(--primary) ;
 
 }

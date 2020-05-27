@@ -5,12 +5,9 @@
   </div>
 
   <ul class="list-unstyled components">
-    <li
-      *ngFor="let sidebar of sidebars;"
-      [ngClass]="{'active':sidebar === getNameByRoute(sidebar)}"
-    >
+    <li *ngFor="let sidebar of sidebars;" (click)="hideCollapse(sidebar)">
       <ng-template [ngIf]="sidebar !== 'Event Management'">
-        <a [routerLink]="getRouteByName(sidebar)">
+        <a [routerLink]="getRouteByName(sidebar)" [ngClass]="{'active':sidebar === getNameByRoute(sidebar)}">
           <i class="fa fa-pie-chart" aria-hidden="true" *ngIf="sidebar==='Dashboard'"></i>
           <i class="fa fa-university" aria-hidden="true" *ngIf="sidebar==='Organization Management'"></i>
           <i class="fa fa-users" aria-hidden="true" *ngIf="sidebar==='Client Management'"></i>
@@ -26,7 +23,11 @@
       </ng-template>
       <ng-template [ngIf]="sidebar === 'Event Management'">
         <a (click)="toggleCollapse('eventSubmenu', 'Event Management')"
-           data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+           data-toggle="collapse"
+           aria-expanded="false"
+           class="dropdown-toggle"
+           [ngClass]="{'active':'Events' === getNameByRoute(sidebar)}"
+        >
           <i class="fa fa-calendar" aria-hidden="true"></i>
           {{sidebar}}
         </a>
@@ -34,7 +35,10 @@
           <li
             *ngFor="let eventSubBar of eventSubBars;"
             [ngClass]="{'active':eventSubBar === getNameByRoute(eventSubBar)}">
-            <a [routerLink]="getRouteByName(eventSubBar)">{{eventSubBar}}</a>
+            <a
+              [ngClass]="{'active':eventSubBar === getNameByRoute(eventSubBar)}"
+              [routerLink]="getRouteByName(eventSubBar)"
+            >{{eventSubBar}}</a>
           </li>
         </ul>
       </ng-template>

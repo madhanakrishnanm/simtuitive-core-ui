@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {UsersService} from '../../services/users.service';
-import {Router} from '@angular/router';
+import {NavigationStart, Router} from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent implements OnInit, AfterViewInit {
   sidebars = [];
   permissions = [];
   eventSubBars = [];
@@ -19,6 +19,14 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
+  }
+  ngAfterViewInit() {
+    let path = window.location.pathname;
+    if (path === '/events' || path === '/events/bookings'){
+      setTimeout(()=>{
+        this.showCollapse('Event Management')
+      },1000)
+    }
   }
   getRouteByName(name) {
     switch (name) {
@@ -47,11 +55,12 @@ export class SidebarComponent implements OnInit {
       case 'Events':
         return '/events';
       case 'Bookings':
-        return '/bookings';
+        return '/events/bookings';
     }
   }
   getNameByRoute(name) {
     const url = window.location.pathname;
+    // console.log(url);
     if (url === '/' || url.includes('dashboard')) {
       return 'Dashboard';
     } else if (url.includes('organization')) {
@@ -62,11 +71,13 @@ export class SidebarComponent implements OnInit {
       return 'License Management';
     } else if (url.includes('products')) {
       return 'Product Management';
-    } else if (url.includes('events')) {
+    } else if (url === '/events') {
       return 'Events';
-    } else if (url.includes('event')) {
+    } else if (url === '/events') {
       return 'Event Management';
-    } else if (url.includes('reports')) {
+    } else if (url === '/events/bookings') {
+      return 'Bookings';
+    }else if (url.includes('reports')) {
       return 'Reports';
     } else if (url.includes('admin')) {
       return 'Admin Management';
@@ -109,5 +120,20 @@ export class SidebarComponent implements OnInit {
       element.classList.add('show');
     }
     this.router.navigate([this.getRouteByName(redirect)])
+  }
+  hideCollapse(name){
+    let path = this.router.url;
+    let eventElement = document.getElementById('eventSubmenu');
+    if (name !== 'Event Management'){
+      eventElement.classList.remove('show');
+    }else {
+      eventElement.classList.add('show');
+    }
+  }
+  showCollapse(name){
+    let eventElement = document.getElementById('eventSubmenu');
+    if (name === 'Event Management'){
+      eventElement.classList.add('show');
+    }
   }
 }
