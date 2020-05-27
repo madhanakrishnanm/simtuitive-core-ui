@@ -37,9 +37,77 @@
   }
 }
 
-.btn-primary {
-  border-radius: 50px;
-  background-color: var(--apply-btn) !important;
-  border: 0;
+.session-cont {
+  border: 1px solid #2D353F;
+  font-size: 16px;
+  line-height: 40px;
+  color: var(--light);
+  padding: 20px;
 }
 
+.add-icon {
+  color: var(--primary);
+  font-size: 16px;
+  line-height: 40px;
+  cursor: pointer;
+}
+
+.edit-icon {
+  color: var(--primary);
+  font-size: 16px;
+  line-height: 40px;
+  cursor: pointer;
+
+  img {
+    height: 14px;
+    margin-right: 10px;
+  }
+}
+
+.session-info-card {
+  background: var(--bg-color-secondary);
+  font-size: 16px;
+  line-height: 40px;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.session-title {
+  font-size: 16px;
+  color: var(--primary);
+  line-height: 40px;
+}
+
+.session-date {
+  font-size: 14px;
+}
+
+::ng-deep {
+  .nsm-content {
+    //background-color: var(--bg-color-secondary) !important;
+    width: 100vw;
+    background: red;
+    height: 100%;
+    border: 1px solid red !important;
+    position: absolute;
+    left: 0 !important;
+    top: 0;
+    box-sizing: border-box;
+    margin: 0;
+  }
+  .nsm-dialog{
+    width: 100vw !important;
+    border: 1px solid yellow;
+    height: 100vh;
+    left: 0 !important;
+    top: 0;
+    position: absolute;
+    max-width:100%;
+  }
+  .overlay{
+    overflow-y: hidden;
+  }
+  .nsm-dialog-btn-close {
+    color: white;
+  }
+}

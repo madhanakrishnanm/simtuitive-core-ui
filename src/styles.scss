@@ -174,6 +174,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .simtuitive-modal {
   z-index: 10000;
+
   .modal-header {
     border: 0 !important;
   }
@@ -247,7 +248,8 @@ input {
       }
     }
   }
-  .autocomplete-container .input-container input::placeholder{
+
+  .autocomplete-container .input-container input::placeholder {
     font-family: Nunito, serif;
     font-size: 16px;
     color: #6b6f70 !important;
@@ -365,3 +367,15 @@ ngb-datepicker-navigation-select > .custom-select {
   }
 }
 
+
+.full-screen-modal {
+  height: 100vh;
+  width: 100vh;
+  overflow-y: hidden;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  border: 1px solid red;
+  position: absolute;
+}

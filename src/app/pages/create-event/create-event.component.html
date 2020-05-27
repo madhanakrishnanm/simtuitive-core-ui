@@ -1,5 +1,5 @@
-<div class="row">
-  <div class="col-6 mt-5">
+<div class="row mt-5">
+  <div class="col-6">
     <form class="simtuitive-input" [formGroup]="eventForm" (ngSubmit)="save()">
       <div class="form-group row">
         <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Select Organisation</label>
@@ -83,21 +83,21 @@
       <div class="form-group row">
         <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Event Start Date</label>
         <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-           <div class="d-flex  custom-input">
-             <input
-               type="text"
-               class="form-control"
-               formControlName="eventStartDate"
-               ngbDatepicker
-               #d="ngbDatepicker"
-               placement="bottom-right"
-             />
-             <div class="input-group-append my-auto" (click)="d.toggle()">
+          <div class="d-flex  custom-input">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="eventStartDate"
+              ngbDatepicker
+              #d="ngbDatepicker"
+              placement="bottom-right"
+            />
+            <div class="input-group-append my-auto" (click)="d.toggle()">
               <span class="input-group-text">
                 <img src="assets/img/interface.svg">
               </span>
             </div>
-           </div>
+          </div>
         </div>
       </div>
       <div class="form-group row">
@@ -127,59 +127,122 @@
         </div>
       </div>
       <div class="row justify-content-end">
-        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 text-center">
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 text-center">
+          <button
+            type="submit"
+            class="btn btn-warning"
+            nbStepperNext
+            [disabled]="next"
+          >
+            Cancel
+          </button>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 text-center">
           <button
             type="submit"
             class="btn btn-primary"
             nbStepperNext
             [disabled]="next"
           >
-            Proceed To Generate Event
+            Create Event
           </button>
         </div>
       </div>
     </form>
   </div>
-  <div class="col-6">
-    <div class="product-users-table table-responsive mt-2" *ngIf="tollGate==='yes'">
-      <table class="table">
-        <thead>
-        <tr>
-          <th scope="col">Module Name</th>
-          <th scope="col">Before Module</th>
-          <th scope="col">After Module</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let module of tempModules;let i=index">
-          <td>{{module.moduleId}}</td>
-          <td>
-            <ng-select
-              [items]="options"
-              [searchable]="false"
-              [clearable]="false"
-              class="ng-select mx-auto"
-              bindLabel="moduleBefore"
-              [(ngModel)]="tempModules[i]['beforeModule']"
-              (change)="changeModuleTollPass(module.moduleId, $event, 'before')"
-            >
-            </ng-select>
-          </td>
-          <td>
-            <ng-select
-              [items]="options"
-              [searchable]="false"
-              [clearable]="false"
-              bindLabel="moduleAfter"
-              class="ng-select mx-auto"
-              [(ngModel)]="tempModules[i]['afterModule']"
-              (change)="changeModuleTollPass(module.moduleId,$event,'after')"
-            >
-            </ng-select>
-          </td>
-        </tr>
-        </tbody>
-      </table>
+  <div class="col-lg-6">
+    <div class="session-cont">
+      <div class="row">
+        <div class="col-10">Sessions</div>
+        <div class="col-2">
+          <div class="add-icon" (click)="ngxSmartModalService.open('addEvent')">+ ADD</div>
+        </div>
+      </div>
+      <div class="session-info-card">
+        <div class="row">
+          <div class="col-4">
+            <div class="session-title">Session 1</div>
+          </div>
+          <div class="col-5">
+            <div class="session-date">DATE: 10/05/2020</div>
+          </div>
+          <div class="col-3">
+            <div class="edit-icon">
+              <img src="assets/img/event/edit.svg"/>EDIT
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="session-info-card">
+        <div class="row">
+          <div class="col-4">
+            <div class="session-title">Session 1</div>
+          </div>
+          <div class="col-5">
+            <div class="session-date">DATE: 10/05/2020</div>
+          </div>
+          <div class="col-3">
+            <div class="edit-icon">
+              <img src="assets/img/event/edit.svg"/>EDIT
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="session-info-card">
+        <div class="row">
+          <div class="col-4">
+            <div class="session-title">Session 1</div>
+          </div>
+          <div class="col-5">
+            <div class="session-date">DATE: 10/05/2020</div>
+          </div>
+          <div class="col-3">
+            <div class="edit-icon">
+              <img src="assets/img/event/edit.svg"/>EDIT
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<ngx-smart-modal
+  [closable]="false"
+  #addEvent
+  identifier="addEvent"
+  [dismissable]="false"
+>
+  <div>
+    <div class="row simtuitive-input">
+      <div class="col-12 py-3">
+        <div class="session-title">Session 1</div>
+      </div>
+      <div class="col-12 py-3">
+        <div class="form-group row">
+          <label class="col-xl-4 text-white col-lg-4 col-md-12 col-sm-12 col-form-label">
+            SELECT DATE</label>
+          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+            <div class="d-flex">
+              <input
+                type="text"
+                class="form-control"
+                ngbDatepicker
+                #session="ngbDatepicker"
+                placement="bottom-right"
+              />
+              <div class="input-group-append my-auto" (click)="session.toggle()">
+              <span class="input-group-text">
+                <img src="assets/img/interface.svg">
+              </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 py-2 text-center" (click)="saveSession()">
+          <button class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ngx-smart-modal>
