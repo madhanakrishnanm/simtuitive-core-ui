@@ -10,6 +10,7 @@ import {CreateEventComponent} from '../create-event/create-event.component';
 import {EventSummaryModule} from '../event-summary/event-summary.module';
 import {EventDownloadComponent} from '../event-download/event-download.component';
 import {RouterModule} from "@angular/router";
+import {NgxSmartModalModule} from "ngx-smart-modal";
 @NgModule({
   declarations: [AddEventComponent, CreateEventComponent, EventDownloadComponent],
     imports: [
@@ -21,6 +22,7 @@ import {RouterModule} from "@angular/router";
         NgbModule,
         EventSummaryModule,
         RouterModule,
+        NgxSmartModalModule,
     ],
   providers: [{provide: NgbDateParserFormatter, useClass: DateFormatterService}]
 

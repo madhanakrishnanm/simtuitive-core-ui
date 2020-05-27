@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {EventService} from '../../services/event.service';
 import {Router} from '@angular/router';
 import {getDateFromObject} from '../../lib';
+import {NgxSmartModalService} from 'ngx-smart-modal';
+
 @Component({
   selector: 'app-create-event',
   templateUrl: './create-event.component.html',
@@ -94,12 +96,30 @@ export class CreateEventComponent implements OnInit {
   eventForm: FormGroup;
   selectedBeforeModule = 'yes';
   selectedAfterModule = 'no';
+  sessions = [];
 
-  constructor(private fb: FormBuilder, private eventService: EventService, private router: Router) {
+  constructor(private fb: FormBuilder,
+              private eventService: EventService,
+              public ngxSmartModalService: NgxSmartModalService,
+              private router: Router) {
   }
 
   get f() {
     return this.eventForm.controls;
+  }
+
+  ngOnInit() {
+    this.eventForm = this.fb.group({
+      organisation: [null, []],
+      client: [null, []],
+      product: [null, []],
+      eventName: [null, []],
+      tollGates: ['', []],
+      noParticipants: ['', []],
+      eventStartDate: ['', []],
+      eventEndDate: ['', []],
+      notes: ['', []]
+    });
   }
 
   changeModuleTollPass(moduleId, isTollPassRequired, when) {
@@ -118,6 +138,10 @@ export class CreateEventComponent implements OnInit {
     console.log(this.tempModules);
   }
 
+  openEventCreate() {
+    this.ngxSmartModalService.open('addEvent');
+  }
+
   save() {
     const eventInfo = this.eventForm.value;
     eventInfo.modules = this.tempModules;
@@ -129,17 +153,7 @@ export class CreateEventComponent implements OnInit {
     this.onStepNext.emit(this.nextTitle);
   }
 
-  ngOnInit() {
-    this.eventForm = this.fb.group({
-      organisation: [null, []],
-      client: [null, []],
-      product: [null, []],
-      eventName: [null, []],
-      tollGates: ['', []],
-      noParticipants: ['', []],
-      eventStartDate: ['', []],
-      eventEndDate: ['', []],
-      notes: ['', []]
-    });
+  saveSession() {
+
   }
 }
