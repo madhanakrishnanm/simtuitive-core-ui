@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
   }
 
   requestLogin() {
+    localStorage.clear();
     this.ngxUiLoaderService.start();
     const headers = {
       'Access-Control-Allow-Origin': '*',

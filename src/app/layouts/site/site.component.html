@@ -8,5 +8,23 @@
     <app-breadcrumb></app-breadcrumb>
     <router-outlet></router-outlet>
   </div>
-
+  <ngx-smart-modal
+    [closable]="false"
+    customClass="nsm-centered"
+    #sessionModal
+    identifier="sessionModal"
+    [dismissable]="false"
+  >
+    <div class="row text-center">
+      <div class="col-12 py-3">
+        <i class="fa fa-clock-o" aria-hidden="true" style="font-size: 50px;color: white"></i>
+      </div>
+      <div class="col-12 py-3">
+        <h2 style="color: white">Your session has expired due to inactivity.</h2>
+      </div>
+      <div class="col-12 py-3">
+        <button class="btn btn-block btn-primary" (click)="requestLogin()">Login</button>
+      </div>
+    </div>
+  </ngx-smart-modal>
 </div>

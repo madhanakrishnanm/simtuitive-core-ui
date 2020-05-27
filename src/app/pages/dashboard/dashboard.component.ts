@@ -1,6 +1,9 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {UsersService} from '../../services/users.service';
 import numeral from 'numeral'
+import { NgxSmartModalService } from 'ngx-smart-modal';
+
+
 import {NgxUiLoaderService} from "ngx-ui-loader";
 @Component({
   selector: 'app-dashboard',
@@ -73,6 +76,7 @@ export class DashboardComponent implements OnInit {
     }
   };
   constructor(public userService: UsersService,
+              public ngxSmartModalService: NgxSmartModalService,
               private ngxUiLoaderService: NgxUiLoaderService,
   ) {
   }

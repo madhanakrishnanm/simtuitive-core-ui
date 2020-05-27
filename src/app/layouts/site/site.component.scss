@@ -28,3 +28,12 @@
     display: none;
   }
 }
+::ng-deep{
+  .nsm-content {
+    background-color: var(--bg-color-secondary) !important;
+  }
+  .nsm-dialog-btn-close{
+    color: white;
+  }
+}
+

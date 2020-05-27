@@ -30,6 +30,7 @@
     "font-awesome": "^4.7.0",
     "moment": "^2.24.0",
     "ng-sidebar": "^9.2.0",
+    "ngx-smart-modal": "^7.4.0",
     "ngx-stepper": "^1.1.6",
     "ngx-timeago": "^1.0.4",
     "ngx-toastr": "^12.0.1",

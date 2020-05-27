@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 export class SidebarComponent implements OnInit {
   sidebars = [];
   permissions = [];
+  eventSubBars = [];
   selectedSidebar = 'Dashboard';
 
   constructor(private userService: UsersService,
@@ -43,6 +44,10 @@ export class SidebarComponent implements OnInit {
         return '/permissions';
       case 'WhiteList IPs Management':
         return '/whitelist-ips';
+      case 'Events':
+        return '/events';
+      case 'Bookings':
+        return '/bookings';
     }
   }
   getNameByRoute(name) {
@@ -57,6 +62,8 @@ export class SidebarComponent implements OnInit {
       return 'License Management';
     } else if (url.includes('products')) {
       return 'Product Management';
+    } else if (url.includes('events')) {
+      return 'Events';
     } else if (url.includes('event')) {
       return 'Event Management';
     } else if (url.includes('reports')) {
@@ -69,6 +76,8 @@ export class SidebarComponent implements OnInit {
       return 'Permission Management';
     } else if (url.includes('whitelist-ip')) {
       return 'Whitelist IPs Management';
+    }else if (url.includes('bookings')) {
+      return 'Bookings';
     }
   }
   getUser() {
@@ -81,11 +90,24 @@ export class SidebarComponent implements OnInit {
           if (permission.type === 'tab') {
             this.sidebars.push(permission.name);
           }
+          if (permission.type === 'EventSubTab'){
+            this.eventSubBars.push(permission.name)
+          }
         }
       }
       console.log(this.sidebars);
+      console.log(this.eventSubBars);
     }, error => {
       this.router.navigate(['/login']);
     });
+  }
+  toggleCollapse(elementId, redirect){
+    let element = document.getElementById(elementId);
+    if (element.classList.contains('show')){
+      element.classList.remove('show');
+    }else {
+      element.classList.add('show');
+    }
+    this.router.navigate([this.getRouteByName(redirect)])
   }
 }

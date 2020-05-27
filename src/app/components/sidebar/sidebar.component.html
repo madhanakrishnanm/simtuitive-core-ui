@@ -5,22 +5,60 @@
   </div>
 
   <ul class="list-unstyled components">
-    <li *ngFor="let  sidebar of sidebars;" [ngClass]="{'active':sidebar === getNameByRoute(sidebar)}">
-      <a [routerLink]="getRouteByName(sidebar)">
-        <i class="fa fa-pie-chart" aria-hidden="true" *ngIf="sidebar==='Dashboard'"></i>
-        <i class="fa fa-university" aria-hidden="true" *ngIf="sidebar==='Organization Management'"></i>
-        <i class="fa fa-users" aria-hidden="true" *ngIf="sidebar==='Client Management'"></i>
-        <i class="fa fa-credit-card" aria-hidden="true" *ngIf="sidebar==='License Management'"></i>
-        <i class="fa fa-cube" aria-hidden="true" *ngIf="sidebar==='Product Management'"></i>
-        <i class="fa fa-calendar" aria-hidden="true" *ngIf="sidebar==='Event Management'"></i>
-        <i class="fa fa-folder-open" aria-hidden="true" *ngIf="sidebar==='Reports'"></i>
-        <i class="fa fa-server" aria-hidden="true" *ngIf="sidebar==='WhiteList IPs Management'"></i>
-        <i class="fa fa-shield" aria-hidden="true" *ngIf="sidebar==='Permission Management'"></i>
-        <i class="fa fa-users" aria-hidden="true" *ngIf="sidebar==='Role Management'"></i>
-        <i class="fa fa-user-circle" aria-hidden="true" *ngIf="sidebar==='Admin Management'"></i>
-        {{sidebar}}
-      </a>
+    <li
+      *ngFor="let sidebar of sidebars;"
+      [ngClass]="{'active':sidebar === getNameByRoute(sidebar)}"
+    >
+      <ng-template [ngIf]="sidebar !== 'Event Management'">
+        <a [routerLink]="getRouteByName(sidebar)">
+          <i class="fa fa-pie-chart" aria-hidden="true" *ngIf="sidebar==='Dashboard'"></i>
+          <i class="fa fa-university" aria-hidden="true" *ngIf="sidebar==='Organization Management'"></i>
+          <i class="fa fa-users" aria-hidden="true" *ngIf="sidebar==='Client Management'"></i>
+          <i class="fa fa-credit-card" aria-hidden="true" *ngIf="sidebar==='License Management'"></i>
+          <i class="fa fa-cube" aria-hidden="true" *ngIf="sidebar==='Product Management'"></i>
+          <i class="fa fa-folder-open" aria-hidden="true" *ngIf="sidebar==='Reports'"></i>
+          <i class="fa fa-server" aria-hidden="true" *ngIf="sidebar==='WhiteList IPs Management'"></i>
+          <i class="fa fa-shield" aria-hidden="true" *ngIf="sidebar==='Permission Management'"></i>
+          <i class="fa fa-users" aria-hidden="true" *ngIf="sidebar==='Role Management'"></i>
+          <i class="fa fa-user-circle" aria-hidden="true" *ngIf="sidebar==='Admin Management'"></i>
+          {{sidebar}}
+        </a>
+      </ng-template>
+      <ng-template [ngIf]="sidebar === 'Event Management'">
+        <a (click)="toggleCollapse('eventSubmenu', 'Event Management')"
+           data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+          {{sidebar}}
+        </a>
+        <ul class="collapse list-unstyled" id="eventSubmenu">
+          <li
+            *ngFor="let eventSubBar of eventSubBars;"
+            [ngClass]="{'active':eventSubBar === getNameByRoute(eventSubBar)}">
+            <a [routerLink]="getRouteByName(eventSubBar)">{{eventSubBar}}</a>
+          </li>
+        </ul>
+      </ng-template>
     </li>
+    <!--<li
+      *ngIf="sidebars.includes('Event Management')"
+      [ngClass]="{'active':'Event Management' === getNameByRoute('Event Management')}"
+      (click)="toggleCollapse('eventSubmenu')"
+    >
+      <ng-template>
+        <a [routerLink]="getRouteByName('Event Management')" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+          Event Management
+        </a>
+        <ul class="collapse list-unstyled" id="eventSubmenu">
+          <li
+            *ngFor="let eventSubBar of eventSubBars;"
+            [ngClass]="{'active':eventSubBar === getNameByRoute(eventSubBar)}">
+            <a [routerLink]="getRouteByName(eventSubBar)">Bookings</a>
+          </li>
+        </ul>
+      </ng-template>
+    </li>-->
+
   </ul>
 
 </nav>

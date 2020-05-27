@@ -7,7 +7,7 @@
   top: 0;
   left: 0;
   height: 100vh;
-  z-index: 9999999999;
+  z-index: 1031 !important;
   background: var(--bg-color-secondary);
   color: #fff;
   transition: all 0.3s;
@@ -76,12 +76,20 @@ a[data-toggle="collapse"] {
   transform: translateY(-50%);
 }
 
-ul ul a {
+#sidebar ul ul a {
   font-size: 0.9em !important;
-  padding-left: 30px !important;
-  background: #6d7fcc;
-}
 
+}
+#sidebar ul ul {
+  background-color: var(--bg-color-primary);
+}
+#sidebar ul ul li{
+  margin-left: 50px;
+}
+#sidebar ul ul li.active > a {
+  color: var(--primary) ;
+
+}
 ul.CTAs {
   padding: 20px;
 }
