@@ -14,7 +14,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
   selectedSidebar = 'Dashboard';
 
   constructor(private userService: UsersService,
-              private router: Router,
+              public router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -73,8 +73,6 @@ export class SidebarComponent implements OnInit, AfterViewInit {
       return 'Product Management';
     } else if (url === '/events') {
       return 'Events';
-    } else if (url === '/events') {
-      return 'Event Management';
     } else if (url === '/events/bookings') {
       return 'Bookings';
     }else if (url.includes('reports')) {
@@ -113,7 +111,9 @@ export class SidebarComponent implements OnInit, AfterViewInit {
     });
   }
   toggleCollapse(elementId, redirect){
+    console.log('called');
     let element = document.getElementById(elementId);
+    console.log(element.classList)
     if (element.classList.contains('show')){
       element.classList.remove('show');
     }else {

@@ -26,7 +26,7 @@
            data-toggle="collapse"
            aria-expanded="false"
            class="dropdown-toggle"
-           [ngClass]="{'active':'Events' === getNameByRoute(sidebar)}"
+           [ngClass]="{'active':router.url.includes('events')}"
         >
           <i class="fa fa-calendar" aria-hidden="true"></i>
           {{sidebar}}
@@ -43,25 +43,6 @@
         </ul>
       </ng-template>
     </li>
-    <!--<li
-      *ngIf="sidebars.includes('Event Management')"
-      [ngClass]="{'active':'Event Management' === getNameByRoute('Event Management')}"
-      (click)="toggleCollapse('eventSubmenu')"
-    >
-      <ng-template>
-        <a [routerLink]="getRouteByName('Event Management')" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-          <i class="fa fa-calendar" aria-hidden="true"></i>
-          Event Management
-        </a>
-        <ul class="collapse list-unstyled" id="eventSubmenu">
-          <li
-            *ngFor="let eventSubBar of eventSubBars;"
-            [ngClass]="{'active':eventSubBar === getNameByRoute(eventSubBar)}">
-            <a [routerLink]="getRouteByName(eventSubBar)">Bookings</a>
-          </li>
-        </ul>
-      </ng-template>
-    </li>-->
 
   </ul>
 
