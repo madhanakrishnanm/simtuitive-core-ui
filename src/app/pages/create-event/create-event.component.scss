@@ -89,20 +89,21 @@
     background: red;
     height: 100%;
     border: 1px solid red !important;
-    position: absolute;
+    position: fixed;
     left: 0 !important;
     top: 0;
     box-sizing: border-box;
-    margin: 0;
+    padding: 10px;
+
   }
   .nsm-dialog{
     width: 100vw !important;
     border: 1px solid yellow;
     height: 100vh;
-    left: 0 !important;
-    top: 0;
-    position: absolute;
-    max-width:100%;
+    padding: 50px;
+    left: 0;
+    position: fixed;
+    min-width: 100%;
   }
   .overlay{
     overflow-y: hidden;
