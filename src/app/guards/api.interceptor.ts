@@ -26,7 +26,7 @@ export class ApiInterceptor implements HttpInterceptor {
     if (token) {
       return request.clone({
         setHeaders: {
-          "Authorization": token
+          Authorization: token
         }
       });
     }
@@ -49,7 +49,7 @@ export class ApiInterceptor implements HttpInterceptor {
           this.refreshTokenInProgress = false;
           this.tokenRefreshedSource.next();
         }),
-        catchError(error =>{
+        catchError(error => {
           this.refreshTokenInProgress = false;
           this.logout();
           return null;
@@ -59,7 +59,7 @@ export class ApiInterceptor implements HttpInterceptor {
 
   logout() {
     this.userService.logout();
-    this.router.navigate(["login"]).then();
+    this.router.navigate(['login']).then();
   }
 
   handleResponseError(error, request?, next?) {
@@ -96,19 +96,13 @@ export class ApiInterceptor implements HttpInterceptor {
     else if (error.status === 403) {
       // Show message
       // Logout
-      console.log('Access denied')
+      console.log('Access denied');
       this.logout();
-    }
-
-    // Server error
-    else if (error.status === 500) {
-      console.log('Server error')
-    }
-
-    // Maintenance error
-    else if (error.status === 503) {
+    } else if (error.status === 500) {
+      console.log('Server error');
+    } else if (error.status === 503) {
       // Show message
-      console.log('Maintenance error')
+      console.log('Maintenance error');
       // Redirect to the maintenance page
     }
 

@@ -19,84 +19,57 @@ export class CreateEventComponent implements OnInit {
   tollGate = '';
   clients: any = ['Microsoft', 'HP', 'IBM', 'InfoSys'];
   products: any = ['Java', 'Python', 'C#'];
-  modules: any = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
-  tempModules: any = [{
-    moduleId: 1,
-    isTollPassRequired: false,
-    beforeModule: 'no',
-    afterModule: 'no',
+  modules = [{
+    moduleNumber: 1,
+    moduleName: 'Operational Excellence 101',
   },
     {
-      moduleId: 2,
-      isTollPassRequired: false,
-      beforeModule: 'no',
-      afterModule: 'no',
+      moduleNumber: 2,
+      moduleName: 'Operations Planning',
     },
     {
-      moduleId: 3,
-      isTollPassRequired: false,
-      beforeModule: 'no',
-      afterModule: 'no',
+      moduleNumber: 3,
+      moduleName: 'CPU of Operations',
     },
     {
-      moduleId: 4,
-      isTollPassRequired: false,
-      beforeModule: 'no',
-      afterModule: 'no',
+      moduleNumber: 4,
+      moduleName: 'Talent Management',
     },
     {
-      moduleId: 5,
-      isTollPassRequired: false,
-      beforeModule: 'no',
-      afterModule: 'no',
+      moduleNumber: 5,
+      moduleName: 'Talent Acquisition',
     },
     {
-      moduleId: 6,
-      isTollPassRequired: false,
-      beforeModule: 'no',
-      afterModule: 'no',
+      moduleNumber: 6,
+      moduleName: 'Key Performance Indicators',
     },
     {
-      moduleId: 7,
-      isTollPassRequired: false,
-      beforeModule: 'no',
-      afterModule: 'no',
+      moduleNumber: 7,
+      moduleName: 'Train for Skill',
     },
     {
-      moduleId: 8,
-      isTollPassRequired: false,
-      beforeModule: 'no',
-      afterModule: 'no',
+      moduleNumber: 8,
+      moduleName: 'Operational Excellence 101',
     },
     {
-      moduleId: 9,
-      isTollPassRequired: false,
-      beforeModule: 'no',
-      afterModule: 'no',
+      moduleNumber: 9,
+      moduleName: 'Operations Planning',
     },
     {
-      moduleId: 10,
-      isTollPassRequired: false,
-      beforeModule: 'no',
-      afterModule: 'no',
+      moduleNumber: 10,
+      moduleName: 'CPU of Operations',
     },
     {
-      moduleId: 11,
-      isTollPassRequired: false,
-      beforeModule: 'no',
-      afterModule: 'no',
+      moduleNumber: 11,
+      moduleName: 'Key Performance Indicators',
     },
     {
-      moduleId: 12,
-      isTollPassRequired: false,
-      beforeModule: 'no',
-      afterModule: 'no',
+      moduleNumber: 12,
+      moduleName: 'Talent Acquisition',
     }];
-  options: any = ['yes', 'no'];
   eventForm: FormGroup;
-  selectedBeforeModule = 'yes';
-  selectedAfterModule = 'no';
   sessions = [];
+  selectedModules = [];
 
   constructor(private fb: FormBuilder,
               private eventService: EventService,
@@ -122,35 +95,11 @@ export class CreateEventComponent implements OnInit {
     });
   }
 
-  changeModuleTollPass(moduleId, isTollPassRequired, when) {
-    for (const [index, module] of this.tempModules.entries()) {
-      if (module.moduleId === moduleId) {
-        if (when === 'before') {
-          this.tempModules[index].beforeModule = isTollPassRequired;
-        } else if (when === 'after') {
-          this.tempModules[index].afterModule = isTollPassRequired;
-        }
-      }
-      if (this.tempModules[index].beforeModule === 'yes' || this.tempModules[index].afterModule === 'yes') {
-        this.tempModules[index].isTollPassRequired = true;
-      }
-    }
-    console.log(this.tempModules);
-  }
-
   openEventCreate() {
     this.ngxSmartModalService.open('addEvent');
   }
 
   save() {
-    const eventInfo = this.eventForm.value;
-    eventInfo.modules = this.tempModules;
-    eventInfo.tollGates = eventInfo.tollGates.toString();
-    eventInfo.eventStartDate = getDateFromObject(eventInfo.eventStartDate);
-    eventInfo.eventEndDate = getDateFromObject(eventInfo.eventEndDate);
-    console.log(JSON.stringify(eventInfo));
-    this.eventService.addEvent(eventInfo);
-    this.onStepNext.emit(this.nextTitle);
   }
 
   saveSession() {

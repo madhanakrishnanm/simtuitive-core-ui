@@ -7,15 +7,15 @@ import * as moment from 'moment';
 })
 export class AuthService {
 
-  constructor(private router:Router,
+  constructor(private router: Router,
               private apiService: ApiService
   ) { }
 
   sendToken(token: string) {
-    localStorage.setItem("token", token)
+    localStorage.setItem('token', token);
   }
   getToken() {
-    return localStorage.getItem("token")
+    return localStorage.getItem('token');
   }
   isLoggedIn() {
     let isValidToken = false;
@@ -27,12 +27,12 @@ export class AuthService {
     return isValidToken;
   }
   logout() {
-    localStorage.removeItem("token");
-    this.router.navigate(["Login"]);
+    localStorage.removeItem('token');
+    this.router.navigate(['Login']);
   }
 
-  login(payload,headers){
-    return this.apiService.auth('oauth/token',payload,headers);
+  login(payload, headers) {
+    return this.apiService.auth('oauth/token', payload, headers);
   }
 
 }

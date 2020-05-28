@@ -36,7 +36,9 @@
     }
   }
 }
-
+.session-popup-cont{
+  padding: 40px;
+}
 .session-cont {
   border: 1px solid #2D353F;
   font-size: 16px;
@@ -50,6 +52,16 @@
   font-size: 16px;
   line-height: 40px;
   cursor: pointer;
+  width: 70px;
+  border: 1px solid red;
+}
+.add-icon-small {
+  color: var(--primary);
+  font-size: 12px;
+  line-height: 40px;
+  cursor: pointer;
+  width: 70px;
+  //border: 1px solid red;
 }
 
 .edit-icon {
@@ -62,6 +74,9 @@
     height: 14px;
     margin-right: 10px;
   }
+}
+.close-icon{
+  color: #C84343;
 }
 
 .session-info-card {
@@ -83,32 +98,64 @@
 }
 
 ::ng-deep {
-  .nsm-content {
-    //background-color: var(--bg-color-secondary) !important;
+  .nsm-dialog {
     width: 100vw;
-    background: red;
-    height: 100%;
-    border: 1px solid red !important;
-    position: fixed;
-    left: 0 !important;
-    top: 0;
-    box-sizing: border-box;
-    padding: 10px;
-
-  }
-  .nsm-dialog{
-    width: 100vw !important;
-    border: 1px solid yellow;
     height: 100vh;
-    padding: 50px;
-    left: 0;
-    position: fixed;
-    min-width: 100%;
+    max-width: 80% !important;
+    max-height: 90%;
+    border: 1px solid red;
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
-  .overlay{
+
+  .nsm-content {
+    height: 100%;
+    margin: 0;
+    border: 1px solid red;
+  }
+
+  .overlay {
     overflow-y: hidden;
   }
+
   .nsm-dialog-btn-close {
     color: white;
   }
+}
+
+
+.selected-modules-title {
+  font-size: 12px;
+  line-height: 40px;
+  color: var(--light);
+}
+
+.session-popup-title{
+  font-size: 16px;
+  line-height: 40px;
+  color: var(--light);
+}
+
+.hr-divider{
+  border: 1px solid #28292C;
+}
+
+.selected-modules-cont{
+  margin-top: 20px;
+}
+.selected-module-card{
+  font-size: 16px;
+  line-height: 22px;
+  color: #BFBFBF;
+  border: 1px solid #2D353F;
+  padding-left: 25px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  border-radius: 3px;
+}
+
+.module-select-title{
+  font-size: 16px;
+  line-height: 40px;
+  color: var(--light);
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {NgxSmartModalService} from "ngx-smart-modal";
-import {Router} from "@angular/router";
+import {NgxSmartModalService} from 'ngx-smart-modal';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-site',
@@ -15,7 +15,7 @@ export class SiteComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  requestLogin(){
+  requestLogin() {
     this.ngxSmartModalService.close('sessionModal');
     this.router.navigate(['login']);
   }
