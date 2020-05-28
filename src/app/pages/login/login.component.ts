@@ -5,7 +5,7 @@ import {Router} from '@angular/router';
 import {HttpHeaders} from '@angular/common/http';
 import {v4 as uuidv4} from 'uuid';
 import {NgxUiLoaderService} from 'ngx-ui-loader';
-import {ToastrService} from "ngx-toastr";
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -69,11 +69,11 @@ export class LoginComponent implements OnInit {
     console.log(data);
     this.authService.login(data, headers).subscribe((res: any) => {
       console.log(res);
-      if (res.error){
+      if (res.error) {
         this.ngxUiLoaderService.stop();
         this.toastrService.warning(res.message);
 
-      }else {
+      } else {
         const token = res.token_type + ' ' + res.access_token;
         localStorage.setItem('token', token);
         localStorage.setItem('refreshToken', res.refresh_token);

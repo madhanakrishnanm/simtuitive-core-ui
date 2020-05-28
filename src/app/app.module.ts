@@ -45,7 +45,7 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ProductsModule} from './pages/products/products.module';
-import {EventsModule} from "./pages/events/events.module";
+import {EventsModule} from './pages/events/events.module';
 import {NgxUiLoaderConfig, NgxUiLoaderModule, NgxUiLoaderService, PB_DIRECTION, POSITION, SPINNER} from 'ngx-ui-loader';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
 import { ViewLicenseComponent } from './pages/view-license/view-license.component';

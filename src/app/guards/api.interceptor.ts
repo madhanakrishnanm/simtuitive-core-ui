@@ -1,9 +1,9 @@
-import { HttpRequest, HttpHandler, HttpInterceptor, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { Injector, Injectable } from "@angular/core";
-import { Router } from "@angular/router";
-import { Subject, Observable, throwError } from "rxjs";
-import { catchError, switchMap, tap} from "rxjs/operators";
-import {UsersService} from "../services/users.service";
+import { HttpRequest, HttpHandler, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Injector, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subject, Observable, throwError } from 'rxjs';
+import { catchError, switchMap, tap} from 'rxjs/operators';
+import {UsersService} from '../services/users.service';
 
 @Injectable()
 export class ApiInterceptor implements HttpInterceptor {
@@ -22,7 +22,7 @@ export class ApiInterceptor implements HttpInterceptor {
     if (token) {
       return request.clone({
         setHeaders: {
-          "Authorization": token
+          Authorization: token
         }
       });
     }
@@ -45,7 +45,7 @@ export class ApiInterceptor implements HttpInterceptor {
           this.refreshTokenInProgress = false;
           this.tokenRefreshedSource.next();
         }),
-        catchError(error =>{
+        catchError(error => {
           this.refreshTokenInProgress = false;
           this.logout();
           return null;
@@ -55,17 +55,14 @@ export class ApiInterceptor implements HttpInterceptor {
 
   logout() {
     this.userService.logout();
-    this.router.navigate(["login"]).then();
+    this.router.navigate(['login']).then();
   }
 
   handleResponseError(error, request?, next?) {
     // Business error
     if (error.status === 400) {
-      console.log('application error')
-    }
-
-    // Invalid token error
-    else if (error.status === 401) {
+      console.log('application error');
+    } else if (error.status === 401) {
       console.log('Session expired or token expired');
       return this.refreshToken().pipe(
         switchMap(() => {
@@ -79,25 +76,16 @@ export class ApiInterceptor implements HttpInterceptor {
             this.logout();
           }
         }));
-    }
-
-    // Access denied error
-    else if (error.status === 403) {
+    } else if (error.status === 403) {
       // Show message
       // Logout
-      console.log('Access denied')
+      console.log('Access denied');
       this.logout();
-    }
-
-    // Server error
-    else if (error.status === 500) {
-      console.log('Server error')
-    }
-
-    // Maintenance error
-    else if (error.status === 503) {
+    } else if (error.status === 500) {
+      console.log('Server error');
+    } else if (error.status === 503) {
       // Show message
-      console.log('Maintenance error')
+      console.log('Maintenance error');
       // Redirect to the maintenance page
     }
 
