@@ -4,6 +4,8 @@ import { Router } from "@angular/router";
 import { Subject, Observable, throwError } from "rxjs";
 import { catchError, switchMap, tap} from "rxjs/operators";
 import {UsersService} from "../services/users.service";
+import {ToastrService} from "ngx-toastr";
+import {NgxSmartModalService} from "ngx-smart-modal";
 
 @Injectable()
 export class ApiInterceptor implements HttpInterceptor {
@@ -15,6 +17,8 @@ export class ApiInterceptor implements HttpInterceptor {
 
   constructor(private injector: Injector,
               private userService: UsersService,
+              private toastrService: ToastrService,
+              private ngxSmartModalService: NgxSmartModalService,
               private router: Router) {}
 
   addAuthHeader(request) {
@@ -66,8 +70,15 @@ export class ApiInterceptor implements HttpInterceptor {
 
     // Invalid token error
     else if (error.status === 401) {
+      console.log(error);
+      if (error.error.userMessage === 'Session expired'){
+        this.ngxSmartModalService.open('sessionModal');
+      }else if (error.error.userMessage === 'Token expired'){
+        this.toastrService.warning('Token Expired!');
+        this.logout();
+      }
       console.log('Session expired or token expired');
-      return this.refreshToken().pipe(
+     /* return this.refreshToken().pipe(
         switchMap(() => {
           request = this.addAuthHeader(request);
           return next.handle(request);
@@ -78,7 +89,7 @@ export class ApiInterceptor implements HttpInterceptor {
           } else {
             this.logout();
           }
-        }));
+        }));*/
     }
 
     // Access denied error
