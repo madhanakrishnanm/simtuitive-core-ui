@@ -286,6 +286,10 @@ ngb-datepicker-navigation-select > .custom-select {
   border: 0 !important;
 }
 
+.event-cont-scroll ::-webkit-scrollbar {
+  background: none;
+  width: 8px;
+}
 .suggestions-container ::-webkit-scrollbar {
   background: none;
   width: 8px;

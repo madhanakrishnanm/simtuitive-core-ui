@@ -172,28 +172,13 @@
           </div>
         </div>
       </div>
-      <div class="session-info-card">
+      <div class="session-info-card" *ngFor="let session of sessions;let i =index">
         <div class="row">
           <div class="col-4">
-            <div class="session-title">Session 1</div>
+            <div class="session-title">{{session}}</div>
           </div>
           <div class="col-5">
-            <div class="session-date">DATE: 10/05/2020</div>
-          </div>
-          <div class="col-3">
-            <div class="edit-icon">
-              <img src="assets/img/event/edit.svg"/>EDIT
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="session-info-card">
-        <div class="row">
-          <div class="col-4">
-            <div class="session-title">Session 1</div>
-          </div>
-          <div class="col-5">
-            <div class="session-date">DATE: 10/05/2020</div>
+            <div class="session-date">DATE: {{session.date}}</div>
           </div>
           <div class="col-3">
             <div class="edit-icon">
@@ -216,8 +201,8 @@
   <div class="session-popup-cont">
     <div class="row">
       <div class="col-lg-5">
-        <div class="row simtuitive-input border-red">
-          <div class="col-12 border-red">
+        <div class="row simtuitive-input">
+          <div class="col-12">
             <div class="session-popup-title">Session 1</div>
           </div>
           <div class="col-12">
@@ -228,7 +213,7 @@
                 </div>
               </label>
               <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-                <div class="d-flex">
+                <div class="d-flex module-picker">
                   <input
                     type="text"
                     class="form-control"
@@ -279,32 +264,32 @@
         </div>
       </div>
       <div class="col-lg-7">
-        <div class="modules-cont border-red">
+        <div class="modules-cont">
           <div class="module-select-title">
             Select Modules
           </div>
         </div>
-        <div class="row">
-          <div class="col-6" *ngFor="let module of modules;let i= index">
-            <div class="module-selection" *ngIf="!module.isSelected">
-              <div class="checkbox">
-                <label>
-                  <input (change)="setSelectedModule(module)" type="checkbox"
-                         [value]="module.moduleName"
-                         [checked]="isChecked(module)">
-                  <span class="cr"><i class="cr-icon fa fa-check"></i></span>
-                  <span (change)="setSelectedModule(module)" class="checkbox-label">
+        <div class="modules-list">
+          <div class="row">
+            <div class="col-6" *ngFor="let module of modules;let i= index">
+              <div class="module-selection" *ngIf="!module.isSelected">
+                <div class="checkbox">
+                  <label>
+                    <input (change)="setSelectedModule(module)" type="checkbox"
+                           [value]="module.moduleName"
+                           [checked]="isChecked(module)">
+                    <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                    <span (change)="setSelectedModule(module)" class="checkbox-label">
                     {{module.moduleNumber}}.{{module.moduleName}}
                   </span>
-                </label>
+                  </label>
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-12">
-            <div class="col-12 py-2 text-center" (click)="addModules()">
-              <button class="btn btn-primary">Add</button>
-            </div>
-          </div>
+        </div>
+        <div class="col-12 py-2 text-center" (click)="addModules()">
+          <button class="btn btn-primary">Add</button>
         </div>
       </div>
     </div>

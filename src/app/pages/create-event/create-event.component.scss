@@ -10,17 +10,6 @@
   border: 1px solid green;
 }
 
-//for scrollbar
-::-webkit-scrollbar {
-  background: none;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--secondary);
-  border-radius: 10px;
-  width: 2px;
-}
-
 //for Table
 .table-responsive {
   height: auto;
@@ -41,6 +30,11 @@
   padding: 40px;
 }
 
+.module-picker {
+  border: 1px solid #2D353F;
+  border-radius: 3px;
+}
+
 .session-cont {
   border: 1px solid #2D353F;
   font-size: 16px;
@@ -55,7 +49,7 @@
   line-height: 40px;
   cursor: pointer;
   width: 70px;
-  border: 1px solid red;
+  //border: 1px solid red;
 }
 
 .add-icon-small {
@@ -108,7 +102,7 @@
     height: 100vh;
     max-width: 80% !important;
     max-height: 90%;
-    border: 1px solid red;
+    //border: 1px solid red;
     margin-top: 30px;
     margin-bottom: 30px;
   }
@@ -116,7 +110,7 @@
   .nsm-content {
     height: 100%;
     margin: 0;
-    border: 1px solid red;
+    //border: 1px solid red;
   }
 
   .overlay {
@@ -170,6 +164,12 @@
   color: var(--light);
 }
 
+.modules-list {
+  height: 60vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
 .module-selection {
   width: 100%;
 
@@ -210,6 +210,7 @@
   height: 1.3em;
   float: left;
   margin-right: .5em;
+  margin-top: 1em;
 }
 
 .checkbox .cr .cr-icon {
