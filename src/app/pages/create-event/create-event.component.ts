@@ -178,17 +178,28 @@ export class CreateEventComponent implements OnInit {
   removeModule(module) {
     const moduleIndex = this.addedModules.indexOf(module);
     this.addedModules.splice(moduleIndex, 1);
+    this.modules.forEach((mod, index) => {
+      if (mod.moduleNumber === module.moduleNumber) {
+        module.isSelected = false;
+      }
+    });
   }
 
   saveSession() {
     const sessions = this.sessions;
     if (this.editSession) {
       sessions[this.editSession - 1] = {
-        sessionName: 'Session' + this.editSession
+        sessionName: 'Session ' + this.editSession,
+        date: '29-05-2020'
       };
     } else {
-
+      const session =  {
+        sessionName: 'Session ' + (sessions.length + 1),
+        date: '29-05-2020'
+      };
+      this.sessions.push(session);
     }
+    this.ngxSmartModalService.close('addEvent');
   }
   parseModules() {
 
