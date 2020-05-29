@@ -36,9 +36,11 @@
     }
   }
 }
-.session-popup-cont{
+
+.session-popup-cont {
   padding: 40px;
 }
+
 .session-cont {
   border: 1px solid #2D353F;
   font-size: 16px;
@@ -55,6 +57,7 @@
   width: 70px;
   border: 1px solid red;
 }
+
 .add-icon-small {
   color: var(--primary);
   font-size: 12px;
@@ -75,8 +78,10 @@
     margin-right: 10px;
   }
 }
-.close-icon{
+
+.close-icon {
   color: #C84343;
+  cursor: pointer;
 }
 
 .session-info-card {
@@ -130,20 +135,24 @@
   color: var(--light);
 }
 
-.session-popup-title{
+.session-popup-title {
   font-size: 16px;
   line-height: 40px;
   color: var(--light);
 }
 
-.hr-divider{
+.hr-divider {
   border: 1px solid #28292C;
 }
 
-.selected-modules-cont{
+.selected-modules-cont {
   margin-top: 20px;
+  max-height: 300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
-.selected-module-card{
+
+.selected-module-card {
   font-size: 16px;
   line-height: 22px;
   color: #BFBFBF;
@@ -152,10 +161,79 @@
   padding-top: 14px;
   padding-bottom: 14px;
   border-radius: 3px;
+  margin-bottom: 10px;
 }
 
-.module-select-title{
+.module-select-title {
   font-size: 16px;
   line-height: 40px;
   color: var(--light);
+}
+
+.module-selection {
+  width: 100%;
+
+  .checkbox {
+    margin-top: 30px;
+    margin-bottom: 14px;
+  }
+
+  .checkbox-label {
+    font-size: 16px;
+    line-height: 22px;
+    color: #BFBFBF;
+    border: 1px solid #2D353F;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    border-radius: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    min-width: 80%;
+    cursor: pointer;
+    position: absolute;
+  }
+}
+
+
+.checkbox label:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.checkbox .cr {
+  position: relative;
+  display: inline-block;
+  border: 1px solid #a9a9a9;
+  border-radius: .25em;
+  width: 1.3em;
+  height: 1.3em;
+  float: left;
+  margin-right: .5em;
+}
+
+.checkbox .cr .cr-icon {
+  position: absolute;
+  font-size: .8em;
+  line-height: 0;
+  top: 50%;
+  left: 15%;
+}
+
+.checkbox label input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox label input[type="checkbox"] + .cr > .cr-icon {
+  opacity: 0;
+}
+
+.checkbox label input[type="checkbox"]:checked + .cr > .cr-icon {
+  opacity: 1;
+  color: var(--primary) !important;
+}
+
+.checkbox label input[type="checkbox"]:disabled + .cr {
+  opacity: .5;
+  color: var(--primary) !important;
 }

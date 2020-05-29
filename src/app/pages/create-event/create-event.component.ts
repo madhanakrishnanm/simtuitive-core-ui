@@ -19,10 +19,11 @@ export class CreateEventComponent implements OnInit {
   tollGate = '';
   clients: any = ['Microsoft', 'HP', 'IBM', 'InfoSys'];
   products: any = ['Java', 'Python', 'C#'];
-  modules = [{
-    moduleNumber: 1,
-    moduleName: 'Operational Excellence 101',
-  },
+  modules = [
+    {
+      moduleNumber: 1,
+      moduleName: 'Operational Excellence 101',
+    },
     {
       moduleNumber: 2,
       moduleName: 'Operations Planning',
@@ -65,11 +66,14 @@ export class CreateEventComponent implements OnInit {
     },
     {
       moduleNumber: 12,
-      moduleName: 'Talent Acquisition',
-    }];
+      moduleName: 'Talent Acquisition'
+    }
+  ];
   eventForm: FormGroup;
   sessions = [];
   selectedModules = [];
+  addedModules = [];
+  editSession = 0;
 
   constructor(private fb: FormBuilder,
               private eventService: EventService,
@@ -83,12 +87,12 @@ export class CreateEventComponent implements OnInit {
 
   ngOnInit() {
     this.eventForm = this.fb.group({
-      organisation: [null, []],
-      client: [null, []],
-      product: [null, []],
+      organizationName: [null, []],
+      clientName: [null, []],
+      productName: [null, []],
       eventName: [null, []],
       tollGates: ['', []],
-      noParticipants: ['', []],
+      noOfParticipants: ['', []],
       eventStartDate: ['', []],
       eventEndDate: ['', []],
       notes: ['', []]
@@ -100,9 +104,93 @@ export class CreateEventComponent implements OnInit {
   }
 
   save() {
+    console.log(this.eventForm.value);
+    const eventForm = this.eventForm.value;
+    eventForm.eventStartDate = getDateFromObject(eventForm.eventStartDate);
+    eventForm.eventEndDate = getDateFromObject(eventForm.eventEndDate);
+    eventForm.productName = 'Operational Excellence';
+    const sessions = [{
+      sessionName: 'Session 1',
+      date: '2020-05-29',
+      modules: [{
+        moduleNumber: 1,
+        moduleName: 'Operational Excellence 101'
+      },
+        {
+          moduleNumber: 2,
+          moduleName: 'Operations Planning'
+        },
+        {
+          moduleNumber: 3,
+          moduleName: 'CPU of Operations'
+        }]
+    },
+      {
+        sessionName: 'Session 2',
+        date: '2020-05-30',
+        modules: [{
+          moduleNumber: 4,
+          moduleName: 'Talent Management'
+        },
+          {
+            moduleNumber: 5,
+            moduleName: 'Talent Acquisition'
+          },
+          {
+            moduleNumber: 7,
+            moduleName: 'Key Performance Indicators'
+          }]
+      }];
+    const eventInfo = {
+      ...eventForm,
+      sessions
+    };
+    console.log(JSON.stringify(eventInfo));
+  }
+
+  setSelectedModule(module) {
+    if (this.selectedModules.indexOf(module) === -1) {
+      this.selectedModules.push(module);
+    } else {
+      const moduleIndex = this.selectedModules.indexOf(module);
+      this.selectedModules.splice(moduleIndex, 1);
+    }
+    console.log(module);
+  }
+
+  isChecked(module) {
+    return this.selectedModules.indexOf(module) !== -1;
+  }
+
+  addModules() {
+    this.modules.forEach((module, index) => {
+     this.selectedModules.forEach((selModule) => {
+       if (selModule.moduleNumber === module.moduleNumber) {
+         // @ts-ignore
+         module.isSelected = true;
+       }
+     });
+    });
+    this.addedModules = this.selectedModules;
+    console.log(this.addedModules);
+  }
+
+  removeModule(module) {
+    const moduleIndex = this.addedModules.indexOf(module);
+    this.addedModules.splice(moduleIndex, 1);
   }
 
   saveSession() {
+    const sessions = this.sessions;
+    if (this.editSession) {
+      sessions[this.editSession - 1] = {
+        sessionName: 'Session' + this.editSession
+      };
+    } else {
+
+    }
+  }
+  parseModules() {
 
   }
 }
