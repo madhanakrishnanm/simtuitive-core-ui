@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BookingsComponent } from './bookings.component';
-import {NgbNavModule} from "@ng-bootstrap/ng-bootstrap";
+import {NgbCollapseModule, NgbNavModule} from "@ng-bootstrap/ng-bootstrap";
 import { EventCardComponent } from './event-card/event-card.component';
+import {NgSelectModule} from "@ng-select/ng-select";
 
 
 
@@ -10,7 +11,9 @@ import { EventCardComponent } from './event-card/event-card.component';
   declarations: [BookingsComponent, EventCardComponent],
     imports: [
         CommonModule,
-        NgbNavModule
+        NgbNavModule,
+        NgbCollapseModule,
+        NgSelectModule
     ]
 })
 export class BookingsModule { }
