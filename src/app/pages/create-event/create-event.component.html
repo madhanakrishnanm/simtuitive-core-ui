@@ -2,7 +2,7 @@
   <div class="col-6">
     <form class="simtuitive-input" [formGroup]="eventForm" (ngSubmit)="save()">
       <div class="form-group row">
-        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Select Organisation</label>
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Select Organization</label>
         <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
           <ng-select
             [items]="clients"
@@ -10,7 +10,7 @@
             bindLabel="roleName"
             placeholder="Organizations"
             class="ng-select"
-            formControlName="organisation"
+            formControlName="organizationName"
           >
           </ng-select>
         </div>
@@ -24,7 +24,7 @@
             bindLabel="roleName"
             placeholder="Clients"
             class="ng-select"
-            formControlName="client"
+            formControlName="clientName"
           >
           </ng-select>
         </div>
@@ -35,10 +35,9 @@
           <ng-select
             [items]="products"
             [searchable]="false"
-            bindLabel="roleName"
             placeholder="Courses"
             class="ng-select"
-            formControlName="product"
+            formControlName="productName"
           >
           </ng-select>
         </div>
@@ -54,12 +53,12 @@
         </div>
       </div>
       <div class="form-group row">
-        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label"># Of Participants</label>
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">No Of Participants</label>
         <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
           <input
             type="text"
             class="form-control"
-            formControlName="noParticipants"
+            formControlName="noOfParticipants"
           />
         </div>
       </div>
@@ -141,7 +140,7 @@
           <button
             type="submit"
             class="btn btn-primary"
-            nbStepperNext
+            (click)="save()"
             [disabled]="next"
           >
             Create Event
@@ -261,14 +260,14 @@
           </div>
           <div class="col-12">
             <div class="selected-modules-cont">
-              <div class="selected-module-card">
+              <div class="selected-module-card" *ngFor="let module of addedModules;let i=index">
                 <div class="row">
-                  <div class="col-2"> 1. 1</div>
+                  <div class="col-2">{{module.moduleNumber}}</div>
                   <div class="col-8">
-                    Operational Excellence 101
+                    {{module.moduleName}}
                   </div>
                   <div class="col-2">
-                    <div class="close-icon">X</div>
+                    <div (click)="removeModule(module)" class="close-icon">X</div>
                   </div>
                 </div>
               </div>
@@ -286,11 +285,24 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-6">
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox"
-                     class="custom-control-input" id="remember">
-              <label class="custom-control-label" for="remember">Remember Me</label>
+          <div class="col-6" *ngFor="let module of modules;let i= index">
+            <div class="module-selection" *ngIf="!module.isSelected">
+              <div class="checkbox">
+                <label>
+                  <input (change)="setSelectedModule(module)" type="checkbox"
+                         [value]="module.moduleName"
+                         [checked]="isChecked(module)">
+                  <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                  <span (change)="setSelectedModule(module)" class="checkbox-label">
+                    {{module.moduleNumber}}.{{module.moduleName}}
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="col-12 py-2 text-center" (click)="addModules()">
+              <button class="btn btn-primary">Add</button>
             </div>
           </div>
         </div>
