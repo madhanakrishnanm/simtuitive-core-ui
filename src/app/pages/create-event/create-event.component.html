@@ -157,21 +157,6 @@
           <div class="add-icon" (click)="ngxSmartModalService.open('addEvent')">+ ADD</div>
         </div>
       </div>
-      <div class="session-info-card">
-        <div class="row">
-          <div class="col-4">
-            <div class="session-title">Session 1</div>
-          </div>
-          <div class="col-5">
-            <div class="session-date">DATE: 10/05/2020</div>
-          </div>
-          <div class="col-3">
-            <div class="edit-icon">
-              <img src="assets/img/event/edit.svg"/>EDIT
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="session-info-card" *ngFor="let session of sessions;let i =index">
         <div class="row">
           <div class="col-4">

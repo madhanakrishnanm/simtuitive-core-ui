@@ -189,12 +189,12 @@ export class CreateEventComponent implements OnInit {
     const sessions = this.sessions;
     if (this.editSession) {
       sessions[this.editSession - 1] = {
-        sessionName: 'Session' + this.editSession,
+        sessionName: 'Session ' + this.editSession,
         date: '29-05-2020'
       };
     } else {
       const session =  {
-        sessionName: 'Session' + this.editSession,
+        sessionName: 'Session ' + (sessions.length + 1),
         date: '29-05-2020'
       };
       this.sessions.push(session);
