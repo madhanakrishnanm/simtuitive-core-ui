@@ -1,1 +1,40 @@
-<p>bookings works!</p>
+<div class="site-content">
+  <div class="row">
+    <div class="col">
+      <h1>Bookings</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+        <li [ngbNavItem]="1">
+          <a ngbNavLink>New Bookings</a>
+          <ng-template ngbNavContent>
+            <app-event-card [bookings]="bookings"></app-event-card>
+          </ng-template>
+        </li>
+        <li [ngbNavItem]="2">
+          <a ngbNavLink>Approved Bookings</a>
+          <ng-template ngbNavContent>
+            <app-event-card [bookings]="bookings"></app-event-card>
+          </ng-template>
+        </li>
+        <li [ngbNavItem]="3">
+          <a ngbNavLink>Rejected Bookings</a>
+          <ng-template ngbNavContent>
+            <app-event-card [bookings]="bookings"></app-event-card>
+          </ng-template>
+        </li>
+        <li [ngbNavItem]="4">
+          <a ngbNavLink>Canceled Bookings</a>
+          <ng-template ngbNavContent>
+            <app-event-card [bookings]="bookings"></app-event-card>
+          </ng-template>
+        </li>
+      </ul>
+
+      <div [ngbNavOutlet]="nav" class="mt-2"></div>
+    </div>
+  </div>
+</div>

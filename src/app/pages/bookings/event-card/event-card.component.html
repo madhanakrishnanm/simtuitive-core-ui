@@ -1,0 +1,31 @@
+<div class="row">
+
+  <div class="col-12">
+    <div class="row event-header">
+      <div class="col ml-5">EVENT NAME</div>
+      <div class="col">CLIENT NAME</div>
+      <div class="col">BOOKING DATE</div>
+      <div class="col">COURSE</div>
+      <div class="col">NO OF DELEGATES</div>
+    </div>
+  </div>
+
+  <div class="col-12" *ngFor="let booking of bookings;">
+    <div class="row event-item">
+      <div class="col">
+        <span class="icon-options-vertical mr-4" style="font-size: 25px"></span>
+        <span style="color:#4093D4;">
+           {{booking.name}}
+        </span>
+      </div>
+      <div class="col">{{booking.clientName}}</div>
+      <div class="col">{{booking.bookingDate}}</div>
+      <div class="col">{{booking.course}}</div>
+      <div class="col">
+        <span>{{booking.noOfDelegates}}</span>
+        <span class="float-right icon-arrow-down icon"></span>
+      </div>
+    </div>
+  </div>
+</div>
+

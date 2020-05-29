@@ -7,7 +7,7 @@ import {RouterModule} from '@angular/router';
 import { TimeagoModule } from 'ngx-timeago';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule, NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
 import {LoginModule} from './pages/login/login.module';
 import {DashboardModule} from './pages/dashboard/dashboard.module';
 import {OrganizationsModule} from './pages/organizations/organizations.module';
@@ -46,6 +46,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ProductsModule} from './pages/products/products.module';
 import {EventsModule} from './pages/events/events.module';
+import {BookingsModule} from './pages/bookings/bookings.module';
 import {NgxUiLoaderConfig, NgxUiLoaderModule, NgxUiLoaderService, PB_DIRECTION, POSITION, SPINNER} from 'ngx-ui-loader';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
 import { ViewLicenseComponent } from './pages/view-license/view-license.component';
@@ -78,6 +79,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   ],
   imports: [
     BrowserModule,
+    NgbNavModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
@@ -90,6 +92,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     DashboardModule,
     OrganizationsModule,
     EventsModule,
+    BookingsModule,
     ViewEventsModule,
     AddOrganizationModule,
     EditOrganizationModule,
