@@ -22,5 +22,9 @@ export class ClientService {
   }
   deleteClient(payload){
     return this.apiService.delete('users/delete-id',payload);
+
+  }
+  getClientByOrganization(payload){
+    return this.apiService.get('users/get-client-org',payload);
   }
 }

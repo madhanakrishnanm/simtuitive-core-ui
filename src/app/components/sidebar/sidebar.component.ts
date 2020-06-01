@@ -21,12 +21,12 @@ export class SidebarComponent implements OnInit, AfterViewInit {
     this.getUser();
   }
   ngAfterViewInit() {
-    let path = window.location.pathname;
+   /* let path = window.location.pathname;
     if (path === '/events' || path === '/events/bookings'){
       setTimeout(()=>{
         this.showCollapse('Event Management')
       },1000)
-    }
+    }*/
   }
   getRouteByName(name) {
     switch (name) {
