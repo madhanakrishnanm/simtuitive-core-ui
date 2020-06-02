@@ -11,3 +11,29 @@
   height: 50px;
   align-items: center;
 }
+
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link{
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-bottom: 3px solid var(--primary);
+}
+.nav-link:hover{
+  border: none;
+  border-bottom: 3px solid var(--primary);
+}
+.nav-item{
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 11px;
+}
+.nav-link{
+  color: #6E7780;
+  padding: 0;
+  border: 0;
+  padding-bottom: 11px;
+}
+.nav-tabs{
+  border-bottom: 1px solid #222323;
+}

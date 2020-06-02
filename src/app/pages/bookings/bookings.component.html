@@ -11,25 +11,25 @@
         <li [ngbNavItem]="1">
           <a ngbNavLink>New Bookings</a>
           <ng-template ngbNavContent>
-            <app-event-card [bookings]="bookings"></app-event-card>
+            <app-booking-card [bookings]="bookings"></app-booking-card>
           </ng-template>
         </li>
         <li [ngbNavItem]="2">
           <a ngbNavLink>Approved Bookings</a>
           <ng-template ngbNavContent>
-            <app-event-card [bookings]="bookings"></app-event-card>
+            <app-booking-card [bookings]="bookings"></app-booking-card>
           </ng-template>
         </li>
         <li [ngbNavItem]="3">
           <a ngbNavLink>Rejected Bookings</a>
           <ng-template ngbNavContent>
-            <app-event-card [bookings]="bookings"></app-event-card>
+            <app-booking-card [bookings]="bookings"></app-booking-card>
           </ng-template>
         </li>
         <li [ngbNavItem]="4">
-          <a ngbNavLink>Canceled Bookings</a>
+          <a ngbNavLink>Canceled </a>
           <ng-template ngbNavContent>
-            <app-event-card [bookings]="bookings"></app-event-card>
+            <app-booking-card [bookings]="bookings"></app-booking-card>
           </ng-template>
         </li>
       </ul>

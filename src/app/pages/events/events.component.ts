@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
 export class EventsComponent implements OnInit {
 
   constructor(public router: Router) { }
+  active = 1;
   events = [
     {
       id: 1,

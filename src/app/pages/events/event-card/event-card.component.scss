@@ -1,0 +1,30 @@
+.event-header {
+  color : #6C6C6C;
+  padding: 20px 30px;
+}
+.event-item{
+  background-color: var(--bg-color-secondary);
+  padding: 30px;
+  color: #A6A6A6;
+  margin-bottom: 20px;
+  .icon {
+    font-size: 18px;
+    color: var(--primary);
+  }
+}
+.ng-select .ng-select-container {
+  color: var(--light);
+  background-color: var(--bg-color-primary) !important;
+}
+
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value {
+  background-color: var(--primary) !important;
+}
+
+.ng-dropdown-panel {
+  background: var(--bg-color-primary) !important;
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+  background: var(--bg-color-primary) !important;
+}

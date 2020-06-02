@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {OrganizationService} from "../../../services/organization.service";
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-event-card',
@@ -8,7 +8,6 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
   styleUrls: ['./event-card.component.scss']
 })
 export class EventCardComponent implements OnInit {
-
   isCollapsed = 0;
   activeCollapse = null;
   bookingActions = [
@@ -16,23 +15,24 @@ export class EventCardComponent implements OnInit {
     'Reject Booking',
     'Cancel Booking'
   ];
-  @Input() bookings;
-  constructor(private modalService: NgbModal) { }
+  @Input() events;
+
+  constructor(private modalService: NgbModal, public router: Router) {
+  }
 
   ngOnInit(): void {
   }
 
-  setActiveCollapse(id){
+  setActiveCollapse(id) {
     console.log(id);
-    if (this.activeCollapse === id){
+    if (this.activeCollapse === id) {
       this.activeCollapse = null;
-    }else {
+    } else {
       this.activeCollapse = id;
     }
   }
 
-  onChangeStatus(status, modalReference){
-    this.modalService.open(modalReference, {centered: true,windowClass: 'simtuitive-modal'});
+  onChangeStatus(status, modalReference) {
+    this.modalService.open(modalReference, {centered: true, windowClass: 'simtuitive-modal'});
   }
-
 }

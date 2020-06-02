@@ -10,7 +10,9 @@
         <div class="col-6">
           <form class="simtuitive-input" [formGroup]="eventForm" (ngSubmit)="save()">
             <div class="form-group row">
-              <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Select Organization</label>
+              <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">
+                Select Organization
+              </label>
               <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
                 <ng-select
                   [items]="organizations"
@@ -25,7 +27,9 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Select Clients</label>
+              <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">
+                Select Clients
+              </label>
               <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
                 <ng-select
                   [items]="clients"
@@ -39,7 +43,9 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Select Products/Course</label>
+              <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">
+                Select Products/Course
+              </label>
               <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
                 <ng-select
                   [items]="products"
@@ -64,7 +70,9 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">No Of Participants</label>
+              <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">
+                No Of Participants
+              </label>
               <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
                 <input
                   type="text"
@@ -356,7 +364,8 @@
                 (dateSelect)="onDateChange($event)"
 
               />
-              <div class="input-group-append my-auto" (click)="withoutTollGateDate.toggle()">
+              <div class="input-group-append my-auto"
+                   (click)="withoutTollGateDate.toggle()">
                     <span class="input-group-text">
                       <img src="assets/img/interface.svg">
                     </span>
@@ -364,7 +373,8 @@
             </div>
           </div>
           <div class="offset-4 col-8 text-center pt-4">
-            <button class="btn btn-primary" (click)="saveSessionWithoutTollGate('withoutTollGate')">Save</button>
+            <button class="btn btn-primary"
+                    (click)="saveSessionWithoutTollGate('withoutTollGate')">Save</button>
           </div>
         </div>
       </div>
