@@ -30,11 +30,9 @@ import {TestComponent} from './pages/test/test.component';
 import {ForgotPasswordComponent} from './pages/forgot-password/forgot-password.component';
 import {UpdatePasswordComponent} from './pages/update-password/update-password.component';
 
-import {EventSummaryComponent} from './pages/event-summary/event-summary.component';
 import {EventsComponent} from './pages/events/events.component';
 import {AddEventComponent} from './pages/add-event/add-event.component';
 import {EditEventComponent} from './pages/edit-event/edit-event.component';
-import {ViewEventsComponent} from './pages/view-events/view-events.component';
 import {BookingsComponent} from './pages/bookings/bookings.component';
 import {AddProductComponent} from './pages/add-product/add-product.component';
 import {ViewLicenseComponent} from './pages/view-license/view-license.component';
@@ -74,8 +72,6 @@ const routes: Routes = [
       {path: 'events', component: EventsComponent},
       {path: 'events/add-event', component: AddEventComponent},
       {path: 'events/edit-event/:id', component: EditEventComponent},
-      {path: 'events/event-summary', component: EventSummaryComponent},
-      {path: 'events/view-event', component: ViewEventsComponent},
       {path: 'events/bookings', component: BookingsComponent},
 
     ]

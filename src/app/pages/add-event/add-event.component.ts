@@ -7,7 +7,9 @@ import {getDateFromObject} from '../../lib';
 import {NgxSmartModalService} from 'ngx-smart-modal';
 import {ClientService} from "../../services/client.service";
 import {OrganizationService} from "../../services/organization.service";
-
+import {NgxUiLoaderService} from "ngx-ui-loader";
+import {ToastrService} from "ngx-toastr";
+import _ from 'lodash';
 @Component({
   selector: 'app-add-event',
   templateUrl: './add-event.component.html',
@@ -84,14 +86,18 @@ export class AddEventComponent implements OnInit {
   sessions = [];
   selectedModules = [];
   addedModules = [];
-  editSession = 0;
+  editSession = {};
+  editSessionIndex = 0;
   session = {};
   sessionTitle = null;
+  sessionDate = null;
   constructor(private fb: FormBuilder,
               private eventService: EventService,
               private clientService: ClientService,
               private organizationService: OrganizationService,
+              private ngxUiLoaderService: NgxUiLoaderService,
               public ngxSmartModalService: NgxSmartModalService,
+              private toastrService: ToastrService,
               private router: Router) {
   }
 
@@ -129,16 +135,14 @@ export class AddEventComponent implements OnInit {
     this.ngxSmartModalService.open(modalId);
   }
   onDateChange(event){
-    console.log(event);
     this.session['date'] = event;
   }
   onChangeOrganization(organization){
-    console.log(organization);
     let payload = {
       orgName: organization.organizationName
     };
     this.clientService.getClientByOrganization(payload).subscribe((res: any) => {
-      console.log(res);
+      // console.log(res);
       this.clients = res.data;
     });
 
@@ -148,7 +152,10 @@ export class AddEventComponent implements OnInit {
   }
 
   save() {
-    console.log(this.eventForm.value);
+    if (this.eventForm.invalid) {
+      return;
+    }
+    this.ngxUiLoaderService.start();
     const eventForm = this.eventForm.value;
     eventForm.startDate = getDateFromObject(eventForm.startDate);
     eventForm.endDate = getDateFromObject(eventForm.endDate);
@@ -156,7 +163,18 @@ export class AddEventComponent implements OnInit {
       ...eventForm,
       sessions: this.sessions
     };
-    console.log(JSON.stringify(eventInfo));
+    this.eventService.addEvent(eventInfo).subscribe((res: any) => {
+      console.log(res);
+      this.ngxUiLoaderService.stop();
+      this.router.navigate(['/events']);
+    }, error => {
+      if (error.error.userMessage) {
+        this.toastrService.warning(error.error.userMessage);
+      } else {
+        this.toastrService.warning('Something went to be wrong!');
+      }
+      this.ngxUiLoaderService.stop();
+    });
   }
 
   setSelectedModule(module) {
@@ -184,35 +202,57 @@ export class AddEventComponent implements OnInit {
 
   }
 
+  requestEditSession(sessionIndex){
+    let modalId = null;
+    this.editSession = this.sessions[sessionIndex];
+    if (this.tollGate === 'yes'){
+      modalId = 'withTollGate'
+    }if (this.tollGate === 'no'){
+      modalId = 'withoutTollGate'
+    }
+    this.sessionTitle = this.editSession['name'];
+    this.da = this.editSession['name'];
+    this.ngxSmartModalService.open(modalId);
+  }
+  resetSession(){
+    this.editSession = {};
+    this.editSessionIndex = 0;
+  }
+
   saveSession(modalId) {
-    const sessions = this.sessions;
-    if (this.editSession) {
-      sessions[this.editSession - 1] = {
-        sessionName: 'Session ' + this.editSession,
-        date: '29-05-2020'
-      };
+    console.log(this.editSession);
+    if (!_.isEmpty(this.editSession)) {
+      console.log('edit');
+      this.session['name'] = this.sessionTitle;
+      this.session['modules'] = this.selectedModules;
+      this.sessions[this.editSessionIndex] = {...this.session};
+      this.session = {};
+      this.selectedModules = [];
+      this.editSession = {};
     } else {
       this.session['name'] = this.sessionTitle;
-      this.session['moduels'] = this.selectedModules;
+      this.session['modules'] = this.selectedModules;
       this.sessions.push({...this.session});
       this.session = {};
       this.selectedModules = [];
+      console.log('sessions');
       console.log(this.sessions);
     }
     this.ngxSmartModalService.close(modalId);
   }
   saveSessionWithoutTollGate(modalId){
-    const sessions = this.sessions;
+
     if (this.editSession) {
-      sessions[this.editSession - 1] = {
-        sessionName: 'Session ' + this.editSession,
-        date: '29-05-2020'
-      };
+      this.session['name'] = this.sessionTitle;
+      this.session['modules'] = this.selectedModules;
+      this.sessions[this.editSessionIndex] = {...this.session};
+      this.session = {};
+      this.selectedModules = [];
+      this.editSession = {};
     } else {
       this.session['name'] = this.sessionTitle;
       this.sessions.push({...this.session});
       this.session = {};
-      console.log(this.sessions);
     }
     this.ngxSmartModalService.close(modalId);
   }

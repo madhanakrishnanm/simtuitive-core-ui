@@ -38,8 +38,6 @@ import {LicenseModule} from './pages/license/license.module';
 import {AddLicenseModule} from './pages/add-license/add-license.module';
 import {EditLicenseModule} from './pages/edit-license/edit-license.module';
 import {AddEventModule} from './pages/add-event/add-event.module';
-import {ViewEventsModule} from './pages/view-events/view-events.module';
-import {EventSummaryModule} from './pages/event-summary/event-summary.module';
 import { EditEventComponent } from './pages/edit-event/edit-event.component';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { ToastrModule } from 'ngx-toastr';
@@ -93,7 +91,6 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     OrganizationsModule,
     EventsModule,
     BookingsModule,
-    ViewEventsModule,
     AddOrganizationModule,
     EditOrganizationModule,
     ClientsListModule,
@@ -112,7 +109,6 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     PermissionsModule,
     AddPermissionModule,
     EditPermissionModule,
-    EventSummaryModule,
     NgSelectModule,
     TimeagoModule,
     NgbModule,

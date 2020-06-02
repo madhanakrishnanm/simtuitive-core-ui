@@ -1,16 +1,27 @@
 import { Injectable } from '@angular/core';
 import {Observable, of} from 'rxjs';
+import {ApiService} from "./api.service";
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
   event: any = [];
-  constructor() { }
+
+  constructor(private apiService: ApiService) { }
+
   addEvent(payload) {
-    this.event = payload;
+    return this.apiService.post('events/add-event', payload);
   }
-  // @ts-ignore
-  getEventsDetails(): Observable<any[]> {
-    return of(this.event);
+  editEvent(payload) {
+    return this.apiService.put('events/edit-event', payload);
+  }
+  getAllEvents(payload) {
+    return this.apiService.get('events/get-events', payload);
+  }
+  getEventById(payload) {
+    return this.apiService.get('events/get-event', payload);
+  }
+  deleteEvent(payload) {
+    return this.apiService.delete('events/delete-event', payload);
   }
 }

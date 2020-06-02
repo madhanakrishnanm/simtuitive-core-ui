@@ -198,7 +198,7 @@
                   <div class="session-date">DATE: {{session.date.day + '-' + session.date.month + '-' + session.date.year}}</div>
                 </div>
                 <div class="col-3">
-                  <div class="edit-icon">
+                  <div class="edit-icon" (click)="requestEditSession(i)" >
                     <img src="assets/img/event/edit.svg"/>EDIT
                   </div>
                 </div>
@@ -219,6 +219,7 @@
   customClass="withTollGate"
   identifier="withTollGate"
   [dismissable]="false"
+  (onAnyCloseEvent)="resetSession()"
 >
   <div class="session-popup-cont">
     <div class="row">
@@ -328,6 +329,7 @@
   customClass="withoutTollGate"
   identifier="withoutTollGate"
   [dismissable]="false"
+  (onAnyCloseEvent)="resetSession()"
 >
   <div class="session-popup-cont">
     <div class="row simtuitive-input">

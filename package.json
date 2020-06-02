@@ -29,6 +29,7 @@
     "bs-stepper": "^1.7.0",
     "font-awesome": "^4.7.0",
     "line-awesome": "^1.3.0",
+    "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "ng-sidebar": "^9.2.0",
     "ngx-smart-modal": "^7.4.0",
