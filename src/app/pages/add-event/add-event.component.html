@@ -195,7 +195,7 @@
                   <div class="session-title">{{session.name}}</div>
                 </div>
                 <div class="col-5">
-                  <div class="session-date">DATE: {{session.date.day + '-' + session.date.month + '-' + session.date.year}}</div>
+                  <div class="session-date">DATE: {{session.date}}</div>
                 </div>
                 <div class="col-3">
                   <div class="edit-icon" (click)="requestEditSession(i)" >
@@ -241,6 +241,7 @@
                     type="text"
                     class="form-control"
                     ngbDatepicker
+                    [(ngModel)]="sessionDate"
                     #session="ngbDatepicker"
                     placement="bottom-right"
                     (dateSelect)="onDateChange($event)"
@@ -348,6 +349,7 @@
               <input
                 type="text"
                 class="form-control"
+                [(ngModel)]="sessionDate"
                 ngbDatepicker
                 #withoutTollGateDate="ngbDatepicker"
                 placement="bottom-right"

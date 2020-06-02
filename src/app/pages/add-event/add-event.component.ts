@@ -3,13 +3,14 @@ import {Router} from '@angular/router';
 import Stepper from 'bs-stepper';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {EventService} from '../../services/event.service';
-import {getDateFromObject} from '../../lib';
+import {getDateFromObject, reverseDate} from '../../lib';
 import {NgxSmartModalService} from 'ngx-smart-modal';
-import {ClientService} from "../../services/client.service";
-import {OrganizationService} from "../../services/organization.service";
-import {NgxUiLoaderService} from "ngx-ui-loader";
-import {ToastrService} from "ngx-toastr";
+import {ClientService} from '../../services/client.service';
+import {OrganizationService} from '../../services/organization.service';
+import {NgxUiLoaderService} from 'ngx-ui-loader';
+import {ToastrService} from 'ngx-toastr';
 import _ from 'lodash';
+import * as moment from 'moment';
 @Component({
   selector: 'app-add-event',
   templateUrl: './add-event.component.html',
@@ -24,11 +25,11 @@ export class AddEventComponent implements OnInit {
   products = [
     {
       name: 'Advance Excel',
-      id: "1"
+      id: '1'
     },
     {
       name: 'Operational Excellence',
-      id: "2"
+      id: '2'
     },
   ];
   modules = [
@@ -86,9 +87,9 @@ export class AddEventComponent implements OnInit {
   sessions = [];
   selectedModules = [];
   addedModules = [];
-  editSession = {};
+  editSession: any = {};
   editSessionIndex = 0;
-  session = {};
+  session: any = {};
   sessionTitle = null;
   sessionDate = null;
   constructor(private fb: FormBuilder,
@@ -117,7 +118,7 @@ export class AddEventComponent implements OnInit {
     this.organizationService.getAllOrganization({}).subscribe((res: any) => {
       console.log(res);
       this.organizations = res.data;
-    })
+    });
   }
 
   get f() {
@@ -126,19 +127,22 @@ export class AddEventComponent implements OnInit {
 
   openModal() {
     let modalId = null;
-    if (this.tollGate === 'yes'){
-      modalId = 'withTollGate'
-    }if (this.tollGate === 'no'){
-      modalId = 'withoutTollGate'
+    if (this.tollGate === 'yes') {
+      modalId = 'withTollGate';
     }
-    this.sessionTitle = 'Session '+ (this.sessions.length + 1);
+    if (this.tollGate === 'no') {
+      modalId = 'withoutTollGate';
+    }
+    this.sessionTitle = 'Session ' + (this.sessions.length + 1);
+    this.sessionDate = reverseDate(moment().format('YYYY-MM-DD'));
     this.ngxSmartModalService.open(modalId);
   }
-  onDateChange(event){
-    this.session['date'] = event;
+  onDateChange(event) {
+    console.log(this.sessionDate);
+    this.session.date = event;
   }
-  onChangeOrganization(organization){
-    let payload = {
+  onChangeOrganization(organization) {
+    const payload = {
       orgName: organization.organizationName
     };
     this.clientService.getClientByOrganization(payload).subscribe((res: any) => {
@@ -147,7 +151,7 @@ export class AddEventComponent implements OnInit {
     });
 
   }
-  onTollGateChange(){
+  onTollGateChange() {
     this.sessions = [];
   }
 
@@ -202,19 +206,20 @@ export class AddEventComponent implements OnInit {
 
   }
 
-  requestEditSession(sessionIndex){
+  requestEditSession(sessionIndex) {
     let modalId = null;
     this.editSession = this.sessions[sessionIndex];
-    if (this.tollGate === 'yes'){
-      modalId = 'withTollGate'
-    }if (this.tollGate === 'no'){
-      modalId = 'withoutTollGate'
+    if (this.tollGate === 'yes') {
+      modalId = 'withTollGate';
     }
-    this.sessionTitle = this.editSession['name'];
-    this.da = this.editSession['name'];
+    if (this.tollGate === 'no') {
+      modalId = 'withoutTollGate';
+    }
+    this.sessionTitle = this.editSession.name;
+    this.sessionDate = reverseDate(this.editSession.date);
     this.ngxSmartModalService.open(modalId);
   }
-  resetSession(){
+  resetSession() {
     this.editSession = {};
     this.editSessionIndex = 0;
   }
@@ -223,15 +228,17 @@ export class AddEventComponent implements OnInit {
     console.log(this.editSession);
     if (!_.isEmpty(this.editSession)) {
       console.log('edit');
-      this.session['name'] = this.sessionTitle;
-      this.session['modules'] = this.selectedModules;
+      this.session.name = this.sessionTitle;
+      this.session.modules = this.selectedModules;
+      this.session.date = getDateFromObject(this.sessionDate);
       this.sessions[this.editSessionIndex] = {...this.session};
       this.session = {};
       this.selectedModules = [];
       this.editSession = {};
     } else {
-      this.session['name'] = this.sessionTitle;
-      this.session['modules'] = this.selectedModules;
+      this.session.name = this.sessionTitle;
+      this.session.modules = this.selectedModules;
+      this.session.date = getDateFromObject(this.sessionDate);
       this.sessions.push({...this.session});
       this.session = {};
       this.selectedModules = [];
@@ -240,17 +247,17 @@ export class AddEventComponent implements OnInit {
     }
     this.ngxSmartModalService.close(modalId);
   }
-  saveSessionWithoutTollGate(modalId){
+  saveSessionWithoutTollGate(modalId) {
 
     if (this.editSession) {
-      this.session['name'] = this.sessionTitle;
-      this.session['modules'] = this.selectedModules;
+      this.session.name = this.sessionTitle;
+      this.session.modules = this.selectedModules;
       this.sessions[this.editSessionIndex] = {...this.session};
       this.session = {};
       this.selectedModules = [];
       this.editSession = {};
     } else {
-      this.session['name'] = this.sessionTitle;
+      this.session.name = this.sessionTitle;
       this.sessions.push({...this.session});
       this.session = {};
     }
@@ -259,7 +266,7 @@ export class AddEventComponent implements OnInit {
   parseModules() {
 
   }
-  resetForm(){
+  resetForm() {
     this.eventForm = this.fb.group(this.eventFormDetails);
   }
 }
