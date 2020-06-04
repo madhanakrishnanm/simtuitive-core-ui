@@ -21,12 +21,10 @@ function containsObject(obj, list) {
 }
 
 function reverseDate(date) {
-  let mom = moment(date);
-  console.log(date);
   return {
-    year: parseInt(mom.format('YYYY')),
-    month: parseInt(mom.format('MM')),
-    day: parseInt(mom.format('DD'), 2)
+    year: parseInt(date.format('YYYY')),
+    month: parseInt(date.format('MM')),
+    day: parseInt(date.format('DD'))
   }
 }
 

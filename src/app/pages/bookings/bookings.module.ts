@@ -4,6 +4,7 @@ import { BookingsComponent } from './bookings.component';
 import {NgbCollapseModule, NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgSelectModule} from '@ng-select/ng-select';
 import { BookingCardComponent } from './booking-card/booking-card.component';
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -15,7 +16,8 @@ import { BookingCardComponent } from './booking-card/booking-card.component';
         CommonModule,
         NgbNavModule,
         NgbCollapseModule,
-        NgSelectModule
+        NgSelectModule,
+        FormsModule
     ]
 })
 export class BookingsModule { }

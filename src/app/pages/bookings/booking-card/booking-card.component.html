@@ -14,23 +14,26 @@
   <div class="col-12" *ngFor="let booking of bookings;index as i">
     <div class="row event-item">
       <div
-        class="col-12"
+        class="col-12 pointer"
         (click)="setActiveCollapse(i)"
         [attr.aria-expanded]="i !== activeCollapse"
         aria-controls="i"
       >
         <div class="row">
-          <div class="col">{{booking.name}}</div>
+          <div class="col">{{booking.eventName}}</div>
           <div class="col">{{booking.clientName}}</div>
-          <div class="col">{{booking.bookingDate}}</div>
-          <div class="col">{{booking.course}}</div>
-          <div class="col">{{booking.noOfDelegates}}</div>
+          <div class="col">{{parseDate(booking.createdAt)}}</div>
+          <div class="col">{{booking.productName}}</div>
+          <div class="col">{{booking.noOfParticipants}}</div>
           <div class="col">
             <ng-select
               [items]="bookingActions"
+              [(ngModel)]="activeStatus"
               [searchable]="false"
+              class="status-select"
+              [clearable]="false"
               (click)="$event.stopPropagation()"
-              (change)="onChangeStatus($event, content)"
+              (change)="onChangeStatus($event,booking.bookingId, content)"
               placeholder="Select Booking Status"
             >
             </ng-select>
@@ -38,19 +41,19 @@
         </div>
       </div>
       <div class="col-12">
-        <div class="mt-5" [id]="i" [ngbCollapse]="i !== activeCollapse">
+        <div class="mt-2" [id]="i" [ngbCollapse]="i !== activeCollapse">
           <div class="row" style="background-color: var(--bg-color-secondary)">
-            <div class="col-12 text-center">
-              <div class="row">
-                <div class="col-3">EVENT START DATE</div>
-                <div class="col-3">EVENT END DATE</div>
+            <div class="col-12">
+              <div class="row" style="color: #6C6C6C">
+                <div class="col-2">START DATE</div>
+                <div class="col-2">END DATE</div>
                 <div class="col-6">NOTES</div>
               </div>
             </div>
-            <div class="col-12 pt-4 text-center">
+            <div class="col-12 pt-2">
               <div class="row">
-                <div class="col-3  pl-4">{{booking.startDate}}</div>
-                <div class="col-3">{{booking.endDate}}</div>
+                <div class="col-2">{{parseDate(booking.startDate)}}</div>
+                <div class="col-2">{{parseDate(booking.endDate)}}</div>
                 <div class="col-6">{{booking.notes}}</div>
               </div>
             </div>
@@ -78,7 +81,7 @@
         <button type="button" class="btn btn-warning" (click)="modal.close('Save click')">Cancel</button>
       </div>
       <div class="col">
-        <button type="button" class="btn btn-primary">Confirm</button>
+        <button type="button" class="btn btn-primary" (click)="requestUpdateStatus(modal)">Confirm</button>
       </div>
     </div>
   </div>

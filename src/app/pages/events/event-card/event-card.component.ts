@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Router} from '@angular/router';
+import {EventService} from "../../../services/event.service";
+import {BookingService} from "../../../services/booking.service";
 
 @Component({
   selector: 'app-event-card',
@@ -17,10 +19,14 @@ export class EventCardComponent implements OnInit {
   ];
   @Input() events;
 
-  constructor(private modalService: NgbModal, public router: Router) {
+  constructor(private modalService: NgbModal,
+              private eventService: EventService,
+              private bookingService: BookingService,
+              public router: Router) {
   }
 
   ngOnInit(): void {
+
   }
 
   setActiveCollapse(id) {

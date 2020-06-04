@@ -1,12 +1,15 @@
 .event-header {
   color : #6C6C6C;
-  padding: 20px 30px;
+  padding: 20px 20px;
+  background-color: var(--bg-color-secondary);
 }
 .event-item{
   background-color: var(--bg-color-secondary);
-  padding: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
   color: #A6A6A6;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   .icon {
     font-size: 18px;
     color: var(--primary);
@@ -27,4 +30,10 @@
 
 .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
   background: var(--bg-color-primary) !important;
+}
+
+.copy-icon{
+  font-size: 25px;
+  margin-right: 10px;
+  color: var(--primary);
 }

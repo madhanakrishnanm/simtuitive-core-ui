@@ -1,57 +1,42 @@
-<div class="row">
+<div class="container-fluid pt-4">
+  <div class="row" *ngFor="let event of events;index as i">
 
-  <div class="col-12">
-    <div class="row event-header">
-      <div class="col">EVENT NAME</div>
-      <div class="col">CLIENT NAME</div>
-      <div class="col">BOOKING DATE</div>
-      <div class="col">COURSE</div>
-      <div class="col">NO OF DELEGATES</div>
-      <div class="col">ACTION</div>
-    </div>
-  </div>
-
-  <div class="col-12" *ngFor="let event of events;index as i">
-    <div class="row event-item">
-      <div
-        class="col-12"
-        (click)="setActiveCollapse(i)"
-        [attr.aria-expanded]="i !== activeCollapse"
-        aria-controls="i"
-      >
-        <div class="row">
-          <div class="col">{{event.name}}</div>
-          <div class="col">{{event.clientName}}</div>
-          <div class="col">{{event.bookingDate}}</div>
-          <div class="col">{{event.course}}</div>
-          <div class="col">{{event.noOfDelegates}}</div>
-          <div class="col">
-            <ng-select
-              [items]="bookingActions"
-              [searchable]="false"
-              (click)="$event.stopPropagation()"
-              (change)="onChangeStatus($event, content)"
-              placeholder="Select Booking Status"
-            >
-            </ng-select>
-          </div>
-        </div>
+    <div class="col-12">
+      <div class="row event-header">
+        <div class="col">EVENT NAME</div>
+        <div class="col">CLIENT NAME</div>
+        <div class="col">COURSE</div>
+        <div class="col">NO OF DELEGATES</div>
+        <div class="col">TOLL STATUS</div>
+        <div class="col">PASS CODE</div>
+        <div class="col">ACTION</div>
       </div>
-      <div class="col-12">
-        <div class="mt-5" [id]="i" [ngbCollapse]="i !== activeCollapse">
-          <div class="row" style="background-color: var(--bg-color-secondary)">
-            <div class="col-12 text-center">
-              <div class="row">
-                <div class="col-3">EVENT START DATE</div>
-                <div class="col-3">EVENT END DATE</div>
-                <div class="col-6">NOTES</div>
-              </div>
+    </div>
+
+    <div class="col-12">
+      <div class="row event-item">
+        <div
+          class="col-12"
+          (click)="setActiveCollapse(i)"
+          [attr.aria-expanded]="i !== activeCollapse"
+          aria-controls="i"
+        >
+          <div class="row">
+            <div class="col"><span style="color: #4093D4">{{event.eventName}}</span></div>
+            <div class="col">{{event.clientName}}</div>
+            <div class="col">{{event.productName}}</div>
+            <div class="col">{{event.noOfParticipants}}</div>
+            <div class="col">
+              <span style="text-transform: capitalize;">{{event.tollPass}}</span>
             </div>
-            <div class="col-12 pt-4 text-center">
-              <div class="row">
-                <div class="col-3  pl-4">{{event.startDate}}</div>
-                <div class="col-3">{{event.endDate}}</div>
-                <div class="col-6">{{event.notes}}</div>
+            <div class="col">
+              <span style="margin-right: 10px;">{{event.passCode}}</span>
+              <i class="lar la-copy copy-icon"></i>
+            </div>
+            <div class="col" style="vertical-align: middle">
+              <div class="pointer" (click)="router.navigate(['events/edit-event', event.eventId])">
+                <i class="las la-edit" style="color:var(--primary);font-size: 25px;margin-right: 5px"></i>
+                <span style="color: var(--primary);">EDIT</span>
               </div>
             </div>
           </div>

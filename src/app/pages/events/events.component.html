@@ -27,23 +27,23 @@
 
   <div class="row">
     <div class="col-12">
-      <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+      <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs" (navChange)="onTabChange($event)">
         <li [ngbNavItem]="1">
           <a ngbNavLink>Up Coming</a>
           <ng-template ngbNavContent>
-            <app-event-card [events]="[]"></app-event-card>
+            <app-event-card [events]="events"></app-event-card>
           </ng-template>
         </li>
         <li [ngbNavItem]="2">
           <a ngbNavLink>In Progress</a>
           <ng-template ngbNavContent>
-            <app-event-card [events]="[]"></app-event-card>
+            <app-event-card [events]="events"></app-event-card>
           </ng-template>
         </li>
         <li [ngbNavItem]="3">
           <a ngbNavLink>Completed</a>
           <ng-template ngbNavContent>
-            <app-event-card [events]="[]"></app-event-card>
+            <app-event-card [events]="events"></app-event-card>
           </ng-template>
         </li>
       </ul>

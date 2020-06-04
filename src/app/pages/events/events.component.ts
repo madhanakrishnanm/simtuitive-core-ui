@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {EventService} from "../../services/event.service";
+import {BookingService} from "../../services/booking.service";
 
 @Component({
   selector: 'app-events',
@@ -8,37 +10,39 @@ import {Router} from '@angular/router';
 })
 export class EventsComponent implements OnInit {
 
-  constructor(public router: Router) { }
-  active = 1;
-  events = [
-    {
-      id: 1,
-      name: 'The Last Stand',
-      clientName: 'Allianz Cornhill',
-      bookingDate: '10/03/2020',
-      course: 'Advanced Excel',
-      noOfDelegates: 145,
-      bookingStatus: 'New Booking',
-      startDate: '11/04/2020',
-      endDate: '20/07/2020',
-      // tslint:disable-next-line:max-line-length
-      notes: 'Lorem ips'
-    },
-    {
-      id: 2,
-      name: 'CX Grandstand',
-      clientName: 'Allianz Cornhill',
-      bookingDate: '10/03/2020',
-      course: 'Advanced Excel',
-      noOfDelegates: 345,
-      bookingStatus: 'New Booking',
-      startDate: '11/04/2020',
-      endDate: '20/07/2020',
-      // tslint:disable-next-line:max-line-length
-      notes: 'Lorem ips'
-    }
-  ];
-  ngOnInit(): void {
+  constructor(public router: Router,
+              private eventService: EventService,
+              private bookingService: BookingService,
+  ) {
   }
 
+  active = 1;
+  events = [];
+  selectedEvents = [];
+  ngOnInit(): void {
+    this.eventService.getAllEvents({}).subscribe((res: any) => {
+      console.log(res);
+      this.events = res.data;
+      this.filterEventsByStatus('UpComing')
+    });
+  }
+
+  onTabChange(tab) {
+    if (tab.activeId === 1){
+      this.filterEventsByStatus('UpComing');
+    }else if (tab.activeId === 2){
+      this.filterEventsByStatus('InProgress');
+    }else if (tab.activeId === 3){
+      this.filterEventsByStatus('Completed');
+    }
+    console.log(event);
+  }
+  filterEventsByStatus(status){
+    this.selectedEvents = [];
+    this.events.forEach((event) => {
+      if (event.status === status){
+        this.selectedEvents.push(event);
+      }
+    });
+  }
 }

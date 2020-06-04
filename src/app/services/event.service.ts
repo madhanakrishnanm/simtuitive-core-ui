@@ -16,10 +16,10 @@ export class EventService {
     return this.apiService.put('events/edit-event', payload);
   }
   getAllEvents(payload) {
-    return this.apiService.get('events/get-events', payload);
+    return this.apiService.get('events/get-all-event', payload);
   }
   getEventById(payload) {
-    return this.apiService.get('events/get-event', payload);
+    return this.apiService.get('events/get-event-id', payload);
   }
   deleteEvent(payload) {
     return this.apiService.delete('events/delete-event', payload);

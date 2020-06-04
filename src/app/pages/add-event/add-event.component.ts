@@ -11,6 +11,8 @@ import {NgxUiLoaderService} from 'ngx-ui-loader';
 import {ToastrService} from 'ngx-toastr';
 import _ from 'lodash';
 import * as moment from 'moment';
+import {BookingService} from "../../services/booking.service";
+import {UtilService} from "../../services/util.service";
 @Component({
   selector: 'app-add-event',
   templateUrl: './add-event.component.html',
@@ -31,6 +33,10 @@ export class AddEventComponent implements OnInit {
       name: 'Operational Excellence',
       id: '2'
     },
+    {
+      name: 'productNameNew',
+      id: '12312'
+    }
   ];
   modules = [
     {
@@ -99,6 +105,8 @@ export class AddEventComponent implements OnInit {
               private ngxUiLoaderService: NgxUiLoaderService,
               public ngxSmartModalService: NgxSmartModalService,
               private toastrService: ToastrService,
+              private bookingService: BookingService,
+              private utilService: UtilService,
               private router: Router) {
   }
 
@@ -118,11 +126,40 @@ export class AddEventComponent implements OnInit {
     this.organizationService.getAllOrganization({}).subscribe((res: any) => {
       console.log(res);
       this.organizations = res.data;
+
+    }, error => {}, ()=>{
+      this.isRedirectFromBooking();
     });
   }
 
   get f() {
     return this.eventForm.controls;
+  }
+
+  isRedirectFromBooking(){
+    const urlParams = new URLSearchParams(window.location.search);
+    const bookingId = urlParams.get('bookingId');
+    console.log(bookingId);
+    this.bookingService.getBookingById({id: bookingId}).subscribe((res: any) => {
+      console.log(res);
+      let booking = res.data;
+      let event = {};
+      console.log(this.organizations);
+      console.log(this.products);
+      console.log(booking.orgName);
+      let organization = this.organizations.find(org => org.organizationName === booking.orgName);
+      if (organization) {
+        event['organization'] = organization;
+      }
+      event['product'] =  this.products.find(product => product.id === booking.productId);
+      event['eventName'] = booking['eventName'];
+      event['noOfParticipants'] = booking['noOfParticipants'];
+      event['startDate'] = this.utilService.reverseDate(booking['startDate']);
+      event['endDate'] = this.utilService.reverseDate(booking['endDate']);
+      event['notes'] = booking['notes'];
+      console.log(event);
+      this.eventForm.patchValue(event);
+    });
   }
 
   openModal() {
@@ -134,7 +171,9 @@ export class AddEventComponent implements OnInit {
       modalId = 'withoutTollGate';
     }
     this.sessionTitle = 'Session ' + (this.sessions.length + 1);
-    this.sessionDate = reverseDate(moment().format('YYYY-MM-DD'));
+    console.log(moment().toDate());
+    this.sessionDate = reverseDate(moment());
+    console.log(this.sessionDate);
     this.ngxSmartModalService.open(modalId);
   }
   onDateChange(event) {
@@ -160,13 +199,18 @@ export class AddEventComponent implements OnInit {
       return;
     }
     this.ngxUiLoaderService.start();
-    const eventForm = this.eventForm.value;
+    const eventForm = {...this.eventForm.value};
     eventForm.startDate = getDateFromObject(eventForm.startDate);
     eventForm.endDate = getDateFromObject(eventForm.endDate);
+    eventForm.productName = eventForm.product.name;
+    eventForm.productId = eventForm.product.id;
+    eventForm.type = 'Event';
+    delete eventForm.product;
     const eventInfo = {
       ...eventForm,
       sessions: this.sessions
     };
+    console.log(eventInfo);
     this.eventService.addEvent(eventInfo).subscribe((res: any) => {
       console.log(res);
       this.ngxUiLoaderService.stop();

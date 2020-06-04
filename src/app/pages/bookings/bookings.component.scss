@@ -9,8 +9,7 @@
   border-bottom: 3px solid var(--primary);
 }
 .nav-item{
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-right: 50px;
   padding-top: 11px;
 }
 .nav-link{
@@ -21,4 +20,46 @@
 }
 .nav-tabs{
   border-bottom: 1px solid #222323;
+}
+
+.ng-select .ng-select-container {
+  color: var(--light);
+  background-color: var(--bg-color-primary) !important;
+  border: none;
+  align-items: center;
+  border-radius: 11px;
+  box-shadow: none;
+}
+
+.ng-select .ng-arrow-wrapper .ng-arrow {
+  border-style: none;
+}
+
+.ng-select .ng-arrow-wrapper .ng-arrow:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f078";
+  color: var(--primary);
+
+}
+
+.ng-select.ng-select-opened .ng-select-container .ng-arrow:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f077";
+  color: var(--primary);
+  display: inline-block;
+}
+
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value {
+  background-color: var(--primary);
+}
+
+.ng-dropdown-panel {
+  border: 0;
+  border-radius: 0;
+  background: var(--bg-color-primary) !important;
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+  background: var(--bg-color-primary) !important;
+  color: var(--light) !important;
 }
