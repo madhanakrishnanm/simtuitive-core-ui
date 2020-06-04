@@ -1,19 +1,20 @@
-<nav class="navbar navbar-expand-lg fixed-top " style="background-color: var(--bg-color-secondary)">
+<nav class="navbar navbar-expand-lg fixed-top"
+     style="background-color: var(--bg-color-secondary)">
   <div class="container-fluid">
-
     <button
       [title]="title"
       id="toggle-sidebar"
       type="button"
       (click)="toggleSidebar($event)"
-      class="btn btn-outline-primary sidebar-toggle-btn"
-    >
+      class="btn btn-outline-primary sidebar-toggle-btn">
       <span><i class="fa fa-navicon"></i></span>
     </button>
+
     <div ngbDropdown class="mr-5 mt-1">
-    <a  class="user-name" style="color: var(--primary);"  ngbDropdownToggle id="userMenus">{{userService.user.userName}}</a>
+      <a class="user-name" style="color: var(--primary);"
+         ngbDropdownToggle id="userMenus">{{userService.user && userService.user.userName || 'Guest'}}</a>
       <div ngbDropdownMenu aria-labelledby="userMenus">
-        <button ngbDropdownItem>My  Profile</button>
+        <button ngbDropdownItem>My Profile</button>
         <button ngbDropdownItem style="border-bottom: 2px solid white">Settings</button>
         <button ngbDropdownItem style="color:red !important;" (click)="logout()">Logout</button>
       </div>

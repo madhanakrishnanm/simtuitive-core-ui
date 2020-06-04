@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgxSmartModalService} from 'ngx-smart-modal';
 import {Router} from '@angular/router';
+import {UsersService} from '../../services/users.service';
 
 @Component({
   selector: 'app-site',
@@ -10,7 +11,8 @@ import {Router} from '@angular/router';
 export class SiteComponent implements OnInit {
 
   constructor(private ngxSmartModalService: NgxSmartModalService,
-              private router: Router
+              private router: Router,
+              public userService: UsersService
   ) { }
 
   ngOnInit(): void {

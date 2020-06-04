@@ -15,19 +15,22 @@ export class SidebarComponent implements OnInit, AfterViewInit {
 
   constructor(private userService: UsersService,
               public router: Router,
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.getUser();
   }
+
   ngAfterViewInit() {
-   /* let path = window.location.pathname;
-    if (path === '/events' || path === '/events/bookings'){
-      setTimeout(()=>{
-        this.showCollapse('Event Management')
-      },1000)
-    }*/
+    /* let path = window.location.pathname;
+     if (path === '/events' || path === '/events/bookings'){
+       setTimeout(()=>{
+         this.showCollapse('Event Management')
+       },1000)
+     }*/
   }
+
   getRouteByName(name) {
     switch (name) {
       case 'Dashboard':
@@ -56,8 +59,21 @@ export class SidebarComponent implements OnInit, AfterViewInit {
         return '/events';
       case 'Bookings':
         return '/events/bookings';
+      case 'Invite Manager':
+        return 'client/invite-manager';
+      case 'Learner Digest':
+        return 'client/learner-digest';
+      case 'Learning Events':
+        return 'client/learning-events';
+      case 'Learner Trends':
+        return 'client/learner-trends';
+      case 'User Ratings':
+        return 'client/user-ratings';
+      case 'Account Settings':
+        return 'client/user-ratings';
     }
   }
+
   getNameByRoute(name) {
     const url = window.location.pathname;
     // console.log(url);
@@ -99,6 +115,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
       return 'Account Settings';
     }
   }
+
   getUser() {
     this.userService.getUser().subscribe((res: any) => {
       this.userService.user = res.data;
@@ -120,6 +137,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
       this.router.navigate(['/login']);
     });
   }
+
   toggleCollapse(elementId, redirect) {
     console.log('called');
     const element = document.getElementById(elementId);
@@ -131,6 +149,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
     }
     this.router.navigate([this.getRouteByName(redirect)]);
   }
+
   hideCollapse(name) {
     const path = this.router.url;
     const eventElement = document.getElementById('eventSubmenu');
@@ -140,6 +159,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
       eventElement.classList.add('show');
     }
   }
+
   showCollapse(name) {
     const eventElement = document.getElementById('eventSubmenu');
     if (name === 'Event Management') {

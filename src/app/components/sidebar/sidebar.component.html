@@ -18,6 +18,11 @@
         <i class="fa fa-shield" aria-hidden="true" *ngIf="sidebar==='Permission Management'"></i>
         <i class="fa fa-users" aria-hidden="true" *ngIf="sidebar==='Role Management'"></i>
         <i class="fa fa-user-circle" aria-hidden="true" *ngIf="sidebar==='Admin Management'"></i>
+        <img *ngIf="sidebar==='Learner Digest'" src="assets/img/client/users.svg"/>
+        <img *ngIf="sidebar==='Invite Manager'" src="assets/img/client/mail.svg"/>
+        <img *ngIf="sidebar==='Learning Events'" src="assets/img/client/flag.svg"/>
+        <img *ngIf="sidebar==='Learner Trends'" src="assets/img/client/heart.svg"/>
+        <img *ngIf="sidebar==='Account Settings'" src="assets/img/client/bx-cog.svg"/>
         {{sidebar}}
       </a>
       <!--<ng-template [ngIf]="sidebar === 'Event Management'">
