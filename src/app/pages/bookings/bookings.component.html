@@ -3,6 +3,15 @@
     <div class="col">
       <h1>Bookings</h1>
     </div>
+
+    <div class="col">
+      <div class="text-right">
+        <button (click)="router.navigate(['events'])" class="btn btn-primary">
+          <i class="las la-calendar-week" style="margin-right:5px;font-size: 18px;"></i>
+          Events
+        </button>
+      </div>
+    </div>
   </div>
 
   <div class="row">
@@ -11,25 +20,25 @@
         <li [ngbNavItem]="1">
           <a ngbNavLink>New Bookings</a>
           <ng-template ngbNavContent>
-            <app-booking-card [bookings]="selectedBookings"></app-booking-card>
+            <app-booking-card [bookingActions]="bookingActions" [bookings]="selectedBookings"></app-booking-card>
           </ng-template>
         </li>
         <li [ngbNavItem]="2">
           <a ngbNavLink>Approved Bookings</a>
           <ng-template ngbNavContent>
-            <app-booking-card [bookings]="selectedBookings"></app-booking-card>
+            <app-booking-card [bookingActions]="bookingActions" [bookings]="selectedBookings"></app-booking-card>
           </ng-template>
         </li>
         <li [ngbNavItem]="3">
           <a ngbNavLink>Rejected Bookings</a>
           <ng-template ngbNavContent>
-            <app-booking-card [bookings]="selectedBookings"></app-booking-card>
+            <app-booking-card [bookingActions]="bookingActions" [bookings]="selectedBookings"></app-booking-card>
           </ng-template>
         </li>
         <li [ngbNavItem]="4">
           <a ngbNavLink>Canceled </a>
           <ng-template ngbNavContent>
-            <app-booking-card [bookings]="selectedBookings"></app-booking-card>
+            <app-booking-card [bookingActions]="bookingActions" [bookings]="selectedBookings"></app-booking-card>
           </ng-template>
         </li>
       </ul>

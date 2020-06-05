@@ -69,10 +69,10 @@ const routes: Routes = [
       {path: 'permissions/edit-permission/:id', component: EditPermissionComponent},
       {path: 'whitelist-ips', component: WhitelistIpsComponent},
       {path: 'test', component: TestComponent},
-      {path: 'events', component: EventsComponent},
+      {path: 'bookings', component: BookingsComponent},
       {path: 'events/add-event', component: AddEventComponent},
       {path: 'events/edit-event/:id', component: EditEventComponent},
-      {path: 'events/bookings', component: BookingsComponent},
+      {path: 'events', component: EventsComponent},
 
     ]
   },

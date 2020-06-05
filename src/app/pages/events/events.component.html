@@ -8,14 +8,6 @@
     <div class="col">
       <div class="text-right">
 
-        <button
-          (click)="router.navigate(['events/bookings'])"
-          class="btn btn-secondary"
-          style="margin-right: 30px;"
-        >
-          <i class="las la-calendar-alt" style="margin-right: 8px;font-size: 18px;"></i>Bookings
-        </button>
-
         <button (click)="router.navigate(['events/add-event'])" class="btn btn-primary">
           <i class="las la-plus" style="margin-right: 8px;font-size: 18px;"></i>
           Create Event
@@ -31,19 +23,19 @@
         <li [ngbNavItem]="1">
           <a ngbNavLink>Up Coming</a>
           <ng-template ngbNavContent>
-            <app-event-card [events]="events"></app-event-card>
+            <app-event-card [events]="selectedEvents"></app-event-card>
           </ng-template>
         </li>
         <li [ngbNavItem]="2">
           <a ngbNavLink>In Progress</a>
           <ng-template ngbNavContent>
-            <app-event-card [events]="events"></app-event-card>
+            <app-event-card [events]="selectedEvents"></app-event-card>
           </ng-template>
         </li>
         <li [ngbNavItem]="3">
           <a ngbNavLink>Completed</a>
           <ng-template ngbNavContent>
-            <app-event-card [events]="events"></app-event-card>
+            <app-event-card [events]="selectedEvents"></app-event-card>
           </ng-template>
         </li>
       </ul>

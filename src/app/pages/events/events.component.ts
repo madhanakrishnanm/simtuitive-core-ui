@@ -28,14 +28,14 @@ export class EventsComponent implements OnInit {
   }
 
   onTabChange(tab) {
-    if (tab.activeId === 1){
+    if (tab.nextId === 1){
       this.filterEventsByStatus('UpComing');
-    }else if (tab.activeId === 2){
+    }else if (tab.nextId === 2){
       this.filterEventsByStatus('InProgress');
-    }else if (tab.activeId === 3){
+    }else if (tab.nextId === 3){
       this.filterEventsByStatus('Completed');
     }
-    console.log(event);
+    console.log(tab);
   }
   filterEventsByStatus(status){
     this.selectedEvents = [];

@@ -98,6 +98,7 @@ export class AddEventComponent implements OnInit {
   session: any = {};
   sessionTitle = null;
   sessionDate = null;
+  bookingId = null;
   constructor(private fb: FormBuilder,
               private eventService: EventService,
               private clientService: ClientService,
@@ -123,7 +124,7 @@ export class AddEventComponent implements OnInit {
       notes: ['', []]
     };
     this.eventForm = this.fb.group(this.eventFormDetails);
-    this.organizationService.getAllOrganization({}).subscribe((res: any) => {
+    this.organizationService.getOrganizationNameAndId({}).subscribe((res: any) => {
       console.log(res);
       this.organizations = res.data;
 
@@ -140,26 +141,31 @@ export class AddEventComponent implements OnInit {
     const urlParams = new URLSearchParams(window.location.search);
     const bookingId = urlParams.get('bookingId');
     console.log(bookingId);
-    this.bookingService.getBookingById({id: bookingId}).subscribe((res: any) => {
-      console.log(res);
-      let booking = res.data;
-      let event = {};
-      console.log(this.organizations);
-      console.log(this.products);
-      console.log(booking.orgName);
-      let organization = this.organizations.find(org => org.organizationName === booking.orgName);
-      if (organization) {
-        event['organization'] = organization;
-      }
-      event['product'] =  this.products.find(product => product.id === booking.productId);
-      event['eventName'] = booking['eventName'];
-      event['noOfParticipants'] = booking['noOfParticipants'];
-      event['startDate'] = this.utilService.reverseDate(booking['startDate']);
-      event['endDate'] = this.utilService.reverseDate(booking['endDate']);
-      event['notes'] = booking['notes'];
-      console.log(event);
-      this.eventForm.patchValue(event);
-    });
+    if (bookingId){
+      this.bookingId = bookingId;
+      this.bookingService.getBookingById({id: bookingId}).subscribe((res: any) => {
+        console.log(res);
+        let booking = res.data;
+        let event = {};
+        console.log(this.organizations);
+        console.log(this.products);
+        console.log(booking.orgName);
+        let organization = this.organizations.find(org => org.organizationName === booking.orgName);
+        if (organization) {
+          event['organization'] = organization;
+        }
+        event['product'] =  this.products.find(product => product.id === booking.productId);
+        event['name'] = booking['eventName'];
+        event['noOfParticipants'] = booking['noOfParticipants'];
+        event['startDate'] = this.utilService.reverseDate(booking['startDate']);
+        event['endDate'] = this.utilService.reverseDate(booking['endDate']);
+        event['notes'] = booking['notes'];
+
+        console.log(event);
+        this.eventForm.patchValue(event);
+      });
+    }
+
   }
 
   openModal() {
@@ -213,6 +219,29 @@ export class AddEventComponent implements OnInit {
     console.log(eventInfo);
     this.eventService.addEvent(eventInfo).subscribe((res: any) => {
       console.log(res);
+      if (this.bookingId){
+        this.updateBookingStatus();
+      }else {
+        this.ngxUiLoaderService.stop();
+        this.router.navigate(['/events']);
+      }
+
+    }, error => {
+      if (error.error.userMessage) {
+        this.toastrService.warning(error.error.userMessage);
+      } else {
+        this.toastrService.warning('Something went to be wrong!');
+      }
+      this.ngxUiLoaderService.stop();
+    });
+  }
+  updateBookingStatus(){
+    let payload = {
+      status : 'Approved',
+      id: this.bookingId
+    }
+    this.bookingService.updateBookingStatus(payload).subscribe((res: any) => {
+      console.log(res);
       this.ngxUiLoaderService.stop();
       this.router.navigate(['/events']);
     }, error => {
@@ -224,7 +253,6 @@ export class AddEventComponent implements OnInit {
       this.ngxUiLoaderService.stop();
     });
   }
-
   setSelectedModule(module) {
     if (this.selectedModules.indexOf(module) === -1) {
       this.selectedModules.push(module);
@@ -293,15 +321,19 @@ export class AddEventComponent implements OnInit {
   }
   saveSessionWithoutTollGate(modalId) {
 
-    if (this.editSession) {
+    if (!_.isEmpty(this.editSession)) {
       this.session.name = this.sessionTitle;
+      this.session.date = getDateFromObject(this.sessionDate);
       this.session.modules = this.selectedModules;
       this.sessions[this.editSessionIndex] = {...this.session};
       this.session = {};
       this.selectedModules = [];
       this.editSession = {};
+      console.log('edit session');
     } else {
+      console.log('add session');
       this.session.name = this.sessionTitle;
+      this.session.date = getDateFromObject(this.sessionDate);
       this.sessions.push({...this.session});
       this.session = {};
     }

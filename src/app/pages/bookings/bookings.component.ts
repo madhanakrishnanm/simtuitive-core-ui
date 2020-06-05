@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BookingService} from "../../services/booking.service";
 import {EventService} from "../../services/event.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-bookings',
@@ -12,7 +13,13 @@ export class BookingsComponent implements OnInit {
   active = 1;
   bookings = [];
   selectedBookings = [];
+  bookingActions = [
+    'Approve Booking',
+    'Reject Booking',
+    'Cancel Booking'
+  ];
   constructor(private bookingService: BookingService,
+              public router: Router,
               private eventService: EventService) {
   }
 
@@ -31,12 +38,23 @@ export class BookingsComponent implements OnInit {
   onTabChange(tab) {
     console.log(tab);
     if (tab.nextId === 1){
+      this.bookingActions = [
+        'Approve Booking',
+        'Reject Booking',
+        'Cancel Booking'
+      ];
       this.filterEventsByStatus('Pending');
     }else if (tab.nextId === 2){
       this.filterEventsByStatus('Approved');
+      this.bookingActions = [
+        'Reject Booking',
+        'Cancel Booking'
+      ];
     }else if (tab.nextId === 3){
+      this.bookingActions = null;
       this.filterEventsByStatus('Rejected');
     }else if (tab.nextId === 4){
+      this.bookingActions = null;
       this.filterEventsByStatus('Canceled');
     }
   }

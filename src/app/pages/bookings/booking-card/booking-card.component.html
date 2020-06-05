@@ -7,7 +7,7 @@
       <div class="col">BOOKING DATE</div>
       <div class="col">COURSE</div>
       <div class="col">NO OF DELEGATES</div>
-      <div class="col">ACTION</div>
+      <div class="col" *ngIf="bookingActions">ACTION</div>
     </div>
   </div>
 
@@ -25,16 +25,15 @@
           <div class="col">{{parseDate(booking.createdAt)}}</div>
           <div class="col">{{booking.productName}}</div>
           <div class="col">{{booking.noOfParticipants}}</div>
-          <div class="col">
+          <div class="col" *ngIf="bookingActions">
             <ng-select
               [items]="bookingActions"
-              [(ngModel)]="activeStatus"
               [searchable]="false"
               class="status-select"
               [clearable]="false"
               (click)="$event.stopPropagation()"
               (change)="onChangeStatus($event,booking.bookingId, content)"
-              placeholder="Select Booking Status"
+              placeholder="Change Booking Status"
             >
             </ng-select>
           </div>

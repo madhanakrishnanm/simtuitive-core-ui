@@ -41,7 +41,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
       case 'Product Management':
         return '/products';
       case 'Event Management':
-        return '/events';
+        return '/bookings';
       case 'Reports':
         return '/reports';
       case 'Admin Management':
@@ -55,7 +55,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
       case 'Events':
         return '/events';
       case 'Bookings':
-        return '/events/bookings';
+        return '/bookings';
     }
   }
   getNameByRoute(name) {
@@ -73,7 +73,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
       return 'Product Management';
     } else if (url === '/events') {
       return 'Events';
-    } else if (url === '/events/bookings') {
+    } else if (url === '/bookings') {
       return 'Bookings';
     }else if (url.includes('reports')) {
       return 'Reports';

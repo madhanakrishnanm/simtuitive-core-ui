@@ -13,7 +13,7 @@ export class EventService {
     return this.apiService.post('events/add-event', payload);
   }
   editEvent(payload) {
-    return this.apiService.put('events/edit-event', payload);
+    return this.apiService.put('events/update-event', payload);
   }
   getAllEvents(payload) {
     return this.apiService.get('events/get-all-event', payload);

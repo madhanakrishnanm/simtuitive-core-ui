@@ -17,13 +17,8 @@ export class BookingCardComponent implements OnInit {
   activeCollapse = null;
   activeStatus = 'Pending';
   bookingId = null;
-  bookingActions = [
-    'Pending',
-    'Approve Booking',
-    'Reject Booking',
-    'Cancel Booking'
-  ];
   @Input() bookings;
+  @Input() bookingActions;
   constructor(private modalService: NgbModal,
               private eventService: EventService,
               private bookingService: BookingService,
@@ -44,6 +39,7 @@ export class BookingCardComponent implements OnInit {
   }
 
   onChangeStatus(status, bookingId, modalReference) {
+    this.activeStatus = status;
     this.bookingId = bookingId;
     this.modalService.open(modalReference, {centered: true, windowClass: 'simtuitive-modal'});
   }
@@ -56,7 +52,8 @@ export class BookingCardComponent implements OnInit {
     /*if (this.activeStatus === 'Pending') return;*/
 
     if (this.activeStatus === 'Approve Booking'){
-      this.updateStatus('Approved', modalReference, 'events/add-event?bookingId='+this.bookingId);
+      modalReference.close();
+      this.router.navigateByUrl('events/add-event?bookingId='+this.bookingId);
     }else if (this.activeStatus === 'Reject Booking'){
       this.updateStatus('Rejected', modalReference);
     }else if (this.activeStatus === 'Cancel Booking'){
@@ -75,11 +72,7 @@ export class BookingCardComponent implements OnInit {
       console.log(res);
       modalReference.close();
       console.log(redirect);
-      if (redirect){
-        this.router.navigateByUrl(redirect);
-      }else {
-        window.location.reload();
-      }
+      window.location.reload();
       this.ngxUiLoaderService.stop();
     }, error => {
       modalReference.close();

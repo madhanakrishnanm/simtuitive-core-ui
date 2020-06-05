@@ -40,4 +40,7 @@ export class OrganizationService {
   findOrganizationName(payload) {
     return this.apiService.get('org/getall-orgname', payload);
   }
+  getOrganizationNameAndId(payload) {
+    return this.apiService.get('org/get-org-id-name', payload);
+  }
 }

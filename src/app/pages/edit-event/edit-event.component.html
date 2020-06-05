@@ -1,221 +1,240 @@
 <div class="site-content">
   <div class="row">
     <div class="col">
-      <h1>Edit Event</h1>
+      <h1>{{title}}</h1>
     </div>
   </div>
-  <div class="row mt-5">
-    <div class="col-6">
-      <form class="simtuitive-input" [formGroup]="eventForm" (ngSubmit)="save()">
-        <div class="form-group row">
-          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Select Organization</label>
-          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-            <ng-select
-              [items]="clients"
-              [searchable]="false"
-              bindLabel="roleName"
-              placeholder="Organizations"
-              class="ng-select"
-              formControlName="organizationName"
-            >
-            </ng-select>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Select Clients</label>
-          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-            <ng-select
-              [items]="clients"
-              [searchable]="false"
-              bindLabel="roleName"
-              placeholder="Clients"
-              class="ng-select"
-              formControlName="clientName"
-            >
-            </ng-select>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Select Products/Course</label>
-          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-            <ng-select
-              [items]="products"
-              [searchable]="false"
-              placeholder="Courses"
-              class="ng-select"
-              formControlName="productName"
-            >
-            </ng-select>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Event Name</label>
-          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-            <input
-              type="text"
-              class="form-control"
-              formControlName="eventName"
-            />
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">No Of Participants</label>
-          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-            <input
-              type="text"
-              class="form-control"
-              formControlName="noOfParticipants"
-            />
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Toll Gates</label>
-          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-            <div class="custom-control custom-radio custom-control-inline">
-              <input type="radio" id="customRadioInline1"
-                     formControlName="tollGates"
-                     [(ngModel)]="tollGate" name="tollGates" class="custom-control-input" value="yes">
-              <label class="custom-control-label" for="customRadioInline1">Yes</label>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="row mt-5">
+        <div class="col-6">
+          <form class="simtuitive-input" [formGroup]="eventForm" (ngSubmit)="save()">
+            <div class="form-group row">
+              <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">
+                Select Organization
+              </label>
+              <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+                <ng-select
+                  [items]="organizations"
+                  [searchable]="false"
+                  bindLabel="organizationName"
+                  placeholder="Organizations"
+                  class="ng-select"
+                  (change)="onChangeOrganization($event)"
+                  formControlName="organization"
+                >
+                </ng-select>
+              </div>
             </div>
-            <div class="custom-control custom-radio custom-control-inline">
-              <input type="radio" id="customRadioInline2"
-                     formControlName="tollGates"
-                     [(ngModel)]="tollGate" name="tollGates" class="custom-control-input" value="no">
-              <label class="custom-control-label" for="customRadioInline2">No</label>
+            <div class="form-group row">
+              <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">
+                Select Clients
+              </label>
+              <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+                <ng-select
+                  [items]="clients"
+                  [searchable]="false"
+                  bindLabel="userName"
+                  placeholder="Clients"
+                  class="ng-select"
+                  formControlName="client"
+                >
+                </ng-select>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Event Start Date</label>
-          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-            <div class="d-flex  custom-input">
-              <input
-                type="text"
-                class="form-control"
-                formControlName="eventStartDate"
-                ngbDatepicker
-                #d="ngbDatepicker"
-                placement="bottom-right"
-              />
-              <div class="input-group-append my-auto" (click)="d.toggle()">
+            <div class="form-group row">
+              <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">
+                Select Products/Course
+              </label>
+              <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+                <ng-select
+                  [items]="products"
+                  [searchable]="false"
+                  placeholder="Select Course"
+                  class="ng-select"
+                  bindLabel="name"
+                  formControlName="product"
+                >
+                </ng-select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Event Name</label>
+              <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="name"
+                  placeholder="Enter Event Name"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">
+                No Of Participants
+              </label>
+              <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter No of Participants"
+                  formControlName="noOfParticipants"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Toll Gates</label>
+              <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input
+                    type="radio"
+                    id="customRadioInline1"
+                    formControlName="tollGate"
+                    [(ngModel)]="tollGate"
+                    name="Toll Gate"
+                    class="custom-control-input"
+                    value="yes"
+                    (ngModelChange)="onTollGateChange()"
+                  >
+                  <label class="custom-control-label" for="customRadioInline1">Yes</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input
+                    type="radio"
+                    id="customRadioInline2"
+                    formControlName="tollGate"
+                    [(ngModel)]="tollGate"
+                    name="Toll Gates"
+                    class="custom-control-input"
+                    value="no"
+                    (ngModelChange)="onTollGateChange()"
+                  >
+                  <label class="custom-control-label" for="customRadioInline2">No</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Event Start Date</label>
+              <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+                <div class="d-flex  custom-input">
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="startDate"
+                    ngbDatepicker
+                    #d="ngbDatepicker"
+                    placement="bottom-right"
+                    placeholder="Select Event Start Data"
+                  />
+                  <div class="input-group-append my-auto" (click)="d.toggle()">
               <span class="input-group-text">
                 <img src="assets/img/interface.svg">
               </span>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Event End Date</label>
-          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-            <div class="d-flex  custom-input">
-              <input
-                type="text"
-                class="form-control"
-                formControlName="eventEndDate"
-                ngbDatepicker
-                #d1="ngbDatepicker"
-                placement="bottom-right"
-              />
-              <div class="input-group-append my-auto" (click)="d1.toggle()">
+            <div class="form-group row">
+              <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12  col-form-label">Event End Date</label>
+              <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+                <div class="d-flex  custom-input">
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="endDate"
+                    ngbDatepicker
+                    #d1="ngbDatepicker"
+                    placement="bottom-right"
+                    placeholder="Select Event End Data"
+                  />
+                  <div class="input-group-append my-auto" (click)="d1.toggle()">
               <span class="input-group-text">
                 <img src="assets/img/interface.svg">
               </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Notes</label>
+              <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+                <textarea
+                  rows="4"
+                  class="form-control"
+                  formControlName="notes"
+                  placeholder="Write description about event..."
+                >
+                </textarea>
+              </div>
+            </div>
+            <div class="row justify-content-end">
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 text-center">
+                <button
+                  type="submit"
+                  class="btn btn-warning"
+                  (click)="resetForm()"
+                >
+                  Clear
+                </button>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 text-center">
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  (click)="save()"
+                >
+                  Update Event
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-6">
+          <div class="session-cont">
+            <div class="row">
+              <div class="col-10">Sessions</div>
+              <div class="col-2">
+                <div class="add-icon" (click)="openModal()">+ ADD</div>
+              </div>
+            </div>
+            <div class="session-info-card" *ngFor="let session of sessions;let i =index">
+              <div class="row">
+                <div class="col-4">
+                  <div class="session-title">{{session.name}}</div>
+                </div>
+                <div class="col-5">
+                  <div class="session-date">DATE: {{session.date}}</div>
+                </div>
+                <div class="col-3">
+                  <div class="edit-icon" (click)="requestEditSession(i)" >
+                    <img src="assets/img/event/edit.svg"/>EDIT
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="form-group row">
-          <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Notes</label>
-          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-            <textarea rows="4" class="form-control" formControlName="notes"></textarea>
-          </div>
-        </div>
-        <div class="row justify-content-end">
-          <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 text-center">
-            <button
-              type="submit"
-              class="btn btn-warning"
-              nbStepperNext
-              [disabled]="next"
-            >
-              Cancel
-            </button>
-          </div>
-          <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 text-center">
-            <button
-              type="submit"
-              class="btn btn-primary"
-              (click)="save()"
-              [disabled]="next"
-            >
-              Create Event
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>
-
-    <div class="col-lg-6">
-      <div class="session-cont">
-        <div class="row">
-          <div class="col-10">Sessions</div>
-          <div class="col-2">
-            <div class="add-icon" (click)="ngxSmartModalService.open('addEvent')">+ ADD</div>
-          </div>
-        </div>
-        <div class="session-info-card">
-          <div class="row">
-            <div class="col-4">
-              <div class="session-title">Session 1</div>
-            </div>
-            <div class="col-5">
-              <div class="session-date">DATE: 10/05/2020</div>
-            </div>
-            <div class="col-3">
-              <div class="edit-icon">
-                <img src="assets/img/event/edit.svg"/>EDIT
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="session-info-card">
-          <div class="row">
-            <div class="col-4">
-              <div class="session-title">Session 1</div>
-            </div>
-            <div class="col-5">
-              <div class="session-date">DATE: 10/05/2020</div>
-            </div>
-            <div class="col-3">
-              <div class="edit-icon">
-                <img src="assets/img/event/edit.svg"/>EDIT
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
+
     </div>
   </div>
 </div>
 
 
-
 <ngx-smart-modal
-  [closable]="false"
-  #addEvent
-  customClass="'modal'"
-  identifier="addEvent"
+  [closable]="true"
+  #withTollGate
+  customClass="withTollGate"
+  identifier="withTollGate"
   [dismissable]="false"
+  (onAnyCloseEvent)="resetSession()"
 >
   <div class="session-popup-cont">
     <div class="row">
       <div class="col-lg-5">
         <div class="row simtuitive-input">
           <div class="col-12">
-            <div class="session-popup-title">Session 1</div>
+            <div class="session-popup-title">{{sessionTitle}}</div>
           </div>
           <div class="col-12">
             <div class="form-group row">
@@ -225,13 +244,15 @@
                 </div>
               </label>
               <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-                <div class="d-flex">
+                <div class="d-flex module-picker">
                   <input
                     type="text"
                     class="form-control"
                     ngbDatepicker
+                    [(ngModel)]="sessionDate"
                     #session="ngbDatepicker"
                     placement="bottom-right"
+                    (dateSelect)="onDateChange($event)"
                   />
                   <div class="input-group-append my-auto" (click)="session.toggle()">
                     <span class="input-group-text">
@@ -242,6 +263,7 @@
               </div>
             </div>
           </div>
+
           <div class="col-12">
             <div class="row">
               <div class="col-8">
@@ -252,27 +274,31 @@
               </div>
             </div>
           </div>
+
           <div class="col-12">
             <div class="hr-divider"></div>
           </div>
+
+          <!--User selected Modules-->
           <div class="col-12">
             <div class="selected-modules-cont">
-              <div class="selected-module-card" *ngFor="let module of addedModules;let i=index">
+              <div class="selected-module-card" *ngFor="let selectedModule of selectedModules;let i=index">
                 <div class="row">
-                  <div class="col-2">{{module.moduleNumber}}</div>
+                  <div class="col-2">{{selectedModule.id}}</div>
                   <div class="col-8">
-                    {{module.moduleName}}
+                    {{selectedModule.name}}
                   </div>
                   <div class="col-2">
-                    <div (click)="removeModule(module)" class="close-icon">X</div>
+                    <div (click)="removeModule(selectedModule)" class="close-icon">X</div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-12 py-2 text-center" (click)="saveSession()">
-              <button class="btn btn-primary">Save</button>
+            <div class="col-12 py-2 text-center">
+              <button class="btn btn-primary" (click)="saveSession('withTollGate')">Save</button>
             </div>
           </div>
+
         </div>
       </div>
       <div class="col-lg-7">
@@ -281,25 +307,23 @@
             Select Modules
           </div>
         </div>
-        <div class="row">
-          <div class="col-6" *ngFor="let module of modules;let i= index">
-            <div class="module-selection" *ngIf="!module.isSelected">
-              <div class="checkbox">
-                <label>
-                  <input (change)="setSelectedModule(module)" type="checkbox"
-                         [value]="module.moduleName"
-                         [checked]="isChecked(module)">
-                  <span class="cr"><i class="cr-icon fa fa-check"></i></span>
-                  <span (change)="setSelectedModule(module)" class="checkbox-label">
-                    {{module.moduleNumber}}.{{module.moduleName}}
-                  </span>
-                </label>
+        <!-- List of modules of user selected product-->
+        <div class="modules-list">
+          <div class="row">
+            <div class="col-6" *ngFor="let module of modules;let i= index">
+              <div class="module-selection">
+                <div class="checkbox">
+                  <label>
+                    <input (change)="setSelectedModule(module)" type="checkbox"
+                           [value]="module.name"
+                           [checked]="isChecked(module)">
+                    <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                    <span (click)="setSelectedModule(module)" class="checkbox-label">
+                      {{module.id}}.{{module.name}}
+                    </span>
+                  </label>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="col-12">
-            <div class="col-12 py-2 text-center" (click)="addModules()">
-              <button class="btn btn-primary">Add</button>
             </div>
           </div>
         </div>
@@ -308,3 +332,53 @@
   </div>
 </ngx-smart-modal>
 
+<ngx-smart-modal
+  [closable]="true"
+  #withoutTollGate
+  customClass="withoutTollGate"
+  identifier="withoutTollGate"
+  [dismissable]="false"
+  (onAnyCloseEvent)="resetSession()"
+>
+  <div class="session-popup-cont">
+    <div class="row simtuitive-input">
+      <div class="col-12">
+        <div class="session-popup-title">{{sessionTitle}}</div>
+      </div>
+      <div class="col-12">
+        <div class="form-group row">
+          <label class="col-xl-4 text-white col-lg-4 col-md-12 col-sm-12 col-form-label">
+            <div class="selected-modules-title">
+              SELECT DATE
+            </div>
+          </label>
+          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+            <div class="d-flex module-picker">
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="sessionDate"
+                ngbDatepicker
+                #withoutTollGateDate="ngbDatepicker"
+                placement="bottom-right"
+                (dateSelect)="onDateChange($event)"
+
+              />
+              <div class="input-group-append my-auto"
+                   (click)="withoutTollGateDate.toggle()">
+                    <span class="input-group-text">
+                      <img src="assets/img/interface.svg">
+                    </span>
+              </div>
+            </div>
+          </div>
+          <div class="offset-4 col-8 text-center pt-4">
+            <button class="btn btn-primary"
+                    (click)="saveSessionWithoutTollGate('withoutTollGate')">Save</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</ngx-smart-modal>
