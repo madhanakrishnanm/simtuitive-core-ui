@@ -8,13 +8,15 @@ import { ModulesComponent } from './modules/modules.component';
 import { ConceptsComponent } from './concepts/concepts.component';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import {NgbButtonsModule} from '@ng-bootstrap/ng-bootstrap';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 @NgModule({
   declarations: [AddProductComponent, MetaComponent, AssessmentDetailsComponent, ModulesComponent, ConceptsComponent],
   imports: [
     CommonModule,
     NgSelectModule,
     AutocompleteLibModule,
-    NgbButtonsModule
+    NgbButtonsModule,
+    FormsModule
   ]
 })
 export class AddProductModule { }

@@ -81,11 +81,79 @@
           </div>
         </div>
       </div>
+      <div class="form-group row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Data File - Required</label>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+          <div class="custom-control custom-radio custom-control-inline">
+            <input
+              id="isDiscoverDataFileRequiredYes"
+              name="isDiscoverDataFileRequired"
+              type="radio"
+              value="yes"
+              [(ngModel)]="isDiscoverDataFileRequired"
+              class="custom-control-input"
+              (change)="onChangeDiscoverFile($event)"
+            />
+            <label for="isDiscoverDataFileRequiredYes" class="custom-control-label">Yes</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input
+              id="isDiscoverDataFileRequiredNo"
+              name="isDiscoverDataFileRequired"
+              type="radio"
+              value="no"
+              [(ngModel)]="isDiscoverDataFileRequired"
+              class="custom-control-input"
+              (change)="onChangeDiscoverFile($event)"
+            />
+            <label for="isDiscoverDataFileRequiredNo" class="custom-control-label">No</label>
+          </div>
+
+          <div class="custom-file mt-4" *ngIf="isDiscoverDataFileRequired === 'yes'">
+            <input type="file" class="custom-file-input" name="filename">
+            <label class="custom-file-label">Choose file</label>
+          </div>
+        </div>
+      </div>
 
       <div class="form-group row">
         <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Simulate Decide</label>
         <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
           <div class="custom-file mb-3">
+            <input type="file" class="custom-file-input" name="filename">
+            <label class="custom-file-label">Choose file</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-form-label">Data File - Required</label>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+          <div class="custom-control custom-radio custom-control-inline">
+            <input
+              id="isDecideDataFileRequiredYes"
+              name="isDecideDataFileRequired"
+              type="radio"
+              value="yes"
+              [(ngModel)]="isDecideDataFileRequired"
+              class="custom-control-input"
+              (change)="onChangeDecideFile($event)"
+            />
+            <label for="isDecideDataFileRequiredYes" class="custom-control-label">Yes</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input
+              id="isDecideDataFileRequiredNo"
+              name="isDecideDataFileRequired"
+              type="radio"
+              value="no"
+              [(ngModel)]="isDecideDataFileRequired"
+              class="custom-control-input"
+              (change)="onChangeDecideFile($event)"
+            />
+            <label for="isDecideDataFileRequiredNo" class="custom-control-label">No</label>
+          </div>
+
+          <div class="custom-file mt-4" *ngIf="isDecideDataFileRequired === 'yes'">
             <input type="file" class="custom-file-input" name="filename">
             <label class="custom-file-label">Choose file</label>
           </div>
