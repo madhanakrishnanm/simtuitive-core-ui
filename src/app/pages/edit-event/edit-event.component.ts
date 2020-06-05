@@ -256,7 +256,7 @@ export class EditEventComponent implements OnInit {
     eventForm.productName = eventForm.product.name;
     eventForm.productId = eventForm.product.id;
     eventForm.type = 'Event';
-    eventForm.eventId = this.eventId;
+    eventForm.id  = this.eventId;
     delete eventForm.product;
     const eventInfo = {
       ...eventForm,

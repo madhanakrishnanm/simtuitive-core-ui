@@ -31,7 +31,7 @@
             </div>
             <div class="col">
               <span style="margin-right: 10px;">{{event.passCode}}</span>
-              <i class="lar la-copy copy-icon"></i>
+              <i class="lar la-copy copy-icon pointer" (click)="copy(event.passCode)" ></i>
             </div>
             <div class="col" style="vertical-align: middle">
               <div class="pointer" (click)="router.navigate(['events/edit-event', event.eventId])">

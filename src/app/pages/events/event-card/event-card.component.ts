@@ -3,7 +3,8 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Router} from '@angular/router';
 import {EventService} from "../../../services/event.service";
 import {BookingService} from "../../../services/booking.service";
-
+import {copyToClipboard} from "../../../lib"
+import {ToastrService} from "ngx-toastr";
 @Component({
   selector: 'app-event-card',
   templateUrl: './event-card.component.html',
@@ -22,6 +23,7 @@ export class EventCardComponent implements OnInit {
   constructor(private modalService: NgbModal,
               private eventService: EventService,
               private bookingService: BookingService,
+              private toastrService: ToastrService,
               public router: Router) {
   }
 
@@ -40,5 +42,12 @@ export class EventCardComponent implements OnInit {
 
   onChangeStatus(status, modalReference) {
     this.modalService.open(modalReference, {centered: true, windowClass: 'simtuitive-modal'});
+  }
+  copy(text){
+    if (copyToClipboard(text)){
+      this.toastrService.info('Passcode Copied!');
+    }else {
+      this.toastrService.info('Unable to copy Passcode!');
+    }
   }
 }
