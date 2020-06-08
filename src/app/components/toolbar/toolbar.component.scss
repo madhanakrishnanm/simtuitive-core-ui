@@ -74,6 +74,17 @@
   }
 }
 
+.top-client-title{
+  font-size:25px;
+  line-height: 40px;
+  font-family: 'Nunito', sans-serif;
+  letter-spacing: 0px;
+  color: #FFFFFF;
+  padding-left: 20px;
+  &:hover {
+    color: #FFFFFF;
+  }
+}
 .top-logo {
   text-align: left;
   font-size: 16px;
@@ -91,6 +102,7 @@
 .client-notification{
   //border: 1px solid red;
   cursor: pointer;
+  padding-top: 12px;
 }
 
 .client-logout {

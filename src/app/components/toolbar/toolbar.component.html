@@ -9,6 +9,9 @@
       class="btn btn-outline-primary sidebar-toggle-btn">
       <span><i class="fa fa-navicon"></i></span>
     </button>
+    <a class="navbar-brand top-client-title" *ngIf="userService.user.role === 'Client'">
+      Invite Manager
+    </a>
     <div ngbDropdown class="mr-5 mt-1" *ngIf="userService.user.role !== 'Client'">
       <a class="user-name" style="color: var(--primary);"
          ngbDropdownToggle id="userMenus">{{userService.user && userService.user.userName || 'Guest'}}</a>
