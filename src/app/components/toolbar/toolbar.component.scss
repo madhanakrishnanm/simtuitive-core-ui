@@ -1,34 +1,36 @@
-.dropdown
-{
+.dropdown {
   float: right;
-  width:6em;
+  width: 6em;
 }
-.dropdown-toggle::after
-{
-  content:none;
+
+.dropdown-toggle::after {
+  content: none;
 }
-.dropdown-menu
-{
+
+.dropdown-menu {
   text-align: center;
-  background-color:var(--bg-color-secondary);
-  .dropdown-item
-  {
-    color:#FFF !important;
-    &:hover
-    {
+  background-color: var(--bg-color-secondary);
+
+  .dropdown-item {
+    color: #FFF !important;
+
+    &:hover {
       background: none;
     }
   }
 }
-.user-name{
+
+.user-name {
   float: right;
   padding-left: 20px;
 }
+
 @media (max-width: 768px) {
-  .user-name{
+  .user-name {
     float: left;
   }
 }
+
 .navbar {
   padding: 15px 10px;
   background: #fff;
@@ -37,9 +39,10 @@
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.navbar .container, .navbar .container-fluid, .navbar .container-sm, .navbar .container-md, .navbar .container-lg, .navbar .container-xl{
+.navbar .container, .navbar .container-fluid, .navbar .container-sm, .navbar .container-md, .navbar .container-lg, .navbar .container-xl {
   display: block !important;
 }
+
 .navbar-btn {
   box-shadow: none;
   outline: none !important;
@@ -52,18 +55,64 @@
   border-bottom: 1px dashed #ddd;
   margin: 40px 0;
 }
-.sidebar-toggle-btn{
+
+.sidebar-toggle-btn {
   margin-left: 300px;
   transition: all 0.3s ease;
 }
+
 @media (max-width: 768px) {
-  .sidebar-toggle-btn{
+  .sidebar-toggle-btn {
     margin-left: auto;
     float: right;
   }
 }
+
 @media (min-width: 768px) {
-  .sidebar-toggle-btn.active{
+  .sidebar-toggle-btn.active {
     margin-left: 0;
+  }
+}
+
+.top-client-title{
+  font-size:25px;
+  line-height: 40px;
+  font-family: 'Nunito', sans-serif;
+  letter-spacing: 0px;
+  color: #FFFFFF;
+  padding-left: 20px;
+  &:hover {
+    color: #FFFFFF;
+  }
+}
+.top-logo {
+  text-align: left;
+  font-size: 16px;
+  line-height: 40px;
+  font-family: 'Nunito', sans-serif;
+  color: #A6A6A6;
+  cursor: pointer;
+  width: auto;
+
+  &:hover {
+    color: #A6A6A6;
+  }
+}
+
+.client-notification{
+  //border: 1px solid red;
+  cursor: pointer;
+  padding-top: 12px;
+}
+
+.client-logout {
+  font-size: 16px;
+  line-height: 40px;
+  color: #D43838;
+  font-family: 'Nunito', sans-serif;
+  cursor: pointer;
+
+  &:hover {
+    color: #D43838;
   }
 }

@@ -15,19 +15,22 @@ export class SidebarComponent implements OnInit, AfterViewInit {
 
   constructor(private userService: UsersService,
               public router: Router,
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.getUser();
   }
+
   ngAfterViewInit() {
-   /* let path = window.location.pathname;
-    if (path === '/events' || path === '/events/bookings'){
-      setTimeout(()=>{
-        this.showCollapse('Event Management')
-      },1000)
-    }*/
+    /* let path = window.location.pathname;
+     if (path === '/events' || path === '/events/bookings'){
+       setTimeout(()=>{
+         this.showCollapse('Event Management')
+       },1000)
+     }*/
   }
+
   getRouteByName(name) {
     switch (name) {
       case 'Dashboard':
@@ -56,8 +59,21 @@ export class SidebarComponent implements OnInit, AfterViewInit {
         return '/events';
       case 'Bookings':
         return '/bookings';
+      case 'Invite Manager':
+        return 'client/invite-manager';
+      case 'Learner Digest':
+        return 'client/learner-digest';
+      case 'Learning Events':
+        return 'client/learning-events';
+      case 'Learner Trends':
+        return 'client/learner-trends';
+      case 'User Ratings':
+        return 'client/user-ratings';
+      case 'Account Settings':
+        return 'client/user-ratings';
     }
   }
+
   getNameByRoute(name) {
     const url = window.location.pathname;
     // console.log(url);
@@ -75,7 +91,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
       return 'Events';
     } else if (url === '/bookings') {
       return 'Bookings';
-    }else if (url.includes('reports')) {
+    } else if (url.includes('reports')) {
       return 'Reports';
     } else if (url.includes('admin')) {
       return 'Admin Management';
@@ -85,10 +101,21 @@ export class SidebarComponent implements OnInit, AfterViewInit {
       return 'Permission Management';
     } else if (url.includes('whitelist-ip')) {
       return 'Whitelist IPs Management';
-    }else if (url.includes('bookings')) {
+    } else if (url.includes('bookings')) {
       return 'Bookings';
+    } else if (url.includes('invite-manager')) {
+      return 'Invite Manager';
+    } else if (url.includes('learner-digest')) {
+      return 'Learner Digest';
+    } else if (url.includes('learner-trends')) {
+      return 'Learner Trends';
+    } else if (url.includes('user-ratings')) {
+      return 'User Ratings';
+    } else if (url.includes('account-settings')) {
+      return 'Account Settings';
     }
   }
+
   getUser() {
     this.userService.getUser().subscribe((res: any) => {
       this.userService.user = res.data;
@@ -99,8 +126,8 @@ export class SidebarComponent implements OnInit, AfterViewInit {
           if (permission.type === 'tab') {
             this.sidebars.push(permission.name);
           }
-          if (permission.type === 'EventSubTab'){
-            this.eventSubBars.push(permission.name)
+          if (permission.type === 'EventSubTab') {
+            this.eventSubBars.push(permission.name);
           }
         }
       }
@@ -110,29 +137,32 @@ export class SidebarComponent implements OnInit, AfterViewInit {
       this.router.navigate(['/login']);
     });
   }
-  toggleCollapse(elementId, redirect){
+
+  toggleCollapse(elementId, redirect) {
     console.log('called');
-    let element = document.getElementById(elementId);
-    console.log(element.classList)
-    if (element.classList.contains('show')){
+    const element = document.getElementById(elementId);
+    console.log(element.classList);
+    if (element.classList.contains('show')) {
       element.classList.remove('show');
-    }else {
+    } else {
       element.classList.add('show');
     }
-    this.router.navigate([this.getRouteByName(redirect)])
+    this.router.navigate([this.getRouteByName(redirect)]);
   }
-  hideCollapse(name){
-    let path = this.router.url;
-    let eventElement = document.getElementById('eventSubmenu');
-    if (name !== 'Event Management'){
+
+  hideCollapse(name) {
+    const path = this.router.url;
+    const eventElement = document.getElementById('eventSubmenu');
+    if (name !== 'Event Management') {
       eventElement.classList.remove('show');
-    }else {
+    } else {
       eventElement.classList.add('show');
     }
   }
-  showCollapse(name){
-    let eventElement = document.getElementById('eventSubmenu');
-    if (name === 'Event Management'){
+
+  showCollapse(name) {
+    const eventElement = document.getElementById('eventSubmenu');
+    if (name === 'Event Management') {
       eventElement.classList.add('show');
     }
   }

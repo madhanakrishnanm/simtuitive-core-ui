@@ -19,6 +19,8 @@ export class DashboardComponent implements OnInit {
   retailUsers: any = {};
   enterpriseUsers: any = {};
   usersOnlineNow: any = {};
+  // tslint:disable-next-line:max-line-length
+  licenses = [{noOfLicense: 200, creditDate: '1/4/2020', timeOfCredit: '23/3/2020'}, {noOfLicense: 230, creditDate: '1/4/2020', timeOfCredit: '23/3/2020'}];
   productUsers = [];
   admins = [];
   noOfRoles = 0;
@@ -148,6 +150,7 @@ export class DashboardComponent implements OnInit {
     this.noOfAdmins = res.data.Admin;
     this.noOfRoles = res.data.Role;
     this.noOfPermissions = res.data.Permission;
+    // tslint:disable-next-line:no-shadowed-variable
     this.userService.getAdminUsers().subscribe((res: any) => {
       console.log(res);
       this.admins = res.data;
