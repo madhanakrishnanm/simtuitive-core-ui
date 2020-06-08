@@ -9,8 +9,7 @@
       class="btn btn-outline-primary sidebar-toggle-btn">
       <span><i class="fa fa-navicon"></i></span>
     </button>
-
-    <div ngbDropdown class="mr-5 mt-1">
+    <div ngbDropdown class="mr-5 mt-1" *ngIf="userService.user.role !== 'Client'">
       <a class="user-name" style="color: var(--primary);"
          ngbDropdownToggle id="userMenus">{{userService.user && userService.user.userName || 'Guest'}}</a>
       <div ngbDropdownMenu aria-labelledby="userMenus">
@@ -20,5 +19,26 @@
       </div>
     </div>
   </div>
+
+  <ul class="navbar-nav ml-auto" *ngIf="userService.user.role === 'Client'">
+    <li class="nav-item">
+      <a class="nav-link client-notification">
+        <img src="assets/img/client/bell.svg"
+             width="30"
+             height="20"
+             class="d-inline-block">
+      </a>
+    </li>
+    <a class="navbar-brand top-logo">
+      <img src="assets/img/client/hp.png"
+           width="30"
+           height="30"
+           class="d-inline-block">
+      Hewlett-Packard
+    </a>
+    <li class="nav-item active">
+      <a class="nav-link client-logout" (click)="logout()">Logout</a>
+    </li>
+  </ul>
 </nav>
 
