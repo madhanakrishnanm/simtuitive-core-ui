@@ -24,7 +24,7 @@
     "@ng-bootstrap/ng-bootstrap": "^6.0.2",
     "@ng-select/ng-select": "^4.0.0",
     "angular-ng-autocomplete": "^2.0.1",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap": "^4.4.1",
     "bs-stepper": "^1.7.0",
     "font-awesome": "^4.7.0",
